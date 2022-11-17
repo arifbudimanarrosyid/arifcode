@@ -15,8 +15,8 @@
                         studying at Muhammadiyah University of Yogyakarta. Interested in Laravel Web Development and
                         Tailwind CSS.</h1>
                 </div>
-                <div class="hidden px-4 pl-10 sm:block ">
-                    <img src="{{ asset('img/pp.jpg') }}" alt="programming" class="w-56 rounded-full">
+                <div class="px-4 pl-0 sm:pl-10">
+                    <img src="{{ asset('img/pp.jpg') }}" alt="programming" class="rounded-full w-96">
                 </div>
             </div>
             {{-- Featured Posts --}}

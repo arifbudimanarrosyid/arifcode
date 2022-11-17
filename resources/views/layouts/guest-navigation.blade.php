@@ -4,11 +4,11 @@
         <div class="flex justify-between h-16">
             <div class="flex">
                 <!-- Logo -->
-                <div class="flex items-center shrink-0">
+                <div class="flex items-center border-b-2 border-indigo-500 shrink-0">
                     {{-- <a href="{{ route('home') }}">
                         <x-application-logo class="block w-auto text-gray-800 fill-current h-9 dark:text-gray-200" />
                     </a> --}}
-                    {{-- <a href="{{ route('home') }}" class="dark:text-gray-200">ArifCode</a> --}}
+                    <a href="{{ route('home') }}" class=" sm:hidden dark:text-gray-200">ArifCode</a>
                 </div>
 
                 <!-- Navigation Links -->
@@ -36,11 +36,11 @@
             <div class="hidden sm:flex sm:items-center sm:ml-6 gap-x-4">
 
                 <a href="{{ route('login') }}"
-                    class="inline-flex items-center px-3 py-2 text-sm font-medium leading-4 text-gray-500 transition duration-150 ease-in-out bg-white border border-transparent rounded-md dark:bg-gray-800 hover:text-gray-700 dark:hover:text-gray-300 focus:outline-none">
+                    class="inline-flex items-center px-3 py-2 text-sm font-medium leading-4 text-gray-400 transition duration-150 ease-in-out bg-white border border-transparent rounded-md dark:bg-gray-800 hover:text-gray-700 dark:hover:text-gray-300 focus:outline-none">
                     Login
                 </a>
                 <a href="{{ route('register') }}"
-                    class="inline-flex items-center px-3 py-2 text-sm font-medium leading-4 text-gray-500 transition duration-150 ease-in-out bg-white border border-transparent rounded-md dark:bg-gray-800 hover:text-gray-700 dark:hover:text-gray-300 focus:outline-none">
+                    class="inline-flex items-center px-3 py-2 text-sm font-medium leading-4 text-gray-400 transition duration-150 ease-in-out bg-white border border-transparent rounded-md dark:bg-gray-800 hover:text-gray-700 dark:hover:text-gray-300 focus:outline-none">
                     Register
                 </a>
 
@@ -54,7 +54,7 @@
                 <x-dropdown align="right" width="48">
                     <x-slot name="trigger">
                         <button
-                            class="inline-flex items-center px-3 py-2 text-sm font-medium leading-4 text-gray-500 transition duration-150 ease-in-out bg-white border border-transparent rounded-md dark:bg-gray-800 hover:text-gray-700 dark:hover:text-gray-300 focus:outline-none">
+                            class="inline-flex items-center px-3 py-2 text-sm font-medium leading-4 text-gray-400 transition duration-150 ease-in-out bg-white border border-transparent rounded-md dark:bg-gray-800 hover:text-gray-700 dark:hover:text-gray-300 focus:outline-none">
                             <div>{{ Auth::user()->name }}</div>
 
                             <div class="ml-1">
