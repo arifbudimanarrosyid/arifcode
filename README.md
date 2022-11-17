@@ -9,11 +9,14 @@ Developed with Laravel 9, Laravel Breeze, Tailwind CSS, Flowbite.
 
 
 # Feature
-- [ ] Featured Posts
-- [ ] All Posts
+- [ ] Home, Featured Posts
+- [ ] Blog, All Posts
 - [ ] Guestbook
 - [ ] About Me
 - [ ] Gear
 - [x] Dashboard
 - [x] Auth
 - [ ] Dashboard - Blog
+- [x] Dashboard - Profile
+- [ ] Dashboard - Posts
+- [ ] Dashboard - Portofolio
