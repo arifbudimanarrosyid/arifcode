@@ -8,16 +8,20 @@
                     {{-- <a href="{{ route('home') }}">
                         <x-application-logo class="block w-auto text-gray-800 fill-current h-9 dark:text-gray-200" />
                     </a> --}}
-                    <a href="{{ route('home') }}" class="dark:text-gray-200">ArifCode</a>
+                    {{-- <a href="{{ route('home') }}" class="dark:text-gray-200">ArifCode</a> --}}
                 </div>
 
                 <!-- Navigation Links -->
-                <div class="hidden space-x-6 sm:-my-px sm:ml-6 sm:flex">
+                {{-- sm:ml-6 --}}
+                <div class="hidden space-x-6 sm:-my-px sm:flex">
                     <x-nav-link :href="route('home')" :active="request()->routeIs('home')">
                         {{ __('Home') }}
                     </x-nav-link>
                     <x-nav-link :href="route('blog')" :active="request()->routeIs('blog')">
                         {{ __('Blog') }}
+                    </x-nav-link>
+                    <x-nav-link :href="route('portofolio')" :active="request()->routeIs('portofolio')">
+                        {{ __('Portofolio') }}
                     </x-nav-link>
                     <x-nav-link :href="route('guestbook')" :active="request()->routeIs('guestbook')">
                         {{ __('Guestbook') }}
@@ -110,6 +114,9 @@
             </x-responsive-nav-link>
             <x-responsive-nav-link :href="route('blog')" :active="request()->routeIs('blog')">
                 {{ __('Blog') }}
+            </x-responsive-nav-link>
+            <x-responsive-nav-link :href="route('portofolio')" :active="request()->routeIs('portofolio')">
+                {{ __('Portofolio') }}
             </x-responsive-nav-link>
             <x-responsive-nav-link :href="route('guestbook')" :active="request()->routeIs('guestbook')">
                 {{ __('Guestbook') }}

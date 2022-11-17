@@ -1,9 +1,5 @@
 <x-guest-layout>
-    <x-slot name="header">
-        <h2 class="text-xl font-semibold leading-tight text-gray-800 dark:text-gray-200">
-            {{ __('Dashboard') }}
-        </h2>
-    </x-slot>
+
 
     <div class="py-12">
         <div class="mx-auto max-w-7xl sm:px-6 lg:px-8">
@@ -12,10 +8,10 @@
                 <div class="px-4 sm:px-0">
                     <h1
                         class="text-4xl font-bold text-gray-800 underline capitalize decoration-red-500 dark:text-white">
-                        Blog
+                        Gear
                     </h1>
                     {{-- <h1 class="mb-2 text-4xl font-bold text-gray-900 dark:text-gray-100">Blog</h1> --}}
-                    <h1 class="mt-4 text-gray-600 dark:text-gray-400">Sometimes I write what I have learned, or I will write
+                    <h1 class="text-gray-600 dark:text-gray-400">Sometimes I write what I have learned, or I will write
                         whatever I like. Use the search bellw to filter by title.</h1>
                 </div>
 

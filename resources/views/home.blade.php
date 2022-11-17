@@ -4,9 +4,14 @@
             {{-- Profile --}}
             <div class="flex mb-5 overflow-hidden ">
                 <div class="px-4 sm:px-0">
-                    <h1 class="mb-2 text-4xl font-bold text-gray-900 dark:text-gray-100">Arif Budiman Arrosyid</h1>
-                    <h1 class="mb-5 text-gray-900 dark:text-gray-100">Student | Web Developer</h1>
-                    <h1 class="text-gray-600 dark:text-gray-400">Hi, my name is Arif, I am a Web Developer, currently
+                    <h1
+                        class="mb-2 text-4xl font-bold text-gray-800 underline capitalize decoration-orange-500 dark:text-white">
+                        Arif Budiman Arrosyid
+                    </h1>
+                    {{-- <h1 class="mb-2 text-4xl font-bold text-gray-900 dark:text-gray-100">Arif Budiman Arrosyid</h1>
+                    --}}
+                    <h1 class="text-gray-900 dark:text-gray-100">Student | Web Developer</h1>
+                    <h1 class="mt-4 text-gray-600 dark:text-gray-400">Hi, my name is Arif, I am a Web Developer, currently
                         studying at Muhammadiyah University of Yogyakarta. Interested in Laravel Web Development and
                         Tailwind CSS.</h1>
                 </div>
@@ -16,9 +21,14 @@
             </div>
             {{-- Featured Posts --}}
             <div class="px-4 mt-10 mb-10 overflow-x-auto sm:px-0">
-                <h1 class="mb-6 text-4xl font-bold text-gray-900 dark:text-gray-100">Featured Posts</h1>
+                <h1
+                    class="mb-6 text-4xl font-bold text-gray-800 underline capitalize decoration-indigo-500 dark:text-white">
+                    Featured Posts
+                </h1>
+                {{-- <h1 class="mb-6 text-4xl font-bold text-gray-900 dark:text-gray-100">Featured Posts</h1> --}}
 
-                <div class="flex flex-col gap-6 pb-5 mb-4">
+                <div class="flex flex-col gap-6 pb-5">
+
                     <a href="#"
                         class="block p-4 bg-white border border-gray-200 rounded-lg w-sm hover:bg-gray-50 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
                         <h5 class="mb-2 text-xl font-bold tracking-tight text-gray-900 dark:text-white">Noteworthy
@@ -55,7 +65,11 @@
             {{-- Tools --}}
             <div class="flex overflow-hidden ">
                 <div class="px-4 sm:px-0">
-                    <h1 class="mb-2 text-4xl font-bold text-gray-900 dark:text-gray-100">Tools</h1>
+                    <h1
+                        class="mb-2 text-4xl font-bold text-gray-800 underline capitalize decoration-blue-500 dark:text-white">
+                        Tools
+                    </h1>
+                    {{-- <h1 class="mb-2 text-4xl font-bold text-gray-900 dark:text-gray-100">Tools</h1> --}}
                     <h2 class="mb-5 text-gray-600 dark:text-gray-400">This is the tools I use to build this web. </h2>
                     <ul class="max-w-full space-y-3 text-gray-500 list-disc list-inside dark:text-gray-400">
                         <li class="font-semibold">

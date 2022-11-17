@@ -23,6 +23,15 @@ Route::get('/guestbook', function () {
 Route::get('/blog', function () {
     return view('blog');
 })->name('blog');
+Route::get('/portofolio', function () {
+    return view('portofolio');
+})->name('portofolio');
+Route::get('/gear', function () {
+    return view('gear');
+})->name('gear');
+Route::get('/aboutme', function () {
+    return view('aboutme');
+})->name('aboutme');
 
 
 Route::get('/dashboard', function () {
