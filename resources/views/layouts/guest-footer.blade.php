@@ -18,7 +18,8 @@
             </ul>
         </div>
         <div>
-            <h2 class="mb-6 font-semibold text-gray-500 underline text-md decoration-yellow-600 dark:text-gray-400">Social Media
+            <h2 class="mb-6 font-semibold text-gray-500 underline text-md decoration-yellow-600 dark:text-gray-400">
+                Social Media
             </h2>
             <ul class="text-gray-500 dark:text-gray-500">
                 <li class="mb-4">

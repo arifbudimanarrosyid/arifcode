@@ -26,7 +26,7 @@
                             </p>
                             <div class="grid grid-cols-1 gap-8 mt-8 sm:grid-cols-2 ">
                                 <div>
-                                    <img class="object-cover rounded-lg aspect-square "
+                                    <img class="object-cover rounded-lg aspect-video "
                                         src="https://images.unsplash.com/photo-1621111848501-8d3634f82336?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1565&q=80"
                                         alt="">
                                     <h2 class="mt-4 text-2xl font-semibold text-gray-800 capitalize dark:text-white">
@@ -35,11 +35,9 @@
                                             Sistem Informasi Cabang Ranting Muhammadiyah Tegalrejo</h2>
                                     <p class="mt-2 text-lg tracking-wider text-blue-500 dark:text-blue-400 ">
                                         Website</p>
-
-
                                 </div>
                                 <div>
-                                    <img class="object-cover rounded-lg aspect-square "
+                                    <img class="object-cover rounded-lg aspect-video "
                                         src="https://images.unsplash.com/photo-1621111848501-8d3634f82336?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1565&q=80"
                                         alt="">
                                     <h2 class="mt-4 text-2xl font-semibold text-gray-800 capitalize dark:text-white">
@@ -48,11 +46,9 @@
                                             Sistem Informasi Cabang Ranting Muhammadiyah Tegalrejo</h2>
                                     <p class="mt-2 text-lg tracking-wider text-blue-500 dark:text-blue-400 ">
                                         Website</p>
-
-
                                 </div>
                                 <div>
-                                    <img class="object-cover rounded-lg aspect-square "
+                                    <img class="object-cover rounded-lg aspect-video "
                                         src="https://images.unsplash.com/photo-1621111848501-8d3634f82336?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1565&q=80"
                                         alt="">
                                     <h2 class="mt-4 text-2xl font-semibold text-gray-800 capitalize dark:text-white">
@@ -61,9 +57,30 @@
                                             Sistem Informasi Cabang Ranting Muhammadiyah Tegalrejo</h2>
                                     <p class="mt-2 text-lg tracking-wider text-blue-500 dark:text-blue-400 ">
                                         Website</p>
-
-
                                 </div>
+                                <div>
+                                    <img class="object-cover rounded-lg aspect-video "
+                                        src="https://images.unsplash.com/photo-1621111848501-8d3634f82336?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1565&q=80"
+                                        alt="">
+                                    <h2 class="mt-4 text-2xl font-semibold text-gray-800 capitalize dark:text-white">
+                                        SIMCARATA</h2>
+                                        <h2 class="mt-2 text-gray-800 text-md dark:text-white">
+                                            Sistem Informasi Cabang Ranting Muhammadiyah Tegalrejo</h2>
+                                    <p class="mt-2 text-lg tracking-wider text-blue-500 dark:text-blue-400 ">
+                                        Website</p>
+                                </div>
+                                <div>
+                                    <img class="object-cover rounded-lg aspect-video "
+                                        src="https://images.unsplash.com/photo-1621111848501-8d3634f82336?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1565&q=80"
+                                        alt="">
+                                    <h2 class="mt-4 text-2xl font-semibold text-gray-800 capitalize dark:text-white">
+                                        SIMCARATA</h2>
+                                        <h2 class="mt-2 text-gray-800 text-md dark:text-white">
+                                            Sistem Informasi Cabang Ranting Muhammadiyah Tegalrejo</h2>
+                                    <p class="mt-2 text-lg tracking-wider text-blue-500 dark:text-blue-400 ">
+                                        Website</p>
+                                </div>
+
 
 
                             </div>
