@@ -2,9 +2,9 @@
 Developed with Laravel 9, Laravel Breeze, Tailwind CSS, Flowbite.
 
 # Screenshot
-![Screeshot 1](screenshot/xl.png)
+![Screeshot 2](screenshot/xl.gif)
 
-![Screeshot 2](screenshot/sm.png)
+![Screeshot 2](screenshot/sm.gif)
 
 
 
