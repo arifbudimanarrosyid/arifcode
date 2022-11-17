@@ -56,18 +56,18 @@
             <div class="flex overflow-hidden ">
                 <div class="px-4 sm:px-0">
                     <h1 class="mb-2 text-4xl font-bold text-gray-900 dark:text-gray-100">Tools</h1>
-                    <h2 class="mb-5 text-gray-900 dark:text-gray-100">This is the tools I use to build this web. </h2>
-                    <ul class="max-w-md space-y-1 text-gray-500 list-disc list-inside dark:text-gray-400">
-                        <li>
+                    <h2 class="mb-5 text-gray-600 dark:text-gray-400">This is the tools I use to build this web. </h2>
+                    <ul class="max-w-full space-y-3 text-gray-500 list-disc list-inside dark:text-gray-400">
+                        <li class="font-semibold">
                             Laravel 9
                         </li>
-                        <li>
+                        <li class="font-semibold">
                             Laravel Breeze
                         </li>
-                        <li>
+                        <li class="font-semibold">
                             Tailwind CSS
                         </li>
-                        <li>
+                        <li class="font-semibold">
                             Flowbite
                         </li>
                     </ul>
