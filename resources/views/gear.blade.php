@@ -69,7 +69,7 @@
                 <div class="px-4 pt-5 mb-10 sm:px-0">
                     <h1
                         class="mb-2 text-3xl font-bold text-gray-800 underline capitalize decoration-lime-500 dark:text-white">
-                        Software
+                        Software & Game
                     </h1>
                     <div class="text-gray-600 dark:text-gray-400">
                         <ul class="max-w-full space-y-3 text-gray-500 list-disc list-inside dark:text-gray-400">
@@ -85,7 +85,9 @@
                             <li class="font-semibold">
                                 OBS Studio
                             </li>
-
+                            <li class="font-semibold">
+                                Valorant
+                            </li>
                         </ul>
                     </div>
                 </div>

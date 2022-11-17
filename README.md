@@ -6,8 +6,6 @@ Developed with Laravel 9, Laravel Breeze, Tailwind CSS, Flowbite.
 
 ![Screeshot 2](screenshot/sm.gif)
 
-
-
 # Feature
 - [x] Light Mode, Dark Mode (Auto)
 - [ ] Home, Featured Posts
