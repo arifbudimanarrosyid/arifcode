@@ -9,11 +9,12 @@ Developed with Laravel 9, Laravel Breeze, Tailwind CSS, Flowbite.
 
 
 # Feature
+- [x] Light Mode, Dark Mode (Auto)
 - [ ] Home, Featured Posts
 - [ ] Blog, All Posts
 - [ ] Guestbook
-- [ ] About Me
-- [ ] Gear
+- [x] About Me
+- [x] Gear
 - [x] Dashboard
 - [x] Auth
 - [ ] Dashboard - Blog

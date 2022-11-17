@@ -2,7 +2,10 @@
     <div class="py-12">
         <div class="mx-auto max-w-7xl sm:px-6 lg:px-8">
             {{-- Profile --}}
-            <div class="flex mb-5 overflow-hidden ">
+            <div class="mb-5 overflow-hidden sm:flex ">
+                <div class="order-last px-4 pl-0 mb-5 sm:pl-1">
+                    <img src="{{ asset('img/pp.jpg') }}" alt="programming" class="w-32 ml-4 rounded-full sm:px-0 sm:w-96">
+                </div>
                 <div class="px-4 sm:px-0">
                     <h1
                         class="mb-2 text-4xl font-bold text-gray-800 underline capitalize decoration-orange-500 dark:text-white">
@@ -11,13 +14,12 @@
                     {{-- <h1 class="mb-2 text-4xl font-bold text-gray-900 dark:text-gray-100">Arif Budiman Arrosyid</h1>
                     --}}
                     <h1 class="text-gray-900 dark:text-gray-100">Student | Web Developer</h1>
-                    <h1 class="mt-4 text-gray-600 dark:text-gray-400">Hi, my name is Arif, I am a Web Developer, currently
+                    <h1 class="mt-4 text-gray-600 dark:text-gray-400">Hi, my name is Arif, I am a Web Developer,
+                        currently
                         studying at Muhammadiyah University of Yogyakarta. Interested in Laravel Web Development and
                         Tailwind CSS.</h1>
                 </div>
-                <div class="px-4 pl-0 sm:pl-10">
-                    <img src="{{ asset('img/pp.jpg') }}" alt="programming" class="rounded-full w-96">
-                </div>
+
             </div>
             {{-- Featured Posts --}}
             <div class="px-4 mt-10 mb-10 overflow-x-auto sm:px-0">
@@ -63,13 +65,13 @@
                 </a>
             </div>
             {{-- Tools --}}
-            <div class="flex overflow-hidden ">
+            {{-- <div class="flex overflow-hidden ">
                 <div class="px-4 sm:px-0">
                     <h1
-                        class="mb-2 text-4xl font-bold text-gray-800 underline capitalize decoration-blue-500 dark:text-white">
+                        class="mb-2 text-4xl font-bold text-gray-800 underline capitalize decoration-cyan-500 dark:text-white">
                         Tools
                     </h1>
-                    {{-- <h1 class="mb-2 text-4xl font-bold text-gray-900 dark:text-gray-100">Tools</h1> --}}
+
                     <h2 class="mb-5 text-gray-600 dark:text-gray-400">This is the tools I use to build this web. </h2>
                     <ul class="max-w-full space-y-3 text-gray-500 list-disc list-inside dark:text-gray-400">
                         <li class="font-semibold">
@@ -87,7 +89,7 @@
                     </ul>
 
                 </div>
-            </div>
+            </div> --}}
 
 
         </div>
