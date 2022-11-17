@@ -8,7 +8,8 @@
                     {{-- <a href="{{ route('home') }}">
                         <x-application-logo class="block w-auto text-gray-800 fill-current h-9 dark:text-gray-200" />
                     </a> --}}
-                    <a href="{{ route('home') }}" class=" sm:hidden dark:text-gray-200">ArifCode</a>
+                    <a href="{{ route('home') }}" class="font-bold sm:hidden dark:text-gray-200">Arif<span
+                            class="text-indigo-500">Code</span></a>
                 </div>
 
                 <!-- Navigation Links -->
@@ -19,6 +20,9 @@
                     </x-nav-link>
                     <x-nav-link :href="route('blog')" :active="request()->routeIs('blog')">
                         {{ __('Blog') }}
+                    </x-nav-link>
+                    <x-nav-link :href="route('post')" :active="request()->routeIs('post')">
+                        {{ __('Post') }}
                     </x-nav-link>
                     <x-nav-link :href="route('portofolio')" :active="request()->routeIs('portofolio')">
                         {{ __('Portofolio') }}
@@ -107,63 +111,69 @@
     </div>
 
     <!-- Responsive Navigation Menu -->
-    <div :class="{'block': open, 'hidden': ! open}" class="hidden bg-white dark:bg-gray-800 sm:hidden">
-        <div class="pt-2 pb-3 space-y-1">
-            <x-responsive-nav-link :href="route('home')" :active="request()->routeIs('home')">
-                {{ __('Home') }}
-            </x-responsive-nav-link>
-            <x-responsive-nav-link :href="route('blog')" :active="request()->routeIs('blog')">
-                {{ __('Blog') }}
-            </x-responsive-nav-link>
-            <x-responsive-nav-link :href="route('portofolio')" :active="request()->routeIs('portofolio')">
-                {{ __('Portofolio') }}
-            </x-responsive-nav-link>
-            <x-responsive-nav-link :href="route('guestbook')" :active="request()->routeIs('guestbook')">
-                {{ __('Guestbook') }}
-            </x-responsive-nav-link>
+    <div class="p-4">
+        <div :class="{'block': open, 'hidden': ! open}" class="hidden bg-white rounded-md dark:bg-gray-800 sm:hidden">
+            <div class="pt-2 pb-3 space-y-1">
+                <x-responsive-nav-link :href="route('home')" :active="request()->routeIs('home')">
+                    {{ __('Home') }}
+                </x-responsive-nav-link>
+                <x-responsive-nav-link :href="route('blog')" :active="request()->routeIs('blog')">
+                    {{ __('Blog') }}
+                </x-responsive-nav-link>
+                <x-responsive-nav-link :href="route('post')" :active="request()->routeIs('post')">
+                    {{ __('Post') }}
+                </x-responsive-nav-link>
+                <x-responsive-nav-link :href="route('portofolio')" :active="request()->routeIs('portofolio')">
+                    {{ __('Portofolio') }}
+                </x-responsive-nav-link>
+                <x-responsive-nav-link :href="route('guestbook')" :active="request()->routeIs('guestbook')">
+                    {{ __('Guestbook') }}
+                </x-responsive-nav-link>
 
-        </div>
-        @guest
-        <div class="pt-4 pb-1 border-t border-gray-200 dark:border-gray-600">
-
-            <x-responsive-nav-link :href="route('login')" :active="request()->routeIs('login')">
-                {{ __('Login') }}
-            </x-responsive-nav-link>
-            <x-responsive-nav-link :href="route('register')" :active="request()->routeIs('register')">
-                {{ __('Register') }}
-            </x-responsive-nav-link>
-
-        </div>
-        @endguest
-        @auth
-
-        <!-- Responsive Settings Options -->
-        <div class="pt-4 pb-1 border-t border-gray-200 dark:border-gray-600">
-            <div class="px-4">
-                <div class="text-base font-medium text-gray-800 dark:text-gray-200">{{ Auth::user()->name }}</div>
-                <div class="text-sm font-medium text-gray-500">{{ Auth::user()->email }}</div>
             </div>
+            @guest
+            <div class="pt-4 pb-1 border-t border-gray-200 dark:border-gray-600">
 
-            <div class="mt-3 space-y-1">
-                <x-responsive-nav-link :href="route('dashboard')">
-                    {{ __('Dashboard') }}
-                    </x-response-nav-link>
-                    <x-responsive-nav-link :href="route('profile.edit')">
-                        {{ __('Profile') }}
+                <x-responsive-nav-link :href="route('login')" :active="request()->routeIs('login')">
+                    {{ __('Login') }}
+                </x-responsive-nav-link>
+                <x-responsive-nav-link :href="route('register')" :active="request()->routeIs('register')">
+                    {{ __('Register') }}
+                </x-responsive-nav-link>
+
+            </div>
+            @endguest
+            @auth
+
+            <!-- Responsive Settings Options -->
+            <div class="pt-4 pb-1 border-t border-gray-200 dark:border-gray-600">
+                <div class="px-4">
+                    <div class="text-base font-medium text-gray-800 dark:text-gray-200">{{ Auth::user()->name }}</div>
+                    <div class="text-sm font-medium text-gray-500">{{ Auth::user()->email }}</div>
+                </div>
+
+                <div class="mt-3 space-y-1">
+                    <x-responsive-nav-link :href="route('dashboard')">
+                        {{ __('Dashboard') }}
                         </x-response-nav-link>
+                        <x-responsive-nav-link :href="route('profile.edit')">
+                            {{ __('Profile') }}
+                            </x-response-nav-link>
 
-                        <!-- Authentication -->
-                        <form method="POST" action="{{ route('logout') }}">
-                            @csrf
+                            <!-- Authentication -->
+                            <form method="POST" action="{{ route('logout') }}">
+                                @csrf
 
-                            <x-responsive-nav-link :href="route('logout')" onclick="event.preventDefault();
+                                <x-responsive-nav-link :href="route('logout')" onclick="event.preventDefault();
                                         this.closest('form').submit();">
-                                {{ __('Log Out') }}
-                            </x-responsive-nav-link>
-                        </form>
+                                    {{ __('Log Out') }}
+                                </x-responsive-nav-link>
+                            </form>
+                </div>
             </div>
-        </div>
-        @endauth
+            @endauth
 
+        </div>
     </div>
+
 </nav>

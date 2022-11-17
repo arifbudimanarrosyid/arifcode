@@ -8,7 +8,8 @@
                     {{-- <a href="{{ route('home') }}">
                         <x-application-logo class="block w-auto text-gray-800 fill-current h-9 dark:text-gray-200" />
                     </a> --}}
-                    <a href="{{ route('home') }}" class="dark:text-gray-200">ArifCode</a>
+                    <a href="{{ route('home') }}" class="font-bold sm:hidden dark:text-gray-200">Arif<span
+                        class="text-indigo-500">Code</span></a>
                 </div>
 
                 <!-- Navigation Links -->

@@ -4,11 +4,12 @@
             {{-- Profile --}}
             <div class="mb-5 overflow-hidden sm:flex ">
                 <div class="order-last px-4 pl-0 mb-5 sm:pl-1">
-                    <img src="{{ asset('img/pp.jpg') }}" alt="programming" class="w-32 ml-4 rounded-full sm:px-0 sm:w-96">
+                    <img src="{{ asset('img/pp.jpg') }}" alt="programming"
+                        class="w-32 ml-4 rounded-full sm:px-0 sm:w-96">
                 </div>
                 <div class="px-4 sm:px-0">
                     <h1
-                        class="mb-2 text-4xl font-bold text-gray-800 underline capitalize decoration-orange-500 dark:text-white">
+                        class="mb-2 text-4xl font-bold text-gray-800 underline capitalize decoration-red-500 dark:text-white">
                         Arif Budiman Arrosyid
                     </h1>
                     {{-- <h1 class="mb-2 text-4xl font-bold text-gray-900 dark:text-gray-100">Arif Budiman Arrosyid</h1>
@@ -24,37 +25,37 @@
             {{-- Featured Posts --}}
             <div class="px-4 mt-10 mb-10 overflow-x-auto sm:px-0">
                 <h1
-                    class="mb-6 text-4xl font-bold text-gray-800 underline capitalize decoration-indigo-500 dark:text-white">
+                    class="mb-6 text-4xl font-bold text-gray-800 underline capitalize decoration-orange-500 dark:text-white">
                     Featured Posts
                 </h1>
                 {{-- <h1 class="mb-6 text-4xl font-bold text-gray-900 dark:text-gray-100">Featured Posts</h1> --}}
 
                 <div class="flex flex-col gap-6 pb-5">
+                    <a href="#"
+                        class="block p-4 bg-white border-2 border-gray-200 rounded-lg w-sm hover:border-indigo-500 dark:bg-gray-800 dark:border-gray-700 ">
+                        <h5 class="mb-2 text-xl font-bold tracking-tight text-gray-900 dark:text-white">Noteworthy
+                            technology acquisitions 2021</h5>
+                        <p class="font-normal text-gray-700 dark:text-gray-400">Here are the biggest enterprise
+                            technology
+                            acquisitions of 2021 so far, in reverse chronological order.</p>
+                    </a>
+                    <a href="#"
+                        class="block p-4 bg-white border-2 border-gray-200 rounded-lg w-sm hover:border-indigo-500 dark:bg-gray-800 dark:border-gray-700 ">
+                        <h5 class="mb-2 text-xl font-bold tracking-tight text-gray-900 dark:text-white">Noteworthy
+                            technology acquisitions 2021</h5>
+                        <p class="font-normal text-gray-700 dark:text-gray-400">Here are the biggest enterprise
+                            technology
+                            acquisitions of 2021 so far, in reverse chronological order.</p>
+                    </a>
+                    <a href="#"
+                        class="block p-4 bg-white border-2 border-gray-200 rounded-lg w-sm hover:border-indigo-500 dark:bg-gray-800 dark:border-gray-700 ">
+                        <h5 class="mb-2 text-xl font-bold tracking-tight text-gray-900 dark:text-white">Noteworthy
+                            technology acquisitions 2021</h5>
+                        <p class="font-normal text-gray-700 dark:text-gray-400">Here are the biggest enterprise
+                            technology
+                            acquisitions of 2021 so far, in reverse chronological order.</p>
+                    </a>
 
-                    <a href="#"
-                        class="block p-4 bg-white border border-gray-200 rounded-lg w-sm hover:bg-gray-50 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
-                        <h5 class="mb-2 text-xl font-bold tracking-tight text-gray-900 dark:text-white">Noteworthy
-                            technology acquisitions 2021</h5>
-                        <p class="font-normal text-gray-700 dark:text-gray-400">Here are the biggest enterprise
-                            technology
-                            acquisitions of 2021 so far, in reverse chronological order.</p>
-                    </a>
-                    <a href="#"
-                        class="block p-4 bg-white border border-gray-200 rounded-lg w-sm hover:bg-gray-50 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
-                        <h5 class="mb-2 text-xl font-bold tracking-tight text-gray-900 dark:text-white">Noteworthy
-                            technology acquisitions 2021</h5>
-                        <p class="font-normal text-gray-700 dark:text-gray-400">Here are the biggest enterprise
-                            technology
-                            acquisitions of 2021 so far, in reverse chronological order.</p>
-                    </a>
-                    <a href="#"
-                        class="block p-4 bg-white border border-gray-200 rounded-lg w-sm hover:bg-gray-50 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
-                        <h5 class="mb-2 text-xl font-bold tracking-tight text-gray-900 dark:text-white">Noteworthy
-                            technology acquisitions 2021</h5>
-                        <p class="font-normal text-gray-700 dark:text-gray-400">Here are the biggest enterprise
-                            technology
-                            acquisitions of 2021 so far, in reverse chronological order.</p>
-                    </a>
                 </div>
                 <a href="{{ route('blog') }}" class="flex text-gray-900 dark:text-gray-400">Read all posts <svg
                         xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"

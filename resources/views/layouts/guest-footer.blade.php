@@ -1,7 +1,8 @@
 {{-- Footer --}}
 <div class="px-4 overflow-hidden sm:px-6 lg:px-8">
     <div class="grid grid-cols-1 gap-8 py-8 border-t-2 border-indigo-800 sm:grid-cols-4">
-        <a href="{{ route('home') }}" class="font-bold text-gray-500 underline dark:text-gray-300 decoration-orange-600">ArifCode</a>
+        <a href="{{ route('home') }}" class="font-bold dark:text-gray-200">Arif<span
+                        class="text-indigo-500">Code</span></a>
         <div>
             <h2 class="mb-6 font-semibold text-gray-500 underline text-md decoration-red-600 dark:text-gray-400">Website
             </h2>

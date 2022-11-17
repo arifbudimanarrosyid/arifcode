@@ -23,6 +23,9 @@ Route::get('/guestbook', function () {
 Route::get('/blog', function () {
     return view('blog');
 })->name('blog');
+Route::get('/post', function () {
+    return view('post');
+})->name('post');
 Route::get('/portofolio', function () {
     return view('portofolio');
 })->name('portofolio');

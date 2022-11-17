@@ -14,16 +14,16 @@
                     <div class="text-gray-600 dark:text-gray-400">
                         <ul class="max-w-full space-y-3 text-gray-500 list-disc list-inside dark:text-gray-400">
                             <li class="font-semibold">
-                                HP Pavilion Gaming 15 (2018)
+                                HP Pavilion Gaming 15 (2018) - 16 GB RAM, Intel i7 - 8750H, Nvidia GTX 1050 4GB
+                            </li>
+                            <li class="font-semibold">
+                                SSD Adata XPG SX8200 Pro 1TB
                             </li>
                             <li class="font-semibold">
                                 Samsung Monitor 21"
                             </li>
                             <li class="font-semibold">
                                 Xiaomi Bluetooth Speaker
-                            </li>
-                            <li class="font-semibold">
-                                SSD Adata XPG SX8200 Pro 1TB
                             </li>
                             <li class="font-semibold">
                                 Noir N1 V3 Gray

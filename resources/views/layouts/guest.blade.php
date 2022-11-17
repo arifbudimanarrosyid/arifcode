@@ -16,7 +16,7 @@
 </head>
 
 <body class="bg-gray-100 dark:bg-gray-900">
-    <div class="max-w-2xl min-h-screen mx-auto ">
+    <div class="max-w-3xl min-h-screen mx-auto ">
         @include('layouts.guest-navigation')
         <div class="font-sans antialiased text-gray-900">
             {{ $slot }}
