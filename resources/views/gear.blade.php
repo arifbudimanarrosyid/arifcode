@@ -39,7 +39,7 @@
                     <div class="text-gray-600 dark:text-gray-400">
                         <ul class="max-w-full space-y-3 text-gray-500 list-disc list-inside dark:text-gray-400">
                             <li class="font-semibold">
-                                VSCode (Theme Parsinta Exclusive)
+                                VSCode (Theme : Parsinta Exclusive, Github Dark Dimmed )
                             </li>
                             <li class="font-semibold">
                                 Windows Terminal (Powershell, OhMyPosh)

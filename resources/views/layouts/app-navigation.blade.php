@@ -8,7 +8,7 @@
                     {{-- <a href="{{ route('home') }}">
                         <x-application-logo class="block w-auto text-gray-800 fill-current h-9 dark:text-gray-200" />
                     </a> --}}
-                    <a href="{{ route('home') }}" class="font-bold sm:hidden dark:text-gray-200">Arif<span
+                    <a href="{{ route('dashboard') }}" class="font-bold sm:hidden dark:text-gray-200">Arif<span
                         class="text-indigo-500">Code</span></a>
                 </div>
 
@@ -22,6 +22,9 @@
                     </x-nav-link>
                     <x-nav-link :href="route('dashboard.portofolio.index')" :active="request()->routeIs('dashboard.portofolio.index')">
                         {{ __('Portofolio') }}
+                    </x-nav-link>
+                    <x-nav-link :href="route('dashboard.guestbook.index')" :active="request()->routeIs('dashboard.guestbook.index')">
+                        {{ __('Guestbook') }}
                     </x-nav-link>
                     <x-nav-link :href="route('dashboard.user.index')" :active="request()->routeIs('dashboard.user.index')">
                         {{ __('User') }}

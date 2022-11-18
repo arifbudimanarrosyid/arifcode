@@ -43,9 +43,15 @@ Route::get('/dashboard', function () {
 Route::get('/dashboard/blog', function () {
     return view('dashboard.blog.index');
 })->middleware(['auth', 'verified'])->name('dashboard.blog.index');
+Route::get('/dashboard/blogcategory', function () {
+    return view('dashboard.blogcategory.index');
+})->middleware(['auth', 'verified'])->name('dashboard.blogcategory.index');
 Route::get('/dashboard/portofolio', function () {
     return view('dashboard.portofolio.index');
 })->middleware(['auth', 'verified'])->name('dashboard.portofolio.index');
+Route::get('/dashboard/guestbook', function () {
+    return view('dashboard.guestbook.index');
+})->middleware(['auth', 'verified'])->name('dashboard.guestbook.index');
 Route::get('/dashboard/user', function () {
     return view('dashboard.user.index');
 })->middleware(['auth', 'verified'])->name('dashboard.user.index');
