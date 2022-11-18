@@ -40,6 +40,16 @@ Route::get('/aboutme', function () {
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
+Route::get('/dashboard/blog', function () {
+    return view('dashboard.blog.index');
+})->middleware(['auth', 'verified'])->name('dashboard.blog.index');
+Route::get('/dashboard/portofolio', function () {
+    return view('dashboard.portofolio.index');
+})->middleware(['auth', 'verified'])->name('dashboard.portofolio.index');
+Route::get('/dashboard/user', function () {
+    return view('dashboard.user.index');
+})->middleware(['auth', 'verified'])->name('dashboard.user.index');
+
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
@@ -47,4 +57,4 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-require __DIR__.'/auth.php';
+require __DIR__ . '/auth.php';
