@@ -16,15 +16,15 @@
                     <p class="font-bold text-2xl text-indigo-700 dark:text-indigo-400">10</p>
                 </div>
                 <div class="block p-4 mb-4 bg-white  rounded-lg w-full  dark:bg-gray-800 ">
-                    <h5 class="mb-2 text-xl  tracking-tight text-gray-900 dark:text-white">Published Posts</h5>
+                    <h5 class="mb-2 text-xl  tracking-tight text-gray-900 dark:text-white">Published</h5>
                     <p class="font-bold text-2xl text-indigo-700 dark:text-indigo-400">7</p>
                 </div>
                 <div class="block p-4 mb-4 bg-white  rounded-lg w-full  dark:bg-gray-800 ">
-                    <h5 class="mb-2 text-xl  tracking-tight text-gray-900 dark:text-white">Not Published Posts</h5>
+                    <h5 class="mb-2 text-xl  tracking-tight text-gray-900 dark:text-white">Not Published</h5>
                     <p class="font-bold text-2xl text-indigo-700 dark:text-indigo-400">7</p>
                 </div>
                 <div class="block p-4 mb-4 bg-white  rounded-lg w-full  dark:bg-gray-800 ">
-                    <h5 class="mb-2 text-xl  tracking-tight text-gray-900 dark:text-white">Featured Posts</h5>
+                    <h5 class="mb-2 text-xl  tracking-tight text-gray-900 dark:text-white">Featured </h5>
                     <p class="font-bold text-2xl text-indigo-700 dark:text-indigo-400">3</p>
                 </div>
             </div>

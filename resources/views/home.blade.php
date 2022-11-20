@@ -31,7 +31,21 @@
                 {{-- <h1 class="mb-6 text-4xl font-bold text-gray-900 dark:text-gray-100">Featured Posts</h1> --}}
 
                 <div class="flex flex-col gap-6 pb-5">
-                    <a href="#"
+                    @foreach ($featured as $post)
+                        <a href="#"
+                            class="block p-4 bg-white border-2 border-gray-200 rounded-lg w-sm hover:border-indigo-500 dark:bg-gray-800 dark:border-gray-700 ">
+                            <div class="flex justify-between">
+
+                                <h5 class="mb-2 font-bold tracking-tight text-indigo-500 dark:text-indigo-400">{{ $post->category->title }}</h5>
+                                </h5>
+                                <p class="font-normal text-gray-700 dark:text-gray-400 mb-2">
+                                    {{ $post->published_at->diffForHumans()}}</p>
+                            </div>
+                            <h5 class="mb-2 text-xl font-bold tracking-tight text-gray-900 dark:text-white">{{ $post->title }}</h5>
+                            <p class="font-normal text-gray-700 dark:text-gray-400">{{ $post->excerpt }}</p>
+                        </a>
+                        @endforeach
+                    {{-- <a href="#"
                         class="block p-4 bg-white border-2 border-gray-200 rounded-lg w-sm hover:border-indigo-500 dark:bg-gray-800 dark:border-gray-700 ">
                         <div class="flex justify-between">
 
@@ -72,11 +86,11 @@
                         <p class="font-normal text-gray-700 dark:text-gray-400">Here are the biggest enterprise
                             technology
                             acquisitions of 2021 so far, in reverse chronological order.</p>
-                    </a>
+                    </a> --}}
 
 
                 </div>
-                <a href="{{ route('blog') }}"
+                <a href="{{ route('posts') }}"
                     class="flex text-gray-900 hover:text-indigo-500 dark:text-gray-400 dark:hover:text-indigo-500">Read
                     all
                     posts <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"

@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\PostsController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
@@ -14,15 +15,19 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('home');
-})->name('home');
+
 Route::get('/guestbook', function () {
     return view('guestbook');
 })->name('guestbook');
-Route::get('/blog', function () {
-    return view('blog');
-})->name('blog');
+
+Route::get('/', [PostsController::class, 'home'])->name('home');
+// Route::get('/', function () {
+//     return view('home');
+// })->name('home');
+Route::get('/posts', [PostsController::class, 'index'])->name('posts');
+// Route::get('/posts', function () {
+//     return view('posts');
+// })->name('posts');
 Route::get('/post', function () {
     return view('post');
 })->name('post');
@@ -40,15 +45,21 @@ Route::get('/aboutme', function () {
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
-Route::get('/dashboard/blog', function () {
-    return view('dashboard.blog.index');
-})->middleware(['auth', 'verified'])->name('dashboard.blog.index');
-Route::get('/dashboard/blog/create', function () {
-    return view('dashboard.blog.create');
-})->middleware(['auth', 'verified'])->name('dashboard.blog.create');
-Route::get('/dashboard/blogcategory', function () {
-    return view('dashboard.blogcategory.index');
-})->middleware(['auth', 'verified'])->name('dashboard.blogcategory.index');
+
+Route::get('/dashboard/posts', function () {
+    return view('dashboard.posts.index');
+})->middleware(['auth', 'verified'])->name('dashboard.posts.index');
+Route::get('/dashboard/posts/create', function () {
+    return view('dashboard.posts.create');
+})->middleware(['auth', 'verified'])->name('dashboard.posts.create');
+
+Route::get('/dashboard/category', function () {
+    return view('dashboard.category.index');
+})->middleware(['auth', 'verified'])->name('dashboard.category.index');
+Route::get('/dashboard/category/create', function () {
+    return view('dashboard.category.create');
+})->middleware(['auth', 'verified'])->name('dashboard.category.create');
+
 Route::get('/dashboard/portofolio', function () {
     return view('dashboard.portofolio.index');
 })->middleware(['auth', 'verified'])->name('dashboard.portofolio.index');

@@ -17,9 +17,13 @@
                     <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
                         {{ __('Dashboard') }}
                     </x-nav-link>
-                    <x-nav-link :href="route('dashboard.blog.index')"
-                        :active="request()->routeIs('dashboard.blog.index')">
-                        {{ __('Blog') }}
+                    <x-nav-link :href="route('dashboard.posts.index')"
+                        :active="request()->routeIs('dashboard.posts.index')">
+                        {{ __('Posts') }}
+                    </x-nav-link>
+                    <x-nav-link :href="route('dashboard.category.index')"
+                        :active="request()->routeIs('dashboard.category.index')">
+                        {{ __('Category') }}
                     </x-nav-link>
                     <x-nav-link :href="route('dashboard.portofolio.index')"
                         :active="request()->routeIs('dashboard.portofolio.index')">
@@ -99,9 +103,9 @@
                 <x-responsive-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
                     {{ __('Dashboard') }}
                 </x-responsive-nav-link>
-                <x-responsive-nav-link :href="route('dashboard.blog.index')"
-                    :active="request()->routeIs('dashboard.blog.index')">
-                    {{ __('Blog') }}
+                <x-responsive-nav-link :href="route('dashboard.posts.index')"
+                    :active="request()->routeIs('dashboard.posts.index')">
+                    {{ __('Posts') }}
                 </x-responsive-nav-link>
                 <x-responsive-nav-link :href="route('dashboard.portofolio.index')"
                     :active="request()->routeIs('dashboard.portofolio.index')">

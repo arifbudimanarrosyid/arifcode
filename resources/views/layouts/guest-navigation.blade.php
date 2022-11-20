@@ -18,8 +18,8 @@
                     <x-nav-link :href="route('home')" :active="request()->routeIs('home')">
                         {{ __('Home') }}
                     </x-nav-link>
-                    <x-nav-link :href="route('blog')" :active="request()->routeIs('blog')">
-                        {{ __('Blog') }}
+                    <x-nav-link :href="route('posts')" :active="request()->routeIs('posts')">
+                        {{ __('Posts') }}
                     </x-nav-link>
                     <x-nav-link :href="route('post')" :active="request()->routeIs('post')">
                         {{ __('Post') }}
@@ -117,8 +117,8 @@
                 <x-responsive-nav-link :href="route('home')" :active="request()->routeIs('home')">
                     {{ __('Home') }}
                 </x-responsive-nav-link>
-                <x-responsive-nav-link :href="route('blog')" :active="request()->routeIs('blog')">
-                    {{ __('Blog') }}
+                <x-responsive-nav-link :href="route('posts')" :active="request()->routeIs('posts')">
+                    {{ __('Posts') }}
                 </x-responsive-nav-link>
                 <x-responsive-nav-link :href="route('post')" :active="request()->routeIs('post')">
                     {{ __('Post') }}
