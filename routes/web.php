@@ -43,6 +43,9 @@ Route::get('/dashboard', function () {
 Route::get('/dashboard/blog', function () {
     return view('dashboard.blog.index');
 })->middleware(['auth', 'verified'])->name('dashboard.blog.index');
+Route::get('/dashboard/blog/create', function () {
+    return view('dashboard.blog.create');
+})->middleware(['auth', 'verified'])->name('dashboard.blog.create');
 Route::get('/dashboard/blogcategory', function () {
     return view('dashboard.blogcategory.index');
 })->middleware(['auth', 'verified'])->name('dashboard.blogcategory.index');

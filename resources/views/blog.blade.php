@@ -49,36 +49,19 @@
 
                         <a href="#"
                             class="block p-4 bg-white border-2 border-gray-200 rounded-lg w-sm hover:border-indigo-500 dark:bg-gray-800 dark:border-gray-700 ">
+                            <div class="flex justify-between">
+
+                                <h5 class="mb-2 font-bold tracking-tight text-indigo-500 dark:text-indigo-400">Category
+                                </h5>
+                                <p class="font-normal text-gray-700 dark:text-gray-400 mb-2">4 days ago</p>
+                            </div>
                             <h5 class="mb-2 text-xl font-bold tracking-tight text-gray-900 dark:text-white">Noteworthy
                                 technology acquisitions 2021</h5>
                             <p class="font-normal text-gray-700 dark:text-gray-400">Here are the biggest enterprise
                                 technology
                                 acquisitions of 2021 so far, in reverse chronological order.</p>
                         </a>
-                        <a href="#"
-                            class="block p-4 bg-white border-2 border-gray-200 rounded-lg w-sm hover:border-indigo-500 dark:bg-gray-800 dark:border-gray-700 ">
-                            <h5 class="mb-2 text-xl font-bold tracking-tight text-gray-900 dark:text-white">Noteworthy
-                                technology acquisitions 2021</h5>
-                            <p class="font-normal text-gray-700 dark:text-gray-400">Here are the biggest enterprise
-                                technology
-                                acquisitions of 2021 so far, in reverse chronological order.</p>
-                        </a>
-                        <a href="#"
-                            class="block p-4 bg-white border-2 border-gray-200 rounded-lg w-sm hover:border-indigo-500 dark:bg-gray-800 dark:border-gray-700 ">
-                            <h5 class="mb-2 text-xl font-bold tracking-tight text-gray-900 dark:text-white">Noteworthy
-                                technology acquisitions 2021</h5>
-                            <p class="font-normal text-gray-700 dark:text-gray-400">Here are the biggest enterprise
-                                technology
-                                acquisitions of 2021 so far, in reverse chronological order.</p>
-                        </a>
-                        <a href="#"
-                            class="block p-4 bg-white border-2 border-gray-200 rounded-lg w-sm hover:border-indigo-500 dark:bg-gray-800 dark:border-gray-700 ">
-                            <h5 class="mb-2 text-xl font-bold tracking-tight text-gray-900 dark:text-white">Noteworthy
-                                technology acquisitions 2021</h5>
-                            <p class="font-normal text-gray-700 dark:text-gray-400">Here are the biggest enterprise
-                                technology
-                                acquisitions of 2021 so far, in reverse chronological order.</p>
-                        </a>
+
 
                     </div>
 

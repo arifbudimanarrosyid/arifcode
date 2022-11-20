@@ -33,22 +33,12 @@
                 <div class="flex flex-col gap-6 pb-5">
                     <a href="#"
                         class="block p-4 bg-white border-2 border-gray-200 rounded-lg w-sm hover:border-indigo-500 dark:bg-gray-800 dark:border-gray-700 ">
-                        <h5 class="mb-2 text-xl font-bold tracking-tight text-gray-900 dark:text-white">Noteworthy
-                            technology acquisitions 2021</h5>
-                        <p class="font-normal text-gray-700 dark:text-gray-400">Here are the biggest enterprise
-                            technology
-                            acquisitions of 2021 so far, in reverse chronological order.</p>
-                    </a>
-                    <a href="#"
-                        class="block p-4 bg-white border-2 border-gray-200 rounded-lg w-sm hover:border-indigo-500 dark:bg-gray-800 dark:border-gray-700 ">
-                        <h5 class="mb-2 text-xl font-bold tracking-tight text-gray-900 dark:text-white">Noteworthy
-                            technology acquisitions 2021</h5>
-                        <p class="font-normal text-gray-700 dark:text-gray-400">Here are the biggest enterprise
-                            technology
-                            acquisitions of 2021 so far, in reverse chronological order.</p>
-                    </a>
-                    <a href="#"
-                        class="block p-4 bg-white border-2 border-gray-200 rounded-lg w-sm hover:border-indigo-500 dark:bg-gray-800 dark:border-gray-700 ">
+                        <div class="flex justify-between">
+
+                            <h5 class="mb-2 font-bold tracking-tight text-indigo-500 dark:text-indigo-400">Category
+                            </h5>
+                            <p class="font-normal text-gray-700 dark:text-gray-400 mb-2">4 days ago</p>
+                        </div>
                         <h5 class="mb-2 text-xl font-bold tracking-tight text-gray-900 dark:text-white">Noteworthy
                             technology acquisitions 2021</h5>
                         <p class="font-normal text-gray-700 dark:text-gray-400">Here are the biggest enterprise
@@ -56,8 +46,11 @@
                             acquisitions of 2021 so far, in reverse chronological order.</p>
                     </a>
 
+
                 </div>
-                <a href="{{ route('blog') }}" class="flex text-gray-900 hover:text-indigo-500 dark:text-gray-400 dark:hover:text-indigo-500">Read all
+                <a href="{{ route('blog') }}"
+                    class="flex text-gray-900 hover:text-indigo-500 dark:text-gray-400 dark:hover:text-indigo-500">Read
+                    all
                     posts <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
                         stroke="currentColor" class="w-6 h-6 ml-3">
                         <path stroke-linecap="round" stroke-linejoin="round"
