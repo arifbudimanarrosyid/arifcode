@@ -4,6 +4,8 @@
             <a href="/">
                 <x-application-logo class="w-20 h-20 text-gray-500 fill-current" />
             </a>
+            {{-- <a href="{{ route('home') }}" class="font-bold sm:hidden dark:text-gray-200">Arif<span
+                class="text-indigo-500">Code</span></a> --}}
         </x-slot>
 
         <!-- Session Status -->

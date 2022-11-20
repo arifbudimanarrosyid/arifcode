@@ -21,7 +21,7 @@
         @include('layouts.guest-navigation')
         <div class="font-sans antialiased text-gray-900">
             {{ $slot }}
-            {{-- @include('layouts.guest-footer') --}}
+            @include('layouts.guest-footer')
         </div>
     </div>
 </body>
