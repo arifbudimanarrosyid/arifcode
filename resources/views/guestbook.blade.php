@@ -1,17 +1,31 @@
 <x-guest-layout>
-    <x-slot name="header">
-        <h2 class="text-xl font-semibold leading-tight text-gray-800 dark:text-gray-200">
-            {{ __('Dashboard') }}
-        </h2>
-    </x-slot>
-
     <div class="py-12">
         <div class="mx-auto max-w-7xl sm:px-6 lg:px-8">
-            <div class="overflow-hidden bg-white shadow-sm dark:bg-gray-800 sm:rounded-lg">
-                <div class="p-6 text-gray-900 dark:text-gray-100">
-                    Guestbook
+            {{-- Portofolio --}}
+            <div class="flex mb-5 overflow-hidden ">
+                <div class="px-4 sm:px-0">
+                    <section class="bg- dark:bg-gray-900">
+                        {{-- <div class="container mx-auto"> --}}
+                            <h1
+                                class="text-4xl font-bold text-gray-800 underline capitalize decoration-yellow-500 dark:text-white">
+                                Guestbook
+                            </h1>
+
+                            <p class="mt-4 text-gray-500 dark:text-gray-300">
+                                Hope you enjoy my website, please leave a message bellow
+                            </p>
+
+                    </section>
+
+
+
+
+
                 </div>
+
             </div>
+
+
         </div>
     </div>
 </x-guest-layout>

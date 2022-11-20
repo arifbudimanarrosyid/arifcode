@@ -1,6 +1,6 @@
 <nav x-data="{ open: false }" class="">
     <!-- Primary Navigation Menu -->
-    <div class="px-4 mx-auto max-w-7xl sm:px-6 lg:px-8">
+    <div class="px-4 mx-auto max-w-3xl sm:px-6 lg:px-8">
         <div class="flex justify-between h-16">
             <div class="flex">
                 <!-- Logo -->
@@ -10,11 +10,11 @@
                     </a> --}}
                     <a href="{{ route('home') }}" class="font-bold sm:hidden dark:text-gray-200">Arif<span
                             class="text-indigo-500">Code</span></a>
-                </div>
+                </div
 
                 <!-- Navigation Links -->
                 {{-- sm:ml-6 --}}
-                <div class="hidden space-x-6 sm:-my-px sm:flex">
+                <div class="hidden space-x-4 sm:-my-px sm:flex">
                     <x-nav-link :href="route('home')" :active="request()->routeIs('home')">
                         {{ __('Home') }}
                     </x-nav-link>

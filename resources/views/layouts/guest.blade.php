@@ -15,12 +15,12 @@
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
 
-<body class="bg-gray-100 dark:bg-gray-900">
-    <div class="max-w-3xl min-h-screen mx-auto ">
+<body class="font-sans antialiased bg-gray-100 dark:bg-gray-900">
+    <div class="max-w-3xl min-h-screen mx-auto">
         @include('layouts.guest-navigation')
         <div class="font-sans antialiased text-gray-900">
             {{ $slot }}
-            @include('layouts.guest-footer')
+            {{-- @include('layouts.guest-footer') --}}
         </div>
     </div>
 </body>

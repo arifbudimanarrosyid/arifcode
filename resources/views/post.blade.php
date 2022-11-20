@@ -5,7 +5,7 @@
             <div class="mb-5 overflow-hidden ">
                 <div class="px-4 sm:px-0">
                     <h1
-                        class="text-3xl font-bold text-gray-800 underline capitalize decoration-indigo-500 dark:text-white">
+                        class="text-4xl font-bold text-gray-800 underline capitalize decoration-indigo-500 dark:text-white">
                         How to use Prose Typography in Tailwind CSS!
                     </h1>
                     <div class="mt-6 overflow-auto prose max-w-none prose-gray dark:prose-invert prose-a:text-indigo-400 prose-h2:text-indigo-400 prose-blockquote:text-indigo-700 prose-code:text-indigo-300 prose-pre:text-indigo-400 prose-blockquote:bg-indigo-50 prose-blockquote:border-indigo-400 hover:prose-a:text-indigo-500">
