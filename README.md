@@ -18,6 +18,22 @@ Developed with Laravel 9, Laravel Breeze, Tailwind CSS, Flowbite.
 - [ ] Dashboard - Blog
 - [x] Dashboard - Profile
 - [ ] Dashboard - Posts
+  - [ ] Create
+  - [x] Read
+  - [ ] Update
+  - [ ] Delete
 - [ ] Dashboard - Portofolio
+  - [ ] Create
+  - [ ] Read
+  - [ ] Update
+  - [ ] Delete
 - [ ] Dashboard - Guestbook
+  - [ ] Create
+  - [ ] Read
+  - [ ] Update
+  - [ ] Delete
 - [ ] Dashboard - Users
+  - [ ] Create
+  - [ ] Read
+  - [ ] Update
+  - [ ] Delete

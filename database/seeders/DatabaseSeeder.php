@@ -7,6 +7,7 @@ namespace Database\Seeders;
 use App\Models\User;
 use App\Models\Posts;
 use App\Models\Category;
+use Illuminate\Support\Str;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -29,14 +30,24 @@ class DatabaseSeeder extends Seeder
         Category::create([
             'title' => 'Tailwind CSS',
         ]);
-        Posts::factory(10)->create();
+        Posts::factory(12)->create();
         // User::factory(10)->create();
 
 
-        // \App\Models\User::factory()->create([
-        //     'name' => 'Arif Budiman Arrosyid',
-        //     'email' => 'arifbudimanarrosyid@gmail.com',
-            // 'email' => 'password',
-        // ]);
+        User::factory()->create([
+            'name' => 'Admin',
+            'email' => 'admin@admin.com',
+            'email_verified_at' => now(),
+            'is_admin' => 1,
+            'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password
+            'remember_token' => Str::random(10),
+        ]);
+        User::factory()->create([
+            'name' => 'User',
+            'email' => 'user@user.com',
+            'email_verified_at' => now(),
+            'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password
+            'remember_token' => Str::random(10),
+        ]);
     }
 }

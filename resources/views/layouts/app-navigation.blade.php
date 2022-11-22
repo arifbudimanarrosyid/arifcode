@@ -1,6 +1,6 @@
 <nav x-data="{ open: false }" class="">
     <!-- Primary Navigation Menu -->
-    <div class="px-4 mx-auto max-w-3xl sm:px-6 lg:px-8">
+    <div class="max-w-3xl px-4 mx-auto sm:px-6 lg:px-8">
         <div class="flex justify-between h-16">
             <div class="flex">
                 <!-- Logo -->
@@ -17,8 +17,8 @@
                     <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
                         {{ __('Dashboard') }}
                     </x-nav-link>
-                    <x-nav-link :href="route('dashboard.posts.index')"
-                        :active="request()->routeIs('dashboard.posts.index')">
+                    <x-nav-link :href="route('posts.index')"
+                        :active="request()->routeIs('posts.index')">
                         {{ __('Posts') }}
                     </x-nav-link>
                     <x-nav-link :href="route('dashboard.category.index')"
@@ -103,8 +103,8 @@
                 <x-responsive-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
                     {{ __('Dashboard') }}
                 </x-responsive-nav-link>
-                <x-responsive-nav-link :href="route('dashboard.posts.index')"
-                    :active="request()->routeIs('dashboard.posts.index')">
+                <x-responsive-nav-link :href="route('posts.index')"
+                    :active="request()->routeIs('posts.index')">
                     {{ __('Posts') }}
                 </x-responsive-nav-link>
                 <x-responsive-nav-link :href="route('dashboard.portofolio.index')"
