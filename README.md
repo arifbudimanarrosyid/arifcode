@@ -46,18 +46,22 @@ Register form default account type is_admin false
 
 ## Feature
 - [x] Middleware 'isAdmin' & Gate 'admin'
-- [x] Light Mode, Dark Mode (Auto)
-- [x] Home, Featured Posts
-- [x] Blog, All Posts
+- [x] Light Mode & Dark Mode (Auto)
+- [x] Home - Featured Posts
+- [x] Posts - All Posts
 - [x] Single Post
 - [ ] Guestbook
 - [x] About Me
 - [x] Gear
+- [x] Auth - Login & Register
 - [x] Dashboard
-- [x] Auth
-- [ ] Dashboard - Blog
 - [x] Dashboard - Profile
 - [ ] Dashboard - Posts
+  - [ ] Create
+  - [x] Read
+  - [ ] Update
+  - [ ] Delete
+- [ ] Dashboard - Category
   - [ ] Create
   - [x] Read
   - [ ] Update
