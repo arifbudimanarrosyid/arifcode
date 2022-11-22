@@ -43,13 +43,6 @@ Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
-// Route::get('/dashboard/posts', function () {
-//     return view('dashboard.posts.index');
-// })->middleware(['auth', 'verified'])->name('dashboard.posts.index');
-// Route::get('/dashboard/posts/create', function () {
-//     return view('dashboard.posts.create');
-// })->middleware(['auth', 'verified'])->name('dashboard.posts.create');
-
 Route::get('/dashboard/category', function () {
     return view('dashboard.category.index');
 })->middleware(['auth', 'verified'])->name('dashboard.category.index');
@@ -67,14 +60,17 @@ Route::get('/dashboard/user', function () {
     return view('dashboard.user.index');
 })->middleware(['auth', 'verified'])->name('dashboard.user.index');
 
-Route::get('/dashboard', DashboardController::class, 'index')->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 
-    Route::resource('dashboard/posts', DashboardPostController::class);
+    Route::get('/dashboard', DashboardController::class, 'index')->name('dashboard');
+});
+
+Route::middleware(['auth', 'isAdmin'])->group(function () {
+    Route::resource('/dashboard/posts', DashboardPostController::class)->middleware('isAdmin');
 });
 
 require __DIR__ . '/auth.php';
