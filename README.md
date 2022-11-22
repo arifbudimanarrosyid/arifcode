@@ -22,12 +22,14 @@ php artisan migrate:fresh --seed
 ## Login & Register
 Register form default account type is_admin false
 ### Admin
-> admin@admin.com
-> password
+>email: admin@admin.com
+
+>password: password
 
 ### User
-> user@user.com
-> password
+>email: user@user.com
+
+>password: password
 
 
 ## Site Screenshot
