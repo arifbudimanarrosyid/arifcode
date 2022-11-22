@@ -8,8 +8,8 @@ Developed with Laravel 9, Laravel Breeze, Tailwind CSS, Flowbite.
 
 # Feature
 - [x] Light Mode, Dark Mode (Auto)
-- [ ] Home, Featured Posts
-- [ ] Blog, All Posts
+- [x] Home, Featured Posts
+- [x] Blog, All Posts
 - [ ] Guestbook
 - [x] About Me
 - [x] Gear
@@ -19,3 +19,5 @@ Developed with Laravel 9, Laravel Breeze, Tailwind CSS, Flowbite.
 - [x] Dashboard - Profile
 - [ ] Dashboard - Posts
 - [ ] Dashboard - Portofolio
+- [ ] Dashboard - Guestbook
+- [ ] Dashboard - Users
