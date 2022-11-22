@@ -5,7 +5,7 @@
             <div class="mb-5 overflow-hidden sm:flex ">
                 <div class="order-last px-4 pl-0 mb-5 sm:pl-1">
                     <img src="{{ asset('img/pp.jpg') }}" alt="programming"
-                        class="w-32 ml-4 rounded-full sm:px-0 sm:w-96">
+                        class="w-20 ml-4 rounded-full sm:px-0 sm:w-52">
                 </div>
                 <div class="px-4 sm:px-0">
                     <h1

@@ -34,11 +34,11 @@
 
                 <div class="block w-full p-4 mb-4 bg-white rounded-lg dark:bg-gray-800 ">
                     <h5 class="mb-2 text-xl tracking-tight text-gray-900 dark:text-white">Featured</h5>
-                    <p class="text-2xl font-bold text-indigo-700 dark:text-indigo-400">{{ $featuredPosts }}</p>
+                    <p class="text-2xl font-bold text-red-700 dark:text-red-400">{{ $featuredPosts }}</p>
                 </div>
                 <div class="block w-full p-4 mb-4 bg-white rounded-lg dark:bg-gray-800 ">
                     <h5 class="mb-2 text-xl tracking-tight text-gray-900 dark:text-white">Featured & Published</h5>
-                    <p class="text-2xl font-bold text-indigo-700 dark:text-indigo-400">{{ $featuredAndPublishedPosts }}
+                    <p class="text-2xl font-bold text-red-700 dark:text-red-400">{{ $featuredAndPublishedPosts }}
                     </p>
                 </div>
             </div>

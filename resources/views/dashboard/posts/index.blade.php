@@ -9,9 +9,8 @@
     <div class="py-12">
 
         <div class="px-4 mx-auto max-w-7xl sm:px-6 lg:px-8 ">
-
-            <div class="hidden md:block">
-                {{-- Info --}}
+            {{-- Info --}}
+            <div class="hidden sm:block">
                 <div class="gap-5 mb-1 sm:flex">
                     <div class="block w-full p-4 mb-4 bg-white rounded-lg dark:bg-gray-800 ">
                         <h5 class="mb-2 text-xl tracking-tight text-gray-900 dark:text-white">Total Posts</h5>
@@ -30,11 +29,11 @@
 
                     <div class="block w-full p-4 mb-4 bg-white rounded-lg dark:bg-gray-800 ">
                         <h5 class="mb-2 text-xl tracking-tight text-gray-900 dark:text-white">Featured</h5>
-                        <p class="text-2xl font-bold text-indigo-700 dark:text-indigo-400">{{ $featuredPosts }}</p>
+                        <p class="text-2xl font-bold text-red-700 dark:text-red-400">{{ $featuredPosts }}</p>
                     </div>
                     <div class="block w-full p-4 mb-4 bg-white rounded-lg dark:bg-gray-800 ">
                         <h5 class="mb-2 text-xl tracking-tight text-gray-900 dark:text-white">Featured & Published</h5>
-                        <p class="text-2xl font-bold text-indigo-700 dark:text-indigo-400">{{ $featuredAndPublishedPosts
+                        <p class="text-2xl font-bold text-red-700 dark:text-red-400">{{ $featuredAndPublishedPosts
                             }}
                         </p>
                     </div>
@@ -61,23 +60,21 @@
                 </form>
             </div>
             {{-- Alert --}}
-            {{-- <div>
-                <div class="flex p-4 mb-4 text-sm text-green-700 bg-green-100 rounded-lg dark:bg-green-200 dark:text-green-800"
-                    role="alert">
-                    <svg aria-hidden="true" class="flex-shrink-0 inline w-5 h-5 mr-3" fill="currentColor"
-                        viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-                        <path fill-rule="evenodd"
-                            d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z"
-                            clip-rule="evenodd"></path>
-                    </svg>
-                    <span class="sr-only">Info</span>
-                    <div>
-                        <span class="font-bold">Success alert!</span> Post created successfully.
-                    </div>
+            {{-- <div class="flex p-4 mb-4 text-sm text-green-700 bg-green-100 rounded-lg dark:bg-green-200 dark:text-green-800"
+                role="alert">
+                <svg aria-hidden="true" class="flex-shrink-0 inline w-5 h-5 mr-3" fill="currentColor"
+                    viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                    <path fill-rule="evenodd"
+                        d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z"
+                        clip-rule="evenodd"></path>
+                </svg>
+                <span class="sr-only">Info</span>
+                <div>
+                    <span class="font-bold">Success alert!</span> Post created successfully.
                 </div>
-
-
             </div> --}}
+
+
             {{-- Create --}}
             <a href="{{ route('posts.create') }}"
                 class="inline-flex items-center px-4 py-2 mb-5 mr-2 text-sm font-medium leading-4 text-gray-100 transition duration-150 ease-in-out bg-indigo-700 rounded-md dark:text-gray-300 dark:bg-indigo-800 hover:bg-indigo-800 dark:hover:bg-indigo-600 focus:outline-none">
@@ -101,13 +98,15 @@
                                     {{ $post->published_at->diffForHumans() }}
                                 </p>
                             </div>
-                            <div class="flex">
-                                <p class="font-normal text-gray-700 dark:text-gray-400">@if ($post->is_published)
+                            <div class="flex flex-col sm:flex-row">
+                                <p class="text-right font-normal text-gray-700 dark:text-gray-400">
+                                    @if ($post->is_published)
                                     Published
                                     @else
                                     Draft
-                                    @endif</p>
-                                <p class="ml-3 font-normal text-indigo-700 dark:text-indigo-400">
+                                    @endif
+                                </p>
+                                <p class="sm:ml-3 text-right font-normal text-indigo-700 dark:text-indigo-400">
                                     @if ($post->is_featured)
                                     Featured
                                     @endif
@@ -115,10 +114,11 @@
                             </div>
                         </div>
 
-                        <h5 class="mb-2 text-xl font-bold tracking-tight text-gray-900 dark:text-white">{{ $post->title
-                            }}</h5>
-                        <h5 class="mb-2 font-bold tracking-tight text-gray-900 dark:text-indigo-400">{{
-                            $post->category->title }}</h5>
+                        <h5 class="mb-2 text-xl font-bold tracking-tight text-gray-900 dark:text-white">
+                            {{ $post->title }}</h5>
+                        <h5 class="mb-2 font-bold tracking-tight text-gray-900 dark:text-indigo-400">
+
+                            {{ $post->category->title }}</h5>
                         <p class="font-normal text-gray-700 dark:text-gray-400">{{ $post->excerpt }}</p>
                     </div>
 

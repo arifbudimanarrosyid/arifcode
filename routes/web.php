@@ -59,13 +59,15 @@ Route::middleware(['auth', 'isAdmin'])->group(function () {
     Route::get('/dashboard/category/create', function () {
         return view('dashboard.category.create');
     })->name('dashboard.category.create');
-
+    // Dashboard Portofolio
     Route::get('/dashboard/portofolio', function () {
         return view('dashboard.portofolio.index');
     })->name('dashboard.portofolio.index');
+    // Dashboard Guestbook
     Route::get('/dashboard/guestbook', function () {
         return view('dashboard.guestbook.index');
     })->name('dashboard.guestbook.index');
+    // Dashboard Users
     Route::get('/dashboard/user', function () {
         return view('dashboard.user.index');
     })->name('dashboard.user.index');
