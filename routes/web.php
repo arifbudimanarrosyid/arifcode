@@ -17,13 +17,12 @@ use App\Http\Controllers\DashboardPostController;
 |
 */
 
-
-
 // Site
+
+
 Route::get('/', [PostController::class, 'home'])->name('home');
 Route::get('/posts', [PostController::class, 'index'])->name('posts');
 Route::get('/post/{slug}', [PostController::class, 'show'])->name('post');
-
 Route::get('/guestbook', function () {
     return view('guestbook');
 })->name('guestbook');
@@ -38,39 +37,38 @@ Route::get('/aboutme', function () {
     return view('aboutme');
 })->name('aboutme');
 
+
 // Dashboard
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
-
-Route::get('/dashboard/category', function () {
-    return view('dashboard.category.index');
-})->middleware(['auth', 'verified'])->name('dashboard.category.index');
-Route::get('/dashboard/category/create', function () {
-    return view('dashboard.category.create');
-})->middleware(['auth', 'verified'])->name('dashboard.category.create');
-
-Route::get('/dashboard/portofolio', function () {
-    return view('dashboard.portofolio.index');
-})->middleware(['auth', 'verified'])->name('dashboard.portofolio.index');
-Route::get('/dashboard/guestbook', function () {
-    return view('dashboard.guestbook.index');
-})->middleware(['auth', 'verified'])->name('dashboard.guestbook.index');
-Route::get('/dashboard/user', function () {
-    return view('dashboard.user.index');
-})->middleware(['auth', 'verified'])->name('dashboard.user.index');
-
 
 Route::middleware('auth')->group(function () {
+    // Profile
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
-
+    // Dashboard
     Route::get('/dashboard', DashboardController::class, 'index')->name('dashboard');
 });
 
 Route::middleware(['auth', 'isAdmin'])->group(function () {
-    Route::resource('/dashboard/posts', DashboardPostController::class)->middleware('isAdmin');
+    // Dashboard Posts
+    Route::resource('/dashboard/posts', DashboardPostController::class);
+    // Dashboard Cartegory
+    Route::get('/dashboard/category', function () {
+        return view('dashboard.category.index');
+    })->name('dashboard.category.index');
+    Route::get('/dashboard/category/create', function () {
+        return view('dashboard.category.create');
+    })->name('dashboard.category.create');
+
+    Route::get('/dashboard/portofolio', function () {
+        return view('dashboard.portofolio.index');
+    })->name('dashboard.portofolio.index');
+    Route::get('/dashboard/guestbook', function () {
+        return view('dashboard.guestbook.index');
+    })->name('dashboard.guestbook.index');
+    Route::get('/dashboard/user', function () {
+        return view('dashboard.user.index');
+    })->name('dashboard.user.index');
 });
 
 require __DIR__ . '/auth.php';

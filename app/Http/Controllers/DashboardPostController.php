@@ -15,7 +15,7 @@ class DashboardPostController extends Controller
     public function index()
     {
         // post all with pagination 5 and order by created_at desc
-        $posts = Posts::orderBy('created_at', 'desc')->with(['category'])
+        $posts = Posts::orderBy('published_at', 'desc')->with(['category'])
         ->paginate(5);
         $totalPosts = Posts::count();
         $publishedPosts = Posts::where('is_published', 1)->count();

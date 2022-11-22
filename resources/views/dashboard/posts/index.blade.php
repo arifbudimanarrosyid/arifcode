@@ -10,8 +10,7 @@
 
         <div class="px-4 mx-auto max-w-7xl sm:px-6 lg:px-8 ">
 
-            <div class="hidden xl:block">
-
+            <div class="hidden md:block">
                 {{-- Info --}}
                 <div class="gap-5 mb-1 sm:flex">
                     <div class="block w-full p-4 mb-4 bg-white rounded-lg dark:bg-gray-800 ">
@@ -96,10 +95,10 @@
                             <div class="sm:flex sm:flex-row">
 
                                 <p class="mr-2 font-normal text-gray-700 dark:text-gray-400">
-                                    {{ $post->created_at->format('d M Y') }}
+                                    {{ $post->published_at->format('d M Y') }}
                                 </p>
                                 <p class="font-normal text-gray-700 dark:text-gray-400">
-                                    {{ $post->created_at->diffForHumans() }}
+                                    {{ $post->published_at->diffForHumans() }}
                                 </p>
                             </div>
                             <div class="flex">
