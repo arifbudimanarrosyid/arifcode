@@ -63,7 +63,7 @@ Register form default account type is_admin false
   - [ ] Delete
 - [ ] Dashboard - Category
   - [ ] Create
-  - [x] Read
+  - [ ] Read
   - [ ] Update
   - [ ] Delete
 - [ ] Dashboard - Portofolio
