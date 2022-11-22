@@ -1,6 +1,10 @@
 # Laravel
 Developed with Laravel 9, Laravel Breeze, Tailwind CSS, Flowbite.
 
+## System Requirement
+- Laravel 9 Support
+- PHP >=8.0
+
 ## Install
 ```
 git clone https://github.com/arifbudimanarrosyid/arifcode.git
