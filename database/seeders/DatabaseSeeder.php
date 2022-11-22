@@ -29,8 +29,8 @@ class DatabaseSeeder extends Seeder
         Category::create([
             'title' => 'Tailwind CSS',
         ]);
-        Posts::factory(50)->create();
-        User::factory(10)->create();
+        Posts::factory(10)->create();
+        // User::factory(10)->create();
 
 
         // \App\Models\User::factory()->create([

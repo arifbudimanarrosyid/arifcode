@@ -48,13 +48,13 @@
                     <div class="flex flex-col gap-6 pb-5 mb-4">
 
                         @foreach ($posts as $post)
-                        <a href="#"
+                        <a href="{{ route('post', $post->slug) }}"
                             class="block p-4 bg-white border-2 border-gray-200 rounded-lg w-sm hover:border-indigo-500 dark:bg-gray-800 dark:border-gray-700 ">
                             <div class="flex justify-between">
 
                                 <h5 class="mb-2 font-bold tracking-tight text-indigo-500 dark:text-indigo-400">{{ $post->category->title }}</h5>
                                 </h5>
-                                <p class="font-normal text-gray-700 dark:text-gray-400 mb-2">
+                                <p class="mb-2 font-normal text-gray-700 dark:text-gray-400">
                                     {{ $post->published_at->diffForHumans()}}</p>
                             </div>
                             <h5 class="mb-2 text-xl font-bold tracking-tight text-gray-900 dark:text-white">{{ $post->title }}</h5>

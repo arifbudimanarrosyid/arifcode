@@ -4,13 +4,23 @@
             {{-- Blog --}}
             <div class="mb-5 overflow-hidden ">
                 <div class="px-4 sm:px-0">
+                    <h5 class="mb-2 font-bold tracking-tight text-indigo-500 dark:text-indigo-400">{{
+                        $post->category->title }}</h5>
                     <h1
                         class="text-4xl font-bold text-gray-800 underline capitalize decoration-indigo-500 dark:text-white">
-                        How to use Prose Typography in Tailwind CSS!
+                        {{-- How to use Prose Typography in Tailwind CSS! --}}
+                        {{ $post->title }}
                     </h1>
-                    <div class="mt-6 overflow-auto prose max-w-none prose-gray dark:prose-invert prose-a:text-indigo-400 prose-h2:text-indigo-400 prose-blockquote:text-indigo-700 prose-code:text-indigo-300 prose-pre:text-indigo-400 prose-blockquote:bg-indigo-50 prose-blockquote:border-indigo-400 hover:prose-a:text-indigo-500">
 
-                        <p class="lead">Until now, trying to style an article, document, or blog post with Tailwind has
+                    <p class="mt-5 mb-2 font-normal text-gray-700 dark:text-gray-400">
+                        {{ $post->published_at->diffForHumans()}}</p>
+                    <p class="mt-5 font-normal text-gray-700 dark:text-gray-300">{{ $post->excerpt }}</p>
+
+                    <div
+                        class="mt-6 overflow-auto prose max-w-none prose-gray dark:prose-invert prose-a:text-indigo-400 prose-h2:text-indigo-400 prose-blockquote:text-indigo-700 prose-code:text-indigo-300 prose-pre:text-indigo-400 prose-blockquote:bg-indigo-50 prose-blockquote:border-indigo-400 hover:prose-a:text-indigo-500">
+                        {!! $post->content !!}
+                        {{-- <p class="lead">Until now, trying to style an article, document, or blog post with Tailwind
+                            has
                             been a tedious task that required a keen eye for typography and a lot of complex custom CSS.
                         </p>
                         <p>By default, Tailwind removes all of the default browser styling from paragraphs, headings,
@@ -280,7 +290,7 @@
                             will look weird or unbalanced if there is a heading too close to the end of the document.
                         </p>
                         <p>What I've written here is probably long enough, but adding this final sentence can't hurt.
-                        </p>
+                        </p> --}}
                     </div>
 
                 </div>

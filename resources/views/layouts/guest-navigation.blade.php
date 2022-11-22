@@ -1,6 +1,6 @@
 <nav x-data="{ open: false }" class="">
     <!-- Primary Navigation Menu -->
-    <div class="px-4 mx-auto max-w-3xl sm:px-6 lg:px-8">
+    <div class="max-w-3xl px-4 mx-auto sm:px-6 lg:px-8">
         <div class="flex justify-between h-16">
             <div class="flex">
                 <!-- Logo -->
@@ -21,9 +21,9 @@
                     <x-nav-link :href="route('posts')" :active="request()->routeIs('posts')">
                         {{ __('Posts') }}
                     </x-nav-link>
-                    <x-nav-link :href="route('post')" :active="request()->routeIs('post')">
+                    {{-- <x-nav-link :href="route('post')" :active="request()->routeIs('post')">
                         {{ __('Post') }}
-                    </x-nav-link>
+                    </x-nav-link> --}}
                     <x-nav-link :href="route('portofolio')" :active="request()->routeIs('portofolio')">
                         {{ __('Portofolio') }}
                     </x-nav-link>
@@ -120,9 +120,9 @@
                 <x-responsive-nav-link :href="route('posts')" :active="request()->routeIs('posts')">
                     {{ __('Posts') }}
                 </x-responsive-nav-link>
-                <x-responsive-nav-link :href="route('post')" :active="request()->routeIs('post')">
+                {{-- <x-responsive-nav-link :href="route('post')" :active="request()->routeIs('post')">
                     {{ __('Post') }}
-                </x-responsive-nav-link>
+                </x-responsive-nav-link> --}}
                 <x-responsive-nav-link :href="route('portofolio')" :active="request()->routeIs('portofolio')">
                     {{ __('Portofolio') }}
                 </x-responsive-nav-link>

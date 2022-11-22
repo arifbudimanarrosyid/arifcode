@@ -1,8 +1,8 @@
 <?php
 
-use App\Http\Controllers\PostsController;
-use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\PostController;
+use App\Http\Controllers\ProfileController;
 
 /*
 |--------------------------------------------------------------------------
@@ -20,17 +20,20 @@ Route::get('/guestbook', function () {
     return view('guestbook');
 })->name('guestbook');
 
-Route::get('/', [PostsController::class, 'home'])->name('home');
+Route::get('/', [PostController::class, 'home'])->name('home');
 // Route::get('/', function () {
 //     return view('home');
 // })->name('home');
-Route::get('/posts', [PostsController::class, 'index'])->name('posts');
+Route::get('/posts', [PostController::class, 'index'])->name('posts');
 // Route::get('/posts', function () {
 //     return view('posts');
 // })->name('posts');
-Route::get('/post', function () {
-    return view('post');
-})->name('post');
+Route::get('/post/{slug}', [PostController::class, 'show'])->name('post');
+// Route::get('/post', function () {
+//     return view('post');
+// })->name('post');
+
+
 Route::get('/portofolio', function () {
     return view('portofolio');
 })->name('portofolio');

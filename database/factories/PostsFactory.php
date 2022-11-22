@@ -24,8 +24,11 @@ class PostsFactory extends Factory
             'content' => collect($this->faker->paragraphs(mt_rand(10, 15)))
                 ->map(fn ($p) => "<p>$p</p>")
                 ->implode(''),
+            // 'content' => collect($this->faker->paragraphs(mt_rand(10, 15)))
+            //     ->map(fn ($p) => "<p>$p</p>")
+            //     ->implode(''),
             'is_published' => rand(0, 1),
-            // 'is_featured' => rand(0, 1),
+            'is_featured' => rand(0, 1),
             'category_id' => rand(1, 3),
             'published_at' => $this->faker->dateTimeBetween('-1 month', '+3 days'),
             // 'user_id' => rand(1, 10)

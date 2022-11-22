@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Posts;
 use Illuminate\Http\Request;
 
-class PostsController extends Controller
+class PostController extends Controller
 {
     public function index()
     {
@@ -25,5 +25,14 @@ class PostsController extends Controller
             ->get();
         // dd($posts);
         return view('home')->with('featured', $featured);
+    }
+    public function show($slug)
+    {
+        $post = Posts::where('slug', $slug)
+            ->with(['category'])
+            ->where('is_published', true)
+            ->first();
+        // dd($post);
+        return view('post')->with('post', $post);
     }
 }
