@@ -49,17 +49,24 @@ Register form default account type is_admin false
 ![dashboardposts](screenshot/dashboardposts.png)
 
 ## Feature
-- [x] Middleware 'isAdmin' & Gate 'admin'
 - [x] Light Mode & Dark Mode (Auto)
 - [x] Home - Featured Posts
 - [x] Posts - All Posts
 - [x] Single Post - Recomendation Posts
+- [x] Portofolio
 - [ ] Guestbook
 - [x] About Me
 - [x] Gear
+
+
+## Middleware & Gate
+
+### Auth
 - [x] Auth - Login & Register
 - [x] Dashboard
 - [x] Dashboard - Profile
+
+### Admin
 - [ ] Dashboard - Posts
   - [ ] Create
   - [x] Read
@@ -67,7 +74,7 @@ Register form default account type is_admin false
   - [ ] Delete
 - [ ] Dashboard - Category
   - [ ] Create
-  - [ ] Read
+  - [x] Read
   - [ ] Update
   - [ ] Delete
 - [ ] Dashboard - Portofolio
@@ -82,6 +89,6 @@ Register form default account type is_admin false
   - [ ] Delete
 - [ ] Dashboard - Users
   - [ ] Create
-  - [ ] Read
+  - [x] Read
   - [ ] Update
   - [ ] Delete
