@@ -19,11 +19,11 @@
 
             {{--Search --}}
             <form class="flex items-center px-4 sm:px-0">
-                <label for="simple-search" class="sr-only">Search</label>
+                {{-- <label for="simple-search" class="sr-only">Search</label> --}}
                 <div class="relative w-full">
-                    <input type="text" id="simple-search"
+                    <input type="text" id="simple-search" name="search"
                         class="bg-gray-50 border-2 border-gray-200 text-gray-900 text-sm rounded-lg  block w-full pl-4 p-2.5  dark:bg-gray-800 dark:border-gray-700 dark:placeholder-gray-400 dark:text-white focus:ring-transparent dark:focus:border-indigo-500"
-                        placeholder="Search by title" required>
+                        value="{{ request('search') }}" placeholder="Search by title">
                 </div>
                 <button type="submit"
                     class="p-2.5 ml-2 text-sm font-medium text-white bg-indigo-700 rounded-lg border-2 border-indigo-700 hover:bg-indigo-800 focus:ring-4 focus:outline-none focus:ring-indigo-300 dark:bg-indigo-600 dark:hover:bg-indigo-700 dark:focus:ring-indigo-800">
@@ -39,34 +39,37 @@
 
             {{-- All Posts --}}
             <div class="flex my-5 overflow-hidden ">
-                <div class="px-4 sm:px-0">
-                    <h1
-                        class="mb-6 text-3xl font-bold text-gray-800 underline capitalize decoration-indigo-500 dark:text-white">
-                        All Posts
-                    </h1>
-                    {{-- <h1 class="mb-6 text-2xl font-bold text-gray-900 dark:text-gray-100">All Posts</h1> --}}
-                    <div class="flex flex-col gap-6 pb-5 mb-4">
-
+                <div class="px-4 sm:px-0 w-full">
+                    @if ($posts->count())
+                    <div class="flex flex-col gap-5 w-full pb-5 mb-4">
                         @foreach ($posts as $post)
                         <a href="{{ route('post', $post->slug) }}"
-                            class="block p-4 bg-white border-2 border-gray-200 rounded-lg w-sm hover:border-indigo-500 dark:bg-gray-800 dark:border-gray-700 ">
+                            class="w-full p-4 bg-white border-2 border-gray-200 rounded-lg hover:border-indigo-500 dark:bg-gray-800 dark:border-gray-700 ">
+
                             <div class="flex justify-between">
 
-                                <h5 class="mb-2 font-bold tracking-tight text-indigo-500 dark:text-indigo-400">{{ $post->category->title }}</h5>
+                                <h5 class="mb-2 font-bold tracking-tight text-indigo-500 dark:text-indigo-400">{{
+                                    $post->category->title }}
                                 </h5>
                                 <p class="mb-2 font-normal text-gray-700 dark:text-gray-400">
-                                    {{ $post->published_at->diffForHumans()}}</p>
+                                    {{ $post->published_at->diffForHumans()}}
+                                </p>
                             </div>
-                            <h5 class="mb-2 text-xl font-bold tracking-tight text-gray-900 dark:text-white">{{ $post->title }}</h5>
-                            <p class="font-normal text-gray-700 dark:text-gray-400">{{ $post->excerpt }}</p>
+                            <h5 class="mb-2 text-xl font-bold tracking-tight text-gray-900 dark:text-white">
+                                {{$post->title }}
+                            </h5>
+                            <p class="font-normal text-gray-700 dark:text-gray-400">
+                                {{ $post->excerpt }}
+                            </p>
                         </a>
+
+
                         @endforeach
-                        {{ $posts->links() }}
-
-
-
                     </div>
-
+                    @else
+                    <h1 class="mt-4 text-gray-600 dark:text-gray-400">No Post Found.</h1>
+                    @endif
+                    {{ $posts->links() }}
 
 
 

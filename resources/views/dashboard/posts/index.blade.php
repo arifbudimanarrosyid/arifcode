@@ -83,11 +83,11 @@
 
 
             {{-- All Posts --}}
-            <div>
+            <div class="w-full">
                 {{-- Post --}}
                 @foreach ($posts as $post)
                 <div class="mb-4 sm:flex">
-                    <div class="block p-4 mb-2 bg-white rounded-lg sm:mr-5 w-sm dark:bg-gray-800 ">
+                    <div class="p-4 w-full  mb-2 bg-white rounded-lg sm:mr-5 w-sm dark:bg-gray-800 ">
                         <div class="flex justify-between mb-2">
                             <div class="sm:flex sm:flex-row">
 

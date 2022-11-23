@@ -9,11 +9,21 @@ class PostController extends Controller
 {
     public function index()
     {
-        $posts = Posts::where('is_published', true)
-            ->with(['category'])
-            ->orderBy('published_at', 'desc')
-            ->paginate(10);
-        // dd($posts);
+        $search = request('search');
+        if ($search) {
+            $posts = Posts::where('title', 'like', '%' . $search . '%')
+                ->orWhere('excerpt', 'like', '%' . $search . '%')
+                ->orWhere('content', 'like', '%' . $search . '%')
+                ->where('is_published', true)
+                ->orderBy('published_at', 'desc')
+                ->paginate(10)
+                ->withQueryString();
+        } else {
+            $posts = Posts::where('is_published', true)
+                ->with(['category'])
+                ->orderBy('published_at', 'desc')
+                ->paginate(10);
+        }
         return view('posts')->with('posts', $posts);
     }
     public function home()
