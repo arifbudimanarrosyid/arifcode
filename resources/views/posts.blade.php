@@ -8,10 +8,9 @@
                         class="text-4xl font-bold text-gray-800 underline capitalize decoration-green-500 dark:text-white">
                         Posts
                     </h1>
-                    {{-- <h1 class="mb-2 text-4xl font-bold text-gray-900 dark:text-gray-100">Blog</h1> --}}
                     <h1 class="mt-4 text-gray-600 dark:text-gray-400">Sometimes I write what I have learned, or I will
                         write
-                        whatever I like. Use the search bellw to filter by title.</h1>
+                        whatever I like. Use the search bellw to filter by title / excerp / content.</h1>
 
                 </div>
 
@@ -23,7 +22,7 @@
                 <div class="relative w-full">
                     <input type="text" id="simple-search" name="search"
                         class="bg-gray-50 border-2 border-gray-200 text-gray-900 text-sm rounded-lg  block w-full pl-4 p-2.5  dark:bg-gray-800 dark:border-gray-700 dark:placeholder-gray-400 dark:text-white focus:ring-transparent dark:focus:border-indigo-500"
-                        value="{{ request('search') }}" placeholder="Search by title">
+                        value="{{ request('search') }}" placeholder="Search by title / excerp / content">
                 </div>
                 <button type="submit"
                     class="p-2.5 ml-2 text-sm font-medium text-white bg-indigo-700 rounded-lg border-2 border-indigo-700 hover:bg-indigo-800 focus:ring-4 focus:outline-none focus:ring-indigo-300 dark:bg-indigo-600 dark:hover:bg-indigo-700 dark:focus:ring-indigo-800">
@@ -39,21 +38,29 @@
 
             {{-- All Posts --}}
             <div class="flex my-5 overflow-hidden ">
-                <div class="px-4 sm:px-0 w-full">
+                <div class="w-full px-4 sm:px-0">
                     @if ($posts->count())
-                    <div class="flex flex-col gap-5 w-full pb-5 mb-4">
+                    <div class="flex flex-col w-full gap-5 pb-5 mb-4">
                         @foreach ($posts as $post)
                         <a href="{{ route('post', $post->slug) }}"
                             class="w-full p-4 bg-white border-2 border-gray-200 rounded-lg hover:border-indigo-500 dark:bg-gray-800 dark:border-gray-700 ">
 
-                            <div class="flex justify-between">
+                            <div class="flex justify-between ">
 
-                                <h5 class="mb-2 font-bold tracking-tight text-indigo-500 dark:text-indigo-400">{{
+                                <h5 class="font-bold tracking-tight text-indigo-500 dark:text-indigo-400">{{
                                     $post->category->title }}
                                 </h5>
-                                <p class="mb-2 font-normal text-gray-700 dark:text-gray-400">
-                                    {{ $post->published_at->diffForHumans()}}
-                                </p>
+                                <span
+                                    class="inline-flex items-center text-xs font-medium text-gray-800 dark:text-gray-300">
+                                    <svg aria-hidden="true" class="w-3 h-3 mr-1" fill="currentColor" viewBox="0 0 20 20"
+                                        xmlns="http://www.w3.org/2000/svg">
+                                        <path fill-rule="evenodd"
+                                            d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l2.828 2.829a1 1 0 101.415-1.415L11 9.586V6z"
+                                            clip-rule="evenodd"></path>
+                                    </svg>
+                                    {{ $post->published_at->diffForHumans()}}</p>
+                                </span>
+
                             </div>
                             <h5 class="mb-2 text-xl font-bold tracking-tight text-gray-900 dark:text-white">
                                 {{$post->title }}
@@ -62,8 +69,6 @@
                                 {{ $post->excerpt }}
                             </p>
                         </a>
-
-
                         @endforeach
                     </div>
                     @else

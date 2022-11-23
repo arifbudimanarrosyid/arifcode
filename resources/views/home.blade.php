@@ -30,65 +30,36 @@
                 </h1>
                 {{-- <h1 class="mb-6 text-4xl font-bold text-gray-900 dark:text-gray-100">Featured Posts</h1> --}}
 
-                <div class="flex flex-col gap-6 pb-5">
+                <div class="flex flex-col w-full gap-5 pb-5 mb-4">
                     @foreach ($featured as $post)
-                        <a href="{{ route('post', $post->slug) }}"
-                            class="block p-4 bg-white border-2 border-gray-200 rounded-lg w-sm hover:border-indigo-500 dark:bg-gray-800 dark:border-gray-700 ">
-                            <div class="flex justify-between">
+                    <a href="{{ route('post', $post->slug) }}"
+                        class="w-full p-4 bg-white border-2 border-gray-200 rounded-lg hover:border-indigo-500 dark:bg-gray-800 dark:border-gray-700 ">
 
-                                <h5 class="mb-2 font-bold tracking-tight text-indigo-500 dark:text-indigo-400">{{ $post->category->title }}</h5>
-                                </h5>
-                                <p class="mb-2 font-normal text-gray-700 dark:text-gray-400">
-                                    {{ $post->published_at->diffForHumans()}}</p>
-                            </div>
-                            <h5 class="mb-2 text-xl font-bold tracking-tight text-gray-900 dark:text-white">{{ $post->title }}</h5>
-                            <p class="font-normal text-gray-700 dark:text-gray-400">{{ $post->excerpt }}</p>
-                        </a>
-                        @endforeach
-                    {{-- <a href="#"
-                        class="block p-4 bg-white border-2 border-gray-200 rounded-lg w-sm hover:border-indigo-500 dark:bg-gray-800 dark:border-gray-700 ">
-                        <div class="flex justify-between">
+                        <div class="flex justify-between ">
 
-                            <h5 class="mb-2 font-bold tracking-tight text-indigo-500 dark:text-indigo-400">Category
+                            <h5 class="font-bold tracking-tight text-indigo-500 dark:text-indigo-400">{{
+                                $post->category->title }}
                             </h5>
-                            <p class="mb-2 font-normal text-gray-700 dark:text-gray-400">4 days ago</p>
+                            <span
+                                class="inline-flex items-center text-xs font-medium text-gray-800 dark:text-gray-300">
+                                <svg aria-hidden="true" class="w-3 h-3 mr-1" fill="currentColor" viewBox="0 0 20 20"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <path fill-rule="evenodd"
+                                        d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l2.828 2.829a1 1 0 101.415-1.415L11 9.586V6z"
+                                        clip-rule="evenodd"></path>
+                                </svg>
+                                {{ $post->published_at->diffForHumans()}}</p>
+                            </span>
+
                         </div>
-                        <h5 class="mb-2 text-xl font-bold tracking-tight text-gray-900 dark:text-white">Noteworthy
-                            technology acquisitions 2021</h5>
-                        <p class="font-normal text-gray-700 dark:text-gray-400">Here are the biggest enterprise
-                            technology
-                            acquisitions of 2021 so far, in reverse chronological order.</p>
+                        <h5 class="mb-2 text-xl font-bold tracking-tight text-gray-900 dark:text-white">
+                            {{$post->title }}
+                        </h5>
+                        <p class="font-normal text-gray-700 dark:text-gray-400">
+                            {{ $post->excerpt }}
+                        </p>
                     </a>
-                    <a href="#"
-                        class="block p-4 bg-white border-2 border-gray-200 rounded-lg w-sm hover:border-indigo-500 dark:bg-gray-800 dark:border-gray-700 ">
-                        <div class="flex justify-between">
-
-                            <h5 class="mb-2 font-bold tracking-tight text-indigo-500 dark:text-indigo-400">Category
-                            </h5>
-                            <p class="mb-2 font-normal text-gray-700 dark:text-gray-400">4 days ago</p>
-                        </div>
-                        <h5 class="mb-2 text-xl font-bold tracking-tight text-gray-900 dark:text-white">Noteworthy
-                            technology acquisitions 2021</h5>
-                        <p class="font-normal text-gray-700 dark:text-gray-400">Here are the biggest enterprise
-                            technology
-                            acquisitions of 2021 so far, in reverse chronological order.</p>
-                    </a>
-                    <a href="#"
-                        class="block p-4 bg-white border-2 border-gray-200 rounded-lg w-sm hover:border-indigo-500 dark:bg-gray-800 dark:border-gray-700 ">
-                        <div class="flex justify-between">
-
-                            <h5 class="mb-2 font-bold tracking-tight text-indigo-500 dark:text-indigo-400">Category
-                            </h5>
-                            <p class="mb-2 font-normal text-gray-700 dark:text-gray-400">4 days ago</p>
-                        </div>
-                        <h5 class="mb-2 text-xl font-bold tracking-tight text-gray-900 dark:text-white">Noteworthy
-                            technology acquisitions 2021</h5>
-                        <p class="font-normal text-gray-700 dark:text-gray-400">Here are the biggest enterprise
-                            technology
-                            acquisitions of 2021 so far, in reverse chronological order.</p>
-                    </a> --}}
-
-
+                    @endforeach
                 </div>
                 <a href="{{ route('posts') }}"
                     class="flex text-gray-900 hover:text-indigo-500 dark:text-gray-400 dark:hover:text-indigo-500">Read

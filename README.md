@@ -53,7 +53,7 @@ Register form default account type is_admin false
 - [x] Light Mode & Dark Mode (Auto)
 - [x] Home - Featured Posts
 - [x] Posts - All Posts
-- [x] Single Post
+- [x] Single Post - Recomendation Posts
 - [ ] Guestbook
 - [x] About Me
 - [x] Gear

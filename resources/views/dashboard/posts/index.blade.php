@@ -40,11 +40,11 @@
                 </div>
             </div>
             {{--Search --}}
-            <form class="flex mb-5 items-center ">
+            <form class="flex items-center mb-5 ">
                 <div class="relative w-full">
                     <input type="text" id="simple-search" name="search"
                         class="bg-gray-50 border-2 border-gray-200 text-gray-900 text-sm rounded-lg  block w-full pl-4 p-2.5  dark:bg-gray-800 dark:border-gray-700 dark:placeholder-gray-400 dark:text-white focus:ring-transparent dark:focus:border-indigo-500"
-                        value="{{ request('search') }}" placeholder="Search by title">
+                        value="{{ request('search') }}" placeholder="Search by title / excerp / content">
                 </div>
                 <button type="submit"
                     class="p-2.5 ml-2 text-sm font-medium text-white bg-indigo-700 rounded-lg border-2 border-indigo-700 hover:bg-indigo-800 focus:ring-4 focus:outline-none focus:ring-indigo-300 dark:bg-indigo-600 dark:hover:bg-indigo-700 dark:focus:ring-indigo-800">
@@ -86,7 +86,7 @@
                 {{-- Post --}}
                 @foreach ($posts as $post)
                 <div class="mb-4 sm:flex">
-                    <div class="p-4 w-full  mb-2 bg-white rounded-lg sm:mr-5 w-sm dark:bg-gray-800 ">
+                    <div class="w-full p-4 mb-2 bg-white rounded-lg sm:mr-5 w-sm dark:bg-gray-800 ">
                         <div class="flex justify-between mb-2">
                             <div class="sm:flex sm:flex-row">
 
@@ -97,15 +97,15 @@
                                     {{ $post->published_at->diffForHumans() }}
                                 </p>
                             </div>
-                            <div class="flex flex-col sm:flex-row">
-                                <p class="text-right font-normal text-gray-700 dark:text-gray-400">
+                            <div class="flex flex-col sm:flex-row gap-x-2">
+                                <p class="font-normal text-right text-gray-700 dark:text-gray-400">
                                     @if ($post->is_published)
                                     Published
                                     @else
                                     Draft
                                     @endif
                                 </p>
-                                <p class="sm:ml-3 text-right font-normal text-indigo-700 dark:text-indigo-400">
+                                <p class="font-normal text-right text-indigo-700 dark:text-indigo-400">
                                     @if ($post->is_featured)
                                     Featured
                                     @endif
