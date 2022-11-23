@@ -21,8 +21,8 @@
                     <x-nav-link :href="route('posts.index')" :active="request()->routeIs('posts.index')">
                         {{ __('Posts') }}
                     </x-nav-link>
-                    <x-nav-link :href="route('dashboard.category.index')"
-                        :active="request()->routeIs('dashboard.category.index')">
+                    <x-nav-link :href="route('category.index')"
+                        :active="request()->routeIs('category.index')">
                         {{ __('Category') }}
                     </x-nav-link>
                     <x-nav-link :href="route('dashboard.portofolio.index')"
@@ -33,9 +33,8 @@
                         :active="request()->routeIs('dashboard.guestbook.index')">
                         {{ __('Guestbook') }}
                     </x-nav-link>
-                    <x-nav-link :href="route('dashboard.user.index')"
-                        :active="request()->routeIs('dashboard.user.index')">
-                        {{ __('User') }}
+                    <x-nav-link :href="route('user.index')" :active="request()->routeIs('user.index')">
+                        {{ __('Users') }}
                     </x-nav-link>
                     @endcan
                 </div>
@@ -108,6 +107,9 @@
                 <x-responsive-nav-link :href="route('posts.index')" :active="request()->routeIs('posts.index')">
                     {{ __('Posts') }}
                 </x-responsive-nav-link>
+                <x-responsive-nav-link :href="route('category.index')" :active="request()->routeIs('category.index')">
+                    {{ __('Category') }}
+                </x-responsive-nav-link>
                 <x-responsive-nav-link :href="route('dashboard.portofolio.index')"
                     :active="request()->routeIs('dashboard.portofolio.index')">
                     {{ __('Portofolio') }}
@@ -116,9 +118,8 @@
                     :active="request()->routeIs('dashboard.guestbook.index')">
                     {{ __('Guestbook') }}
                 </x-responsive-nav-link>
-                <x-responsive-nav-link :href="route('dashboard.user.index')"
-                    :active="request()->routeIs('dashboard.user.index')">
-                    {{ __('User') }}
+                <x-responsive-nav-link :href="route('user.index')" :active="request()->routeIs('user.index')">
+                    {{ __('Users') }}
                 </x-responsive-nav-link>
                 @endcan
             </div>

@@ -1,10 +1,12 @@
 <?php
 
-use App\Http\Controllers\DashboardController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\DashboardPostController;
+use App\Http\Controllers\DashboardUserController;
+use App\Http\Controllers\DashboardCategoryController;
 
 /*
 |--------------------------------------------------------------------------
@@ -52,13 +54,15 @@ Route::middleware('auth')->group(function () {
 Route::middleware(['auth', 'isAdmin'])->group(function () {
     // Dashboard Posts
     Route::resource('/dashboard/posts', DashboardPostController::class);
+    Route::resource('/dashboard/category', DashboardCategoryController::class);
+    Route::resource('/dashboard/user', DashboardUserController::class);
     // Dashboard Cartegory
-    Route::get('/dashboard/category', function () {
-        return view('dashboard.category.index');
-    })->name('dashboard.category.index');
-    Route::get('/dashboard/category/create', function () {
-        return view('dashboard.category.create');
-    })->name('dashboard.category.create');
+    // Route::get('/dashboard/category', function () {
+    //     return view('dashboard.category.index');
+    // })->name('dashboard.category.index');
+    // Route::get('/dashboard/category/create', function () {
+    //     return view('dashboard.category.create');
+    // })->name('dashboard.category.create');
     // Dashboard Portofolio
     Route::get('/dashboard/portofolio', function () {
         return view('dashboard.portofolio.index');
@@ -68,9 +72,9 @@ Route::middleware(['auth', 'isAdmin'])->group(function () {
         return view('dashboard.guestbook.index');
     })->name('dashboard.guestbook.index');
     // Dashboard Users
-    Route::get('/dashboard/user', function () {
-        return view('dashboard.user.index');
-    })->name('dashboard.user.index');
+    // Route::get('/dashboard/user', function () {
+    //     return view('dashboard.user.index');
+    // })->name('dashboard.user.index');
 });
 
 require __DIR__ . '/auth.php';

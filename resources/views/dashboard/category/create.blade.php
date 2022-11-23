@@ -1,12 +1,12 @@
 <x-app-layout>
     <x-slot name="header">
-        <h2 class="font-semibold text-4xl text-gray-800 dark:text-gray-200 leading-tight">
+        <h2 class="text-4xl font-semibold leading-tight text-gray-800 dark:text-gray-200">
             {{ __('Create Category') }}
         </h2>
     </x-slot>
 
     <div class="py-12">
-        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8 px-4 ">
+        <div class="px-4 mx-auto max-w-7xl sm:px-6 lg:px-8 ">
 
             <div class="mb-5">
 

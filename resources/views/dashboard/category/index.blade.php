@@ -1,6 +1,6 @@
 <x-app-layout>
     <x-slot name="header">
-        <h2 class="font-semibold text-4xl text-gray-800 dark:text-gray-200 leading-tight">
+        <h2 class="text-4xl font-semibold leading-tight text-gray-800 dark:text-gray-200">
             {{ __('Category') }}
         </h2>
     </x-slot>
@@ -8,11 +8,9 @@
 
     <div class="py-12">
 
-        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8 px-4 ">
-
-
+        <div class="px-4 mx-auto max-w-7xl sm:px-6 lg:px-8 ">
             {{-- Alert --}}
-            <div>
+            {{-- <div>
                 <div class="flex p-4 mb-4 text-sm text-green-700 bg-green-100 rounded-lg dark:bg-green-200 dark:text-green-800"
                     role="alert">
                     <svg aria-hidden="true" class="flex-shrink-0 inline w-5 h-5 mr-3" fill="currentColor"
@@ -23,15 +21,15 @@
                     </svg>
                     <span class="sr-only">Info</span>
                     <div>
-                        <span class="font-bold">Success alert!</span> Post created successfully.
+                        <span class="font-bold">Success alert!</span> Category created successfully.
                     </div>
                 </div>
 
 
-            </div>
+            </div> --}}
             {{-- Create --}}
-            <a href="{{ route('dashboard.category.create') }}"
-                class="inline-flex items-center px-4 py-2 mr-2 mb-5  text-sm font-medium leading-4 text-gray-100 dark:text-gray-300 transition duration-150 ease-in-out bg-indigo-700  rounded-md dark:bg-indigo-800 hover:bg-indigo-800 dark:hover:bg-indigo-600 focus:outline-none">
+            <a href="{{ route('category.create') }}"
+                class="inline-flex items-center px-4 py-2 mb-5 mr-2 text-sm font-medium leading-4 text-gray-100 transition duration-150 ease-in-out bg-indigo-700 rounded-md dark:text-gray-300 dark:bg-indigo-800 hover:bg-indigo-800 dark:hover:bg-indigo-600 focus:outline-none">
                 Create
             </a>
 
@@ -39,46 +37,51 @@
             {{-- All Category --}}
             <div>
                 {{-- Category --}}
-                <div class="sm:flex mb-4">
+                @foreach ($categories as $category)
+                <div class="mb-4 sm:flex">
 
-                    <div class=" w-full p-4 sm:mr-5 mb-2 bg-white flex items-center rounded-lg w-sm  dark:bg-gray-800 ">
-                        <h5 class=" text-base font-bold tracking-tight text-gray-900 dark:text-white">Laravel</h5>
+                    <div class="flex items-center w-full p-4 mb-2 bg-white rounded-lg sm:mr-5 w-sm dark:bg-gray-800">
+                        <h5 class="text-base font-bold tracking-tight text-gray-900 dark:text-white">
+                            {{ $category ->title }}
+                        </h5>
                     </div>
 
-                    <div class="sm:flex  flex-col">
+                    <div class="flex-col sm:flex">
                         <a href="#"
-                            class="inline-flex items-center px-4 py-2 mb-2  text-sm font-medium leading-4 text-gray-600 dark:text-gray-300 transition duration-150 ease-in-out bg-sky-200  rounded-md dark:bg-sky-800 hover:bg-sky-400 dark:hover:bg-sky-600 focus:outline-none">
+                            class="inline-flex items-center px-4 py-2 mb-2 text-sm font-medium leading-4 text-gray-600 transition duration-150 ease-in-out rounded-md dark:text-gray-300 bg-sky-200 dark:bg-sky-800 hover:bg-sky-400 dark:hover:bg-sky-600 focus:outline-none">
                             Edit
                         </a>
                         <a href="#"
-                            class="inline-flex items-center px-4 py-2 mb-2  text-sm font-medium leading-4 text-gray-600 dark:text-gray-300 transition duration-150 ease-in-out bg-red-200  rounded-md dark:bg-red-800 hover:bg-red-400 dark:hover:bg-red-600 focus:outline-none">
+                            class="inline-flex items-center px-4 py-2 mb-2 text-sm font-medium leading-4 text-gray-600 transition duration-150 ease-in-out bg-red-200 rounded-md dark:text-gray-300 dark:bg-red-800 hover:bg-red-400 dark:hover:bg-red-600 focus:outline-none">
                             Delete
                         </a>
 
                     </div>
 
 
-                </div>
-                <div class="sm:flex mb-4">
 
-                    <div class=" w-full p-4 sm:mr-5 mb-2 bg-white flex items-center rounded-lg w-sm  dark:bg-gray-800 ">
-                        <h5 class=" text-base font-bold tracking-tight text-gray-900 dark:text-white">Tailwind CSS</h5>
+                </div>
+                @endforeach
+                {{-- <div class="mb-4 sm:flex">
+
+                    <div class="flex items-center w-full p-4 mb-2 bg-white rounded-lg sm:mr-5 w-sm dark:bg-gray-800">
+                        <h5 class="text-base font-bold tracking-tight text-gray-900 dark:text-white">Tailwind CSS</h5>
                     </div>
 
-                    <div class="sm:flex  flex-col">
+                    <div class="flex-col sm:flex">
                         <a href="#"
-                            class="inline-flex items-center px-4 py-2 mb-2  text-sm font-medium leading-4 text-gray-600 dark:text-gray-300 transition duration-150 ease-in-out bg-sky-200  rounded-md dark:bg-sky-800 hover:bg-sky-400 dark:hover:bg-sky-600 focus:outline-none">
+                            class="inline-flex items-center px-4 py-2 mb-2 text-sm font-medium leading-4 text-gray-600 transition duration-150 ease-in-out rounded-md dark:text-gray-300 bg-sky-200 dark:bg-sky-800 hover:bg-sky-400 dark:hover:bg-sky-600 focus:outline-none">
                             Edit
                         </a>
                         <a href="#"
-                            class="inline-flex items-center px-4 py-2 mb-2  text-sm font-medium leading-4 text-gray-600 dark:text-gray-300 transition duration-150 ease-in-out bg-red-200  rounded-md dark:bg-red-800 hover:bg-red-400 dark:hover:bg-red-600 focus:outline-none">
+                            class="inline-flex items-center px-4 py-2 mb-2 text-sm font-medium leading-4 text-gray-600 transition duration-150 ease-in-out bg-red-200 rounded-md dark:text-gray-300 dark:bg-red-800 hover:bg-red-400 dark:hover:bg-red-600 focus:outline-none">
                             Delete
                         </a>
 
                     </div>
 
 
-                </div>
+                </div> --}}
 
             </div>
 

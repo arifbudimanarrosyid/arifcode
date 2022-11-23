@@ -18,16 +18,21 @@
             </div>
             <div class="gap-5 mb-1 sm:flex">
                 <div class="block w-full p-4 mb-4 bg-white rounded-lg dark:bg-gray-800 ">
-                    <h5 class="mb-2 text-xl tracking-tight text-gray-900 dark:text-white">Total Posts</h5>
-                    <p class="text-2xl font-bold text-indigo-700 dark:text-indigo-400">{{ $totalPosts }}</p>
+                    <h5 class="mb-2 text-xl tracking-tight text-gray-900 dark:text-white">Posts</h5>
+                    <p class="text-2xl font-bold text-indigo-700 dark:text-indigo-400">{{ $posts }}</p>
                 </div>
                 <div class="block w-full p-4 mb-4 bg-white rounded-lg dark:bg-gray-800 ">
                     <h5 class="mb-2 text-xl tracking-tight text-gray-900 dark:text-white">Published</h5>
                     <p class="text-2xl font-bold text-indigo-700 dark:text-indigo-400">{{ $publishedPosts }}</p>
                 </div>
+
                 <div class="block w-full p-4 mb-4 bg-white rounded-lg dark:bg-gray-800 ">
                     <h5 class="mb-2 text-xl tracking-tight text-gray-900 dark:text-white">Draft</h5>
                     <p class="text-2xl font-bold text-indigo-700 dark:text-indigo-400">{{ $draftPosts }}</p>
+                </div>
+                <div class="block w-full p-4 mb-4 bg-white rounded-lg dark:bg-gray-800 ">
+                    <h5 class="mb-2 text-xl tracking-tight text-gray-900 dark:text-white">Categories</h5>
+                    <p class="text-2xl font-bold text-indigo-700 dark:text-indigo-400">{{ $categories }}</p>
                 </div>
             </div>
             <div class="gap-5 mb-1 sm:flex">
@@ -52,10 +57,13 @@
                     <h5 class="mb-2 text-xl tracking-tight text-gray-900 dark:text-white">Guestbooks</h5>
                     <p class="text-2xl font-bold text-lime-700 dark:text-lime-400">100</p>
                 </div>
+                @can('admin')
+
                 <div class="block w-full p-4 mb-4 bg-white rounded-lg dark:bg-gray-800 ">
                     <h5 class="mb-2 text-xl tracking-tight text-gray-900 dark:text-white">Users</h5>
-                    <p class="text-2xl font-bold text-cyan-700 dark:text-cyan-400">69</p>
+                    <p class="text-2xl font-bold text-cyan-700 dark:text-cyan-400">{{ $users }}</p>
                 </div>
+                @endcan
             </div>
 
         </div>
