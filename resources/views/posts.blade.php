@@ -75,11 +75,7 @@
                     <h1 class="mt-4 text-gray-600 dark:text-gray-400">No Post Found.</h1>
                     @endif
                     {{ $posts->links() }}
-
-
-
                 </div>
-
             </div>
 
 

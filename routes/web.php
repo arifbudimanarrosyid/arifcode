@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\GuestbookController;
 use App\Http\Controllers\DashboardPostController;
 use App\Http\Controllers\DashboardUserController;
 use App\Http\Controllers\DashboardCategoryController;
@@ -25,9 +26,7 @@ use App\Http\Controllers\DashboardCategoryController;
 Route::get('/', [PostController::class, 'home'])->name('home');
 Route::get('/posts', [PostController::class, 'index'])->name('posts');
 Route::get('/post/{slug}', [PostController::class, 'show'])->name('post');
-Route::get('/guestbook', function () {
-    return view('guestbook');
-})->name('guestbook');
+
 
 Route::get('/portofolio', function () {
     return view('portofolio');
@@ -41,6 +40,8 @@ Route::get('/aboutme', function () {
 
 
 // Dashboard
+Route::resource('/guestbook', GuestbookController::class)
+    ->only(['index', 'store', 'edit', 'update', 'destroy']);
 
 Route::middleware('auth')->group(function () {
     // Profile
@@ -49,6 +50,10 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
     // Dashboard
     Route::get('/dashboard', DashboardController::class, 'index')->name('dashboard');
+    // Guestbook
+    // Route::get('/guestbook', function () {
+    //     return view('guestbook');
+    // })->name('guestbook');
 });
 
 Route::middleware(['auth', 'isAdmin'])->group(function () {
