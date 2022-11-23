@@ -63,6 +63,11 @@ Register form default account type is_admin false
 
 ### Auth
 - [x] Auth - Login & Register
+- [ ] Guestbook
+  - [ ] Create
+  - [ ] Read
+  - [ ] Update
+  - [ ] Delete
 - [x] Dashboard
 - [x] Dashboard - Profile
 

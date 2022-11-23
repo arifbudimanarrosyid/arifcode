@@ -40,8 +40,7 @@
                             <h5 class="font-bold tracking-tight text-indigo-500 dark:text-indigo-400">{{
                                 $post->category->title }}
                             </h5>
-                            <span
-                                class="inline-flex items-center text-xs font-medium text-gray-800 dark:text-gray-300">
+                            <span class="inline-flex items-center text-xs font-medium text-gray-800 dark:text-gray-300">
                                 <svg aria-hidden="true" class="w-3 h-3 mr-1" fill="currentColor" viewBox="0 0 20 20"
                                     xmlns="http://www.w3.org/2000/svg">
                                     <path fill-rule="evenodd"
@@ -60,43 +59,27 @@
                         </p>
                     </a>
                     @endforeach
+                    <div class="flex">
+                        <a href="{{ route('posts') }}"
+                            class="flex text-lg text-gray-900 hover:text-indigo-500 dark:text-gray-400 dark:hover:text-indigo-500">
+                            Read all posts
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                                stroke="currentColor" class="w-6 h-6 ml-3">
+                                <path stroke-linecap="round" stroke-linejoin="round"
+                                    d="M17.25 8.25L21 12m0 0l-3.75 3.75M21 12H3" />
+                            </svg>
+                        </a>
+                    </div>
                 </div>
-                <a href="{{ route('posts') }}"
-                    class="flex text-gray-900 hover:text-indigo-500 dark:text-gray-400 dark:hover:text-indigo-500">Read
-                    all
-                    posts <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
-                        stroke="currentColor" class="w-6 h-6 ml-3">
-                        <path stroke-linecap="round" stroke-linejoin="round"
-                            d="M17.25 8.25L21 12m0 0l-3.75 3.75M21 12H3" />
-                    </svg>
-                </a>
+
             </div>
-            {{-- Tools --}}
+            {{-- Other --}}
             {{-- <div class="flex overflow-hidden ">
                 <div class="px-4 sm:px-0">
-                    <h1
-                        class="mb-2 text-4xl font-bold text-gray-800 underline capitalize decoration-cyan-500 dark:text-white">
-                        Tools
-                    </h1>
-
-                    <h2 class="mb-5 text-gray-600 dark:text-gray-400">This is the tools I use to build this web. </h2>
-                    <ul class="max-w-full space-y-3 text-gray-500 list-disc list-inside dark:text-gray-400">
-                        <li class="font-semibold">
-                            Laravel 9
-                        </li>
-                        <li class="font-semibold">
-                            Laravel Breeze
-                        </li>
-                        <li class="font-semibold">
-                            Tailwind CSS
-                        </li>
-                        <li class="font-semibold">
-                            Flowbite
-                        </li>
-                    </ul>
 
                 </div>
             </div> --}}
+
 
 
         </div>
