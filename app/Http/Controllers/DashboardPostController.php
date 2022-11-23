@@ -12,18 +12,29 @@ class DashboardPostController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
     public function index()
     {
-        // post all with pagination 5 and order by created_at desc
-        $posts = Posts::orderBy('published_at', 'desc')->with(['category'])
-        ->paginate(5);
+        $search = request('search');
+        if ($search) {
+            $posts = Posts::where('title', 'like', '%' . $search . '%')
+                ->orWhere('excerpt', 'like', '%' . $search . '%')
+                ->orWhere('content', 'like', '%' . $search . '%')
+                ->orderBy('published_at', 'desc')
+                ->with(['category'])
+                ->paginate(10)
+                ->withQueryString();
+        } else {
+            $posts = Posts::orderBy('published_at', 'desc')
+                ->with(['category'])
+                ->paginate(10);
+        }
         $totalPosts = Posts::count();
         $publishedPosts = Posts::where('is_published', 1)->count();
         $draftPosts = Posts::where('is_published', 0)->count();
         $featuredPosts = Posts::where('is_featured', 1)->count();
         $featuredAndPublishedPosts = Posts::where('is_featured', 1)->where('is_published', 1)->count();
-        return view('dashboard.posts.index', compact('posts','totalPosts','publishedPosts','draftPosts','featuredPosts','featuredAndPublishedPosts'));
-        // return view('dashboard.posts.index');
+        return view('dashboard.posts.index', compact('posts', 'totalPosts', 'publishedPosts', 'draftPosts', 'featuredPosts', 'featuredAndPublishedPosts'));
     }
 
     /**

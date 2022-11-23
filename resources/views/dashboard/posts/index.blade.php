@@ -39,28 +39,26 @@
                     </div>
                 </div>
             </div>
-            {{-- Search --}}
-            <div class="mb-4">
-                <form class="flex items-center ">
-                    <label for="simple-search" class="sr-only">Search</label>
-                    <div class="relative w-full">
-                        <input type="text" id="simple-search"
-                            class="bg-gray-50 border-2 border-gray-200 text-gray-900 text-sm rounded-lg  block w-full pl-4 p-2.5  dark:bg-gray-800 dark:border-gray-700 dark:placeholder-gray-400 dark:text-white focus:ring-transparent dark:focus:border-indigo-500"
-                            placeholder="Search by title" required>
-                    </div>
-                    <button type="submit"
-                        class="p-2.5 ml-2 text-sm font-medium text-white bg-indigo-700 rounded-lg border-2 border-indigo-700 hover:bg-indigo-800 focus:ring-4 focus:outline-none focus:ring-indigo-300 dark:bg-indigo-600 dark:hover:bg-indigo-700 dark:focus:ring-indigo-800">
-                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"
-                            xmlns="http://www.w3.org/2000/svg">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
-                        </svg>
-                        <span class="sr-only">Search</span>
-                    </button>
-                </form>
-            </div>
+            {{--Search --}}
+            <form class="flex mb-5 items-center ">
+                <div class="relative w-full">
+                    <input type="text" id="simple-search" name="search"
+                        class="bg-gray-50 border-2 border-gray-200 text-gray-900 text-sm rounded-lg  block w-full pl-4 p-2.5  dark:bg-gray-800 dark:border-gray-700 dark:placeholder-gray-400 dark:text-white focus:ring-transparent dark:focus:border-indigo-500"
+                        value="{{ request('search') }}" placeholder="Search by title">
+                </div>
+                <button type="submit"
+                    class="p-2.5 ml-2 text-sm font-medium text-white bg-indigo-700 rounded-lg border-2 border-indigo-700 hover:bg-indigo-800 focus:ring-4 focus:outline-none focus:ring-indigo-300 dark:bg-indigo-600 dark:hover:bg-indigo-700 dark:focus:ring-indigo-800">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                        xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+                    </svg>
+                    <span class="sr-only">Search</span>
+                </button>
+            </form>
             {{-- Alert --}}
-            {{-- <div class="flex p-4 mb-4 text-sm text-green-700 bg-green-100 rounded-lg dark:bg-green-200 dark:text-green-800"
+            {{-- <div
+                class="flex p-4 mb-4 text-sm text-green-700 bg-green-100 rounded-lg dark:bg-green-200 dark:text-green-800"
                 role="alert">
                 <svg aria-hidden="true" class="flex-shrink-0 inline w-5 h-5 mr-3" fill="currentColor"
                     viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
@@ -84,6 +82,7 @@
 
             {{-- All Posts --}}
             <div class="w-full">
+                @if ($posts->count())
                 {{-- Post --}}
                 @foreach ($posts as $post)
                 <div class="mb-4 sm:flex">
@@ -141,6 +140,9 @@
 
                 </div>
                 @endforeach
+                @else
+                <h1 class="mt-4 text-gray-600 dark:text-gray-400">No Post Found</h1>
+                @endif
 
                 {{ $posts->links() }}
 

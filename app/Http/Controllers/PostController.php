@@ -16,12 +16,14 @@ class PostController extends Controller
                 ->orWhere('content', 'like', '%' . $search . '%')
                 ->where('is_published', true)
                 ->orderBy('published_at', 'desc')
+                ->with(['category'])
                 ->paginate(10)
                 ->withQueryString();
         } else {
             $posts = Posts::where('is_published', true)
                 ->with(['category'])
                 ->orderBy('published_at', 'desc')
+                ->with(['category'])
                 ->paginate(10);
         }
         return view('posts')->with('posts', $posts);
