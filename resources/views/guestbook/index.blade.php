@@ -44,7 +44,7 @@
                                 <div class="flex-1">
                                     <div class="flex items-center justify-between">
                                         <div>
-                                            <span class="text-base text-indigo-400 dark:text-indigo-500">{{
+                                            <span class="text-base text-indigo-400 dark:text-indigo-400">{{
                                                 $guestbook->user->name }}</span>
                                             <small class="ml-2 text-sm text-gray-400 dark:text-gray-400">
                                                 {{ $guestbook->created_at->diffForHumans() }}

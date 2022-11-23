@@ -78,8 +78,11 @@
                     </h1>
                     <h1 class="text-gray-600 dark:text-gray-400">This website is inspired by <a
                             href="https://leerob.io/" class="text-blue-400">leerob.io</a> and <a
-                            href="https://rizkicitra.dev/" class="text-blue-400">rizkicitra.dev</a>. Made with Laravel
-                        9, Laravel Breeze, Alpine.js, Tailwind CSS, Flowbite, Heroicons, Meraki UI.</h1>
+                            href="https://rizkicitra.dev/" class="text-blue-400">rizkicitra.dev</a>. Guestbook page
+                        inspired by <a href="https://bootcamp.laravel.com/introduction" class="text-blue-400">Chirper</a> Laravel Bootcamp.
+                        Made with Laravel
+                        9, Laravel Breeze, Alpine.js, Tailwind CSS, Flowbite, Heroicons, Meraki UI.
+                    </h1>
                 </div>
             </div>
         </div>
