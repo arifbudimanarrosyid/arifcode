@@ -54,7 +54,7 @@ Register form default account type is_admin false
 - [x] Posts - All Posts
 - [x] Single Post - Recomendation Posts
 - [x] Portofolio
-- [ ] Guestbook
+- [x] Guestbook
 - [x] About Me
 - [x] Gear
 
