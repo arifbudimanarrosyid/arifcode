@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Category;
+use App\Models\Guestbook;
 use App\Models\User;
 use App\Models\Posts;
 use Illuminate\Http\Request;
@@ -15,9 +16,10 @@ class DashboardController extends Controller
         $posts = Posts::count();
         $publishedPosts = Posts::where('is_published', 1)->count();
         $draftPosts = Posts::where('is_published', 0)->count();
+        $categories = Category::count();
         $featuredPosts = Posts::where('is_featured', 1)->count();
         $featuredAndPublishedPosts = Posts::where('is_featured', 1)->where('is_published', 1)->count();
-        $categories = Category::count();
+        $guestbooks = Guestbook::count();
         if (Auth::user()->is_admin === 1) {
             $users = User::count();
             return view('dashboard', compact(
@@ -26,8 +28,9 @@ class DashboardController extends Controller
                 'draftPosts',
                 'featuredPosts',
                 'featuredAndPublishedPosts',
+                'categories',
+                'guestbooks',
                 'users',
-                'categories'
             ));
         } else {
             return view('dashboard', compact(
@@ -36,7 +39,8 @@ class DashboardController extends Controller
                 'draftPosts',
                 'featuredPosts',
                 'featuredAndPublishedPosts',
-                'categories'
+                'categories',
+                'guestbooks',
             ));
         }
     }

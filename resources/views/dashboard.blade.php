@@ -55,7 +55,7 @@
                 <div class="block w-full p-4 mb-4 bg-white rounded-lg dark:bg-gray-800 ">
 
                     <h5 class="mb-2 text-xl tracking-tight text-gray-900 dark:text-white">Guestbooks</h5>
-                    <p class="text-2xl font-bold text-lime-700 dark:text-lime-400">100</p>
+                    <p class="text-2xl font-bold text-lime-700 dark:text-lime-400">{{ $guestbooks }}</p>
                 </div>
                 @can('admin')
 

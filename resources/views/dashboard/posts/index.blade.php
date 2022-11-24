@@ -97,19 +97,21 @@
                                     {{ $post->published_at->diffForHumans() }}
                                 </p>
                             </div>
-                            <div class="flex flex-col sm:flex-row gap-x-2">
+                            <div class="flex flex-col sm:flex-row ">
+                                @if ($post->is_published)
                                 <p class="font-normal text-right text-gray-700 dark:text-gray-400">
-                                    @if ($post->is_published)
                                     Published
-                                    @else
+                                </p>
+                                @else
+                                <p class="font-normal text-right text-gray-700 dark:text-gray-400">
                                     Draft
-                                    @endif
                                 </p>
-                                <p class="font-normal text-right text-indigo-700 dark:text-indigo-400">
-                                    @if ($post->is_featured)
+                                @endif
+                                @if ($post->is_featured)
+                                <p class="font-normal ml-2 text-right text-indigo-700 dark:text-indigo-400">
                                     Featured
-                                    @endif
                                 </p>
+                                @endif
                             </div>
                         </div>
 

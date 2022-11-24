@@ -7,14 +7,29 @@
                         class="text-4xl font-bold text-gray-800 underline capitalize decoration-green-500 dark:text-white">
                         Guestbook
                     </h1>
-                    <h1 class="mt-4 text-gray-600 dark:text-gray-400">Hope you like the website, please leave a message.
-                        You need to login.
+                    <h1 class="mt-4 text-gray-600 dark:text-gray-400">
+                        Hope you enjoy the website, if you have something to say or request, or just say hello, please
+                        leave a message.
+                        @auth
+                        You login as role
+                        @if (Auth::user()->is_admin)
+                        <span class="text-green-400">
+                            Admin
+                        </span>
+                        @else
+                        <span class="text-green-400">
+                            User
+                        </span>
+                        @endif
+                        @else
+                        You need to <a href="{{ route('login') }}" class="text-green-400">login</a> to show the form.
+                        @endauth
                     </h1>
 
                 </div>
 
             </div>
-            <div class="flex my-5 overflow-hidden ">
+            <div class="flex my-5 ">
                 <div class="w-full px-4 sm:px-0">
                     <div class="w-full ">
                         @auth
@@ -43,20 +58,33 @@
                             <div class="flex p-4 ">
                                 <div class="flex-1">
                                     <div class="flex items-center justify-between">
-                                        <div>
-                                            <span class="text-base text-indigo-400 dark:text-indigo-400">{{
-                                                $guestbook->user->name }}</span>
-                                            <small class="ml-2 text-sm text-gray-400 dark:text-gray-400">
-                                                {{ $guestbook->created_at->diffForHumans() }}
-                                            </small>
-                                            @unless ($guestbook->created_at->eq($guestbook->updated_at))
-                                            <small class="text-sm text-gray-400 dark:text-gray-400"> &middot; {{
-                                                __('edited')
-                                                }}</small>
-                                            @endunless
+                                        <div class="flex flex-col sm:flex-row">
+                                            <div>
+
+                                                @if ($guestbook->user_id == Auth::id())
+                                                <span class="text-base text-green-400 dark:text-green-400">
+                                                    {{$guestbook->user->name }}
+                                                </span>
+                                                @else
+                                                <span class="text-base text-gray-500 dark:text-gray-400">
+                                                    {{$guestbook->user->name }}
+                                                </span>
+                                                @endif
+                                            </div>
+                                            <div>
+                                                <small class="sm:ml-2  text-sm text-gray-400 dark:text-gray-400">
+                                                    {{ $guestbook->created_at->diffForHumans() }}
+                                                </small>
+                                                @unless ($guestbook->created_at->eq($guestbook->updated_at))
+                                                <small class="text-sm text-gray-400 dark:text-gray-400"> &middot; {{
+                                                    __('edited')
+                                                    }}</small>
+                                                @endunless
+                                            </div>
                                         </div>
 
-                                        @if ($guestbook->user->is(auth()->user()))
+                                        @auth
+                                        @if ($guestbook->user_id == Auth::id() || Auth::user()->is_admin == true)
                                         <x-dropdown>
                                             <x-slot name="trigger">
                                                 <button>
@@ -84,9 +112,9 @@
                                             </x-slot>
                                         </x-dropdown>
                                         @endif
-
+                                        @endauth
                                     </div>
-                                    <p class="mt-2 text-lg text-gray-900 dark:text-gray-300">{{ $guestbook->message }}
+                                    <p class="mt-2 text-base text-gray-900 dark:text-gray-300">{{ $guestbook->message }}
                                     </p>
                                 </div>
                             </div>

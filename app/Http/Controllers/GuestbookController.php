@@ -15,9 +15,7 @@ class GuestbookController extends Controller
      */
     public function index()
     {
-        //$guestbook with user orderby created_at desc
         $guestbooks = Guestbook::with('user')->orderBy('created_at', 'desc')->get();
-        // $guestbooks = Guestbook::with('user')->orderBy()->get();
         return  view('guestbook.index', compact('guestbooks'));
     }
 
@@ -39,22 +37,6 @@ class GuestbookController extends Controller
      */
     public function store(Request $request)
     {
-
-        // if auth
-        // if (Auth::check()) {
-        //     // $request->validate([
-        //     //     'message' => 'required',
-        //     // ]);
-        //     $guestbook = new Guestbook();
-        //     $guestbook->message = $request->message;
-        //     $guestbook->user_id = Auth::user()->id;
-        //     $guestbook->save();
-        //     return redirect()->route('guestbook.index');
-        // } else {
-        //     return redirect()->route('login');
-        // }
-
-
         $validated = $request->validate([
             'message' => 'required|string|max:255',
         ]);
@@ -83,18 +65,15 @@ class GuestbookController extends Controller
      */
     public function edit(Guestbook $guestbook)
     {
-        //if auth check
         if (Auth::check()) {
-            //if auth id == guestbook user id
-            if (Auth::user()->id == $guestbook->user_id) {
+            if (Auth::user()->id == $guestbook->user_id || Auth::user()->is_admin == true) {
                 return view('guestbook.edit', compact('guestbook'));
             } else {
                 return redirect()->route('guestbook.index');
             }
         } else {
-            return redirect()->route('login');
+            return redirect()->route('guestbook.index');
         }
-
     }
 
     /**
@@ -106,8 +85,6 @@ class GuestbookController extends Controller
      */
     public function update(Request $request, Guestbook $guestbook)
     {
-        // $this->authorize('update', $guestbook);
-
         $validated = $request->validate([
             'message' => 'required|string|max:255',
         ]);
@@ -125,20 +102,15 @@ class GuestbookController extends Controller
      */
     public function destroy(Guestbook $guestbook)
     {
-        //if auth check
-        //if auth id == guestbook user id
         if (Auth::check()) {
-            if (Auth::user()->id == $guestbook->user_id) {
+            if (Auth::user()->id == $guestbook->user_id || Auth::user()->is_admin == true) {
                 $guestbook->delete();
                 return redirect()->route('guestbook.index');
             } else {
                 return redirect()->route('guestbook.index');
             }
         } else {
-            return redirect()->route('login');
+            return redirect()->route('guestbook.index');
         }
-        // $guestbook->delete();
-
-        // return redirect(route('guestbook.index'));
     }
 }
