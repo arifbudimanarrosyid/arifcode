@@ -14,9 +14,13 @@
                     <span
                         class="mt-5 mb-2 bg-gray-200 text-gray-800 text-xs font-medium inline-flex items-center px-2.5 py-0.5 rounded mr-2 dark:bg-gray-700 dark:text-gray-300">
                         Published {{ $post->published_at->format('d M Y') }}
-
-                        {{-- {{ $post->published_at->diffForHumans()}}</p> --}}
                     </span>
+                    @if ($post->thumbnail)
+                    <img src="{{ asset('/storage/thumbnails/'.$post->thumbnail) }}" alt="image"
+                        class="w-full mt-5 object-cover rounded-lg">
+                    @endif
+                    {{-- <img src="{{ asset('/storage/thumbnails/'.$post->thumbnail) }}" alt="image"
+                        class="w-full mt-5 h-96 object-cover"> --}}
 
                     <p class="mt-5 font-normal text-gray-700 dark:text-gray-300">{{ $post->excerpt }}</p>
 

@@ -44,7 +44,7 @@ class PostController extends Controller
         $post = Posts::where('slug', $slug)
             ->with(['category'])
             ->where('is_published', true)
-            ->first();
+            ->firstOrFail();
         // dd($post);
 
         $recomendation = Posts::where('is_published', true)

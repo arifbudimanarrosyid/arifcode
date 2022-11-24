@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Category;
 use App\Models\Posts;
 use Illuminate\Http\Request;
 
@@ -20,12 +21,12 @@ class DashboardPostController extends Controller
             $posts = Posts::where('title', 'like', '%' . $search . '%')
                 ->orWhere('excerpt', 'like', '%' . $search . '%')
                 ->orWhere('content', 'like', '%' . $search . '%')
-                ->orderBy('published_at', 'desc')
+                ->orderBy('created_at', 'desc')
                 ->with(['category'])
                 ->paginate(10)
                 ->withQueryString();
         } else {
-            $posts = Posts::orderBy('published_at', 'desc')
+            $posts = Posts::orderBy('created_at', 'desc')
                 ->with(['category'])
                 ->paginate(10);
         }
@@ -44,7 +45,8 @@ class DashboardPostController extends Controller
      */
     public function create()
     {
-        return view('dashboard.posts.create');
+        $categories = Category::all();
+        return view('dashboard.posts.create', compact('categories'));
     }
 
     /**
@@ -55,7 +57,45 @@ class DashboardPostController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'thumbnail' => 'image|mimes:jpeg,png,jpg|max:2048',
+            'title' => 'required|max:255',
+            'slug' => 'required|unique:posts|string|max:255',
+            'category_id' => 'required',
+            'excerpt' => 'required',
+            'content' => 'required',
+            'published_at' => 'required',
+        ]);
+
+        if ($request->hasFile('thumbnail')) {
+            $thumbnail = $request->file('thumbnail');
+            $thumbnailName = time() . '.' . $thumbnail->extension();
+            $thumbnail->move(public_path('storage/thumbnails'), $thumbnailName);
+        } else {
+            $thumbnailName = null;
+        }
+
+        // if request have slug change to lowwercase and replace space with dash
+        if ($request->slug) {
+            $slug = strtolower(str_replace(' ', '-', $request->slug));
+        } else {
+            $slug = strtolower(str_replace(' ', '-', $request->title));
+        }
+
+        $post = Posts::create([
+            'category_id' => $request->category_id,
+            'title' => $request->title,
+            'slug' => $slug,
+            'excerpt' => $request->excerpt,
+            'content' => $request->content,
+            'thumbnail' => $thumbnailName,
+            'is_published' => $request->is_published,
+            'is_featured' => $request->is_featured,
+            'published_at' => $request->published_at,
+        ]);
+        // dd($post);
+
+        return redirect()->route('posts.index')->with('success', 'Post created successfully');
     }
 
     /**

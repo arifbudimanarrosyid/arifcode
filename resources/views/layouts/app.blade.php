@@ -9,6 +9,10 @@
     <title>{{ config('app.name', 'Laravel') }} - Dashboard</title>
     <link rel="icon" href="{{ asset('fav.png') }}" type="image">
 
+    {{-- Trix --}}
+    <link rel="stylesheet" type="text/css" href="https://unpkg.com/trix@2.0.0/dist/trix.css">
+    <script type="text/javascript" src="https://unpkg.com/trix@2.0.0/dist/trix.umd.min.js"></script>
+
     <!-- Fonts -->
     <link rel="stylesheet" href="https://fonts.bunny.net/css2?family=Inter:wght@400;600;700&display=swap">
 
