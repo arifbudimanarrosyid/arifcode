@@ -61,25 +61,9 @@ Route::middleware(['auth', 'isAdmin'])->group(function () {
     Route::resource('/dashboard/posts', DashboardPostController::class);
     Route::resource('/dashboard/category', DashboardCategoryController::class);
     Route::resource('/dashboard/user', DashboardUserController::class);
-    // Dashboard Cartegory
-    // Route::get('/dashboard/category', function () {
-    //     return view('dashboard.category.index');
-    // })->name('dashboard.category.index');
-    // Route::get('/dashboard/category/create', function () {
-    //     return view('dashboard.category.create');
-    // })->name('dashboard.category.create');
-    // Dashboard Portofolio
     Route::get('/dashboard/portofolio', function () {
         return view('dashboard.portofolio.index');
     })->name('dashboard.portofolio.index');
-    // Dashboard Guestbook
-    Route::get('/dashboard/guestbook', function () {
-        return view('dashboard.guestbook.index');
-    })->name('dashboard.guestbook.index');
-    // Dashboard Users
-    // Route::get('/dashboard/user', function () {
-    //     return view('dashboard.user.index');
-    // })->name('dashboard.user.index');
 });
 
 require __DIR__ . '/auth.php';

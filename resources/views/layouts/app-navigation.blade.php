@@ -21,17 +21,12 @@
                     <x-nav-link :href="route('posts.index')" :active="request()->routeIs('posts.index')">
                         {{ __('Posts') }}
                     </x-nav-link>
-                    <x-nav-link :href="route('category.index')"
-                        :active="request()->routeIs('category.index')">
+                    <x-nav-link :href="route('category.index')" :active="request()->routeIs('category.index')">
                         {{ __('Category') }}
                     </x-nav-link>
                     <x-nav-link :href="route('dashboard.portofolio.index')"
                         :active="request()->routeIs('dashboard.portofolio.index')">
                         {{ __('Portofolio') }}
-                    </x-nav-link>
-                    <x-nav-link :href="route('dashboard.guestbook.index')"
-                        :active="request()->routeIs('dashboard.guestbook.index')">
-                        {{ __('Guestbook') }}
                     </x-nav-link>
                     <x-nav-link :href="route('user.index')" :active="request()->routeIs('user.index')">
                         {{ __('Users') }}
@@ -113,10 +108,6 @@
                 <x-responsive-nav-link :href="route('dashboard.portofolio.index')"
                     :active="request()->routeIs('dashboard.portofolio.index')">
                     {{ __('Portofolio') }}
-                </x-responsive-nav-link>
-                <x-responsive-nav-link :href="route('dashboard.guestbook.index')"
-                    :active="request()->routeIs('dashboard.guestbook.index')">
-                    {{ __('Guestbook') }}
                 </x-responsive-nav-link>
                 <x-responsive-nav-link :href="route('user.index')" :active="request()->routeIs('user.index')">
                     {{ __('Users') }}
