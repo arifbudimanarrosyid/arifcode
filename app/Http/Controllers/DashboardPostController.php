@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Category;
 use App\Models\Posts;
+use App\Models\Category;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class DashboardPostController extends Controller
 {
@@ -104,9 +105,13 @@ class DashboardPostController extends Controller
      * @param  \App\Models\Posts  $posts
      * @return \Illuminate\Http\Response
      */
-    public function show(Posts $posts)
+
+    public function show($id)
     {
-        //
+        $posts = Posts::findOrFail($id);
+
+        // dd($posts);
+        return view('dashboard.posts.show', compact('posts'));
     }
 
     /**
@@ -138,8 +143,12 @@ class DashboardPostController extends Controller
      * @param  \App\Models\Posts  $posts
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Posts $posts)
+    public function destroy(Posts $post)
     {
-        //
+        if ($post->thumbnail) {
+            unlink(public_path('storage/thumbnails/' . $post->thumbnail));
+        }
+        Posts::destroy($post->id);
+        return redirect()->route('posts.index')->with('success', 'Post deleted successfully');
     }
 }

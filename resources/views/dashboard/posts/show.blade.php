@@ -1,35 +1,58 @@
-<x-guest-layout>
+<x-app-layout>
+    <x-slot name="header">
+        <h2 class="text-4xl font-semibold leading-tight text-gray-800 dark:text-gray-200">
+            {{ __('Show Post') }}
+        </h2>
+    </x-slot>
+
     <div class="py-12">
-        <div class="mx-auto max-w-7xl sm:px-6 lg:px-8">
-            {{-- Blog --}}
-            <div class="mb-5 overflow-hidden ">
-                <div class="px-4 sm:px-0">
+        <div class="px-4 mx-auto max-w-7xl sm:px-6 lg:px-8 ">
+            <div class="mb-4 overflow-hidden">
+                    <div class="flex justify-between mb-2">
+                        <a href="{{ route('posts.index') }}"
+                            class="inline-flex items-center px-4 py-2 mb-2 text-sm font-medium leading-4 text-gray-600 transition duration-150 ease-in-out bg-green-200 rounded-md dark:text-gray-300 dark:bg-green-800 hover:bg-green-400 dark:hover:bg-green-600 focus:outline-none">
+                            Back
+                        </a>
+                        <a href="{{ route('posts.edit', $posts->id) }}"
+                            class="inline-flex items-center px-4 py-2 mb-2 text-sm font-medium leading-4 text-gray-600 transition duration-150 ease-in-out rounded-md dark:text-gray-300 bg-sky-200 dark:bg-sky-800 hover:bg-sky-400 dark:hover:bg-sky-600 focus:outline-none">
+                            Edit
+                        </a>
+                    </div>
                     <h5 class="mb-2 font-bold tracking-tight text-indigo-500 dark:text-indigo-400">
-                        {{$post->category->title }}
+                        {{$posts->category->title }}
                     </h5>
                     <h1
                         class="text-4xl font-bold text-gray-800 underline capitalize decoration-indigo-500 dark:text-white">
-                        {{ $post->title }}
+                        {{ $posts->title }}
                     </h1>
+
+                    @if ($posts->is_published == 1)
                     <span
                         class="mt-5 mb-2 bg-gray-200 text-gray-800 text-xs font-medium inline-flex items-center px-2.5 py-0.5 rounded mr-2 dark:bg-gray-700 dark:text-gray-300">
-                        Published {{ $post->published_at->format('d M Y') }}
+                        Published {{ $posts->published_at->format('d M Y') }}
                     </span>
-                    @if ($post->thumbnail)
-                    <img src="{{ asset('/storage/thumbnails/'.$post->thumbnail) }}" alt="image"
+                    @else
+                    <span
+                        class="mt-5 mb-2 bg-gray-200 text-gray-800 text-xs font-medium inline-flex items-center px-2.5 py-0.5 rounded mr-2 dark:bg-gray-700 dark:text-gray-300">
+                        Draft
+                    </span>
+                    @endif
+
+                    @if ($posts->thumbnail)
+                    <img src="{{ asset('/storage/thumbnails/'.$posts->thumbnail) }}" alt="image"
                         class="object-cover w-full mt-5 rounded-lg">
                     @endif
-                    {{-- <img src="{{ asset('/storage/thumbnails/'.$post->thumbnail) }}" alt="image"
+                    {{-- <img src="{{ asset('/storage/thumbnails/'.$posts->thumbnail) }}" alt="image"
                         class="object-cover w-full mt-5 h-96"> --}}
 
-                    <p class="mt-5 font-normal text-gray-700 dark:text-gray-300">{{ $post->excerpt }}</p>
+                    <p class="mt-5 font-normal text-gray-700 dark:text-gray-300">{{ $posts->excerpt }}</p>
 
                     <div
                         class="mt-6 overflow-auto prose max-w-none prose-gray dark:prose-invert prose-a:text-indigo-400 prose-h2:text-indigo-400 prose-blockquote:text-indigo-700 prose-code:text-indigo-300 prose-pre:text-indigo-400 prose-blockquote:bg-indigo-50 prose-blockquote:border-indigo-400 hover:prose-a:text-indigo-500">
-                        {!! $post->content !!}
+                        {!! $posts->content !!}
 
                     </div>
-                    <div class="flex flex-col w-full gap-5 pb-5 mt-5 mb-4">
+                    {{-- <div class="flex flex-col w-full gap-5 pb-5 mt-5 mb-4">
                         <h1
                             class="text-2xl font-bold text-gray-800 underline capitalize decoration-indigo-500 dark:text-white">
                             Recommended Posts
@@ -62,10 +85,12 @@
                             </p>
                         </a>
                         @endforeach
-                    </div>
+                    </div> --}}
 
-                </div>
             </div>
+
+
+
         </div>
     </div>
-</x-guest-layout>
+</x-app-layout>

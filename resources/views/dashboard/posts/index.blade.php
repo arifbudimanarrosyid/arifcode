@@ -57,8 +57,8 @@
                 </button>
             </form>
             {{-- Alert --}}
-            {{-- <div
-                class="flex p-4 mb-4 text-sm text-green-700 bg-green-100 rounded-lg dark:bg-green-200 dark:text-green-800"
+            @if (session('success'))
+            <div class="flex p-4 mb-4 text-sm text-green-700 bg-green-100 rounded-lg dark:bg-green-200 dark:text-green-800"
                 role="alert">
                 <svg aria-hidden="true" class="flex-shrink-0 inline w-5 h-5 mr-3" fill="currentColor"
                     viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
@@ -68,9 +68,10 @@
                 </svg>
                 <span class="sr-only">Info</span>
                 <div>
-                    <span class="font-bold">Success alert!</span> Post created successfully.
+                    <span class="font-bold">{{ session('success') }}</span>
                 </div>
-            </div> --}}
+            </div>
+            @endif
 
 
             {{-- Create --}}
@@ -108,7 +109,7 @@
                                 </p>
                                 @endif
                                 @if ($post->is_featured)
-                                <p class="font-normal ml-2 text-right text-indigo-700 dark:text-indigo-400">
+                                <p class="ml-2 font-normal text-right text-indigo-700 dark:text-indigo-400">
                                     Featured
                                 </p>
                                 @endif
@@ -123,19 +124,30 @@
                         <p class="font-normal text-gray-700 dark:text-gray-400">{{ $post->excerpt }}</p>
                     </div>
 
-                    <div class="flex-col sm:flex">
-                        <a href="#"
+
+
+                    <div class="flex-row sm:flex-col sm:flex">
+
+                        <a href="{{ route('posts.show', $post->id) }}"
                             class="inline-flex items-center px-4 py-2 mb-2 text-sm font-medium leading-4 text-gray-600 transition duration-150 ease-in-out bg-green-200 rounded-md dark:text-gray-300 dark:bg-green-800 hover:bg-green-400 dark:hover:bg-green-600 focus:outline-none">
                             View
                         </a>
-                        <a href="#"
+                        <a href="{{ route('posts.edit', $post->id) }}"
                             class="inline-flex items-center px-4 py-2 mb-2 text-sm font-medium leading-4 text-gray-600 transition duration-150 ease-in-out rounded-md dark:text-gray-300 bg-sky-200 dark:bg-sky-800 hover:bg-sky-400 dark:hover:bg-sky-600 focus:outline-none">
                             Edit
                         </a>
-                        <a href="#"
-                            class="inline-flex items-center px-4 py-2 mb-2 text-sm font-medium leading-4 text-gray-600 transition duration-150 ease-in-out bg-red-200 rounded-md dark:text-gray-300 dark:bg-red-800 hover:bg-red-400 dark:hover:bg-red-600 focus:outline-none">
-                            Delete
-                        </a>
+
+                        <form action="{{ route('posts.destroy', $post->id) }}" method="POST" class="inline-flex">
+                            @csrf
+                            @method('DELETE')
+                            <button type="submit"
+                                class="inline-flex items-center px-4 py-2 mb-2 text-sm font-medium leading-4 text-gray-600 transition duration-150 ease-in-out bg-red-200 rounded-md dark:text-gray-300 dark:bg-red-800 hover:bg-red-400 dark:hover:bg-red-600 focus:outline-none">
+                                Delete
+                            </button>
+                        </form>
+
+
+
 
                     </div>
 
