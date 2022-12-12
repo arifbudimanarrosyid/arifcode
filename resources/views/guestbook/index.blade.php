@@ -85,7 +85,7 @@
 
                                         @auth
                                         @if ($guestbook->user_id == Auth::id() || Auth::user()->is_admin == true)
-                                        <x-dropdown>
+                                        <x-dropdowns>
                                             <x-slot name="trigger">
                                                 <button>
                                                     <svg xmlns="http://www.w3.org/2000/svg"
@@ -110,7 +110,7 @@
                                                     </x-dropdown-link>
                                                 </form>
                                             </x-slot>
-                                        </x-dropdown>
+                                        </x-dropdowns>
                                         @endif
                                         @endauth
                                     </div>
