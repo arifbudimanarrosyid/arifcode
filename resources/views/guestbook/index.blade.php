@@ -72,7 +72,7 @@
                                                 @endif
                                             </div>
                                             <div>
-                                                <small class="sm:ml-2  text-sm text-gray-400 dark:text-gray-400">
+                                                <small class="text-sm text-gray-400 sm:ml-2 dark:text-gray-400">
                                                     {{ $guestbook->created_at->diffForHumans() }}
                                                 </small>
                                                 @unless ($guestbook->created_at->eq($guestbook->updated_at))
@@ -85,7 +85,7 @@
 
                                         @auth
                                         @if ($guestbook->user_id == Auth::id() || Auth::user()->is_admin == true)
-                                        <x-dropdowns>
+                                        <x-dropdown>
                                             <x-slot name="trigger">
                                                 <button>
                                                     <svg xmlns="http://www.w3.org/2000/svg"
@@ -110,7 +110,7 @@
                                                     </x-dropdown-link>
                                                 </form>
                                             </x-slot>
-                                        </x-dropdowns>
+                                        </x-dropdown>
                                         @endif
                                         @endauth
                                     </div>
