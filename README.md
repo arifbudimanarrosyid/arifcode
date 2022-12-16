@@ -77,17 +77,12 @@ Register form default account type is_admin false
   - [x] Read
   - [x] Update
   - [x] Delete
-- [ ] Dashboard - Category
+- [x] Dashboard - Category
   - [ ] Create
   - [x] Read
   - [ ] Update
   - [ ] Delete
-- [ ] Dashboard - Portofolio
-  - [ ] Create
-  - [ ] Read
-  - [ ] Update
-  - [ ] Delete
-- [ ] Dashboard - Users
+- [x] Dashboard - Users
   - [ ] Create
   - [x] Read
   - [ ] Update
