@@ -28,7 +28,7 @@
     <script>
         tinymce.init({selector:'#tinymce',
         plugins: 'anchor autolink charmap codesample emoticons image link lists media searchreplace table visualblocks wordcount checklist mediaembed casechange export formatpainter pageembed linkchecker a11ychecker permanentpen powerpaste advtable advcode editimage  tableofcontents footnotes mergetags autocorrect typography inlinecss',
-        toolbar: 'undo redo | blocks | preformated bold italic underline strikethrough | checklist numlist bullist indent outdent | link image media table mergetags |  spellcheckdialog a11ycheck typography | align lineheight |  emoticons charmap | removeformat',});
+        toolbar: 'undo redo code | blocks | blockquote codesample link bold italic underline strikethrough | checklist numlist bullist indent outdent |  image media table mergetags |  spellcheckdialog a11ycheck typography | align lineheight |  emoticons charmap | removeformat',});
     </script>
 
     <!-- Scripts -->

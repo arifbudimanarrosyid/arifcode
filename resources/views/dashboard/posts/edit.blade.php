@@ -1,18 +1,24 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="text-4xl font-semibold leading-tight text-gray-800 dark:text-gray-200">
-            {{ __('Create Post') }}
+            {{ __('Edit Post') }}
         </h2>
     </x-slot>
 
     <div class="py-12">
         <div class="px-4 mx-auto max-w-7xl sm:px-6 lg:px-8 ">
 
-            <form action="{{ route('posts.store') }}" method="POST" enctype="multipart/form-data" class="mb-5">
-
+            <form action="{{ route('posts.update', $posts->id)}}" method="POST" enctype="multipart/form-data"
+                class="mb-5">
+                @method('PUT')
                 @csrf
                 {{-- Thumbnail --}}
                 <div class="mb-6">
+                    @if ($posts->thumbnail)
+                    <img src="{{ asset('/storage/thumbnails/'.$posts->thumbnail) }}" alt="image"
+                        class="object-cover w-full mb-5 rounded-lg">
+                    @endif
+                    @if ($posts->thumbnail==null)
                     <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white" for="file_input">
                         Thumbnail
                     </label>
@@ -24,7 +30,10 @@
                     @error('thumbnail')
                     <p class="mt-1 text-sm text-red-500 dark:text-red-300">{{ $message }}</p>
                     @enderror
+                    @endif
+
                 </div>
+
 
                 {{-- Title --}}
                 <div class="mb-6">
@@ -32,7 +41,7 @@
                         class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Title</label>
                     <input name="title" type="text" id="default-input"
                         class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                        value="{{ old('title') }}">
+                        value="{{ old('title', $posts->title) }}">
                     @error('title')
                     <p class="mt-1 text-sm text-red-500 dark:text-red-300">{{ $message }}</p>
                     @enderror
@@ -41,10 +50,11 @@
                 {{-- Slug --}}
                 <div class="mb-6">
                     <label for="default-input"
-                        class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Slug</label>
+                        class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Slug (optional)</label>
                     <input name="slug" type="text" id="default-input"
                         class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                        value="{{ old('slug') }}">
+                        {{-- value="{{ old('slug', $posts->slug) }}"> --}}
+                    value="{{ old('slug') }}">
                     @error('slug')
                     <p class="mt-1 text-sm text-red-500 dark:text-red-300">{{ $message }}</p>
                     @enderror
@@ -57,8 +67,12 @@
                     <select id="countries" name="category_id"
                         class=" bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
                         @foreach ($categories as $category)
-                        <option value="{{ $category->id }}">{{ $category->title }}</option>
+                        {{-- <option value="{{ $category->id }}">{{ $category->title }}</option> --}}
+                        <option value="{{ $category->id }}" {{ old('category_id', $posts->category_id)==$category->id ?
+                            'selected' : ' ' }}>
+                            {{$category->title }}</option>
                         @endforeach
+                        {{-- show selected category --}}
                     </select>
                     @error('category_id')
                     <p class="mt-1 text-sm text-red-500 dark:text-red-300">{{ $message }}</p>
@@ -71,7 +85,7 @@
                         class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Excerpt</label>
                     <textarea id="message" rows="4" name="excerpt"
                         class=" block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                        placeholder="Write your excerpt here">{{ old('excerpt') }}</textarea>
+                        placeholder="Write your excerpt here">{{ old('excerpt', $posts->excerpt) }}</textarea>
                     @error('excerpt')
                     <p class="mt-1 text-sm text-red-500 dark:text-red-300">{{ $message }}</p>
                     @enderror
@@ -82,8 +96,9 @@
                     <label for="message" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
                         Content
                     </label>
-                    {{-- <x-trix name="content" class="dark:invert" /> --}}
-                    <textarea id="tinymce" name="content">{{ old('content') }}</textarea>
+                    {{--
+                    <x-trix name="content" class="dark:invert" /> --}}
+                    <textarea id="tinymce" name="content">{{ old('content',  $posts->content) }}</textarea>
                     @error('content')
                     <p class="mt-1 text-sm text-red-500 dark:text-red-300">{{ $message }}</p>
                     @enderror
@@ -95,8 +110,14 @@
                         class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Featured</label>
                     <select id="countries" name="is_featured"
                         class="mb-6 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
-                        <option value="1">Featured</option>
-                        <option value="0">Not Featured</option>
+                        {{-- <option value="1">Featured</option>
+                        <option value="0">Not Featured</option> --}}
+                        <option value="1" {{ old('is_featured', $posts->is_featured)==1 ? 'selected' : ' ' }}>Featured
+                        </option>
+                        <option value="0" {{ old('is_featured', $posts->is_featured)==0 ? 'selected' : ' ' }}>Not
+                            Featured
+                        </option>
+
                     </select>
                 </div>
 
@@ -107,8 +128,13 @@
                         class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Publish</label>
                     <select id="countries" name="is_published"
                         class="mb-6 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
-                        <option value="1">Publish</option>
-                        <option value="0">Not Publish</option>
+                        {{-- <option value="1">Publish</option>
+                        <option value="0">Not Publish</option> --}}
+                        <option value="1" {{ old('is_published', $posts->is_published)==1 ? 'selected' : ' ' }}>Publish
+                        </option>
+                        <option value="0" {{ old('is_published', $posts->is_published)==0 ? 'selected' : ' ' }}>Not
+                            Publish
+                        </option>
                     </select>
                 </div>
 
@@ -128,7 +154,7 @@
                         </div>
                         <input datepicker type="datetime-local" name="published_at"
                             class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pl-10 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                            placeholder="Select date" value="{{ old('published_at') }}">
+                            placeholder="Select date" value="{{ old('published_at', $posts->published_at) }}">
 
                     </div>
                     @error('published_at')

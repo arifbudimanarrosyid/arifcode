@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Posts;
 use App\Models\Category;
+use Illuminate\Auth\Events\Validated;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 
@@ -61,7 +62,7 @@ class DashboardPostController extends Controller
         $request->validate([
             'thumbnail' => 'image|mimes:jpeg,png,jpg|max:2048',
             'title' => 'required|max:255',
-            'slug' => 'required|unique:posts|string|max:255',
+            'slug' => 'unique:posts|max:255',
             'category_id' => 'required',
             'excerpt' => 'required',
             'content' => 'required',
@@ -77,11 +78,12 @@ class DashboardPostController extends Controller
         }
 
         // if request have slug change to lowwercase and replace space with dash
-        if ($request->slug) {
-            $slug = strtolower(str_replace(' ', '-', $request->slug));
-        } else {
+        if ($request->slug == null) {
             $slug = strtolower(str_replace(' ', '-', $request->title));
+        } else {
+            $slug = strtolower(str_replace(' ', '-', $request->slug));
         }
+
 
         $post = Posts::create([
             'category_id' => $request->category_id,
@@ -120,9 +122,12 @@ class DashboardPostController extends Controller
      * @param  \App\Models\Posts  $posts
      * @return \Illuminate\Http\Response
      */
-    public function edit(Posts $posts)
+    public function edit($id)
     {
-        //
+        $posts = Posts::findOrFail($id);
+        $categories = Category::all();
+        // dd($posts);
+        return view('dashboard.posts.edit', compact('posts', 'categories'));
     }
 
     /**
@@ -132,9 +137,84 @@ class DashboardPostController extends Controller
      * @param  \App\Models\Posts  $posts
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Posts $posts)
+    public function update(Request $request, $posts)
     {
-        //
+        $request->validate(
+            [
+                'thumbnail' => 'image|mimes:jpeg,png,jpg|max:2048',
+                'title' => 'required|max:255',
+                'slug' => 'max:255|unique:posts',
+                'category_id' => 'required',
+                'excerpt' => 'required',
+                'content' => 'required',
+                'is_published' => 'required',
+                'is_featured' => 'required',
+                'published_at' => 'required',
+            ]
+        );
+
+
+
+        //if slug request = old slug change the validation slug with no unique
+        // if ($request->slug == $request->old_slug) {
+        //     $request->validate(
+        //         [
+        //             'slug' => 'max:255',
+        //         ]
+        //     );
+        // }
+        //if request have slug change to lowwercase and replace space with dash
+        if ($request->slug == null) {
+            $slug = strtolower(str_replace(' ', '-', $request->title));
+        } else {
+            $slug = strtolower(str_replace(' ', '-', $request->slug));
+        }
+
+        //if request have thumbnail
+        if ($request->hasFile('thumbnail')) {
+            //delete old thumbnail
+            // if ($posts->thumbnail) {
+            //     unlink(public_path('storage/thumbnails/' . $posts->thumbnail));
+            // }
+            //upload new thumbnail
+            $posts = Posts::findOrFail($posts);
+            $thumbnail = $request->file('thumbnail');
+            $thumbnailName = time() . '.' . $thumbnail->extension();
+            $thumbnail->move(public_path('storage/thumbnails'), $thumbnailName);
+            $posts->thumbnail = $thumbnailName;
+
+            $posts->title = $request->title;
+            $posts->slug = $slug;
+            $posts->category_id = $request->category_id;
+            $posts->excerpt = $request->excerpt;
+            $posts->content = $request->content;
+            $posts->is_published = $request->is_published;
+            $posts->is_featured = $request->is_featured;
+            $posts->published_at = $request->published_at;
+            $posts->save();
+
+            return redirect()->route('posts.index')
+                ->with('success', 'Post updated successfully');
+        }
+
+        $posts = Posts::findOrFail($posts);
+        // $posts->thumbnail = $thumbnailName;
+        $posts->title = $request->title;
+        $posts->slug = $slug;
+        $posts->category_id = $request->category_id;
+        $posts->excerpt = $request->excerpt;
+        $posts->content = $request->content;
+        $posts->is_published = $request->is_published;
+        $posts->is_featured = $request->is_featured;
+        $posts->published_at = $request->published_at;
+        $posts->save();
+
+        // dd($validatedPosts);
+        // dd($posts);
+
+
+        return redirect()->route('posts.index')
+            ->with('success', 'Post updated successfully');
     }
 
     /**
