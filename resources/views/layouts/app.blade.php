@@ -23,12 +23,13 @@
     {{-- TinyMCE --}}
     <script src="https://cdn.tiny.cloud/1/cz2l9l1778krrir26up7x7r8ce1hvtyicthty3l0a0zu1t70/tinymce/6/tinymce.min.js"
         referrerpolicy="origin"></script>
-    {{-- <script src="https://cdn.tiny.cloud/1/no-api-key/tinymce/6/tinymce.min.js" referrerpolicy="origin"></script> --}}
+    {{-- <script src="https://cdn.tiny.cloud/1/no-api-key/tinymce/6/tinymce.min.js" referrerpolicy="origin"></script>
+    --}}
 
     <script>
         tinymce.init({selector:'#tinymce',
         plugins: 'anchor autolink charmap codesample emoticons image link lists media searchreplace table visualblocks wordcount checklist mediaembed casechange export formatpainter pageembed linkchecker a11ychecker permanentpen powerpaste advtable advcode editimage  tableofcontents footnotes mergetags autocorrect typography inlinecss',
-        toolbar: 'undo redo code | blocks | blockquote codesample link bold italic underline strikethrough | checklist numlist bullist indent outdent |  image media table mergetags |  spellcheckdialog a11ycheck typography | align lineheight |  emoticons charmap | removeformat',});
+        toolbar: 'undo redo code | blocks | h1 h2 codesample blockquote  link image bullist numlist  | checklist numlist bullist indent outdent|bold italic underline strikethrough |  image media table mergetags |  spellcheckdialog a11ycheck typography | align lineheight |  emoticons charmap | removeformat',});
     </script>
 
     <!-- Scripts -->
