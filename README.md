@@ -72,11 +72,11 @@ Register form default account type is_admin false
 - [x] Dashboard - Profile
 
 ### Admin
-- [ ] Dashboard - Posts
-  - [ ] Create
+- [x] Dashboard - Posts
+  - [x] Create
   - [x] Read
-  - [ ] Update
-  - [ ] Delete
+  - [x] Update
+  - [x] Delete
 - [ ] Dashboard - Category
   - [ ] Create
   - [x] Read

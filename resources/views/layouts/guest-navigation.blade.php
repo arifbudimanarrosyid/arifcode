@@ -15,6 +15,11 @@
                 <!-- Navigation Links -->
                 {{-- sm:ml-6 --}}
                 <div class="hidden space-x-4 sm:-my-px sm:flex">
+
+                    <x-nav-link :href="route('home')"
+                        class="font-bold dark:text-gray-200">
+                        Arif<span class="text-indigo-500">Code</span>
+                    </x-nav-link>
                     <x-nav-link :href="route('home')" :active="request()->routeIs('home')">
                         {{ __('Home') }}
                     </x-nav-link>

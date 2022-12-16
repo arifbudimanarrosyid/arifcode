@@ -8,12 +8,17 @@
                     {{-- <a href="{{ route('home') }}">
                         <x-application-logo class="block w-auto text-gray-800 fill-current h-9 dark:text-gray-200" />
                     </a> --}}
-                    <a href="{{ route('dashboard') }}" class="font-bold sm:hidden dark:text-gray-200">Arif<span
+                    <a href="{{ route('home') }}" class="font-bold sm:hidden dark:text-gray-200">Arif<span
                             class="text-indigo-500">Code</span></a>
                 </div>
 
                 <!-- Navigation Links -->
                 <div class="hidden space-x-4 sm:-my-px sm:flex">
+
+                    <x-nav-link :href="route('home')" :active="request()->routeIs('home')"
+                        class="font-bold dark:text-gray-200">
+                        Arif<span class="text-indigo-500">Code</span>
+                    </x-nav-link>
                     <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
                         {{ __('Dashboard') }}
                     </x-nav-link>

@@ -96,8 +96,6 @@
                     <label for="message" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
                         Content
                     </label>
-                    {{--
-                    <x-trix name="content" class="dark:invert" /> --}}
                     <textarea id="tinymce" name="content">{{ old('content',  $posts->content) }}</textarea>
                     @error('content')
                     <p class="mt-1 text-sm text-red-500 dark:text-red-300">{{ $message }}</p>
