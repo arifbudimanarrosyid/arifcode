@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\ProfileController;
@@ -50,20 +51,18 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
     // Dashboard
     Route::get('/dashboard', DashboardController::class, 'index')->name('dashboard');
-    // Guestbook
-    // Route::get('/guestbook', function () {
-    //     return view('guestbook');
-    // })->name('guestbook');
 });
 
-Route::middleware(['auth', 'isAdmin'])->group(function () {
+
+
+Route::prefix('dashboard')->middleware(['auth', 'isAdmin'])->group(function () {
     // Dashboard Posts
-    Route::resource('/dashboard/posts', DashboardPostController::class);
-    Route::resource('/dashboard/category', DashboardCategoryController::class);
-    Route::resource('/dashboard/user', DashboardUserController::class);
-    Route::get('/dashboard/portofolio', function () {
-        return view('dashboard.portofolio.index');
-    })->name('dashboard.portofolio.index');
+    Route::resource('/posts', DashboardPostController::class);
+    Route::resource('/category', DashboardCategoryController::class);
+    Route::resource('/user', DashboardUserController::class);
+    // Route::get('/portofolio', function () {
+    //     return view('dashboard.portofolio.index');
+    // })->name('dashboard.portofolio.index');
 });
 
 require __DIR__ . '/auth.php';
