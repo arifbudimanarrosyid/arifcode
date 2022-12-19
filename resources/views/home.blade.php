@@ -37,10 +37,11 @@
 
                         <div class="flex justify-between ">
 
-                            <h5 class="font-bold tracking-tight text-indigo-500 dark:text-indigo-400">{{
+                            <h5 class="font-bold tracking-tight text-gray-400 dark:text-gray-400">{{
                                 $post->category->title }}
                             </h5>
-                            <span class="inline-flex items-center text-xs font-medium text-gray-800 dark:text-gray-300">
+                            <span
+                                class="inline-flex items-center text-xs font-medium text-gray-400 dark:text-gray-400">
                                 <svg aria-hidden="true" class="w-3 h-3 mr-1" fill="currentColor" viewBox="0 0 20 20"
                                     xmlns="http://www.w3.org/2000/svg">
                                     <path fill-rule="evenodd"
@@ -51,10 +52,10 @@
                             </span>
 
                         </div>
-                        <h5 class="mb-2 text-xl font-bold tracking-tight text-gray-900 dark:text-white">
+                        <h5 class="mb-2 text-xl font-bold tracking-tight text-indigo-500 dark:text-indigo-500">
                             {{$post->title }}
                         </h5>
-                        <p class="font-normal text-gray-700 dark:text-gray-400">
+                        <p class="font-normal text-gray-600 dark:text-gray-400">
                             {{ $post->excerpt }}
                         </p>
                     </a>

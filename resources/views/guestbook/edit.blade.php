@@ -29,7 +29,7 @@
 
                             <x-input-error :messages="$errors->get('message')" class="mt-2" />
                             <button type="submit"
-                                class="py-2.5 px-5 mr-2 mt-5 mb-2 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg   hover:bg-gray-50 hover:text-blue-700  dark:bg-gray-800 dark:text-gray-400  dark:hover:text-white dark:hover:bg-gray-700">
+                                class="py-2.5 px-5 focus:ml-1 mt-5 mb-2 text-sm font-medium text-gray-900 focus:outline-blue-500 outline-none bg-white rounded-lg   hover:bg-gray-50 hover:text-blue-700  dark:bg-gray-800 dark:text-gray-400  dark:hover:text-white dark:hover:bg-gray-700">
                                 Save
                             </button>
 

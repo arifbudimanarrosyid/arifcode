@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Guestbook;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -15,8 +16,17 @@ class GuestbookController extends Controller
      */
     public function index()
     {
-        $guestbooks = Guestbook::with('user')->orderBy('created_at', 'desc')->get();
-        return  view('guestbook.index', compact('guestbooks'));
+        $pinned_guestbooks = Guestbook::with('user')
+            ->where('id', 1)
+            ->limit(2)
+            ->get();
+        // $guestbooks = Guestbook::with('user')->orderBy('created_at', 'desc')->get();
+        $guestbooks = Guestbook::with('user')
+            ->orderBy('created_at', 'desc')
+            ->where('id', '!=', 1)
+            ->get();
+
+        return  view('guestbook.index', compact('guestbooks', 'pinned_guestbooks'));
     }
 
     /**
