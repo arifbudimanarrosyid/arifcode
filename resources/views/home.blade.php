@@ -9,7 +9,7 @@
                 </div>
                 <div class="px-4 sm:px-0">
                     <h1
-                        class="mb-2 text-4xl font-bold text-gray-800 underline capitalize decoration-red-500 dark:text-white">
+                        class="mb-2 text-4xl font-bold text-gray-800 underline capitalize decoration-yellow-500 dark:text-white">
                         Arif Budiman Arrosyid
                     </h1>
                     {{-- <h1 class="mb-2 text-4xl font-bold text-gray-900 dark:text-gray-100">Arif Budiman Arrosyid</h1>
@@ -25,7 +25,7 @@
             {{-- Featured Posts --}}
             <div class="px-4 mt-10 mb-10 overflow-x-auto sm:px-0">
                 <h1
-                    class="mb-6 text-4xl font-bold text-gray-800 underline capitalize decoration-orange-500 dark:text-white">
+                    class="mb-6 text-4xl font-bold text-gray-800 underline capitalize decoration-indigo-500 dark:text-white">
                     Featured Posts
                 </h1>
                 {{-- <h1 class="mb-6 text-4xl font-bold text-gray-900 dark:text-gray-100">Featured Posts</h1> --}}
@@ -61,7 +61,7 @@
                     @endforeach
                     <div class="flex">
                         <a href="{{ route('posts') }}"
-                            class="flex text-lg text-gray-900 hover:text-indigo-500 dark:text-gray-400 dark:hover:text-indigo-500">
+                            class="flex text-lg items-center text-gray-900 hover:text-indigo-500 dark:text-gray-400 dark:hover:text-indigo-500">
                             Read all posts
                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
                                 stroke="currentColor" class="w-6 h-6 ml-3">

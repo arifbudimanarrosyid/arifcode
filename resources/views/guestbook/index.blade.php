@@ -4,7 +4,7 @@
             <div class="flex mb-5 overflow-hidden ">
                 <div class="px-4 sm:px-0">
                     <h1
-                        class="text-4xl font-bold text-gray-800 underline capitalize decoration-green-500 dark:text-white">
+                        class="text-4xl font-bold text-gray-800 underline capitalize decoration-sky-500 dark:text-white">
                         Guestbook
                     </h1>
                     <h1 class="mt-4 text-gray-600 dark:text-gray-400">
@@ -13,16 +13,16 @@
                         @auth
                         You login as role
                         @if (Auth::user()->is_admin)
-                        <span class="text-green-400">
+                        <span class="text-sky-400">
                             Admin
                         </span>
                         @else
-                        <span class="text-green-400">
+                        <span class="text-sky-400">
                             User
                         </span>
                         @endif
                         @else
-                        You need to <a href="{{ route('login') }}" class="text-green-400">login</a> to show the form.
+                        You need to <a href="{{ route('login') }}" class="text-sky-400">login</a> to show the form.
                         @endauth
                     </h1>
 
@@ -53,7 +53,7 @@
 
                         @endauth
                         <div
-                            class="mt-4 bg-white divide-y-2 divide-gray-100 rounded-lg dark:divide-gray-900 dark:bg-gray-800">
+                            class="mt-4 divide-y-2 divide-gray-100 rounded-lg bg-white dark:divide-gray-900 dark:bg-gray-800">
                             @foreach ($guestbooks as $guestbook)
                             <div class="flex p-4 ">
                                 <div class="flex-1">
@@ -62,11 +62,11 @@
                                             <div>
 
                                                 @if ($guestbook->user_id == Auth::id())
-                                                <span class="text-base text-green-400 dark:text-green-400">
+                                                <span class="text-base text-yellow-500 dark:text-yellow-500">
                                                     {{$guestbook->user->name }}
                                                 </span>
                                                 @else
-                                                <span class="text-base text-gray-500 dark:text-gray-400">
+                                                <span class="text-base text-sky-500 dark:text-sky-500">
                                                     {{$guestbook->user->name }}
                                                 </span>
                                                 @endif
@@ -75,7 +75,8 @@
                                                 <small class="text-sm text-gray-400 sm:ml-2 dark:text-gray-400">
                                                     {{ $guestbook->created_at->diffForHumans() }}
                                                 </small>
-                                                @unless ($guestbook->created_at->eq($guestbook->updated_at))
+                                                {{-- @unless ($guestbook->created_at->eq($guestbook->updated_at)) --}}
+                                                @unless ($guestbook->created_at == $guestbook->updated_at)
                                                 <small class="text-sm text-gray-400 dark:text-gray-400"> &middot; {{
                                                     __('edited')
                                                     }}</small>
@@ -114,7 +115,8 @@
                                         @endif
                                         @endauth
                                     </div>
-                                    <p class="mt-2 text-base text-gray-900 dark:text-gray-300">{{ $guestbook->message }}
+                                    <p class="mt-2 text-base font-semibold text-gray-600 dark:text-gray-400">{{
+                                        $guestbook->message }}
                                     </p>
                                 </div>
                             </div>
