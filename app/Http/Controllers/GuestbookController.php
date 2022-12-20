@@ -16,11 +16,15 @@ class GuestbookController extends Controller
      */
     public function index()
     {
+        // get guestbook with id = 1
         $pinned_guestbooks = Guestbook::with('user')
             ->where('id', 1)
-            ->limit(2)
             ->get();
+
+        // get all guestbook
         // $guestbooks = Guestbook::with('user')->orderBy('created_at', 'desc')->get();
+
+        // get all guestbook except id = 1
         $guestbooks = Guestbook::with('user')
             ->orderBy('created_at', 'desc')
             ->where('id', '!=', 1)
