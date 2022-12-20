@@ -7,7 +7,7 @@
                         class="text-4xl font-bold text-gray-800 underline capitalize decoration-sky-500 dark:text-white">
                         Guestbook
                     </h1>
-                    <h1 class="mt-4 text-gray-600 dark:text-gray-400">
+                    <p class="mt-4 text-gray-600 dark:text-gray-400">
                         Hope you enjoy the website, if you have something to say or request, or just say hello, please
                         leave a message.
                         @auth
@@ -16,19 +16,29 @@
                             {{ Auth::user()->name}}
                         </span>
                         with role
-                        @if (Auth::user()->is_admin)
-                        <span class="text-sky-400">
-                            Admin
-                        </span>
+                            @if (Auth::user()->is_admin)
+                            <span class="text-sky-400">
+                                Admin
+                            </span>
+                            @else
+                            <span class="text-sky-400">User
+                            </span>
+                            @endif
                         @else
-                        <span class="text-sky-400">
-                            User
-                        </span>
-                        @endif
-                        @else
-                        You need to <a href="{{ route('login') }}" class="text-sky-400">login</a> to show the form.
+                        You need to <a href="{{ route('login') }}" class="text-sky-400">login</a>
+                            @if (Route::has('register'))
+                            or <a href="{{ route('register') }}" class="text-sky-400">register</a>
+                            @endif
+                            to show the form.
                         @endauth
-                    </h1>
+                    </p>
+
+                    @auth
+                    @else
+                    <p class="mt-4 text-red-400 dark:text-red-300">
+                        Your information is only used to display your name and message.
+                    </p>
+                    @endauth
 
                 </div>
 
@@ -40,11 +50,11 @@
                         <form method="POST" action="{{ route('guestbook.store') }}">
                             @csrf
 
-                            <label for="message"
+                            {{-- <label for="message"
                                 class="block mt-5 mb-2 text-sm font-medium text-gray-900 dark:text-white">Your
-                                message</label>
+                                message</label> --}}
                             <textarea id="message" rows="3" name="message"
-                                class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-transparent focus:ring-transparent dark:bg-gray-800 dark:border-transparent dark:placeholder-gray-400 dark:text-white dark:focus:ring-transparent "
+                                class="block p-2.5 w-full text-sm text-gray-900 bg-white rounded-lg border border-transparent focus:ring-transparent dark:bg-gray-800 dark:border-transparent dark:placeholder-gray-400 dark:text-white dark:focus:ring-transparent "
                                 maxlength="255" placeholder="Leave a message...">{{ old('message') }}</textarea>
                             <x-input-error :messages="$errors->get('message')" class="mt-2" />
 
@@ -65,7 +75,7 @@
                                         <div class="flex flex-col sm:flex-row">
                                             <div>
 
-                                                <span class="text-base text-red-500 dark:text-red-500">
+                                                <span class="text-base text-red-400 dark:text-red-300">
                                                     {{$guestbook->user->name }}
                                                 </span>
                                                 {{-- @if ($guestbook->user_id == Auth::id())

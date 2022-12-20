@@ -36,14 +36,14 @@ class DatabaseSeeder extends Seeder
         ]);
         Posts::factory(30)->create();
 
-        User::create([
-            'name' => 'Admin',
-            'email' => 'admin@admin.com',
-            'email_verified_at' => now(),
-            'is_admin' => 1,
-            'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password
-            'remember_token' => Str::random(10),
-        ]);
+        // User::create([
+        //     'name' => 'Admin',
+        //     'email' => 'admin@admin.com',
+        //     'email_verified_at' => now(),
+        //     'is_admin' => 1,
+        //     'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password
+        //     'remember_token' => Str::random(10),
+        // ]);
         User::factory()->create([
             'name' => 'Arif Budiman Arrosyid',
             'email' => 'arifbudimanarrosyid@gmail.com',
