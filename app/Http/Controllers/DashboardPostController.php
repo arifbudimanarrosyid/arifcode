@@ -210,10 +210,8 @@ class DashboardPostController extends Controller
             if (Storage::exists('public/thumbnails/' . $post->thumbnail)) {
                 unlink(public_path('storage/thumbnails/' . $post->thumbnail));
             }
-        } else {
-            Posts::destroy($post->id);
         }
-        // Posts::destroy($post->id);
+        Posts::destroy($post->id);
         return redirect()->route('posts.index')->with('success', 'Post deleted successfully');
     }
 }
