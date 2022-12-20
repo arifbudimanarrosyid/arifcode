@@ -174,9 +174,10 @@ class DashboardPostController extends Controller
             $posts->is_featured = $request->is_featured;
             $posts->published_at = $request->published_at;
             $posts->save();
+            // return redirect()->route('posts.index')
+            //     ->with('success', 'Post saved successfully');
+            return back()->with('success', 'Post saved successfully');
 
-            return redirect()->route('posts.index')
-                ->with('success', 'Post updated successfully');
         }
 
         $posts = Posts::findOrFail($posts);
@@ -194,8 +195,9 @@ class DashboardPostController extends Controller
         // dd($posts);
 
 
-        return redirect()->route('posts.index')
-            ->with('success', 'Post updated successfully');
+        // return redirect()->route('posts.index')
+        //     ->with('success', 'Post updated successfully');
+        return back()->with('success', 'Post saved successfully');
     }
 
     /**
@@ -213,5 +215,19 @@ class DashboardPostController extends Controller
         }
         Posts::destroy($post->id);
         return redirect()->route('posts.index')->with('success', 'Post deleted successfully');
+    }
+
+    public function deleteThumbnail($posts)
+    {
+        $posts = Posts::findOrFail($posts);
+        if ($posts->thumbnail) {
+            if (Storage::exists('public/thumbnails/' . $posts->thumbnail)) {
+                unlink(public_path('storage/thumbnails/' . $posts->thumbnail));
+            }
+        }
+        $posts->thumbnail = null;
+        $posts->save();
+        // dd($posts);
+        return back()->with('success', 'Thumbnail deleted successfully');
     }
 }

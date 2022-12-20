@@ -58,6 +58,8 @@ Route::middleware('auth')->group(function () {
 Route::prefix('dashboard')->middleware(['auth', 'isAdmin'])->group(function () {
     // Dashboard Posts
     Route::resource('/posts', DashboardPostController::class);
+    // route delete thumbnail
+    Route::patch('/posts/{post}/delete-thumbnail', [DashboardPostController::class, 'deleteThumbnail'])->name('posts.delete-thumbnail');
     Route::resource('/category', DashboardCategoryController::class);
     Route::resource('/user', DashboardUserController::class);
     // Route::get('/portofolio', function () {
