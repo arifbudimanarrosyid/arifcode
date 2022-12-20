@@ -34,6 +34,41 @@
                                         </h4>
                                     </div>
                                     <h5
+                                        class="mb-2 mt-4 text-xl font-bold tracking-tight text-gray-900 dark:text-white underline decoration-indigo-500">
+                                        ArifCode</h5>
+                                    <p class="font-normal text-gray-700 dark:text-gray-400">Personal Blog.</p>
+                                    <div class="flex pt-2">
+                                        {{-- <a href="#" target="_blank"
+                                            class="inline-flex items-center px-3 py-2 mr-2  text-sm font-medium leading-4 text-gray-600 dark:text-gray-300 transition duration-150 ease-in-out bg-gray-100 border border-transparent rounded-md dark:bg-gray-700 hover:bg-gray-200 dark:hover:bg-gray-600 focus:outline-none">
+                                            Website
+                                        </a> --}}
+                                        <a href="https://github.com/arifbudimanarrosyid/arifcode" target="_blank"
+                                            class="inline-flex items-center px-3 py-2 mr-2  text-sm font-medium leading-4 text-gray-600 dark:text-gray-300 transition duration-150 ease-in-out bg-gray-100 border border-transparent rounded-md dark:bg-gray-700 hover:bg-gray-200 dark:hover:bg-gray-600 focus:outline-none">
+                                            Github
+                                        </a>
+                                    </div>
+
+
+                                </div>
+                                {{-- Chirper --}}
+                                <div
+                                    class="bg-white dark:bg-gray-800 p-4 rounded-lg border-2 border-gray-200 dark:border-gray-700">
+                                    <img class="object-cover rounded-lg aspect-video mb-4"
+                                        src="https://images.unsplash.com/photo-1621111848501-8d3634f82336?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1565&q=80"
+                                        alt="">
+                                    <div class="flex gap-2 mt-2 font-medium text-gray-800 dark:text-gray-400">
+
+                                        <h4 class=" text-gray-800 dark:text-gray-400">
+                                            Laravel 9</h4>
+                                        <h4 class=" text-gray-800 dark:text-gray-400">
+                                            Breeze</h4>
+                                        <h4 class=" text-gray-800 dark:text-gray-400">
+                                            HTML</h4>
+                                        <h4 class=" text-gray-800 dark:text-gray-400">
+                                            Tailwind
+                                        </h4>
+                                    </div>
+                                    <h5
                                         class="mb-2 mt-4 text-xl font-bold tracking-tight text-gray-900 dark:text-white underline decoration-blue-500">
                                         Chirper</h5>
                                     <p class="font-normal text-gray-700 dark:text-gray-400">Laravel Bootcamp.</p>
@@ -211,7 +246,8 @@
                                             class="inline-flex items-center px-3 py-2 mr-2  text-sm font-medium leading-4 text-gray-600 dark:text-gray-300 transition duration-150 ease-in-out bg-gray-100 border border-transparent rounded-md dark:bg-gray-700 hover:bg-gray-200 dark:hover:bg-gray-600 focus:outline-none">
                                             Website
                                         </a> --}}
-                                        <a href="https://github.com/arifbudimanarrosyid/mahasiswa-laravel" target="_blank"
+                                        <a href="https://github.com/arifbudimanarrosyid/mahasiswa-laravel"
+                                            target="_blank"
                                             class="inline-flex items-center px-3 py-2 mr-2  text-sm font-medium leading-4 text-gray-600 dark:text-gray-300 transition duration-150 ease-in-out bg-gray-100 border border-transparent rounded-md dark:bg-gray-700 hover:bg-gray-200 dark:hover:bg-gray-600 focus:outline-none">
                                             Github
                                         </a>
