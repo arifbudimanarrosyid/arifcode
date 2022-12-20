@@ -48,17 +48,15 @@
                 </div>
             </div>
             <div class="gap-5 mb-1 sm:flex">
-                <div class="block w-full p-4 mb-4 bg-white rounded-lg dark:bg-gray-800 ">
+                {{-- <div class="block w-full p-4 mb-4 bg-white rounded-lg dark:bg-gray-800 ">
                     <h5 class="mb-2 text-xl tracking-tight text-gray-900 dark:text-white">Potrofolios</h5>
                     <p class="text-2xl font-bold text-orange-700 dark:text-orange-400">10</p>
-                </div>
+                </div> --}}
                 <div class="block w-full p-4 mb-4 bg-white rounded-lg dark:bg-gray-800 ">
-
                     <h5 class="mb-2 text-xl tracking-tight text-gray-900 dark:text-white">Guestbooks</h5>
                     <p class="text-2xl font-bold text-lime-700 dark:text-lime-400">{{ $guestbooks }}</p>
                 </div>
                 @can('admin')
-
                 <div class="block w-full p-4 mb-4 bg-white rounded-lg dark:bg-gray-800 ">
                     <h5 class="mb-2 text-xl tracking-tight text-gray-900 dark:text-white">Users</h5>
                     <p class="text-2xl font-bold text-cyan-700 dark:text-cyan-400">{{ $users }}</p>

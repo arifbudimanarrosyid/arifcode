@@ -50,21 +50,22 @@ Route::middleware('auth')->group(function () {
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
     // Dashboard
-    Route::get('/dashboard', DashboardController::class, 'index')->name('dashboard');
+    Route::get('/dashboard', DashboardController::class, 'index')
+        ->name('dashboard');
 });
 
 
 
-Route::prefix('dashboard')->middleware(['auth', 'isAdmin'])->group(function () {
-    // Dashboard Posts
-    Route::resource('/posts', DashboardPostController::class);
-    // route delete thumbnail
-    Route::patch('/posts/{post}/delete-thumbnail', [DashboardPostController::class, 'deleteThumbnail'])->name('posts.delete-thumbnail');
-    Route::resource('/category', DashboardCategoryController::class);
-    Route::resource('/user', DashboardUserController::class);
-    // Route::get('/portofolio', function () {
-    //     return view('dashboard.portofolio.index');
-    // })->name('dashboard.portofolio.index');
-});
+Route::prefix('dashboard')
+    ->middleware(['auth', 'isAdmin'])
+    ->group(function () {
+        Route::resource('/posts', DashboardPostController::class);
+        Route::patch('/posts/{post}/delete-thumbnail', [DashboardPostController::class, 'deleteThumbnail'])->name('posts.delete-thumbnail');
+        Route::resource('/category', DashboardCategoryController::class)->except(['destroy']);
+        Route::resource('/user', DashboardUserController::class);
+        // Route::get('/portofolio', function () {
+        //     return view('dashboard.portofolio.index');
+        // })->name('dashboard.portofolio.index');
+    });
 
 require __DIR__ . '/auth.php';

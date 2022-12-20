@@ -41,7 +41,15 @@ class DashboardCategoryController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'title' => 'required',
+        ]);
+
+        Category::create([
+            'title' => $request->title,
+        ]);
+
+        return redirect()->route('category.index')->with('success', 'Category created successfully');
     }
 
     /**
@@ -63,7 +71,9 @@ class DashboardCategoryController extends Controller
      */
     public function edit($id)
     {
-        //
+        $category = Category::find($id);
+        // dd($category);
+        return view('dashboard.category.edit', compact('category'));
     }
 
     /**
@@ -75,7 +85,16 @@ class DashboardCategoryController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $request->validate([
+            'title' => 'required',
+        ]);
+
+        $category = Category::find($id);
+        $category->update([
+            'title' => $request->title,
+        ]);
+
+        return redirect()->route('category.index')->with('success', 'Category updated successfully');
     }
 
     /**
@@ -86,6 +105,9 @@ class DashboardCategoryController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $category = Category::find($id);
+        $category->delete();
+
+        return redirect()->route('category.index')->with('danger', 'Category deleted successfully');
     }
 }

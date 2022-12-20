@@ -16,20 +16,20 @@
                             {{ Auth::user()->name}}
                         </span>
                         with role
-                            @if (Auth::user()->is_admin)
-                            <span class="text-sky-400">
-                                Admin
-                            </span>
-                            @else
-                            <span class="text-sky-400">User
-                            </span>
-                            @endif
+                        @if (Auth::user()->is_admin)
+                        <span class="text-sky-400">
+                            Admin
+                        </span>
+                        @else
+                        <span class="text-sky-400">User
+                        </span>
+                        @endif
                         @else
                         You need to <a href="{{ route('login') }}" class="text-sky-400">login</a>
-                            @if (Route::has('register'))
-                            or <a href="{{ route('register') }}" class="text-sky-400">register</a>
-                            @endif
-                            to show the form.
+                        @if (Route::has('register'))
+                        or <a href="{{ route('register') }}" class="text-sky-400">register</a>
+                        @endif
+                        to show the form.
                         @endauth
                     </p>
 
@@ -60,7 +60,7 @@
 
 
                             <button type="submit"
-                                class="py-2.5 px-5 focus:ml-1 mt-5 mb-2 text-sm font-medium text-gray-900 focus:outline-blue-500 outline-none bg-white rounded-lg   hover:bg-gray-50 hover:text-blue-700  dark:bg-gray-800 dark:text-gray-400  dark:hover:text-white dark:hover:bg-gray-700">
+                                class="mt-5 inline-flex items-center px-4 py-2 text-sm font-medium text-center text-white bg-indigo-700 rounded-lg focus:ring-4 focus:ring-indigo-200 dark:focus:ring-indigo-900 hover:bg-indigo-800">
                                 Send
                             </button>
                         </form>
