@@ -214,7 +214,7 @@ class DashboardPostController extends Controller
             }
         }
         Posts::destroy($post->id);
-        return redirect()->route('posts.index')->with('success', 'Post deleted successfully');
+        return redirect()->route('posts.index')->with('danger', 'Post deleted successfully');
     }
 
     public function deleteThumbnail($posts)
@@ -228,6 +228,6 @@ class DashboardPostController extends Controller
         $posts->thumbnail = null;
         $posts->save();
         // dd($posts);
-        return back()->with('success', 'Thumbnail deleted successfully');
+        return back()->with('danger', 'Thumbnail deleted successfully');
     }
 }
