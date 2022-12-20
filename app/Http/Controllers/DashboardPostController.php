@@ -153,36 +153,18 @@ class DashboardPostController extends Controller
             ]
         );
 
-
-
-        //if slug request = old slug change the validation slug with no unique
-        // if ($request->slug == $request->old_slug) {
-        //     $request->validate(
-        //         [
-        //             'slug' => 'max:255',
-        //         ]
-        //     );
-        // }
-        //if request have slug change to lowwercase and replace space with dash
         if ($request->slug == null) {
             $slug = strtolower(str_replace(' ', '-', $request->title));
         } else {
             $slug = strtolower(str_replace(' ', '-', $request->slug));
         }
 
-        //if request have thumbnail
         if ($request->hasFile('thumbnail')) {
-            //delete old thumbnail
-            // if ($posts->thumbnail) {
-            //     unlink(public_path('storage/thumbnails/' . $posts->thumbnail));
-            // }
-            //upload new thumbnail
             $posts = Posts::findOrFail($posts);
             $thumbnail = $request->file('thumbnail');
             $thumbnailName = time() . '.' . $thumbnail->extension();
             $thumbnail->move(public_path('storage/thumbnails'), $thumbnailName);
             $posts->thumbnail = $thumbnailName;
-
             $posts->title = $request->title;
             $posts->slug = $slug;
             $posts->category_id = $request->category_id;
@@ -198,7 +180,6 @@ class DashboardPostController extends Controller
         }
 
         $posts = Posts::findOrFail($posts);
-        // $posts->thumbnail = $thumbnailName;
         $posts->title = $request->title;
         $posts->slug = $slug;
         $posts->category_id = $request->category_id;
@@ -226,9 +207,13 @@ class DashboardPostController extends Controller
     public function destroy(Posts $post)
     {
         if ($post->thumbnail) {
-            unlink(public_path('storage/thumbnails/' . $post->thumbnail));
+            if (Storage::exists('public/thumbnails/' . $post->thumbnail)) {
+                unlink(public_path('storage/thumbnails/' . $post->thumbnail));
+            }
+        } else {
+            Posts::destroy($post->id);
         }
-        Posts::destroy($post->id);
+        // Posts::destroy($post->id);
         return redirect()->route('posts.index')->with('success', 'Post deleted successfully');
     }
 }

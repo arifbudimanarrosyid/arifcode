@@ -35,6 +35,7 @@ class PostController extends Controller
             ->where('is_featured', true)
             ->with(['category'])
             ->orderBy('published_at', 'desc')
+            // ->limit(5)
             ->get();
         // dd($posts);
         return view('home', compact('featured'));
