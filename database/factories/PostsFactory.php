@@ -19,11 +19,8 @@ class PostsFactory extends Factory
         return [
             'title' => $this->faker->sentence(mt_rand(3, 10)),
             'slug' => $this->faker->slug(),
-            'excerpt' => $this->faker->paragraph(),
-            // 'body' => '<p>'.implode ('<p></p>',  $this->faker->paragraphs(mt_rand(10, 15))).'</p>',
-            'content' => collect($this->faker->paragraphs(mt_rand(10, 15)))
-                ->map(fn ($p) => "<p>$p</p>")
-                ->implode(''),
+            'excerpt' => $this->faker->paragraph(mt_rand(1, 3)),
+            'content' => '<p>'.implode ('<p></p>',  $this->faker->paragraphs(mt_rand(10, 13))).'</p>',
             // 'content' => collect($this->faker->paragraphs(mt_rand(10, 15)))
             //     ->map(fn ($p) => "<p>$p</p>")
             //     ->implode(''),

@@ -34,7 +34,7 @@ class DatabaseSeeder extends Seeder
         Category::create([
             'title' => 'Personal',
         ]);
-        Posts::factory(30)->create();
+        Posts::factory(100)->create();
 
         // User::create([
         //     'name' => 'Admin',
@@ -70,7 +70,7 @@ class DatabaseSeeder extends Seeder
         Guestbook::create([
             'user_id' => 1,
             'message' => 'Welcome to my blog, feel free to leave a message.',
-            'created_at' => now(),
+            'created_at' => now()->addMinutes(-5),
             'updated_at' => now(),
         ]);
     }
