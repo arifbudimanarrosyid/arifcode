@@ -23,36 +23,39 @@ class DatabaseSeeder extends Seeder
         // \App\Models\User::factory(10)->create();
         // \App\Models\User::factory(10)->create();
         Category::create([
-            'title' => 'Web Development',
-        ]);
-        Category::create([
             'title' => 'Laravel',
         ]);
         Category::create([
             'title' => 'Tailwind CSS',
         ]);
         Category::create([
+            'title' => 'Alpine JS',
+        ]);
+        Category::create([
+            'title' => 'Web Development',
+        ]);
+        Category::create([
             'title' => 'Personal',
         ]);
-        Posts::factory(100)->create();
+        Posts::factory(10)->create();
 
 
         User::factory()->create([
-            'name' => 'Arif Budiman Arrosyid',
-            'email' => 'arifbudimanarrosyid@gmail.com',
+            'name' => 'ArifCode',
+            'email' => 'arifcode@admin.com',
             'email_verified_at' => now(),
             'is_admin' => 1,
             'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password
             'remember_token' => Str::random(10),
         ]);
-        User::create([
-            'name' => 'Admin',
-            'email' => 'admin@admin.com',
-            'email_verified_at' => now(),
-            'is_admin' => 1,
-            'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password
-            'remember_token' => Str::random(10),
-        ]);
+        // User::create([
+        //     'name' => 'Admin',
+        //     'email' => 'admin@admin.com',
+        //     'email_verified_at' => now(),
+        //     'is_admin' => 1,
+        //     'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password
+        //     'remember_token' => Str::random(10),
+        // ]);
         User::factory()->create([
             'name' => 'User',
             'email' => 'user@user.com',
@@ -63,6 +66,13 @@ class DatabaseSeeder extends Seeder
         User::factory()->create([
             'name' => 'User1',
             'email' => 'user1@user.com',
+            'email_verified_at' => now(),
+            'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password
+            'remember_token' => Str::random(10),
+        ]);
+        User::factory()->create([
+            'name' => 'User2',
+            'email' => 'user2@user.com',
             'email_verified_at' => now(),
             'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password
             'remember_token' => Str::random(10),
