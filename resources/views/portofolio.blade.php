@@ -7,7 +7,7 @@
                     <section class="bg- dark:bg-gray-900">
                         {{-- <div class="container mx-auto"> --}}
                             <h1
-                                class="text-4xl font-bold text-gray-800 underline capitalize decoration-yellow-500 dark:text-white">
+                                class="text-4xl font-bold text-gray-800 underline capitalize decoration-red-500 dark:text-white">
                                 Portofolio
                             </h1>
 

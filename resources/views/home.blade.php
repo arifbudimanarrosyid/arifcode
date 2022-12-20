@@ -25,7 +25,7 @@
             {{-- Featured Posts --}}
             <div class="px-4 mt-10 mb-10 overflow-x-auto sm:px-0">
                 <h1
-                    class="mb-6 text-4xl font-bold text-gray-800 underline capitalize decoration-indigo-500 dark:text-white">
+                    class="mb-6 text-4xl font-bold text-gray-800 underline capitalize decoration-yellow-500 dark:text-white">
                     Featured Posts
                 </h1>
                 {{-- <h1 class="mb-6 text-4xl font-bold text-gray-900 dark:text-gray-100">Featured Posts</h1> --}}
@@ -33,7 +33,7 @@
                 <div class="flex flex-col w-full gap-5 pb-5 mb-4">
                     @foreach ($featured as $post)
                     <a href="{{ route('post', $post->slug) }}"
-                        class="w-full p-4 bg-white border-2 border-gray-200 rounded-lg hover:border-indigo-500 dark:bg-gray-800 dark:border-gray-700 ">
+                        class="w-full p-4 bg-white border-2 border-gray-200 rounded-lg hover:border-yellow-500 dark:bg-gray-800 dark:border-gray-700 ">
 
                         <div class="flex justify-between ">
 
@@ -52,7 +52,7 @@
                             </span>
 
                         </div>
-                        <h5 class="mb-2 text-xl font-bold tracking-tight text-indigo-500 dark:text-indigo-500">
+                        <h5 class="mb-2 text-xl font-bold tracking-tight text-yellow-500 dark:text-yellow-500">
                             {{$post->title }}
                         </h5>
                         <p class="font-normal text-gray-600 dark:text-gray-400">
@@ -62,7 +62,7 @@
                     @endforeach
                     <div class="flex">
                         <a href="{{ route('posts') }}"
-                            class="flex text-lg items-center text-gray-900 hover:text-indigo-500 dark:text-gray-400 dark:hover:text-indigo-500">
+                            class="flex text-lg items-center text-gray-900 hover:text-yellow-500 dark:text-gray-400 dark:hover:text-yellow-500">
                             Read all posts
                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
                                 stroke="currentColor" class="w-6 h-6 ml-3">

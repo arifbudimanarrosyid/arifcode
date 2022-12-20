@@ -4,7 +4,7 @@
             <div class="flex mb-5 overflow-hidden ">
                 <div class="px-4 sm:px-0">
                     <h1
-                        class="text-4xl font-bold text-gray-800 underline capitalize decoration-green-500 dark:text-white">
+                        class="text-4xl font-bold text-gray-800 underline capitalize decoration-sky-500 dark:text-white">
                         Edit Guestbook
                     </h1>
                     <h1 class="mt-4 text-gray-600 dark:text-gray-400">Hope you like the website, please leave a message.
@@ -30,7 +30,7 @@
 
                             <x-input-error :messages="$errors->get('message')" class="mt-2" />
                             <button type="submit"
-                                class="mt-5 inline-flex items-center px-4 py-2 text-sm font-medium text-center text-white bg-indigo-700 rounded-lg focus:ring-4 focus:ring-indigo-200 dark:focus:ring-indigo-900 hover:bg-indigo-800">
+                                class="mt-5 inline-flex items-center px-4 py-2 text-sm font-medium text-center text-white bg-sky-700 rounded-lg focus:ring-4 focus:ring-sky-200 dark:focus:ring-sky-900 hover:bg-sky-800">
                                 Send
                             </button>
 

@@ -60,7 +60,7 @@
 
 
                             <button type="submit"
-                                class="mt-5 inline-flex items-center px-4 py-2 text-sm font-medium text-center text-white bg-indigo-700 rounded-lg focus:ring-4 focus:ring-indigo-200 dark:focus:ring-indigo-900 hover:bg-indigo-800">
+                                class="mt-5 inline-flex items-center px-4 py-2 text-sm font-medium text-center text-white bg-sky-700 rounded-lg focus:ring-4 focus:ring-sky-200 dark:focus:ring-sky-900 hover:bg-sky-800">
                                 Send
                             </button>
                         </form>
