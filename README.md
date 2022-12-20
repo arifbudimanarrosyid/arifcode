@@ -69,21 +69,20 @@ Register form default account type is_admin false
   - [x] Update
   - [x] Delete
 - [x] Dashboard
-- [x] Dashboard - Profile
+- [x] Profile
 
 ### Admin
 - [x] Dashboard - Posts
   - [x] Create
   - [x] Read
   - [x] Update
+  - [x] Delete & Update Thumbnail
   - [x] Delete
 - [x] Dashboard - Category
-  - [ ] Create
+  - [x] Create
   - [x] Read
-  - [ ] Update
-  - [ ] Delete
+  - [x] Update
+  - [ ] Delete (disable)
 - [x] Dashboard - Users
-  - [ ] Create
-  - [x] Read
-  - [ ] Update
-  - [ ] Delete
+  - [x] Change role to Admin
+  - [x] Change role to User
