@@ -37,7 +37,7 @@
             selector:'#tinymce',
             plugins: 'anchor resize autolink charmap codesample emoticons image link lists media searchreplace table visualblocks wordcount checklist mediaembed casechange export formatpainter pageembed linkchecker a11ychecker permanentpen powerpaste advtable advcode editimage  tableofcontents footnotes mergetags autocorrect typography inlinecss',
             toolbar: 'undo redo code | blocks | h1 h2 codesample blockquote  link image bullist numlist  | checklist numlist bullist indent outdent|bold italic underline strikethrough |  image media table mergetags |  spellcheckdialog a11ycheck typography | align lineheight |  emoticons charmap | removeformat',
-            skin: (window.matchMedia("(prefers-color-scheme: dark)").matches ? "oxide-dark" : ""),
+            skin: (window.matchMedia("(prefers-color-scheme: dark)").matches ? "oxide-dark" : "oxide"),
             content_css: (window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "")
         });
     </script>
