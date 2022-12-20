@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class DashboardUserController extends Controller
 {
@@ -14,8 +15,40 @@ class DashboardUserController extends Controller
      */
     public function index()
     {
-        $users = User::all();
+        // user where user id is not 1
+
+
+        if (Auth::user()->id == 1) {
+            $users = User::where('id', '!=', 1)
+                ->where('id', '!=', Auth::user()->id)
+                ->get();
+        } else {
+            $users = User::where('id', '!=', 1)
+                ->where('id', '=', Auth::user()->id)
+                ->get();
+            // $users = User::where('id', '!=', 1)
+            //     ->where('id', '=', Auth::user()->id)
+            //     ->get();
+        }
         return view('dashboard.user.index', compact('users'));
+    }
+
+    public function makeRoleAdmin(User $user)
+    {
+        $user->is_admin = 1;
+        $user->save();
+        return redirect()->back()->with('success', 'User has been made Admin');
+    }
+    public function makeRoleUser(User $user)
+    {
+        $user->is_admin = 0;
+        $user->save();
+        if (Auth::user()->is_admin == 0) {
+            redirect()->route('home');
+        } else {
+            return redirect()->back()->with('success', 'User has been made User');
+        }
+        // return redirect()->back()->with('success', 'User has been made User');
     }
 
     /**
