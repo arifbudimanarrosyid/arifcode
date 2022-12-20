@@ -73,5 +73,17 @@ class DatabaseSeeder extends Seeder
             'created_at' => now()->addMinutes(-5),
             'updated_at' => now(),
         ]);
+        Guestbook::create([
+            'user_id' => 2,
+            'message' => 'Hello from Indonesia',
+            'created_at' => now()->addMinutes(-50),
+            'updated_at' => now(),
+        ]);
+        Guestbook::create([
+            'user_id' => 3,
+            'message' => 'Hello there, hope you are doing well.',
+            'created_at' => now()->addMinutes(-7),
+            'updated_at' => now(),
+        ]);
     }
 }
