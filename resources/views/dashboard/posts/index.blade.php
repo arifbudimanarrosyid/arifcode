@@ -99,17 +99,16 @@
 
             {{-- All Posts --}}
             <div class="w-full">
-                @if ($posts->count())
                 {{-- Post --}}
-                @foreach ($posts as $post)
+                @forelse ($posts as $post)
                 <div class="mb-4 sm:flex">
                     <div class="w-full p-4 mb-2 bg-white rounded-lg sm:mr-5 w-sm dark:bg-gray-800 ">
                         <div class="flex justify-between mb-2">
                             <div class="sm:flex sm:flex-row">
-
                                 <p class="mr-2 font-normal text-gray-700 dark:text-gray-400">
                                     {{ $post->published_at->format('d M Y') }}
                                 </p>
+
                                 <p class="font-normal text-gray-700 dark:text-gray-400">
                                     {{ $post->published_at->diffForHumans() }}
                                 </p>
@@ -131,19 +130,13 @@
                                 @endif
                             </div>
                         </div>
-
                         <h5 class="mb-2 text-xl font-bold tracking-tight text-gray-900 dark:text-white">
                             {{ $post->title }}</h5>
                         <h5 class="mb-2 font-bold tracking-tight text-gray-900 dark:text-indigo-400">
-
                             {{ $post->category->title }}</h5>
                         <p class="font-normal text-gray-700 dark:text-gray-400">{{ $post->excerpt }}</p>
                     </div>
-
-
-
                     <div class="flex-row sm:flex-col sm:flex">
-
                         <a href="{{ route('posts.show', $post->id) }}"
                             class="inline-flex items-center px-4 py-2 mb-2 text-sm font-medium leading-4 text-gray-600 transition duration-150 ease-in-out bg-green-200 rounded-md dark:text-gray-300 dark:bg-green-800 hover:bg-green-400 dark:hover:bg-green-600 focus:outline-none">
                             View
@@ -152,7 +145,6 @@
                             class="inline-flex items-center px-4 py-2 mb-2 text-sm font-medium leading-4 text-gray-600 transition duration-150 ease-in-out rounded-md dark:text-gray-300 bg-sky-200 dark:bg-sky-800 hover:bg-sky-400 dark:hover:bg-sky-600 focus:outline-none">
                             Edit
                         </a>
-
                         <form action="{{ route('posts.destroy', $post->id) }}" method="POST" class="inline-flex">
                             @csrf
                             @method('DELETE')
@@ -161,26 +153,13 @@
                                 Delete
                             </button>
                         </form>
-
-
-
-
                     </div>
-
-
                 </div>
-                @endforeach
-                @else
+                @empty
                 <h1 class="mt-4 text-gray-600 dark:text-gray-400">No Post Found</h1>
-                @endif
-
+                @endforelse
                 {{ $posts->links() }}
-
-
             </div>
-
         </div>
     </div>
-
-
 </x-app-layout>

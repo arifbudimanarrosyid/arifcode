@@ -20,11 +20,13 @@ class DashboardPostController extends Controller
     {
         $search = request('search');
         if ($search) {
-            $posts = Posts::where('title', 'like', '%' . $search . '%')
-                ->orWhere('excerpt', 'like', '%' . $search . '%')
-                ->orWhere('content', 'like', '%' . $search . '%')
-                ->orderBy('created_at', 'desc')
+            $posts = Posts::where(function ($query) use ($search) {
+                $query->where('title', 'like', '%' . $search . '%')
+                    ->orWhere('excerpt', 'like', '%' . $search . '%')
+                    ->orWhere('content', 'like', '%' . $search . '%');
+            })
                 ->with(['category'])
+                ->orderBy('created_at', 'desc')
                 ->paginate(10)
                 ->withQueryString();
         } else {
@@ -177,7 +179,6 @@ class DashboardPostController extends Controller
             // return redirect()->route('posts.index')
             //     ->with('success', 'Post saved successfully');
             return back()->with('success', 'Post saved successfully');
-
         }
 
         $posts = Posts::findOrFail($posts);
