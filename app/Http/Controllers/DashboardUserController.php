@@ -37,7 +37,8 @@ class DashboardUserController extends Controller
     {
         $user->is_admin = 1;
         $user->save();
-        return redirect()->back()->with('success', 'User has been made Admin');
+        return redirect()->back()->with('success', 'User role has been changed to Admin');
+
     }
     public function makeRoleUser(User $user)
     {
@@ -46,9 +47,8 @@ class DashboardUserController extends Controller
         if (Auth::user()->is_admin == 0) {
             redirect()->route('home');
         } else {
-            return redirect()->back()->with('success', 'User has been made User');
+            return redirect()->back()->with('success', 'User role has been changed to User');
         }
-        // return redirect()->back()->with('success', 'User has been made User');
     }
 
     /**
