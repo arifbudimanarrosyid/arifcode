@@ -27,13 +27,12 @@
                         {{ __('Posts') }}
                     </x-nav-link>
                     <x-nav-link :href="route('category.index')" :active="request()->routeIs('category.index')">
-                        {{ __('Category') }}
+                        {{ __('Categories') }}
                     </x-nav-link>
-                    {{-- if have route /dashboard/portofolio, show the navlink--}}
                     @if (Route::has('dashboard.portofolio.index'))
                     <x-nav-link :href="route('dashboard.portofolio.index')"
                         :active="request()->routeIs('dashboard.portofolio.index')">
-                        {{ __('Portofolio') }}
+                        {{ __('Portofolios') }}
                     </x-nav-link>
                     @endif
                     <x-nav-link :href="route('user.index')" :active="request()->routeIs('user.index')">
@@ -111,12 +110,12 @@
                     {{ __('Posts') }}
                 </x-responsive-nav-link>
                 <x-responsive-nav-link :href="route('category.index')" :active="request()->routeIs('category.index')">
-                    {{ __('Category') }}
+                    {{ __('Categories') }}
                 </x-responsive-nav-link>
                 @if (Route::has('dashboard.portofolio.index'))
                 <x-responsive-nav-link :href="route('dashboard.portofolio.index')"
                     :active="request()->routeIs('dashboard.portofolio.index')">
-                    {{ __('Portofolio') }}
+                    {{ __('Portofolios') }}
                 </x-responsive-nav-link>
                 @endif
                 <x-responsive-nav-link :href="route('user.index')" :active="request()->routeIs('user.index')">
