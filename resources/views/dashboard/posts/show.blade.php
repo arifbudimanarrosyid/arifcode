@@ -18,10 +18,18 @@
                         Edit
                     </a>
                 </div>
-                <h5 class="mb-2 font-bold tracking-tight text-indigo-500 dark:text-indigo-400">
+                <h5 class="mb-2 font-bold tracking-tight @if ($posts->is_featured)
+                    text-orange-500 dark:text-orange-400
+                    @else
+                    text-indigo-500 dark:text-indigo-400
+                @endif">
                     {{$posts->category->title }}
                 </h5>
-                <h1 class="text-4xl font-bold text-gray-800 underline capitalize decoration-indigo-500 dark:text-white">
+                <h1 class="text-4xl font-bold text-gray-800 underline capitalize @if ($posts->is_featured)
+                    decoration-orange-500
+                    @else
+                    decoration-indigo-500
+                    @endif dark:text-white">
                     {{ $posts->title }}
                 </h1>
 
@@ -47,8 +55,12 @@
                 <p class="mt-5 font-normal text-gray-700 dark:text-gray-300">{{ $posts->excerpt }}</p>
 
                 <div
-                    class="mt-6 overflow-auto prose max-w-none prose-indigo dark:prose-invert
-                    prose-code:text-indigo-400 prose-blockquote:text-indigo-400">
+                    class="mt-6 overflow-auto prose max-w-none dark:prose-invert
+                    @if ($posts->is_featured)
+                            prose-orange prose-code:text-orange-400 prose-blockquote:text-orange-400
+                            @else
+                            prose-indigo prose-code:text-indigo-400 prose-blockquote:text-indigo-400
+                        @endif">
 
                     {{-- class="mt-6 overflow-auto prose max-w-none prose-gray dark:prose-invert prose-a:text-indigo-400 prose-h2:text-indigo-400 prose-blockquote:text-indigo-700 prose-code:text-indigo-300 prose-pre:text-indigo-400 prose-blockquote:bg-indigo-50 prose-blockquote:border-indigo-400 hover:prose-a:text-indigo-500"> --}}
                     {!! $posts->content !!}
