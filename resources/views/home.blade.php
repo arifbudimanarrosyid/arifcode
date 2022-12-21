@@ -52,7 +52,7 @@
                             </span>
 
                         </div>
-                        <h5 class="mb-2 text-xl font-bold tracking-tight text-gray-500 hover:text-orange-500 dark:text-gray-300 dark:hover:text-orange-500">
+                        <h5 class="mb-2 text-xl font-bold tracking-tight text-gray-500  dark:text-gray-300">
                             {{$post->title }}
                         </h5>
                         <p class="font-normal text-gray-600 dark:text-gray-400">

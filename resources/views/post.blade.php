@@ -76,7 +76,7 @@
                                 </span>
 
                             </div>
-                            <h5 class="mb-2 text-xl font-bold tracking-tight @if ($post->is_featured) text-gray-500 hover:text-orange-500 dark:text-gray-300 dark:hover:text-orange-500 @else text-gray-500 hover:text-indigo-500 dark:text-gray-300 dark:hover:text-indigo-500 @endif">
+                            <h5 class="mb-2 text-xl font-bold tracking-tight @if ($post->is_featured) text-gray-500  dark:text-gray-300  @else text-gray-500  dark:text-gray-300  @endif">
                                 {{$post->title }}
                             </h5>
                             <p class="font-normal text-gray-600 dark:text-gray-400">

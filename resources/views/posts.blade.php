@@ -68,8 +68,8 @@
 
                             </div>
                             <h5 class="mb-2 text-xl font-bold tracking-tight
-                            @if ($post->is_featured) text-gray-500 hover:text-orange-500 dark:text-gray-300 dark:hover:text-orange-500 @else text-gray-500 hover:text-indigo-500 dark:text-gray-300 dark:hover:text-indigo-500 @endif
-                            {{-- @if ($post->category->id == 1) text-red-500 dark:text-red-500 @else if ($post->category->id == 2) text-sky-500 dark:text-sky-500 @else if ($post->category->id == 3) text-indigo-500 dark:text-indigo-500 @else text-indigo-500 dark:text-indigo-500 @endif --}}
+                            {{-- @if ($post->is_featured) text-gray-500 hover:text-orange-500 dark:text-gray-300 dark:hover:text-orange-500 @else text-gray-500 hover:text-indigo-500 dark:text-gray-300 dark:hover:text-indigo-500 @endif --}}
+                            @if ($post->is_featured) text-gray-500  dark:text-gray-300  @else text-gray-500  dark:text-gray-300  @endif
                                 ">
                                 {{$post->title }}
                             </h5>
@@ -77,33 +77,6 @@
                                 {{ $post->excerpt }}
                             </p>
                         </a>
-                        {{-- <a href="{{ route('post', $post->slug) }}"
-                            class="w-full p-4 bg-white border-2 border-gray-200 rounded-lg hover:border-indigo-500 dark:bg-gray-800 dark:border-gray-700 ">
-
-                            <div class="flex justify-between ">
-
-                                <h5 class="font-bold tracking-tight text-indigo-500 dark:text-indigo-400">{{
-                                    $post->category->title }}
-                                </h5>
-                                <span
-                                    class="inline-flex items-center text-xs font-medium text-gray-800 dark:text-gray-300">
-                                    <svg aria-hidden="true" class="w-3 h-3 mr-1" fill="currentColor" viewBox="0 0 20 20"
-                                        xmlns="http://www.w3.org/2000/svg">
-                                        <path fill-rule="evenodd"
-                                            d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l2.828 2.829a1 1 0 101.415-1.415L11 9.586V6z"
-                                            clip-rule="evenodd"></path>
-                                    </svg>
-                                    {{ $post->published_at->diffForHumans()}}</p>
-                                </span>
-
-                            </div>
-                            <h5 class="mb-2 text-xl font-bold tracking-tight text-gray-900 dark:text-white">
-                                {{$post->title }}
-                            </h5>
-                            <p class="font-normal text-gray-700 dark:text-gray-400">
-                                {{ $post->excerpt }}
-                            </p>
-                        </a> --}}
                         @endforeach
                     </div>
                     @else
