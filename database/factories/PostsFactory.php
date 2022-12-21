@@ -26,7 +26,7 @@ class PostsFactory extends Factory
                 ->implode(''),
             'is_published' => rand(0, 1),
             'is_featured' => rand(0, 1),
-            'category_id' => rand(1, 4),
+            'category_id' => rand(1, 5),
             'published_at' => $this->faker->dateTimeBetween('-1 month', 'now'),
             // 'user_id' => rand(1, 10)
         ];

@@ -20,12 +20,13 @@ class PostController extends Controller
                 })
                 ->with(['category'])
                 ->orderBy('published_at', 'desc')
-                ->paginate(10);
+                ->paginate(7)
+                ->withQueryString();
         } else {
             $posts = Posts::where('is_published', true)
                 ->with(['category'])
                 ->orderBy('published_at', 'desc')
-                ->paginate(10);
+                ->paginate(7);
         }
         // dd($posts);
         return view('posts', compact('posts'));
