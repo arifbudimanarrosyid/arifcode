@@ -10,10 +10,9 @@
                     </h1>
                     <h1 class="mt-4 text-gray-600 dark:text-gray-400">Sometimes I write what I have learned, or I will
                         write
-                        whatever I like. Use the search bellow to filter by title / excerp / content.</h1>
-                    <h1 class="mt-4 text-gray-600 dark:text-gray-400">Featured post will show border <span class="text-orange-500">orange</span> on hover.</h1>
-
-
+                        whatever I like. Use the search bellow to filter by title / excerp / content. Featured post will
+                        show border <span class="text-orange-500">orange</span> on hover.
+                    </h1>
                 </div>
 
             </div>
