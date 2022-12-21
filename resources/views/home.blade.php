@@ -31,7 +31,7 @@
                 {{-- <h1 class="mb-6 text-4xl font-bold text-gray-900 dark:text-gray-100">Featured Posts</h1> --}}
 
                 <div class="flex flex-col w-full gap-5 pb-5 mb-4">
-                    @foreach ($featured as $post)
+                    @forelse ($featured as $post)
                     <a href="{{ route('post', $post->slug) }}"
                         class="w-full p-4 bg-white border-2 border-gray-200 rounded-lg hover:border-orange-500 dark:bg-gray-800 dark:border-gray-700 ">
 
@@ -59,7 +59,9 @@
                             {{ $post->excerpt }}
                         </p>
                     </a>
-                    @endforeach
+                    @empty
+                    <h1 class="mt-4 text-gray-600 dark:text-gray-400">No featured post yet.</h1>
+                    @endforelse
                     <div class="flex">
                         <a href="{{ route('posts') }}"
                             class="flex text-lg items-center text-gray-900 hover:text-orange-500 dark:text-gray-400 dark:hover:text-orange-500">
