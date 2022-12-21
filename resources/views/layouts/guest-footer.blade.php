@@ -28,7 +28,7 @@
                         class="hover:text-gray-800 dark:hover:text-gray-200">Github</a>
                 </li>
                 <li class="mb-4">
-                    <a href="https://www.youtube.com/channel/UC1EY4S7EE0yJp7z09RUvRKQ" class="hover:text-red-500">Youtube</a>
+                    <a href="https://www.youtube.com/@arifcode" class="hover:text-red-500">Youtube</a>
                 </li>
                 <li class="mb-4">
                     <a href="https://www.twitch.tv/arifcode" class="hover:text-indigo-300">Twitch</a>
