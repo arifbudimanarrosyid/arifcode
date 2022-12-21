@@ -12,21 +12,22 @@ class PostController extends Controller
     {
         $search = request('search');
         if ($search) {
-            $posts = Posts::where('title', 'like', '%' . $search . '%')
-                ->orWhere('excerpt', 'like', '%' . $search . '%')
-                ->orWhere('content', 'like', '%' . $search . '%')
-                ->where('is_published', true)
-                ->orderBy('published_at', 'desc')
+            $posts = Posts::where('is_published', true)
+                ->where(function ($query) use ($search) {
+                    $query->where('title', 'like', '%' . $search . '%')
+                        ->orWhere('excerpt', 'like', '%' . $search . '%')
+                        ->orWhere('content', 'like', '%' . $search . '%');
+                })
                 ->with(['category'])
-                ->paginate(10)
-                ->withQueryString();
+                ->orderBy('published_at', 'desc')
+                ->paginate(10);
         } else {
             $posts = Posts::where('is_published', true)
                 ->with(['category'])
                 ->orderBy('published_at', 'desc')
-                ->with(['category'])
                 ->paginate(10);
         }
+        // dd($posts);
         return view('posts', compact('posts'));
     }
     public function home()
