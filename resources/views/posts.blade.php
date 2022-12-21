@@ -10,7 +10,7 @@
                     </h1>
                     <h1 class="mt-4 text-gray-600 dark:text-gray-400">Sometimes I write what I have learned, or I will
                         write
-                        whatever I like. Use the search bellw to filter by title / excerp / content.</h1>
+                        whatever I like. Use the search bellow to filter by title / excerp / content.</h1>
 
                 </div>
 
@@ -37,13 +37,18 @@
 
 
             {{-- All Posts --}}
-            <div class="flex my-5 overflow-hidden ">
+            <div class="flex my-5">
                 <div class="w-full px-4 sm:px-0">
                     @if ($posts->count())
                     <div class="flex flex-col w-full gap-5 pb-5 mb-4">
                         @foreach ($posts as $post)
-                        <a href="{{ route('post', $post->slug) }}"
-                            class="w-full p-4 bg-white border-2 border-gray-200 rounded-lg hover:border-indigo-500 dark:bg-gray-800 dark:border-gray-700 ">
+                        <a href="{{ route('post', $post->slug) }}" class="w-full p-4 bg-white border-2 border-gray-200 rounded-lg
+                            @if ($post->is_featured)
+                                hover:border-orange-500
+                            @else
+                            hover:border-indigo-500
+                            @endif
+                                 dark:bg-gray-800 dark:border-gray-700 ">
 
                             <div class="flex justify-between ">
 
@@ -62,7 +67,10 @@
                                 </span>
 
                             </div>
-                            <h5 class="mb-2 text-xl font-bold tracking-tight text-indigo-500 dark:text-indigo-500">
+                            <h5 class="mb-2 text-xl font-bold tracking-tight
+                            @if ($post->is_featured) text-gray-500 hover:text-orange-500 dark:text-gray-300 dark:hover:text-orange-500 @else text-gray-500 hover:text-indigo-500 dark:text-gray-300 dark:hover:text-indigo-500 @endif
+                            {{-- @if ($post->category->id == 1) text-red-500 dark:text-red-500 @else if ($post->category->id == 2) text-sky-500 dark:text-sky-500 @else if ($post->category->id == 3) text-indigo-500 dark:text-indigo-500 @else text-indigo-500 dark:text-indigo-500 @endif --}}
+                                ">
                                 {{$post->title }}
                             </h5>
                             <p class="font-normal text-gray-600 dark:text-gray-400">

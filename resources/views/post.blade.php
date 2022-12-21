@@ -4,11 +4,18 @@
             {{-- Blog --}}
             <div class="mb-5 overflow-hidden ">
                 <div class="px-4 sm:px-0">
-                    <h5 class="mb-2 font-bold tracking-tight text-indigo-500 dark:text-indigo-400">
+                    <h5 class="mb-2 font-bold tracking-tight @if ($post->is_featured)
+                        text-orange-500 dark:text-orange-400
+                        @else
+                        text-indigo-500 dark:text-indigo-400
+                    @endif ">
                         {{$post->category->title }}
                     </h5>
-                    <h1
-                        class="text-4xl font-bold text-gray-800 underline capitalize decoration-indigo-500 dark:text-white">
+                    <h1 class="text-4xl font-bold text-gray-800 underline capitalize @if ($post->is_featured)
+                        decoration-orange-500
+                        @else
+                        decoration-indigo-500
+                        @endif  dark:text-white">
                         {{ $post->title }}
                     </h1>
                     <span
@@ -24,10 +31,18 @@
 
                     <p class="mt-5 font-normal text-gray-700 dark:text-gray-300">{{ $post->excerpt }}</p>
 
-                    <div
-                        class="mt-6 overflow-auto prose max-w-none prose-indigo dark:prose-invert
-                        prose-code:text-indigo-400 prose-blockquote:text-indigo-400">
-                        {{-- class="mt-6 overflow-auto prose max-w-none prose-gray dark:prose-invert prose-a:text-indigo-400 prose-h2:text-indigo-400 prose-h3:text-indigo-400 prose-h4:text-indigo-400 prose-h5:text-indigo-400 prose-h6:text-indigo-400 prose-blockquote:text-indigo-700 prose-h1:text-indigo-400 prose-code:text-indigo-300 prose-pre:text-indigo-400 prose-blockquote:bg-indigo-50 prose-blockquote:border-indigo-400 hover:prose-a:text-indigo-500"> --}}
+                    <div class="mt-6 overflow-auto prose max-w-none  @if ($post->is_featured)
+                            prose-orange prose-code:text-orange-400 prose-blockquote:text-orange-400
+                            @else
+                            prose-indigo prose-code:text-indigo-400 prose-blockquote:text-indigo-400
+                        @endif dark:prose-invert
+                        ">
+                        {{-- class="mt-6 overflow-auto prose max-w-none prose-gray dark:prose-invert
+                        prose-a:text-indigo-400 prose-h2:text-indigo-400 prose-h3:text-indigo-400
+                        prose-h4:text-indigo-400 prose-h5:text-indigo-400 prose-h6:text-indigo-400
+                        prose-blockquote:text-indigo-700 prose-h1:text-indigo-400 prose-code:text-indigo-300
+                        prose-pre:text-indigo-400 prose-blockquote:bg-indigo-50 prose-blockquote:border-indigo-400
+                        hover:prose-a:text-indigo-500"> --}}
                         {!! $post->content !!}
 
                     </div>
@@ -38,7 +53,11 @@
                         </h1>
                         @foreach ($recomendation as $post)
                         <a href="{{ route('post', $post->slug) }}"
-                            class="w-full p-4 bg-white border-2 border-gray-200 rounded-lg hover:border-indigo-500 dark:bg-gray-800 dark:border-gray-700 ">
+                            class="w-full p-4 bg-white border-2 border-gray-200 rounded-lg @if ($post->is_featured)
+                            hover:border-orange-500
+                        @else
+                        hover:border-indigo-500
+                        @endif dark:bg-gray-800 dark:border-gray-700 ">
 
                             <div class="flex justify-between ">
 
@@ -57,7 +76,7 @@
                                 </span>
 
                             </div>
-                            <h5 class="mb-2 text-xl font-bold tracking-tight text-indigo-500 dark:text-indigo-500">
+                            <h5 class="mb-2 text-xl font-bold tracking-tight @if ($post->is_featured) text-gray-500 hover:text-orange-500 dark:text-gray-300 dark:hover:text-orange-500 @else text-gray-500 hover:text-indigo-500 dark:text-gray-300 dark:hover:text-indigo-500 @endif">
                                 {{$post->title }}
                             </h5>
                             <p class="font-normal text-gray-600 dark:text-gray-400">
