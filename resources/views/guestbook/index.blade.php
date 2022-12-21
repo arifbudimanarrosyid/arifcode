@@ -75,7 +75,7 @@
                                         <div class="flex flex-col sm:flex-row">
                                             <div>
 
-                                                <span class="text-base text-green-400 dark:text-green-300">
+                                                <span class="text-base text-sky-500 dark:text-sky-500">
                                                     {{$guestbook->user->name }}
                                                 </span>
                                                 {{-- @if ($guestbook->user_id == Auth::id())
