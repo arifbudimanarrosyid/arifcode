@@ -130,10 +130,10 @@
                                 @endif
                             </div>
                         </div>
-                        <h5 class="mb-2 text-xl font-bold tracking-tight text-gray-900 dark:text-white">
-                            {{ $post->title }}</h5>
                         <h5 class="mb-2 font-bold tracking-tight text-gray-900 dark:text-indigo-400">
                             {{ $post->category->title }}</h5>
+                        <h5 class="mb-2 text-xl font-bold tracking-tight text-gray-900 dark:text-white">
+                            {{ $post->title }}</h5>
                         <p class="font-normal text-gray-700 dark:text-gray-400">{{ $post->excerpt }}</p>
                     </div>
                     <div class="flex-row sm:flex-col sm:flex">
