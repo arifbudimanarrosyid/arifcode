@@ -52,7 +52,7 @@
                 {{-- <img src="{{ asset('/storage/thumbnails/'.$posts->thumbnail) }}" alt="image"
                     class="object-cover w-full mt-5 h-96"> --}}
 
-                <p class="mt-5 font-normal text-gray-700 dark:text-gray-300">{{ $posts->excerpt }}</p>
+                {{-- <p class="mt-5 font-normal text-gray-700 dark:text-gray-300">{{ $posts->excerpt }}</p> --}}
 
                 <div
                     class="mt-6 overflow-auto prose max-w-none dark:prose-invert

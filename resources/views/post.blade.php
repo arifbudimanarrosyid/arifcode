@@ -29,7 +29,7 @@
                     {{-- <img src="{{ asset('/storage/thumbnails/'.$post->thumbnail) }}" alt="image"
                         class="object-cover w-full mt-5 h-96"> --}}
 
-                    <p class="mt-5 font-normal text-gray-700 dark:text-gray-300">{{ $post->excerpt }}</p>
+                    {{-- <p class="mt-5 font-normal text-gray-700 dark:text-gray-300">{{ $post->excerpt }}</p> --}}
 
                     <div class="mt-6 overflow-auto prose max-w-none  @if ($post->is_featured)
                             prose-orange prose-code:text-orange-400 prose-blockquote:text-orange-400
