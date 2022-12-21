@@ -43,7 +43,7 @@
                 </div>
 
             </div>
-            <div class="flex my-5 ">
+            <div class="flex my-5 min-h-screen">
                 <div class="w-full px-4 sm:px-0">
                     <div class="w-full ">
                         @auth

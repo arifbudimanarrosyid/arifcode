@@ -23,7 +23,7 @@
 
             </div>
             {{-- Featured Posts --}}
-            <div class="px-4 mt-10 mb-10 overflow-x-auto sm:px-0">
+            <div class="px-4 min-h-screen mt-10 mb-10 overflow-x-auto sm:px-0">
                 <h1
                     class="mb-6 text-4xl font-bold text-gray-800 underline capitalize decoration-orange-500 dark:text-white">
                     Featured Posts

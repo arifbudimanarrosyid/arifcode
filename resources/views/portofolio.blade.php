@@ -2,7 +2,7 @@
     <div class="py-12">
         <div class="mx-auto max-w-7xl sm:px-6 lg:px-8">
             {{-- Portofolio --}}
-            <div class="flex mb-5 overflow-hidden ">
+            <div class="flex mb-5 overflow-hidden min-h-screen">
                 <div class="px-4 sm:px-0">
                     <section class="bg- dark:bg-gray-900">
                         {{-- <div class="container mx-auto"> --}}

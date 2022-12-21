@@ -38,7 +38,7 @@
 
 
             {{-- All Posts --}}
-            <div class="flex my-5">
+            <div class="flex my-5 min-h-screen">
                 <div class="w-full px-4 sm:px-0">
                     @if ($posts->count())
                     <div class="flex flex-col w-full gap-5 pb-5 mb-4">
