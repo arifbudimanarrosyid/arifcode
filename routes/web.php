@@ -61,8 +61,8 @@ Route::prefix('dashboard')
     ->group(function () {
         Route::resource('/posts', DashboardPostController::class);
         Route::patch('/posts/{post}/delete-thumbnail', [DashboardPostController::class, 'deleteThumbnail'])->name('posts.delete-thumbnail');
-        Route::resource('/category', DashboardCategoryController::class);
-        // ->except(['destroy']);
+        Route::resource('/category', DashboardCategoryController::class)
+        ->except(['destroy']);
         Route::resource('/user', DashboardUserController::class)->only(['index']);
         Route::patch('/user/{user}/make-admin', [DashboardUserController::class, 'makeRoleAdmin'])->name('user.make-admin');
         Route::patch('/user/{user}/make-user', [DashboardUserController::class, 'makeRoleUser'])->name('user.make-user');

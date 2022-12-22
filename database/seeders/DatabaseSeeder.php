@@ -37,7 +37,7 @@ class DatabaseSeeder extends Seeder
         Category::create([
             'title' => 'Personal',
         ]);
-        Posts::factory(50)->create();
+        Posts::factory(20)->create();
 
 
         User::factory()->create([
