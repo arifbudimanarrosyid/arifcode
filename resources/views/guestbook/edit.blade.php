@@ -24,13 +24,16 @@
                             {{-- <textarea name="message"
                                 class="block w-full border-gray-300 rounded-md shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50">{{ old('message', $guestbook->message) }}</textarea>
                             --}}
-                            <textarea id="message" rows="4" name="message"
+                            <textarea id="message" rows="3" name="message"
+                                class="block p-2.5 w-full text-sm text-gray-900 bg-white border-2 border-gray-200 rounded-lg dark:border-gray-700 focus:ring-transparent dark:bg-gray-800 dark:placeholder-gray-400 dark:text-white dark:focus:ring-transparent "
+                                maxlength="255" placeholder="Leave a message...">{{ old('message', $guestbook->message) }}</textarea>
+                            {{-- <textarea id="message" rows="4" name="message"
                                 class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-transparent focus:ring-transparent dark:bg-gray-800 dark:border-transparent dark:placeholder-gray-400 dark:text-white dark:focus:ring-transparent"
-                                placeholder="Leave a message...">{{ old('message', $guestbook->message) }}</textarea>
+                                placeholder="Leave a message...">{{ old('message', $guestbook->message) }}</textarea> --}}
 
                             <x-input-error :messages="$errors->get('message')" class="mt-2" />
                             <button type="submit"
-                                class="mt-5 inline-flex items-center px-4 py-2 text-sm font-medium text-center text-white bg-sky-700 rounded-lg focus:ring-4 focus:ring-sky-200 dark:focus:ring-sky-900 hover:bg-sky-800">
+                                class="inline-flex items-center px-4 py-2 mt-5 text-sm font-medium text-center text-white rounded-lg bg-sky-700 focus:ring-4 focus:ring-sky-200 dark:focus:ring-sky-900 hover:bg-sky-800">
                                 Send
                             </button>
 
