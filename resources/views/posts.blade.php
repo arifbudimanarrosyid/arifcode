@@ -38,7 +38,7 @@
 
 
             {{-- All Posts --}}
-            <div class="flex my-5 min-h-screen">
+            <div class="flex min-h-screen my-5">
                 <div class="w-full px-4 sm:px-0">
                     @if ($posts->count())
                     <div class="flex flex-col w-full gap-5 pb-5 mb-4">
@@ -64,7 +64,7 @@
                                             d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l2.828 2.829a1 1 0 101.415-1.415L11 9.586V6z"
                                             clip-rule="evenodd"></path>
                                     </svg>
-                                    {{ $post->published_at->diffForHumans()}}</p>
+                                    <p>{{ $post->published_at->diffForHumans()}}</p>
                                 </span>
 
                             </div>

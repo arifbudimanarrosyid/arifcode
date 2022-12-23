@@ -40,9 +40,11 @@ Route::get('/aboutme', function () {
 })->name('aboutme');
 
 
-// Dashboard
+// Guestbook
 Route::resource('/guestbook', GuestbookController::class)
     ->only(['index', 'store', 'edit', 'update', 'destroy']);
+Route::patch('/guestbook/{guestbook}/pin', [GuestbookController::class, 'pin'])->name('guestbook.pin');
+Route::patch('/guestbook/{guestbook}/unpin', [GuestbookController::class, 'unpin'])->name('guestbook.unpin');
 
 Route::middleware('auth')->group(function () {
     // Profile
@@ -62,7 +64,7 @@ Route::prefix('dashboard')
         Route::resource('/posts', DashboardPostController::class);
         Route::patch('/posts/{post}/delete-thumbnail', [DashboardPostController::class, 'deleteThumbnail'])->name('posts.delete-thumbnail');
         Route::resource('/category', DashboardCategoryController::class)
-        ->except(['destroy']);
+            ->except(['destroy']);
         Route::resource('/user', DashboardUserController::class)->only(['index']);
         Route::patch('/user/{user}/make-admin', [DashboardUserController::class, 'makeRoleAdmin'])->name('user.make-admin');
         Route::patch('/user/{user}/make-user', [DashboardUserController::class, 'makeRoleUser'])->name('user.make-user');

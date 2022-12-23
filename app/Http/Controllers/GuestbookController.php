@@ -18,7 +18,8 @@ class GuestbookController extends Controller
     {
         // get guestbook with id = 1
         $pinned_guestbooks = Guestbook::with('user')
-            ->where('id', 1)
+            ->where('is_pinned', 1)
+            ->orderBy('updated_at', 'asc')
             ->get();
 
         // get all guestbook
@@ -26,8 +27,8 @@ class GuestbookController extends Controller
 
         // get all guestbook except id = 1
         $guestbooks = Guestbook::with('user')
+            ->where('is_pinned',  0)
             ->orderBy('created_at', 'desc')
-            ->where('id', '!=', 1)
             ->get();
 
         return  view('guestbook.index', compact('guestbooks', 'pinned_guestbooks'));
@@ -119,6 +120,36 @@ class GuestbookController extends Controller
         if (Auth::check()) {
             if (Auth::user()->id == $guestbook->user_id || Auth::user()->is_admin == true) {
                 $guestbook->delete();
+                return redirect()->route('guestbook.index');
+            } else {
+                return redirect()->route('guestbook.index');
+            }
+        } else {
+            return redirect()->route('guestbook.index');
+        }
+    }
+
+    public function pin(Guestbook $guestbook)
+    {
+        if (Auth::check()) {
+            if (Auth::user()->is_admin == true) {
+                $guestbook->is_pinned = true;
+                $guestbook->save();
+                return redirect()->route('guestbook.index');
+            } else {
+                return redirect()->route('guestbook.index');
+            }
+        } else {
+            return redirect()->route('guestbook.index');
+        }
+    }
+
+    public function unpin(Guestbook $guestbook)
+    {
+        if (Auth::check()) {
+            if (Auth::user()->is_admin == true) {
+                $guestbook->is_pinned = false;
+                $guestbook->save();
                 return redirect()->route('guestbook.index');
             } else {
                 return redirect()->route('guestbook.index');

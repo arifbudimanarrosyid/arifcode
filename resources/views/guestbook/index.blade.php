@@ -95,9 +95,13 @@
                                                     __('edited')
                                                     }}</small>
                                                 @endunless
+                                                @if ($guestbook->is_pinned == true)
+
                                                 <small class="text-sm text-gray-400 dark:text-gray-400">
                                                     &middot; pinned
                                                 </small>
+                                                @endif
+
                                             </div>
                                         </div>
 
@@ -115,6 +119,17 @@
                                                 </button>
                                             </x-slot>
                                             <x-slot name="content">
+                                                @if (Auth::user()->is_admin)
+
+                                                <form method="POST" action="{{ route('guestbook.unpin', $guestbook) }}">
+                                                    @csrf
+                                                    @method('patch')
+                                                    <x-dropdown-link :href="route('guestbook.unpin', $guestbook)"
+                                                        onclick="event.preventDefault(); this.closest('form').submit();">
+                                                        {{ __('Unpin') }}
+                                                    </x-dropdown-link>
+                                                </form>
+                                                @endif
                                                 <x-dropdown-link :href="route('guestbook.edit', $guestbook)">
                                                     {{ __('Edit') }}
                                                 </x-dropdown-link>
@@ -187,6 +202,16 @@
                                                 </button>
                                             </x-slot>
                                             <x-slot name="content">
+                                                @if (Auth::user()->is_admin == true)
+                                                <form method="POST" action="{{ route('guestbook.pin', $guestbook) }}">
+                                                    @csrf
+                                                    @method('patch')
+                                                    <x-dropdown-link :href="route('guestbook.pin', $guestbook)"
+                                                        onclick="event.preventDefault(); this.closest('form').submit();">
+                                                        {{ __('Pin') }}
+                                                    </x-dropdown-link>
+                                                </form>
+                                                @endif
                                                 <x-dropdown-link :href="route('guestbook.edit', $guestbook)">
                                                     {{ __('Edit') }}
                                                 </x-dropdown-link>

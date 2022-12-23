@@ -81,6 +81,7 @@ class DatabaseSeeder extends Seeder
         Guestbook::create([
             'user_id' => 1,
             'message' => 'Welcome to my blog, feel free to leave a message.',
+            'is_pinned' => 1,
             'created_at' => now()->addMinutes(-5),
             'updated_at' => now(),
         ]);
