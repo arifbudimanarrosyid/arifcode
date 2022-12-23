@@ -56,13 +56,7 @@ class DatabaseSeeder extends Seeder
         //     'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password
         //     'remember_token' => Str::random(10),
         // ]);
-        User::factory()->create([
-            'name' => 'User',
-            'email' => 'user@user.com',
-            'email_verified_at' => now(),
-            'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password
-            'remember_token' => Str::random(10),
-        ]);
+
         User::factory()->create([
             'name' => 'User1',
             'email' => 'user1@user.com',
@@ -77,12 +71,25 @@ class DatabaseSeeder extends Seeder
             'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password
             'remember_token' => Str::random(10),
         ]);
+        User::factory()->create([
+            'name' => 'User3',
+            'email' => 'user3@user.com',
+            'email_verified_at' => now(),
+            'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password
+            'remember_token' => Str::random(10),
+        ]);
 
         Guestbook::create([
             'user_id' => 1,
             'message' => 'Welcome to my blog, feel free to leave a message.',
             'is_pinned' => 1,
             'created_at' => now()->addMinutes(-5),
+            'updated_at' => now(),
+        ]);
+        Guestbook::create([
+            'user_id' => 2,
+            'message' => 'Hello from Jogja',
+            'created_at' => now()->addMinutes(-37),
             'updated_at' => now(),
         ]);
         Guestbook::create([
@@ -93,7 +100,7 @@ class DatabaseSeeder extends Seeder
         ]);
         Guestbook::create([
             'user_id' => 4,
-            'message' => 'Hello there, hope you are doing well.',
+            'message' => 'Hello there, hope you all doing well.',
             'created_at' => now()->addMinutes(-7),
             'updated_at' => now(),
         ]);
