@@ -30,7 +30,7 @@
                 {{-- User --}}
                 @foreach ($users as $user)
                 <div class="mb-4 sm:flex">
-                    <div class="sm:w-full p-4 mb-2 bg-white rounded-lg sm:mr-5 w-sm dark:bg-gray-800 ">
+                    <div class="p-4 mb-2 bg-white rounded-lg sm:w-full sm:mr-5 w-sm dark:bg-gray-800 ">
                         <div class="flex justify-between mb-2">
                             <div class="sm:flex sm:flex-row">
 
@@ -61,7 +61,7 @@
 
                         <h5 class="mb-2 text-xl font-bold tracking-tight text-gray-900 dark:text-white">
                             {{ $user->name }}</h5>
-                        <h5 class="mb-2 font-bold tracking-tight text-gray-900 dark:text-indigo-400">
+                        <h5 class="mb-2 font-bold tracking-tight text-indigo-600 dark:text-indigo-400">
                             {{ $user->email }}</h5>
                         {{-- <p class="font-normal text-gray-700 dark:text-gray-400">{{ $user->excerpt }}</p> --}}
                     </div>
@@ -71,8 +71,8 @@
                             @csrf
                             @method('PATCH')
                             <button type="submit"
-                                class="inline-flex items-center px-4 py-2 mb-2 text-sm font-medium leading-4 text-gray-600 transition duration-150 ease-in-out bg-green-200 rounded-md dark:text-gray-300 dark:bg-green-800 hover:bg-green-400 dark:hover:bg-green-600 focus:outline-none">
-                                Change
+                                class="inline-flex items-center px-4 py-2 mb-2 text-sm font-medium leading-4 text-gray-600 transition duration-150 ease-in-out bg-gray-200 rounded-md dark:text-gray-300 dark:bg-gray-800 hover:bg-gray-400 dark:hover:bg-gray-600 focus:outline-none">
+                                Change Role
                             </button>
                         </form>
                         @else
@@ -80,8 +80,8 @@
                             @csrf
                             @method('PATCH')
                             <button type="submit"
-                                class="inline-flex items-center px-4 py-2 mb-2 text-sm font-medium leading-4 text-gray-600 transition duration-150 ease-in-out bg-red-200 rounded-md dark:text-gray-300 dark:bg-red-800 hover:bg-red-400 dark:hover:bg-red-600 focus:outline-none">
-                                Change
+                                class="inline-flex items-center px-4 py-2 mb-2 text-sm font-medium leading-4 text-gray-600 transition duration-150 ease-in-out bg-indigo-200 rounded-md dark:text-gray-300 dark:bg-indigo-800 hover:bg-indigo-400 dark:hover:bg-indigo-600 focus:outline-none">
+                                Change Role
                             </button>
                         </form>
                         @endif

@@ -137,7 +137,7 @@
 
                 {{-- Sumbit --}}
                 <button type="submit"
-                    class="inline-flex items-center px-4 py-2 mt-5 text-sm font-medium text-center text-white bg-indigo-700 rounded-lg focus:ring-4 focus:ring-indigo-200 dark:focus:ring-indigo-900 hover:bg-indigo-800">
+                    class="inline-flex items-center px-4 py-3 mt-5 text-sm font-medium text-center text-white bg-indigo-700 rounded-lg focus:ring-4 focus:ring-indigo-200 dark:focus:ring-indigo-900 hover:bg-indigo-800">
                     Save
                 </button>
             </form>

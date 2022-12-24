@@ -43,11 +43,11 @@
             <form class="flex items-center mb-5 ">
                 <div class="relative w-full">
                     <input type="text" id="simple-search" name="search"
-                        class="bg-gray-50 border-2 border-gray-200 text-gray-900 text-sm rounded-lg  block w-full pl-4 p-2.5  dark:bg-gray-800 dark:border-gray-700 dark:placeholder-gray-400 dark:text-white focus:ring-transparent dark:focus:border-indigo-500"
+                        class="bg-white dark:bg-gray-800 text-gray-900 border-0 text-sm rounded-lg block w-full pl-4 p-2.5 focus:border-0 dark:text-white"
                         value="{{ request('search') }}" placeholder="Search by title / excerp / content">
                 </div>
                 <button type="submit"
-                    class="p-2.5 ml-2 text-sm font-medium text-white bg-indigo-700 rounded-lg border-2 border-indigo-700 hover:bg-indigo-800 focus:ring-4 focus:outline-none focus:ring-indigo-300 dark:bg-indigo-600 dark:hover:bg-indigo-700 dark:focus:ring-indigo-800">
+                    class="p-2.5 ml-2 text-sm font-medium text-white bg-indigo-700 rounded-lg hover:bg-indigo-800 focus:ring-1 focus:outline-none focus:ring-indigo-300 dark:bg-indigo-600 dark:hover:bg-indigo-700 dark:focus:ring-indigo-800">
                     <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"
                         xmlns="http://www.w3.org/2000/svg">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -92,7 +92,7 @@
 
             {{-- Create --}}
             <a href="{{ route('posts.create') }}"
-                class="inline-flex items-center px-4 py-2 mb-5 mr-2 text-sm font-medium leading-4 text-gray-100 transition duration-150 ease-in-out bg-indigo-700 rounded-md dark:text-gray-300 dark:bg-indigo-800 hover:bg-indigo-800 dark:hover:bg-indigo-600 focus:outline-none">
+                class="inline-flex items-center px-4 py-3 mb-5 mr-2 text-sm font-medium leading-4 text-gray-100 transition duration-150 ease-in-out bg-indigo-700 rounded-md dark:text-gray-300 dark:bg-indigo-800 hover:bg-indigo-800 dark:hover:bg-indigo-600 focus:outline-none">
                 Create
             </a>
 
@@ -130,10 +130,10 @@
                                 @endif
                             </div>
                         </div>
-                        <h5 class="mb-2 font-bold tracking-tight text-gray-900 dark:text-indigo-400">
-                            {{ $post->category->title }}</h5>
                         <h5 class="mb-2 text-xl font-bold tracking-tight text-gray-900 dark:text-white">
                             {{ $post->title }}</h5>
+                        <h5 class="mb-2 font-bold tracking-tight text-indigo-600 dark:text-indigo-400">
+                            {{ $post->category->title }}</h5>
                         <p class="font-normal text-gray-700 dark:text-gray-400">{{ $post->excerpt }}</p>
                     </div>
                     <div class="flex-row sm:flex-col sm:flex">
