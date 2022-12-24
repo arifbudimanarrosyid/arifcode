@@ -68,7 +68,7 @@
                         @endauth
                         <div
                             class="mt-4 bg-white border-2 border-gray-200 divide-y-2 divide-gray-100 rounded-lg dark:border-gray-700 dark:divide-gray-700 dark:bg-gray-800">
-                            @foreach ($pinned_guestbooks as $guestbook)
+                            @forelse ($pinned_guestbooks as $guestbook)
                             <div class="flex p-4 ">
                                 <div class="flex-1">
                                     <div class="flex items-center justify-between">
@@ -120,7 +120,6 @@
                                             </x-slot>
                                             <x-slot name="content">
                                                 @if (Auth::user()->is_admin)
-
                                                 <form method="POST" action="{{ route('guestbook.unpin', $guestbook) }}">
                                                     @csrf
                                                     @method('patch')
@@ -152,8 +151,20 @@
                                     </p>
                                 </div>
                             </div>
+                            @empty
+                            <div class="flex p-4 ">
+                                <div class="flex-1">
+                                    <div class="flex items-center justify-between">
+                                        <div class="flex flex-col sm:flex-row">
+                                            <p class="text-base font-normal text-gray-400 dark:text-gray-400">
+                                                No pinned messages yet.
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
 
-                            @endforeach
+                            @endforelse
                         </div>
                         <div class="mt-4 bg-white border-2 border-gray-200 divide-y-2 divide-gray-100 rounded-lg dark:border-gray-700 dark:divide-gray-700 dark:bg-gray-800">
 

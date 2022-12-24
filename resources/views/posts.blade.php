@@ -11,7 +11,7 @@
                     <h1 class="mt-4 text-gray-600 dark:text-gray-400">Sometimes I write what I have learned, or I will
                         write
                         whatever I like. Use the search bellow to filter by <span class="text-indigo-500">title</span> / <span class="text-indigo-500">excerpt</span> / <span class="text-indigo-500">content</span>. Featured post will
-                        show border <span class="text-orange-500">orange</span> on hover.
+                        show <span class="text-orange-500">orange</span> border on hover.
                     </h1>
                 </div>
 
