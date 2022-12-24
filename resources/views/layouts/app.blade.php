@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 
-<head class="inline">
+<head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}">
@@ -47,20 +47,20 @@
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 
     {{-- Dark Mode --}}
-    <script>
+    {{-- <script>
         // On page load or when changing themes, best to add inline in `head` to avoid FOUC
         if (localStorage.getItem('color-theme') === 'dark' || (!('color-theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
             document.documentElement.classList.add('dark');
         } else {
             document.documentElement.classList.remove('dark')
         }
-    </script>
+    </script> --}}
 </head>
 
 <body class="font-sans antialiased bg-gray-100 dark:bg-gray-900">
     <div class="max-w-3xl min-h-screen mx-auto">
         @include('layouts.app-navigation')
-        <div class="sm:px-6 lg:px-8">
+        {{-- <div class="sm:px-6 lg:px-8">
             <div class="flex justify-end w-full px-4 sm:px-0">
                 <button id="theme-toggle" type="button"
                     class="px-2 py-2 text-sm text-gray-500 bg-white rounded-lg dark:bg-gray-800 dark:text-gray-400 focus:outline-none">
@@ -76,7 +76,7 @@
                     </svg>
                 </button>
             </div>
-        </div>
+        </div> --}}
 
         <!-- Page Heading -->
         @if (isset($header))
@@ -94,7 +94,7 @@
         </main>
     </div>
 </body>
-<script>
+{{-- <script>
     var themeToggleDarkIcon = document.getElementById('theme-toggle-dark-icon');
 var themeToggleLightIcon = document.getElementById('theme-toggle-light-icon');
 
@@ -135,6 +135,6 @@ themeToggleBtn.addEventListener('click', function() {
     }
 
 });
-</script>
+</script> --}}
 
 </html>
