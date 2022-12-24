@@ -37,12 +37,7 @@
                             prose-indigo prose-code:text-indigo-400 prose-blockquote:text-indigo-400
                         @endif dark:prose-invert
                         ">
-                        {{-- class="mt-6 overflow-auto prose max-w-none prose-gray dark:prose-invert
-                        prose-a:text-indigo-400 prose-h2:text-indigo-400 prose-h3:text-indigo-400
-                        prose-h4:text-indigo-400 prose-h5:text-indigo-400 prose-h6:text-indigo-400
-                        prose-blockquote:text-indigo-700 prose-h1:text-indigo-400 prose-code:text-indigo-300
-                        prose-pre:text-indigo-400 prose-blockquote:bg-indigo-50 prose-blockquote:border-indigo-400
-                        hover:prose-a:text-indigo-500"> --}}
+                        {{-- class="mt-6 overflow-auto prose max-w-none prose-gray dark:prose-invert prose-a:text-indigo-400 prose-h2:text-indigo-400 prose-h3:text-indigo-400 prose-h4:text-indigo-400 prose-h5:text-indigo-400 prose-h6:text-indigo-400 prose-blockquote:text-indigo-700 prose-h1:text-indigo-400 prose-code:text-indigo-300 prose-pre:text-indigo-400 prose-blockquote:bg-indigo-50 prose-blockquote:border-indigo-400 hover:prose-a:text-indigo-500"> --}}
                         {!! $post->content !!}
 
                     </div>
@@ -54,9 +49,9 @@
                         @foreach ($recomendation as $post)
                         <a href="{{ route('post', $post->slug) }}"
                             class="w-full p-4 bg-white border-2 border-gray-200 rounded-lg @if ($post->is_featured)
-                            hover:border-orange-500
+                            hover:border-orange-500 dark:hover:border-orange-500
                         @else
-                        hover:border-indigo-500
+                        hover:border-indigo-500 dark:hover:border-indigo-500
                         @endif dark:bg-gray-800 dark:border-gray-700 ">
 
                             <div class="flex justify-between ">

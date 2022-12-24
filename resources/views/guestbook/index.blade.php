@@ -67,7 +67,10 @@
 
                         @endauth
                         <div
-                            class="mt-4 bg-white border-2 border-gray-200 divide-y-2 divide-gray-100 rounded-lg dark:border-gray-700 dark:divide-gray-700 dark:bg-gray-800">
+                            class="mt-4 bg-white @if ($pinned_guestbooks->count() > 0)
+                            border-2
+                            @endif
+                            border-gray-200 divide-y-2 divide-gray-100 rounded-lg dark:border-gray-700 dark:divide-gray-700 dark:bg-gray-800">
                             @forelse ($pinned_guestbooks as $guestbook)
                             <div class="flex p-4 ">
                                 <div class="flex-1">
@@ -152,7 +155,7 @@
                                 </div>
                             </div>
                             @empty
-                            <div class="flex p-4 ">
+                            {{-- <div class="flex p-4 ">
                                 <div class="flex-1">
                                     <div class="flex items-center justify-between">
                                         <div class="flex flex-col sm:flex-row">
@@ -162,11 +165,12 @@
                                         </div>
                                     </div>
                                 </div>
-                            </div>
+                            </div> --}}
 
                             @endforelse
                         </div>
-                        <div class="mt-4 bg-white border-2 border-gray-200 divide-y-2 divide-gray-100 rounded-lg dark:border-gray-700 dark:divide-gray-700 dark:bg-gray-800">
+                        <div
+                            class="mt-4 bg-white border-2 border-gray-200 divide-y-2 divide-gray-100 rounded-lg dark:border-gray-700 dark:divide-gray-700 dark:bg-gray-800">
 
                             @forelse ($guestbooks as $guestbook)
                             <div class="flex p-4 ">

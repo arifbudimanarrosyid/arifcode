@@ -134,7 +134,9 @@ class GuestbookController extends Controller
         if (Auth::check()) {
             if (Auth::user()->is_admin == true) {
                 $guestbook->is_pinned = true;
+                $guestbook->timestamps = false;
                 $guestbook->save();
+                // dd($guestbook);
                 return redirect()->route('guestbook.index');
             } else {
                 return redirect()->route('guestbook.index');
@@ -149,7 +151,9 @@ class GuestbookController extends Controller
         if (Auth::check()) {
             if (Auth::user()->is_admin == true) {
                 $guestbook->is_pinned = false;
+                $guestbook->timestamps = false;
                 $guestbook->save();
+                // dd($guestbook);
                 return redirect()->route('guestbook.index');
             } else {
                 return redirect()->route('guestbook.index');
