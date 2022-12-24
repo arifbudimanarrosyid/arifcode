@@ -45,9 +45,9 @@
                         @foreach ($posts as $post)
                         <a href="{{ route('post', $post->slug) }}" class="w-full p-4 bg-white border-2 border-gray-200 rounded-lg
                             @if ($post->is_featured)
-                                hover:border-orange-500
+                                hover:border-orange-500 dark:hover:border-orange-500
                             @else
-                            hover:border-indigo-500
+                            hover:border-indigo-500 dark:hover:border-indigo-500
                             @endif
                                  dark:bg-gray-800 dark:border-gray-700 ">
 

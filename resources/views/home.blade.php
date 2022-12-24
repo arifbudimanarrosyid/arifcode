@@ -33,7 +33,7 @@
                 <div class="flex flex-col w-full gap-5 pb-5 mb-4">
                     @forelse ($featured as $post)
                     <a href="{{ route('post', $post->slug) }}"
-                        class="w-full p-4 bg-white border-2 border-gray-200 rounded-lg hover:border-orange-500 dark:bg-gray-800 dark:border-gray-700 ">
+                        class="w-full p-4 bg-white border-2 border-gray-200 rounded-lg hover:border-orange-500 dark:hover:border-orange-500 dark:bg-gray-800 dark:border-gray-700 ">
 
                         <div class="flex justify-between ">
 
