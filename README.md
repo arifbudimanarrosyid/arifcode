@@ -55,6 +55,12 @@ Register form default account type is_admin false
 - [x] Single Post - Recomendation Posts
 - [x] Portofolio
 - [x] Guestbook
+  - [x] Create 
+  - [x] Read 
+  - [x] Update
+  - [x] Delete 
+  - [x] Pin (Admin)
+  - [x] Unpin (Admin)
 - [x] About Me
 - [x] Gear
 

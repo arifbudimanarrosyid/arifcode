@@ -4,8 +4,8 @@
             {{-- Profile --}}
             <div class="mb-5 overflow-hidden sm:flex ">
                 <div class="order-last px-4 pl-0 mb-5 sm:pl-1">
-                    <img src="{{ asset('img/pp.jpg') }}" alt="programming"
-                        class="w-20 ml-4 rounded-full sm:px-0 sm:w-52">
+                    <img src="{{ asset('img/pp.jpg') }}" alt="ArifCode Profile Picture"
+                        class="w-32 ml-4 rounded-full sm:px-0 sm:w-96">
                 </div>
                 <div class="px-4 sm:px-0">
                     <h1
@@ -18,7 +18,7 @@
                     <h1 class="mt-4 text-gray-600 dark:text-gray-400">Hi, my name is Arif, I am a Web Developer,
                         currently
                         studying at Muhammadiyah University of Yogyakarta. Interested in Laravel Web Development and
-                        Tailwind CSS.</h1>
+                        Tailwind CSS. You can see more about me <a href="{{ route('aboutme') }}" class="text-orange-500">here</a>.</h1>
                 </div>
 
             </div>
