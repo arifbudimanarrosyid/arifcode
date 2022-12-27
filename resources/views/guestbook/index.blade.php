@@ -22,7 +22,7 @@
                         </span>
                         @else
                         <span class="text-sky-400">User
-                        </span>
+                        </span>.
                         @endif
                         @else
                         You need to <a href="{{ route('login') }}" class="text-sky-400">login</a>
@@ -61,7 +61,7 @@
 
                         @endauth
                         <div
-                            class="mt-4 bg-white border-gray-200 divide-y-2 border-2 divide-gray-100 rounded-lg dark:border-gray-700 dark:divide-gray-700 dark:bg-gray-800">
+                            class="mt-4 bg-white border-2 border-gray-200 divide-y-2 divide-gray-100 rounded-lg dark:border-gray-700 dark:divide-gray-700 dark:bg-gray-800">
                             @forelse ($pinned_guestbooks as $guestbook)
                             <div class="flex p-4 ">
                                 <div class="flex-1">

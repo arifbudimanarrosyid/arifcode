@@ -94,6 +94,15 @@
                             <span class="text-sky-400">
                                 {{ Auth::user()->name}}
                             </span>
+                            with role
+                        @if (Auth::user()->is_admin)
+                        <span class="text-sky-400">
+                            Admin
+                        </span>
+                        @else
+                        <span class="text-sky-400">User
+                        </span>.
+                        @endif
 
                             @else
                             You need to <a href="{{ route('login') }}" class="text-sky-400">login</a>
