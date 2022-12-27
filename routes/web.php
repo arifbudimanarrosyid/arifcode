@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CommentController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PostController;
@@ -36,6 +37,10 @@ Route::get('/aboutme', function () {
     return view('aboutme');
 })->name('aboutme');
 
+Route::post('/comments', [CommentController::class, 'store'])->name('comment.store');
+Route::delete('/comments/{comment}', [CommentController::class, 'destroy'])->name('comment.destroy');
+Route::get('/comments/{comment}', [CommentController::class, 'edit'])->name('comment.edit');
+Route::patch('/comments/{comment}', [CommentController::class, 'update'])->name('comment.update');
 
 // Guestbook
 Route::resource('/guestbook', GuestbookController::class)

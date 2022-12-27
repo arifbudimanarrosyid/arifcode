@@ -52,13 +52,17 @@ class GuestbookController extends Controller
      */
     public function store(Request $request)
     {
-        $validated = $request->validate([
-            'message' => 'required|string|max:255',
-        ]);
+        if (Auth::check()) {
+            $validated = $request->validate([
+                'message' => 'required|string|max:255',
+            ]);
 
-        $request->user()->guestbook()->create($validated);
+            $request->user()->guestbook()->create($validated);
 
-        return redirect(route('guestbook.index'));
+            return redirect(route('guestbook.index'));
+        } else {
+            return redirect(route('login'));
+        }
     }
 
     /**
@@ -100,13 +104,21 @@ class GuestbookController extends Controller
      */
     public function update(Request $request, Guestbook $guestbook)
     {
-        $validated = $request->validate([
-            'message' => 'required|string|max:255',
-        ]);
+        if (Auth::check()) {
+            if (Auth::user()->id == $guestbook->user_id || Auth::user()->is_admin == true) {
+                $validated = $request->validate([
+                    'message' => 'required|string|max:255',
+                ]);
 
-        $guestbook->update($validated);
+                $guestbook->update($validated);
 
-        return redirect(route('guestbook.index'));
+                return redirect(route('guestbook.index'));
+            } else {
+                return redirect()->route('guestbook.index');
+            }
+        } else {
+            return redirect()->route('guestbook.index');
+        }
     }
 
     /**

@@ -2,7 +2,7 @@
     <div class="py-12">
         <div class="mx-auto max-w-7xl sm:px-6 lg:px-8">
             {{-- Blog --}}
-            <div class="mb-5 overflow-hidden ">
+            <div class="mb-5">
                 <div class="px-4 sm:px-0">
                     <h5 class="mb-2 font-bold tracking-tight @if ($post->is_featured)
                         text-orange-500 dark:text-orange-400
@@ -46,13 +46,14 @@
                         {!! $post->content !!}
 
                     </div>
+
                     <div class="flex flex-col w-full gap-5 pb-5 mt-5 mb-4">
                         <h1
                             class="text-2xl font-bold text-gray-800 underline capitalize decoration-indigo-500 dark:text-white">
                             Recommended Posts
                         </h1>
-                        @foreach ($recomendation as $post)
-                        <a href="{{ route('post', $post->slug) }}" class="w-full p-4 bg-white border-2 border-gray-200 rounded-lg @if ($post->is_featured)
+                        @foreach ($recomendations as $recomendation)
+                        <a href="{{ route('post', $recomendation->slug) }}" class="w-full p-4 bg-white border-2 border-gray-200 rounded-lg @if ($recomendation->is_featured)
                             hover:border-orange-500 dark:hover:border-orange-500
                         @else
                         hover:border-indigo-500 dark:hover:border-indigo-500
@@ -61,7 +62,7 @@
                             <div class="flex justify-between ">
 
                                 <h5 class="font-bold tracking-tight text-gray-400 dark:text-gray-400">{{
-                                    $post->category->title }}
+                                    $recomendation->category->title }}
                                 </h5>
                                 <span
                                     class="inline-flex items-center text-xs font-medium text-gray-400 dark:text-gray-400">
@@ -71,61 +72,97 @@
                                             d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l2.828 2.829a1 1 0 101.415-1.415L11 9.586V6z"
                                             clip-rule="evenodd"></path>
                                     </svg>
-                                    {{ $post->published_at->diffForHumans()}}</p>
+                                    {{ $recomendation->published_at->diffForHumans()}}</p>
                                 </span>
 
                             </div>
                             <h5
-                                class="mb-2 text-xl font-bold tracking-tight @if ($post->is_featured) text-gray-500  dark:text-gray-300  @else text-gray-500  dark:text-gray-300  @endif">
-                                {{$post->title }}
+                                class="mb-2 text-xl font-bold tracking-tight @if ($recomendation->is_featured) text-gray-500  dark:text-gray-300  @else text-gray-500  dark:text-gray-300  @endif">
+                                {{$recomendation->title }}
                             </h5>
                             <p class="font-normal text-gray-600 dark:text-gray-400">
-                                {{ $post->excerpt }}
+                                {{ $recomendation->excerpt }}
                             </p>
                         </a>
                         @endforeach
                     </div>
-                    <h1
-                        class="text-2xl font-bold text-gray-800 underline capitalize decoration-indigo-500 dark:text-white">
-                        Comments
-                    </h1>
-                    <div
-                        class="w-full mt-4 bg-white border-2 border-gray-200 rounded-lg dark:bg-gray-800 dark:border-gray-700">
 
+                    <div class="px-4 sm:px-0">
+                        <h1
+                            class="text-2xl mb-4 font-bold text-gray-800 underline capitalize decoration-sky-500 dark:text-white">
+                            Comments
+                        </h1>
+                        <p class="mt-4 text-gray-600 dark:text-gray-400">
+                            @auth
+                            You login as
+                            <span class="text-sky-400">
+                                {{ Auth::user()->name}}
+                            </span>
+
+                            @else
+                            You need to <a href="{{ route('login') }}" class="text-sky-400">login</a>
+                            @if (Route::has('register'))
+                            or <a href="{{ route('register') }}" class="text-sky-400">register</a>
+                            @endif
+                            to show comment form.
+                            @endauth
+                        </p>
+
+                        @auth
+                        @else
+                        <p class="mt-4 text-red-400 dark:text-red-300">
+                            Your information is only used to display your name and comment.
+                        </p>
+                        @endauth
+
+                    </div>
+                    @auth
+                    <form method="POST" action="{{ route('comment.store') }}" class="mt-4">
+                        @csrf
+                        <input type="hidden" name="post_id" value="{{ $post->id }}">
+                        <textarea id="message" rows="3" name="body"
+                            class="block p-2.5 w-full text-sm text-gray-900 bg-white border-2 border-gray-200 rounded-lg dark:border-gray-700 focus:ring-transparent dark:bg-gray-800 dark:placeholder-gray-400 dark:text-white dark:focus:ring-transparent "
+                            maxlength="255" placeholder="Leave a comment...">{{ old('body') }}</textarea>
+                        <x-input-error :messages="$errors->get('body')" class="mt-2" />
+                        <button type="submit"
+                            class="inline-flex items-center px-4 py-2 mt-5 text-sm font-medium text-center text-white rounded-lg bg-sky-700 focus:ring-4 focus:ring-sky-200 dark:focus:ring-sky-900 hover:bg-sky-800">
+                            Send
+                        </button>
+                    </form>
+
+                    @endauth
+
+                    <div
+                        class="mt-4 bg-white border-gray-200 divide-y-2 border-2 divide-gray-100 rounded-lg dark:border-gray-700 dark:divide-gray-700 dark:bg-gray-800">
+                        @forelse ($post->comments as $comment)
                         <div class="flex p-4 ">
                             <div class="flex-1">
                                 <div class="flex items-center justify-between">
                                     <div class="flex flex-col sm:flex-row">
                                         <div>
-
-                                            <span class="text-base text-sky-500 dark:text-sky-500">
-                                                Username
-                                                {{-- {{$guestbook->user->name }} --}}
+                                            <span class="text-base @if ($post->is_featured)
+                                                text-orange-500 dark:text-orange-500
+                                                @else
+                                                text-indigo-500 dark:text-indigo-500
+                                            @endif">
+                                                {{$comment->user->name }}
                                             </span>
                                         </div>
                                         <div>
                                             <small class="text-sm text-gray-400 sm:ml-2 dark:text-gray-400">
-                                                created at
-                                                {{-- {{ $guestbook->created_at->diffForHumans() }} --}}
+                                                {{ $comment->created_at->diffForHumans() }}
                                             </small>
                                             {{-- @unless ($guestbook->created_at->eq($guestbook->updated_at)) --}}
-                                            {{-- @unless ($guestbook->created_at == $guestbook->updated_at) --}}
+                                            @unless ($comment->created_at == $comment->updated_at)
                                             <small class="text-sm text-gray-400 dark:text-gray-400"> &middot; {{
                                                 __('edited')
                                                 }}</small>
-                                            {{-- @endunless --}}
-
-                                            {{-- @if ($guestbook->is_pinned == true) --}}
-                                            <small class="text-sm text-gray-400 dark:text-gray-400">
-                                                &middot; pinned
-                                            </small>
-                                            {{-- @endif --}}
-
+                                            @endunless
                                         </div>
                                     </div>
 
-                                    {{-- @auth
-                                    @if ($guestbook->user_id == Auth::id() || Auth::user()->is_admin == true) --}}
+                                    @auth
+                                    @if ($comment->user_id == Auth::id() || Auth::user()->is_admin == true)
                                     <x-dropdown>
                                         <x-slot name="trigger">
                                             <button>
@@ -137,40 +174,55 @@
                                             </button>
                                         </x-slot>
                                         <x-slot name="content">
-                                            {{-- @if (Auth::user()->is_admin) --}}
-                                            {{-- <form method="POST"
-                                                action="{{ route('guestbook.unpin', $guestbook) }}">
+                                            {{-- @if (Auth::user()->is_admin)
+                                            <form method="POST" action="{{ route('guestbook.unpin', $guestbook) }}">
                                                 @csrf
                                                 @method('patch')
                                                 <x-dropdown-link :href="route('guestbook.unpin', $guestbook)"
                                                     onclick="event.preventDefault(); this.closest('form').submit();">
                                                     {{ __('Unpin') }}
                                                 </x-dropdown-link>
-                                            </form> --}}
-                                            {{-- @endif --}}
-                                            {{-- <x-dropdown-link :href="route('guestbook.edit', $guestbook)">
+                                            </form>
+                                            @endif --}}
+                                            <x-dropdown-link :href="route('comment.edit', $comment)">
                                                 {{ __('Edit') }}
                                             </x-dropdown-link>
-                                            <form method="POST" action="{{ route('guestbook.destroy', $guestbook) }}">
+                                            <form method="POST" action="{{ route('comment.destroy', $comment) }}">
                                                 @csrf
                                                 @method('delete')
-                                                <x-dropdown-link :href="route('guestbook.destroy', $guestbook)"
+                                                <x-dropdown-link :href="route('comment.destroy', $comment)"
                                                     onclick="event.preventDefault(); this.closest('form').submit();">
                                                     {{ __('Delete') }}
                                                 </x-dropdown-link>
-                                            </form> --}}
+                                            </form>
                                         </x-slot>
                                     </x-dropdown>
-                                    {{-- @endif
-                                    @endauth --}}
+                                    @endif
+                                    @endauth
                                 </div>
                                 <p class="mt-2 text-gray-600 text-notmal dark:text-gray-400">
-                                    Comment here
-                                    {{-- {{$guestbook->message }} --}}
+                                    {{ $comment->body }}
                                 </p>
+
+                            </div>
+
+                        </div>
+                        @empty
+                        <div class="flex p-4 ">
+                            <div class="flex-1">
+                                <div class="flex items-center justify-between">
+                                    <div class="flex flex-col sm:flex-row">
+                                        <p class="text-base font-normal text-gray-400 dark:text-gray-400">
+                                            No comment yet.
+                                        </p>
+                                    </div>
+                                </div>
                             </div>
                         </div>
+
+                        @endforelse
                     </div>
+
 
 
                 </div>

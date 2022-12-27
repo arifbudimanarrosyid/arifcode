@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Post;
 use App\Models\Category;
+use App\Models\Comment;
 use Illuminate\Http\Request;
 
 class PostController extends Controller
@@ -42,21 +43,21 @@ class PostController extends Controller
         // dd($posts);
         return view('home', compact('featured'));
     }
-    public function show($slug)
+    public function show($slug, Comment $comment)
     {
-        $post = Post::where('slug', $slug)
-            ->with(['category'])
-            ->where('is_published', true)
+        $post = Post::where('is_published', true)
+            ->where('slug', $slug)
+            ->with(['category', 'comments'])
+            // ->orderBy('created_at', 'asc')
             ->firstOrFail();
-        // dd($post);
-
-        $recomendation = Post::where('is_published', true)
+            // dd($post->comments);
+        $recomendations = Post::where('is_published', true)
             ->where('slug', '!=', $slug)
             ->with(['category'])
             ->inRandomOrder()
             ->limit(2)
             ->get();
         // dd($recomendation);
-        return view('post', compact('post', 'recomendation'));
+        return view('post', compact('post', 'recomendations'));
     }
 }

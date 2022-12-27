@@ -29,7 +29,7 @@
                         @if (Route::has('register'))
                         or <a href="{{ route('register') }}" class="text-sky-400">register</a>
                         @endif
-                        to show the form.
+                        to show guestbook form.
                         @endauth
                     </p>
 
