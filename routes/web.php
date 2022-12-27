@@ -25,6 +25,7 @@ use App\Http\Controllers\DashboardCategoryController;
 Route::get('/', [PostController::class, 'home'])->name('home');
 Route::get('/posts', [PostController::class, 'index'])->name('posts');
 Route::get('/post/{slug}', [PostController::class, 'show'])->name('post');
+
 Route::get('/portofolio', function () {
     return view('portofolio');
 })->name('portofolio');

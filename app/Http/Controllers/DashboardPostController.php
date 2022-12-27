@@ -7,6 +7,7 @@ use App\Models\Category;
 use Illuminate\Auth\Events\Validated;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
+use App\Models\Post;
 
 class DashboardPostController extends Controller
 {
@@ -20,7 +21,7 @@ class DashboardPostController extends Controller
     {
         $search = request('search');
         if ($search) {
-            $posts = Posts::where(function ($query) use ($search) {
+            $posts = Post::where(function ($query) use ($search) {
                 $query->where('title', 'like', '%' . $search . '%')
                     ->orWhere('excerpt', 'like', '%' . $search . '%')
                     ->orWhere('content', 'like', '%' . $search . '%');
@@ -30,15 +31,15 @@ class DashboardPostController extends Controller
                 ->paginate(10)
                 ->withQueryString();
         } else {
-            $posts = Posts::orderBy('created_at', 'desc')
+            $posts = Post::orderBy('created_at', 'desc')
                 ->with(['category'])
                 ->paginate(10);
         }
-        $totalPosts = Posts::count();
-        $publishedPosts = Posts::where('is_published', 1)->count();
-        $draftPosts = Posts::where('is_published', 0)->count();
-        $featuredPosts = Posts::where('is_featured', 1)->count();
-        $featuredAndPublishedPosts = Posts::where('is_featured', 1)->where('is_published', 1)->count();
+        $totalPosts = Post::count();
+        $publishedPosts = Post::where('is_published', 1)->count();
+        $draftPosts = Post::where('is_published', 0)->count();
+        $featuredPosts = Post::where('is_featured', 1)->count();
+        $featuredAndPublishedPosts = Post::where('is_featured', 1)->where('is_published', 1)->count();
         return view('dashboard.posts.index', compact('posts', 'totalPosts', 'publishedPosts', 'draftPosts', 'featuredPosts', 'featuredAndPublishedPosts'));
     }
 
@@ -87,7 +88,7 @@ class DashboardPostController extends Controller
         }
 
 
-        $post = Posts::create([
+        $post = Post::create([
             'category_id' => $request->category_id,
             'title' => $request->title,
             'slug' => $slug,
@@ -112,7 +113,7 @@ class DashboardPostController extends Controller
 
     public function show($id)
     {
-        $posts = Posts::findOrFail($id);
+        $posts = Post::findOrFail($id);
 
         // dd($posts);
         return view('dashboard.posts.show', compact('posts'));
@@ -126,7 +127,7 @@ class DashboardPostController extends Controller
      */
     public function edit($id)
     {
-        $posts = Posts::findOrFail($id);
+        $posts = Post::findOrFail($id);
         $categories = Category::all();
         // dd($posts);
         return view('dashboard.posts.edit', compact('posts', 'categories'));
@@ -162,7 +163,7 @@ class DashboardPostController extends Controller
         }
 
         if ($request->hasFile('thumbnail')) {
-            $posts = Posts::findOrFail($posts);
+            $posts = Post::findOrFail($posts);
             $thumbnail = $request->file('thumbnail');
             $thumbnailName = time() . '.' . $thumbnail->extension();
             $thumbnail->move(public_path('storage/thumbnails'), $thumbnailName);
@@ -181,7 +182,7 @@ class DashboardPostController extends Controller
             return back()->with('success', 'Post saved successfully');
         }
 
-        $posts = Posts::findOrFail($posts);
+        $posts = Post::findOrFail($posts);
         $posts->title = $request->title;
         $posts->slug = $slug;
         $posts->category_id = $request->category_id;
@@ -214,13 +215,13 @@ class DashboardPostController extends Controller
                 unlink(public_path('storage/thumbnails/' . $post->thumbnail));
             }
         }
-        Posts::destroy($post->id);
+        Post::destroy($post->id);
         return redirect()->route('posts.index')->with('danger', 'Post deleted successfully');
     }
 
     public function deleteThumbnail($posts)
     {
-        $posts = Posts::findOrFail($posts);
+        $posts = Post::findOrFail($posts);
         if ($posts->thumbnail) {
             if (Storage::exists('public/thumbnails/' . $posts->thumbnail)) {
                 unlink(public_path('storage/thumbnails/' . $posts->thumbnail));

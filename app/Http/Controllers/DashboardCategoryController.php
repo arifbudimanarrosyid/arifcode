@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Post;
 use App\Models\Category;
-use App\Models\Posts;
 use Illuminate\Http\Request;
 
 class DashboardCategoryController extends Controller
@@ -19,7 +19,7 @@ class DashboardCategoryController extends Controller
 
         // $titleCategory = Category::where('category_id', 1)->get();
 
-        $totalCategory = Posts::where('category_id', 1)->count();
+        $totalCategory = Post::where('category_id', 1)->count();
         return view('dashboard.category.index', compact('categories', 'totalCategory'));
     }
 

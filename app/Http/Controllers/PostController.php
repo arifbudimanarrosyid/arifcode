@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Post;
 use App\Models\Category;
-use App\Models\Posts;
 use Illuminate\Http\Request;
 
 class PostController extends Controller
@@ -12,7 +12,7 @@ class PostController extends Controller
     {
         $search = request('search');
         if ($search) {
-            $posts = Posts::where('is_published', true)
+            $posts = Post::where('is_published', true)
                 ->where(function ($query) use ($search) {
                     $query->where('title', 'like', '%' . $search . '%')
                         ->orWhere('excerpt', 'like', '%' . $search . '%')
@@ -23,7 +23,7 @@ class PostController extends Controller
                 ->paginate(10)
                 ->withQueryString();
         } else {
-            $posts = Posts::where('is_published', true)
+            $posts = Post::where('is_published', true)
                 ->with(['category'])
                 ->orderBy('published_at', 'desc')
                 ->paginate(10);
@@ -33,7 +33,7 @@ class PostController extends Controller
     }
     public function home()
     {
-        $featured = Posts::where('is_published', true)
+        $featured = Post::where('is_published', true)
             ->where('is_featured', true)
             ->with(['category'])
             ->orderBy('published_at', 'desc')
@@ -44,13 +44,13 @@ class PostController extends Controller
     }
     public function show($slug)
     {
-        $post = Posts::where('slug', $slug)
+        $post = Post::where('slug', $slug)
             ->with(['category'])
             ->where('is_published', true)
             ->firstOrFail();
         // dd($post);
 
-        $recomendation = Posts::where('is_published', true)
+        $recomendation = Post::where('is_published', true)
             ->where('slug', '!=', $slug)
             ->with(['category'])
             ->inRandomOrder()
