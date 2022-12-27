@@ -140,11 +140,7 @@
                                 <div class="flex items-center justify-between">
                                     <div class="flex flex-col sm:flex-row">
                                         <div>
-                                            <span class="text-base @if ($post->is_featured)
-                                                text-orange-500 dark:text-orange-500
-                                                @else
-                                                text-indigo-500 dark:text-indigo-500
-                                            @endif">
+                                            <span class="text-base text-sky-500 dark:text-sky-500">
                                                 {{$comment->user->name }}
                                             </span>
                                         </div>

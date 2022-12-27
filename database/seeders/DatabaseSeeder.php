@@ -8,6 +8,7 @@ use App\Models\Post;
 use App\Models\User;
 use App\Models\Posts;
 use App\Models\Category;
+use App\Models\Comment;
 use App\Models\Guestbook;
 use Illuminate\Support\Str;
 use Illuminate\Database\Seeder;
@@ -38,7 +39,7 @@ class DatabaseSeeder extends Seeder
         Category::create([
             'title' => 'Personal',
         ]);
-        Post::factory(10)->create();
+
 
 
         User::factory()->create([
@@ -79,6 +80,9 @@ class DatabaseSeeder extends Seeder
             'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password
             'remember_token' => Str::random(10),
         ]);
+
+        Post::factory(30)->create();
+        Comment::factory(30)->create();
 
         Guestbook::create([
             'user_id' => 1,
