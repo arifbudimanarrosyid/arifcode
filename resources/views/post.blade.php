@@ -37,12 +37,7 @@
                             prose-indigo prose-code:text-indigo-400 prose-blockquote:text-indigo-400
                         @endif dark:prose-invert
                         ">
-                        {{-- class="mt-6 overflow-auto prose max-w-none prose-gray dark:prose-invert
-                        prose-a:text-indigo-400 prose-h2:text-indigo-400 prose-h3:text-indigo-400
-                        prose-h4:text-indigo-400 prose-h5:text-indigo-400 prose-h6:text-indigo-400
-                        prose-blockquote:text-indigo-700 prose-h1:text-indigo-400 prose-code:text-indigo-300
-                        prose-pre:text-indigo-400 prose-blockquote:bg-indigo-50 prose-blockquote:border-indigo-400
-                        hover:prose-a:text-indigo-500"> --}}
+                        {{-- class="mt-6 overflow-auto prose max-w-none prose-gray dark:prose-invert prose-a:text-indigo-400 prose-h2:text-indigo-400 prose-h3:text-indigo-400 prose-h4:text-indigo-400 prose-h5:text-indigo-400 prose-h6:text-indigo-400 prose-blockquote:text-indigo-700 prose-h1:text-indigo-400 prose-code:text-indigo-300 prose-pre:text-indigo-400 prose-blockquote:bg-indigo-50 prose-blockquote:border-indigo-400 hover:prose-a:text-indigo-500"> --}}
                         {!! $post->content !!}
 
                     </div>
@@ -50,7 +45,7 @@
                     <div class="flex flex-col w-full gap-5 pb-5 mt-5 mb-4">
                         <h1
                             class="text-2xl font-bold text-gray-800 underline capitalize decoration-indigo-500 dark:text-white">
-                            Recommended Posts
+                            Recomendations Posts
                         </h1>
                         @foreach ($recomendations as $recomendation)
                         <a href="{{ route('post', $recomendation->slug) }}" class="w-full p-4 bg-white border-2 border-gray-200 rounded-lg @if ($recomendation->is_featured)
@@ -87,9 +82,10 @@
                         @endforeach
                     </div>
 
-                    <div class="px-4 sm:px-0">
+
+                    <div class="">
                         <h1
-                            class="text-2xl mb-4 font-bold text-gray-800 underline capitalize decoration-sky-500 dark:text-white">
+                            class="mb-4 text-2xl font-bold text-gray-800 underline capitalize decoration-sky-500 dark:text-white">
                             Comments
                         </h1>
                         <p class="mt-4 text-gray-600 dark:text-gray-400">
@@ -133,8 +129,8 @@
                     @endauth
 
                     <div
-                        class="mt-4 bg-white border-gray-200 divide-y-2 border-2 divide-gray-100 rounded-lg dark:border-gray-700 dark:divide-gray-700 dark:bg-gray-800">
-                        @forelse ($post->comments as $comment)
+                        class="mt-4 bg-white border-2 border-gray-200 divide-y-2 divide-gray-100 rounded-lg dark:border-gray-700 dark:divide-gray-700 dark:bg-gray-800">
+                        @forelse ($post->comments()->orderBy('created_at', 'desc')->get() as $comment)
                         <div class="flex p-4 ">
                             <div class="flex-1">
                                 <div class="flex items-center justify-between">

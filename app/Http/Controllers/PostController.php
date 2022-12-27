@@ -36,7 +36,7 @@ class PostController extends Controller
     {
         $featured = Post::where('is_published', true)
             ->where('is_featured', true)
-            ->with(['category'])
+            // ->with(['category'])
             ->orderBy('published_at', 'desc')
             ->limit(5)
             ->get();
@@ -47,9 +47,11 @@ class PostController extends Controller
     {
         $post = Post::where('is_published', true)
             ->where('slug', $slug)
-            ->with(['category', 'comments'])
-            // ->orderBy('created_at', 'asc')
+            // ->with(['category', 'comments'])
+            // ->with(['comments.user'])
             ->firstOrFail();
+            // dd to array
+            // dd($post->comments->toArray());
             // dd($post->comments);
         $recomendations = Post::where('is_published', true)
             ->where('slug', '!=', $slug)

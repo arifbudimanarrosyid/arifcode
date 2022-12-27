@@ -17,6 +17,7 @@ class Post extends Model
         'updated_at',
         'published_at',
     ];
+    protected $with = ['category'];
 
     public function category()
     {

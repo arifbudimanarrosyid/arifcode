@@ -15,6 +15,7 @@ class Comment extends Model
         'user_id',
         'body',
     ];
+    protected $with = ['user'];
 
     public function post()
     {

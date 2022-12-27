@@ -17,8 +17,8 @@ class GuestbookController extends Controller
     public function index()
     {
         // get guestbook with id = 1
-        $pinned_guestbooks = Guestbook::with('user')
-            ->where('is_pinned', 1)
+        $pinned_guestbooks = Guestbook::where('is_pinned', 1)
+        // ->with('user')
             ->orderBy('updated_at', 'asc')
             ->get();
 
@@ -26,8 +26,8 @@ class GuestbookController extends Controller
         // $guestbooks = Guestbook::with('user')->orderBy('created_at', 'desc')->get();
 
         // get all guestbook except id = 1
-        $guestbooks = Guestbook::with('user')
-            ->where('is_pinned',  0)
+        $guestbooks = Guestbook::where('is_pinned',  0)
+        // ->with('user')
             ->orderBy('created_at', 'desc')
             ->get();
 
