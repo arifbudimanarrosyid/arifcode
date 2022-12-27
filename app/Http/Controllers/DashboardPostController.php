@@ -208,7 +208,7 @@ class DashboardPostController extends Controller
      * @param  \App\Models\Posts  $posts
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Posts $post)
+    public function destroy(Post $post)
     {
         if ($post->thumbnail) {
             if (Storage::exists('public/thumbnails/' . $post->thumbnail)) {
@@ -216,7 +216,7 @@ class DashboardPostController extends Controller
             }
         }
         Post::destroy($post->id);
-        return redirect()->route('posts.index')->with('danger', 'Post deleted successfully');
+        return redirect()->route('posts.index')->with('success', 'Post deleted successfully');
     }
 
     public function deleteThumbnail($posts)
