@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 
+use App\Models\Post;
 use App\Models\User;
 use App\Models\Posts;
 use App\Models\Category;

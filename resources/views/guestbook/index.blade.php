@@ -49,16 +49,10 @@
                         @auth
                         <form method="POST" action="{{ route('guestbook.store') }}">
                             @csrf
-
-                            {{-- <label for="message"
-                                class="block mt-5 mb-2 text-sm font-medium text-gray-900 dark:text-white">Your
-                                message</label> --}}
                             <textarea id="message" rows="3" name="message"
                                 class="block p-2.5 w-full text-sm text-gray-900 bg-white border-2 border-gray-200 rounded-lg dark:border-gray-700 focus:ring-transparent dark:bg-gray-800 dark:placeholder-gray-400 dark:text-white dark:focus:ring-transparent "
                                 maxlength="255" placeholder="Leave a message...">{{ old('message') }}</textarea>
                             <x-input-error :messages="$errors->get('message')" class="mt-2" />
-
-
                             <button type="submit"
                                 class="inline-flex items-center px-4 py-2 mt-5 text-sm font-medium text-center text-white rounded-lg bg-sky-700 focus:ring-4 focus:ring-sky-200 dark:focus:ring-sky-900 hover:bg-sky-800">
                                 Send
@@ -67,10 +61,7 @@
 
                         @endauth
                         <div
-                            class="mt-4 bg-white @if ($pinned_guestbooks->count() > 0)
-                            border-2
-                            @endif
-                            border-gray-200 divide-y-2 divide-gray-100 rounded-lg dark:border-gray-700 dark:divide-gray-700 dark:bg-gray-800">
+                            class="mt-4 bg-white border-gray-200 divide-y-2 border-2 divide-gray-100 rounded-lg dark:border-gray-700 dark:divide-gray-700 dark:bg-gray-800">
                             @forelse ($pinned_guestbooks as $guestbook)
                             <div class="flex p-4 ">
                                 <div class="flex-1">
@@ -81,12 +72,6 @@
                                                 <span class="text-base text-sky-500 dark:text-sky-500">
                                                     {{$guestbook->user->name }}
                                                 </span>
-                                                {{-- @if ($guestbook->user_id == Auth::id())
-                                                <span class="text-base text-yellow-500 dark:text-yellow-500">
-                                                    {{$guestbook->user->name }}
-                                                </span>
-                                                @else
-                                                @endif --}}
                                             </div>
                                             <div>
                                                 <small class="text-sm text-gray-400 sm:ml-2 dark:text-gray-400">
@@ -155,7 +140,7 @@
                                 </div>
                             </div>
                             @empty
-                            {{-- <div class="flex p-4 ">
+                            <div class="flex p-4 ">
                                 <div class="flex-1">
                                     <div class="flex items-center justify-between">
                                         <div class="flex flex-col sm:flex-row">
@@ -165,7 +150,7 @@
                                         </div>
                                     </div>
                                 </div>
-                            </div> --}}
+                            </div>
 
                             @endforelse
                         </div>
