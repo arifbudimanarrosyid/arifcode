@@ -37,7 +37,12 @@
                             prose-indigo prose-code:text-indigo-400 prose-blockquote:text-indigo-400
                         @endif dark:prose-invert
                         ">
-                        {{-- class="mt-6 overflow-auto prose max-w-none prose-gray dark:prose-invert prose-a:text-indigo-400 prose-h2:text-indigo-400 prose-h3:text-indigo-400 prose-h4:text-indigo-400 prose-h5:text-indigo-400 prose-h6:text-indigo-400 prose-blockquote:text-indigo-700 prose-h1:text-indigo-400 prose-code:text-indigo-300 prose-pre:text-indigo-400 prose-blockquote:bg-indigo-50 prose-blockquote:border-indigo-400 hover:prose-a:text-indigo-500"> --}}
+                        {{-- class="mt-6 overflow-auto prose max-w-none prose-gray dark:prose-invert
+                        prose-a:text-indigo-400 prose-h2:text-indigo-400 prose-h3:text-indigo-400
+                        prose-h4:text-indigo-400 prose-h5:text-indigo-400 prose-h6:text-indigo-400
+                        prose-blockquote:text-indigo-700 prose-h1:text-indigo-400 prose-code:text-indigo-300
+                        prose-pre:text-indigo-400 prose-blockquote:bg-indigo-50 prose-blockquote:border-indigo-400
+                        hover:prose-a:text-indigo-500"> --}}
                         {!! $post->content !!}
 
                     </div>
@@ -47,8 +52,7 @@
                             Recommended Posts
                         </h1>
                         @foreach ($recomendation as $post)
-                        <a href="{{ route('post', $post->slug) }}"
-                            class="w-full p-4 bg-white border-2 border-gray-200 rounded-lg @if ($post->is_featured)
+                        <a href="{{ route('post', $post->slug) }}" class="w-full p-4 bg-white border-2 border-gray-200 rounded-lg @if ($post->is_featured)
                             hover:border-orange-500 dark:hover:border-orange-500
                         @else
                         hover:border-indigo-500 dark:hover:border-indigo-500
@@ -71,7 +75,8 @@
                                 </span>
 
                             </div>
-                            <h5 class="mb-2 text-xl font-bold tracking-tight @if ($post->is_featured) text-gray-500  dark:text-gray-300  @else text-gray-500  dark:text-gray-300  @endif">
+                            <h5
+                                class="mb-2 text-xl font-bold tracking-tight @if ($post->is_featured) text-gray-500  dark:text-gray-300  @else text-gray-500  dark:text-gray-300  @endif">
                                 {{$post->title }}
                             </h5>
                             <p class="font-normal text-gray-600 dark:text-gray-400">
@@ -80,6 +85,93 @@
                         </a>
                         @endforeach
                     </div>
+                    <h1
+                        class="text-2xl font-bold text-gray-800 underline capitalize decoration-indigo-500 dark:text-white">
+                        Comments
+                    </h1>
+                    <div
+                        class="w-full mt-4 bg-white border-2 border-gray-200 rounded-lg dark:bg-gray-800 dark:border-gray-700">
+
+                        <div class="flex p-4 ">
+                            <div class="flex-1">
+                                <div class="flex items-center justify-between">
+                                    <div class="flex flex-col sm:flex-row">
+                                        <div>
+
+                                            <span class="text-base text-sky-500 dark:text-sky-500">
+                                                Username
+                                                {{-- {{$guestbook->user->name }} --}}
+                                            </span>
+                                        </div>
+                                        <div>
+                                            <small class="text-sm text-gray-400 sm:ml-2 dark:text-gray-400">
+                                                created at
+                                                {{-- {{ $guestbook->created_at->diffForHumans() }} --}}
+                                            </small>
+                                            {{-- @unless ($guestbook->created_at->eq($guestbook->updated_at)) --}}
+                                            {{-- @unless ($guestbook->created_at == $guestbook->updated_at) --}}
+                                            <small class="text-sm text-gray-400 dark:text-gray-400"> &middot; {{
+                                                __('edited')
+                                                }}</small>
+                                            {{-- @endunless --}}
+
+                                            {{-- @if ($guestbook->is_pinned == true) --}}
+                                            <small class="text-sm text-gray-400 dark:text-gray-400">
+                                                &middot; pinned
+                                            </small>
+                                            {{-- @endif --}}
+
+                                        </div>
+                                    </div>
+
+                                    {{-- @auth
+                                    @if ($guestbook->user_id == Auth::id() || Auth::user()->is_admin == true) --}}
+                                    <x-dropdown>
+                                        <x-slot name="trigger">
+                                            <button>
+                                                <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 text-gray-400"
+                                                    viewBox="0 0 20 20" fill="currentColor">
+                                                    <path
+                                                        d="M6 10a2 2 0 11-4 0 2 2 0 014 0zM12 10a2 2 0 11-4 0 2 2 0 014 0zM16 12a2 2 0 100-4 2 2 0 000 4z" />
+                                                </svg>
+                                            </button>
+                                        </x-slot>
+                                        <x-slot name="content">
+                                            {{-- @if (Auth::user()->is_admin) --}}
+                                            {{-- <form method="POST"
+                                                action="{{ route('guestbook.unpin', $guestbook) }}">
+                                                @csrf
+                                                @method('patch')
+                                                <x-dropdown-link :href="route('guestbook.unpin', $guestbook)"
+                                                    onclick="event.preventDefault(); this.closest('form').submit();">
+                                                    {{ __('Unpin') }}
+                                                </x-dropdown-link>
+                                            </form> --}}
+                                            {{-- @endif --}}
+                                            {{-- <x-dropdown-link :href="route('guestbook.edit', $guestbook)">
+                                                {{ __('Edit') }}
+                                            </x-dropdown-link>
+                                            <form method="POST" action="{{ route('guestbook.destroy', $guestbook) }}">
+                                                @csrf
+                                                @method('delete')
+                                                <x-dropdown-link :href="route('guestbook.destroy', $guestbook)"
+                                                    onclick="event.preventDefault(); this.closest('form').submit();">
+                                                    {{ __('Delete') }}
+                                                </x-dropdown-link>
+                                            </form> --}}
+                                        </x-slot>
+                                    </x-dropdown>
+                                    {{-- @endif
+                                    @endauth --}}
+                                </div>
+                                <p class="mt-2 text-gray-600 text-notmal dark:text-gray-400">
+                                    Comment here
+                                    {{-- {{$guestbook->message }} --}}
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
 
                 </div>
             </div>
