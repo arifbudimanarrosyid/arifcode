@@ -6,6 +6,7 @@ use App\Models\Post;
 use App\Models\Category;
 use App\Models\Comment;
 use Illuminate\Http\Request;
+use Termwind\Components\Dd;
 
 class PostController extends Controller
 {
@@ -43,16 +44,15 @@ class PostController extends Controller
         // dd($posts);
         return view('home', compact('featured'));
     }
-    public function show($slug, Comment $comment)
+    public function show($slug)
     {
         $post = Post::where('is_published', true)
             ->where('slug', $slug)
             // ->with(['category', 'comments'])
-            // ->with(['comments.user'])
             ->firstOrFail();
             // dd to array
+            // dd($post->toArray());
             // dd($post->comments->toArray());
-            // dd($post->comments);
         $recomendations = Post::where('is_published', true)
             ->where('slug', '!=', $slug)
             ->with(['category'])
