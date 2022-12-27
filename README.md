@@ -10,9 +10,14 @@ Developed with Laravel 9, Laravel Breeze, Tailwind CSS, Flowbite.
 git clone https://github.com/arifbudimanarrosyid/arifcode.git
 ```
 ```
+composer install
+```
+```
 npm install
 ```
+```
 make `.env` file & configure
+```
 ```
 php artisan key:generate
 ```
