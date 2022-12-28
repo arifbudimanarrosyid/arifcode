@@ -1,15 +1,15 @@
 <x-guest-layout>
     <div class="py-12">
-        <div class="mx-auto max-w-7xl sm:px-6 lg:px-8">
+        <div class="min-h-screen mx-auto max-w-7xl sm:px-6 lg:px-8">
             <div class="flex mb-5 overflow-hidden ">
                 <div class="px-4 sm:px-0">
                     <h1
                         class="text-4xl font-bold text-gray-800 underline capitalize decoration-sky-500 dark:text-white">
                         Edit Guestbook
                     </h1>
-                    <h1 class="mt-4 text-gray-600 dark:text-gray-400">Hope you like the website, please leave a message.
+                    {{-- <h1 class="mt-4 text-gray-600 dark:text-gray-400">Hope you like the website, please leave a message.
                         You need to login.
-                    </h1>
+                    </h1> --}}
 
                 </div>
 

@@ -65,10 +65,15 @@
                                     <div class="flex items-center justify-between">
                                         <div class="flex flex-col sm:flex-row">
                                             <div>
-
+                                                @if ($guestbook->user_id == Auth::id())
+                                                <span class="text-base text-yellow-500 dark:text-yellow-500">
+                                                    {{$guestbook->user->name }}
+                                                </span>
+                                                @else
                                                 <span class="text-base text-sky-500 dark:text-sky-500">
                                                     {{$guestbook->user->name }}
                                                 </span>
+                                                @endif
                                             </div>
                                             <div>
                                                 <small class="text-sm text-gray-400 sm:ml-2 dark:text-gray-400">
