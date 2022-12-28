@@ -28,6 +28,8 @@ npm run dev
 php artisan migrate:fresh --seed
 ```
 
+go to https://github.com/settings/developers and make OAuth Apps with Auth callback url http://localhost:8000/auth/callback/github
+
 add to '.env'
 ```
 GITHUB_CLIENT_ID = 
