@@ -91,10 +91,26 @@
 
 
             {{-- Create --}}
-            <a href="{{ route('posts.create') }}"
-                class="inline-flex items-center px-4 py-3 mb-5 mr-2 text-sm font-medium leading-4 text-gray-100 transition duration-150 ease-in-out bg-indigo-700 rounded-md dark:text-gray-300 dark:bg-indigo-800 hover:bg-indigo-800 dark:hover:bg-indigo-600 focus:outline-none">
-                Create
-            </a>
+            <div class="flex justify-between w-full">
+
+                <a href="{{ route('posts.create') }}"
+                    class="inline-flex items-center px-4 py-3 mb-5 mr-2 text-sm font-medium leading-4 text-gray-100 transition duration-150 ease-in-out bg-indigo-700 rounded-md dark:text-gray-300 dark:bg-indigo-800 hover:bg-indigo-800 dark:hover:bg-indigo-600 focus:outline-none">
+                    Create
+                </a>
+
+                {{-- if draft post =0 --}}
+                @if (Route::has('posts.deletedraftposts') && $draftPosts != 0)
+                <form action="{{ route('posts.deletedraftposts') }}" method="POST" class="inline-block sm:inline-flex">
+                    @csrf
+                    @method('patch')
+                    <button type="submit"
+                        class="inline-flex items-center px-4 py-3 mb-5 text-sm font-medium leading-4 text-gray-100 transition duration-150 ease-in-out bg-red-700 rounded-md dark:text-gray-300 dark:bg-red-800 hover:bg-red-800 dark:hover:bg-red-600 focus:outline-none">
+                        Delete All Draft Posts
+                    </button>
+                </form>
+                @endif
+
+            </div>
 
 
             {{-- All Posts --}}

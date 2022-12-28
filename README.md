@@ -89,6 +89,7 @@ Register form default account type is_admin false
   - [x] Update
   - [x] Delete & Update Thumbnail
   - [x] Delete
+  - [ ] Delete All Draft Posts (disable if draft posts = 0)
 - [x] Dashboard - Category
   - [x] Create
   - [x] Read

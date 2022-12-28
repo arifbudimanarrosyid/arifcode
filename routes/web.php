@@ -63,13 +63,21 @@ Route::middleware('auth')->group(function () {
 Route::prefix('dashboard')
     ->middleware(['auth', 'isAdmin'])
     ->group(function () {
+
+        //Posts
         Route::resource('/posts', DashboardPostController::class);
         Route::patch('/posts/{post}/delete-thumbnail', [DashboardPostController::class, 'deleteThumbnail'])->name('posts.delete-thumbnail');
+        Route::patch('/posts', [DashboardPostController::class, 'deleteDraftPosts'])->name('posts.deletedraftposts');
+
+        //Categories
         Route::resource('/category', DashboardCategoryController::class)
             ->except(['destroy']);
+
+        //Users
         Route::resource('/user', DashboardUserController::class)->only(['index']);
         Route::patch('/user/{user}/make-admin', [DashboardUserController::class, 'makeRoleAdmin'])->name('user.make-admin');
         Route::patch('/user/{user}/make-user', [DashboardUserController::class, 'makeRoleUser'])->name('user.make-user');
+
         // Route::get('/portofolio', function () {
         //     return view('dashboard.portofolio.index');
         // })->name('dashboard.portofolio.index');

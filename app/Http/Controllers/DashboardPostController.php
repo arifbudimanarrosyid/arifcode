@@ -232,4 +232,20 @@ class DashboardPostController extends Controller
         // dd($posts);
         return back()->with('danger', 'Thumbnail deleted successfully');
     }
+
+    public function deleteDraftPosts(){
+        if (Post::where('is_published', 0)->count() == 0) {
+            return redirect()->route('posts.index')->with('danger', 'No draft posts found');
+        }
+        $posts = Post::where('is_published', 0)->get();
+        foreach($posts as $post){
+            if ($post->thumbnail) {
+                if (Storage::exists('public/thumbnails/' . $post->thumbnail)) {
+                    unlink(public_path('storage/thumbnails/' . $post->thumbnail));
+                }
+            }
+            Post::destroy($post->id);
+        }
+        return redirect()->route('posts.index')->with('success', 'All draft posts deleted successfully');
+    }
 }
