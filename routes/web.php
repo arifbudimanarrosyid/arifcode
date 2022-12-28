@@ -42,8 +42,11 @@ Route::get('/aboutme', function () {
 })->name('aboutme');
 
 //Socialite
-Route::get('auth/redirect/github', [SocialiteController::class, 'redirect'])->name('auth.redirect.github');
-Route::get('auth/callback/github', [SocialiteController::class, 'callback'])->name('auth.callback.github');
+Route::get('auth/redirect/github', [SocialiteController::class, 'redirectGithub'])->name('auth.redirect.github');
+Route::get('auth/callback/github', [SocialiteController::class, 'callbackGithub'])->name('auth.callback.github');
+
+Route::get('auth/redirect/google', [SocialiteController::class, 'redirectGoogle'])->name('auth.redirect.google');
+Route::get('auth/callback/google', [SocialiteController::class, 'callbackGoogle'])->name('auth.callback.google');
 
 // Comment
 Route::post('/comments', [CommentController::class, 'store'])->name('comment.store');

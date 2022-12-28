@@ -9,12 +9,12 @@ use Laravel\Socialite\Facades\Socialite;
 
 class SocialiteController extends Controller
 {
-    public function redirect()
+    public function redirectGithub()
     {
         return Socialite::driver('github')->redirect();
     }
 
-    public function callback()
+    public function callbackGithub()
     {
         $githubUser = Socialite::driver('github')->user();
         $user = User::firstOrCreate([
@@ -29,5 +29,27 @@ class SocialiteController extends Controller
         Auth::login($user);
         return redirect()->intended('/dashboard');
         // dd($user);
+    }
+
+    public function redirectGoogle()
+    {
+        return Socialite::driver('google')->redirect();
+    }
+
+    public function callbackGoogle()
+    {
+        $googleUser = Socialite::driver('google')->stateless()->user();
+        $user = User::firstOrCreate([
+            'google_id' => $googleUser->id,
+        ], [
+            'name' => $googleUser->name,
+            'email' => $googleUser->email,
+            // 'google_id' => $googleUser->id,
+            'google_token' => $googleUser->token,
+            'google_refresh_token' => $googleUser->refreshToken,
+        ]);
+        Auth::login($user);
+        // dd($googleUser);
+        return redirect()->intended('/dashboard');
     }
 }

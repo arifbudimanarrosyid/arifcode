@@ -66,9 +66,9 @@
                     <x-button-link class="" href="{{ route('auth.redirect.github') }}">
                         {{ __('Log In with Github') }}
                     </x-button-link>
-                    {{-- <x-button-link class="ml-2">
+                    <x-button-link class="ml-4" href="{{ route('auth.redirect.google') }}">
                         {{ __('Log In with Google') }}
-                    </x-button-link> --}}
+                    </x-button-link>
                 </div>
             </form>
         </x-auth-card>
