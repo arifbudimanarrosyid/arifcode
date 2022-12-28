@@ -15,6 +15,15 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}">
+    <meta name="description"
+        content="ArifCode, personal website, blog and online portofolio by Arif Budiman Arrosyid, Built with Laravel, Tailwind CSS and Flowbite Component.">
+    <meta property="og:title" content=ArifCode - Personal Website>
+    <meta property="og:site_name" content=ArifCode>
+    <meta property="og:url" content=arifcode.dev>
+    <meta property="og:description" content=ArifCode, personal website, blog and online portofolio by Arif Budiman
+        Arrosyid, Built with Laravel, Tailwind CSS and Flowbite Component.>
+    <meta property="og:type" content=website>
+    <meta property="og:image" content="">
 
     <title>{{ config('app.name', 'Laravel') }}</title>
     <link rel="icon" href="{{ asset('fav.png') }}" type="image">
