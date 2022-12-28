@@ -28,6 +28,21 @@ npm run dev
 php artisan migrate:fresh --seed
 ```
 
+add to '.env'
+```
+GITHUB_CLIENT_ID = 
+GITHUB_CLIENT_SECRET = 
+```
+
+change 'services.php'
+```
+'github' => [
+        'client_id' => env('GITHUB_CLIENT_ID'),
+        'client_secret' => env('GITHUB_CLIENT_SECRET'),
+        'redirect' => 'http://localhost:8000/auth/callback/github',
+    ],
+```
+
 ## Login & Register
 Register form default account type is_admin false
 ### Admin
