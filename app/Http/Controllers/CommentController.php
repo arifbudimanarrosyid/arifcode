@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Post;
 use App\Models\Comment;
 use Illuminate\Http\Request;
 
@@ -30,10 +31,11 @@ class CommentController extends Controller
         return back();
     }
 
-    public function edit(Comment $comment)
+    public function edit(Comment $comment, Post $post)
     {
+        $post = Post::find($comment->post_id);
         if (auth()->user()->id == $comment->user_id || auth()->user()->is_admin == true) {
-            return view('comment.edit', compact('comment'));
+            return view('comment.edit', compact('comment', 'post'));
         }
         return back();
     }
