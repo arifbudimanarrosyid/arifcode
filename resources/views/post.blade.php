@@ -148,7 +148,7 @@
 
                     <div
                         class="mt-4 bg-white border-2 border-gray-200 divide-y-2 divide-gray-100 rounded-lg dark:border-gray-700 dark:divide-gray-700 dark:bg-gray-800">
-                        @forelse ($post->comments()->orderBy('created_at', 'desc')->get() as $comment)
+                        @forelse ($post->comments()->orderBy('created_at', 'asc')->get() as $comment)
                         <div class="flex p-4 ">
                             <div class="flex-1">
                                 <div class="flex items-center justify-between">

@@ -67,6 +67,14 @@
                         {{ __('Log In') }}
                     </x-primary-button>
                 </div>
+                <div class="flex items-center justify-end mt-4">
+                    <x-button-link class="" href="{{ route('auth.redirect.github') }}">
+                        {{ __('Log In with Github') }}
+                    </x-button-link>
+                    {{-- <x-button-link class="ml-2">
+                        {{ __('Log In with Google') }}
+                    </x-button-link> --}}
+                </div>
             </form>
         </x-auth-card>
     </div>

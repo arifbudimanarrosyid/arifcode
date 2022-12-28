@@ -1,12 +1,16 @@
 <?php
 
-use App\Http\Controllers\CommentController;
+use App\Models\User;
+use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PostController;
+use Laravel\Socialite\Facades\Socialite;
+use App\Http\Controllers\CommentController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\GuestbookController;
+use App\Http\Controllers\SocialiteController;
 use App\Http\Controllers\DashboardPostController;
 use App\Http\Controllers\DashboardUserController;
 use App\Http\Controllers\DashboardCategoryController;
@@ -37,6 +41,11 @@ Route::get('/aboutme', function () {
     return view('aboutme');
 })->name('aboutme');
 
+//Socialite
+Route::get('auth/redirect/github', [SocialiteController::class, 'redirect'])->name('auth.redirect.github');
+Route::get('auth/callback/github', [SocialiteController::class, 'callback'])->name('auth.callback.github');
+
+// Comment
 Route::post('/comments', [CommentController::class, 'store'])->name('comment.store');
 Route::delete('/comments/{comment}', [CommentController::class, 'destroy'])->name('comment.destroy');
 Route::get('/comments/{comment}/edit', [CommentController::class, 'edit'])->name('comment.edit');
