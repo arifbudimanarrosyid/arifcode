@@ -64,7 +64,9 @@
                                     $recomendation->category->title }}
                                 </h5>
                                 <div class="flex">
-                                    <p class="inline-flex items-center mr-2 text-xs font-medium text-gray-400 dark:text-gray-400">{{ $recomendation->views }} views</p>
+                                    <p
+                                        class="inline-flex items-center mr-2 text-xs font-medium text-gray-400 dark:text-gray-400">
+                                        {{ $recomendation->views }} views</p>
                                     <span
                                         class="inline-flex items-center text-xs font-medium text-gray-400 dark:text-gray-400">
                                         <svg aria-hidden="true" class="w-3 h-3 mr-1" fill="currentColor"
@@ -102,14 +104,14 @@
                                 {{ Auth::user()->name}}
                             </span>
                             with role
-                        @if (Auth::user()->is_admin)
-                        <span class="text-sky-400">
-                            Admin
-                        </span>
-                        @else
-                        <span class="text-sky-400">User
-                        </span>.
-                        @endif
+                            @if (Auth::user()->is_admin)
+                            <span class="text-sky-400">
+                                Admin
+                            </span>
+                            @else
+                            <span class="text-sky-400">User
+                            </span>.
+                            @endif
 
                             @else
                             You need to <a href="{{ route('login') }}" class="text-sky-400">login</a>
@@ -152,9 +154,15 @@
                                 <div class="flex items-center justify-between">
                                     <div class="flex flex-col sm:flex-row">
                                         <div>
+                                            @if ($comment->user_id == Auth::id())
+                                            <span class="text-base text-yellow-500 dark:text-yellow-500">
+                                                {{$comment->user->name }}
+                                            </span>
+                                            @else
                                             <span class="text-base text-sky-500 dark:text-sky-500">
                                                 {{$comment->user->name }}
                                             </span>
+                                            @endif
                                         </div>
                                         <div>
                                             <small class="text-sm text-gray-400 sm:ml-2 dark:text-gray-400">
