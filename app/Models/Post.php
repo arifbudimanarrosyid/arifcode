@@ -29,6 +29,11 @@ class Post extends Model
         return $this->hasMany(Comment::class, 'post_id', 'id');
     }
 
+    public function incrementViewCount() {
+        $this->views++;
+        return $this->save();
+    }
+
     // public function getRouteKeyName()
     // {
     //     return 'slug';

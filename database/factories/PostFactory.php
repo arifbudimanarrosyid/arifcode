@@ -30,6 +30,7 @@ class PostFactory extends Factory
             'category_id' => rand(1, 5),
             'published_at' => $this->faker->dateTimeBetween('-1 month', 'now'),
             // 'user_id' => rand(1, 10)
+            'views' => rand(0, 1000),
         ];
     }
 }

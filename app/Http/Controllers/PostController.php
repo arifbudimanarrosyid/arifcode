@@ -3,10 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Models\Post;
-use App\Models\Category;
 use App\Models\Comment;
-use Illuminate\Http\Request;
+use App\Models\Category;
 use Termwind\Components\Dd;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Cookie;
 
 class PostController extends Controller
 {
@@ -38,7 +39,7 @@ class PostController extends Controller
         $featured = Post::where('is_published', true)
             ->where('is_featured', true)
             // ->with(['category'])
-            ->orderBy('published_at', 'desc')
+            ->orderBy('views', 'desc')
             ->limit(5)
             ->get();
         // dd($posts);
@@ -50,12 +51,18 @@ class PostController extends Controller
             ->where('slug', $slug)
             // ->with(['category', 'comments'])
             ->firstOrFail();
-            // dd to array
-            // dd($post->toArray());
-            // dd($post->comments->toArray());
+
+        if (!Cookie::has('post_' . $post->slug)) {
+            $post->incrementViewCount();
+            Cookie::queue('post_' . $post->slug, 'true', 60 * 2);
+        }
+
+        // dd to array
+        // dd($post->toArray());
+        // dd($post->comments->toArray());
         $recomendations = Post::where('is_published', true)
             ->where('slug', '!=', $slug)
-            ->with(['category'])
+            // ->with(['category'])
             ->inRandomOrder()
             ->limit(2)
             ->get();
