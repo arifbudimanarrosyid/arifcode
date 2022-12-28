@@ -39,9 +39,7 @@
                         Your information is only used to display your name and message.
                     </p>
                     @endauth
-
                 </div>
-
             </div>
             <div class="flex min-h-screen my-5">
                 <div class="w-full px-4 sm:px-0">
@@ -58,7 +56,6 @@
                                 Send
                             </button>
                         </form>
-
                         @endauth
                         <div
                             class="mt-4 bg-white border-2 border-gray-200 divide-y-2 divide-gray-100 rounded-lg dark:border-gray-700 dark:divide-gray-700 dark:bg-gray-800">
@@ -92,7 +89,6 @@
 
                                             </div>
                                         </div>
-
                                         @auth
                                         @if ($guestbook->user_id == Auth::id() || Auth::user()->is_admin == true)
                                         <x-dropdown>
@@ -107,7 +103,7 @@
                                                 </button>
                                             </x-slot>
                                             <x-slot name="content">
-                                                @if (Auth::user()->is_admin)
+                                                @can('admin')
                                                 <form method="POST" action="{{ route('guestbook.unpin', $guestbook) }}">
                                                     @csrf
                                                     @method('patch')
@@ -116,7 +112,7 @@
                                                         {{ __('Unpin') }}
                                                     </x-dropdown-link>
                                                 </form>
-                                                @endif
+                                                @endcan
                                                 <x-dropdown-link :href="route('guestbook.edit', $guestbook)">
                                                     {{ __('Edit') }}
                                                 </x-dropdown-link>
@@ -151,19 +147,16 @@
                                     </div>
                                 </div>
                             </div>
-
                             @endforelse
                         </div>
                         <div
                             class="mt-4 bg-white border-2 border-gray-200 divide-y-2 divide-gray-100 rounded-lg dark:border-gray-700 dark:divide-gray-700 dark:bg-gray-800">
-
                             @forelse ($guestbooks as $guestbook)
                             <div class="flex p-4 ">
                                 <div class="flex-1">
                                     <div class="flex items-center justify-between">
                                         <div class="flex flex-col sm:flex-row">
                                             <div>
-
                                                 @if ($guestbook->user_id == Auth::id())
                                                 <span class="text-base text-yellow-500 dark:text-yellow-500">
                                                     {{$guestbook->user->name }}
@@ -201,7 +194,7 @@
                                                 </button>
                                             </x-slot>
                                             <x-slot name="content">
-                                                @if (Auth::user()->is_admin == true)
+                                                @can('admin')
                                                 <form method="POST" action="{{ route('guestbook.pin', $guestbook) }}">
                                                     @csrf
                                                     @method('patch')
@@ -210,7 +203,7 @@
                                                         {{ __('Pin') }}
                                                     </x-dropdown-link>
                                                 </form>
-                                                @endif
+                                                @endcan
                                                 <x-dropdown-link :href="route('guestbook.edit', $guestbook)">
                                                     {{ __('Edit') }}
                                                 </x-dropdown-link>
