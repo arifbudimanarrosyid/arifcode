@@ -41,7 +41,12 @@
                             prose-indigo prose-code:text-indigo-400 prose-blockquote:text-indigo-400
                         @endif dark:prose-invert
                         ">
-                        {{-- class="mt-6 overflow-auto prose max-w-none prose-gray dark:prose-invert prose-a:text-indigo-400 prose-h2:text-indigo-400 prose-h3:text-indigo-400 prose-h4:text-indigo-400 prose-h5:text-indigo-400 prose-h6:text-indigo-400 prose-blockquote:text-indigo-700 prose-h1:text-indigo-400 prose-code:text-indigo-300 prose-pre:text-indigo-400 prose-blockquote:bg-indigo-50 prose-blockquote:border-indigo-400 hover:prose-a:text-indigo-500"> --}}
+                        {{-- class="mt-6 overflow-auto prose max-w-none prose-gray dark:prose-invert
+                        prose-a:text-indigo-400 prose-h2:text-indigo-400 prose-h3:text-indigo-400
+                        prose-h4:text-indigo-400 prose-h5:text-indigo-400 prose-h6:text-indigo-400
+                        prose-blockquote:text-indigo-700 prose-h1:text-indigo-400 prose-code:text-indigo-300
+                        prose-pre:text-indigo-400 prose-blockquote:bg-indigo-50 prose-blockquote:border-indigo-400
+                        hover:prose-a:text-indigo-500"> --}}
                         {!! $post->content !!}
 
                     </div>
@@ -51,32 +56,32 @@
                             class="text-2xl font-bold text-gray-800 underline capitalize decoration-indigo-500 dark:text-white">
                             Recomendations Posts
                         </h1>
-                        @foreach ($recomendations as $recomendation)
-                        <a href="{{ route('post', $recomendation->slug) }}" class="w-full p-4 bg-white border-2 border-gray-200 rounded-lg @if ($recomendation->is_featured)
+                        @forelse ($recomendations as $recomendation)
+                        <a href="{{ route('post', $recomendation->slug) }}" class="w-full p-4 bg-white border-2 border-gray-200 rounded-lg
+                            @if ($recomendation->is_featured)
                             hover:border-orange-500 dark:hover:border-orange-500
-                        @else
-                        hover:border-indigo-500 dark:hover:border-indigo-500
-                        @endif dark:bg-gray-800 dark:border-gray-700 ">
-
-                            <div class="flex justify-between ">
-
+                            @else
+                            hover:border-indigo-500 dark:hover:border-indigo-500
+                            @endif dark:bg-gray-800 dark:border-gray-700 ">
+                            <div class="flex flex-col sm:flex-row justify-between">
                                 <h5 class="font-bold tracking-tight text-gray-400 dark:text-gray-400">{{
                                     $recomendation->category->title }}
                                 </h5>
-                                <div class="flex">
-                                    <p
-                                        class="inline-flex items-center mr-2 text-xs font-medium text-gray-400 dark:text-gray-400">
-                                        {{ $recomendation->views }} views</p>
+                                <div
+                                    class="flex order-first sm:order-none justify-between sm:justify-end w-full sm:w-auto">
                                     <span
                                         class="inline-flex items-center text-xs font-medium text-gray-400 dark:text-gray-400">
-                                        <svg aria-hidden="true" class="w-3 h-3 mr-1" fill="currentColor"
+                                        {{-- <svg aria-hidden="true" class="w-3 h-3 mr-1" fill="currentColor"
                                             viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
                                             <path fill-rule="evenodd"
                                                 d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l2.828 2.829a1 1 0 101.415-1.415L11 9.586V6z"
                                                 clip-rule="evenodd"></path>
-                                        </svg>
+                                        </svg> --}}
                                         <p>{{ $recomendation->published_at->diffForHumans()}}</p>
                                     </span>
+                                    <p
+                                        class="inline-flex items-center ml-2 text-xs font-medium text-gray-400 dark:text-gray-400">
+                                        {{ $recomendation->views }} views</p>
                                 </div>
 
                             </div>
@@ -88,7 +93,24 @@
                                 {{ $recomendation->excerpt }}
                             </p>
                         </a>
-                        @endforeach
+                        @empty
+                        <div
+                            class="mt-4 bg-white border-2 border-gray-200 divide-y-2 divide-gray-100 rounded-lg dark:border-gray-700 dark:divide-gray-700 dark:bg-gray-800">
+
+                            <div class="flex p-4 ">
+                                <div class="flex-1">
+                                    <div class="flex items-center justify-between">
+                                        <div class="flex flex-col sm:flex-row">
+                                            <p class="text-base font-normal text-gray-400 dark:text-gray-400">
+                                                No recomended post yet.
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        @endforelse
                     </div>
 
 

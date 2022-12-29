@@ -17,8 +17,8 @@ class CommentFactory extends Factory
     public function definition()
     {
         return [
-            'post_id' => rand(1, 30),
-            'user_id' => rand(1, 3),
+            'post_id' => rand(1, 10),
+            'user_id' => rand(1, 5),
             'body' => $this->faker->paragraph(mt_rand(1, 3)),
             // 'created_at' => $this->faker->dateTimeBetween('-1 month', 'now'),
 

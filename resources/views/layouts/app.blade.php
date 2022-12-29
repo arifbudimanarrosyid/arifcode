@@ -41,10 +41,8 @@
     <link rel="stylesheet" href="https://fonts.bunny.net/css2?family=Inter:wght@400;600;700&display=swap">
 
     {{-- TinyMCE --}}
-    <script src="https://cdn.tiny.cloud/1/cz2l9l1778krrir26up7x7r8ce1hvtyicthty3l0a0zu1t70/tinymce/6/tinymce.min.js"
-        referrerpolicy="origin"></script>
-    {{-- <script src="https://cdn.tiny.cloud/1/no-api-key/tinymce/6/tinymce.min.js" referrerpolicy="origin"></script>
-    --}}
+    <script src="https://cdn.tiny.cloud/1/cz2l9l1778krrir26up7x7r8ce1hvtyicthty3l0a0zu1t70/tinymce/6/tinymce.min.js" referrerpolicy="origin"></script>
+    {{-- <script src="https://cdn.tiny.cloud/1/no-api-key/tinymce/6/tinymce.min.js" referrerpolicy="origin"></script> --}}
 
     {{-- TinyMCE plugins --}}
     <script>
@@ -55,7 +53,7 @@
             menubar: false,
             statusbar: false,
             selector:'#tinymce',
-            plugins: 'fullscreen anchor resize autolink charmap codesample emoticons image link lists media searchreplace table visualblocks wordcount checklist mediaembed casechange export formatpainter pageembed linkchecker a11ychecker permanentpen powerpaste advtable advcode editimage  tableofcontents footnotes mergetags autocorrect typography inlinecss',
+            plugins: 'fullscreen anchor resize autolink charmap codesample emoticons image link lists media searchreplace table visualblocks wordcount checklist mediaembed casechange export formatpainter pageembed linkchecker a11ychecker permanentpen advtable advcode editimage  tableofcontents footnotes mergetags autocorrect typography inlinecss',
             toolbar: 'fullscreen | undo redo code | blocks | h1 h2 codesample blockquote link | image bullist numlist checklist  indent outdent|bold italic underline strikethrough |  image media table mergetags |  spellcheckdialog a11ycheck typography | align lineheight |  emoticons charmap | removeformat',
             skin: (window.matchMedia("(prefers-color-scheme: dark)").matches ? "oxide-dark" : "oxide"),
             content_css: (window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "")

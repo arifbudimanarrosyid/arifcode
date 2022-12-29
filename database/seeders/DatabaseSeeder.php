@@ -89,7 +89,7 @@ class DatabaseSeeder extends Seeder
             'remember_token' => Str::random(10),
         ]);
 
-        Post::factory(30)->create();
+        Post::factory(10)->create();
         Comment::factory(30)->create();
 
         Guestbook::create([
