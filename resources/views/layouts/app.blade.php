@@ -53,8 +53,10 @@
             menubar: false,
             statusbar: false,
             selector:'#tinymce',
-            plugins: 'fullscreen anchor resize autolink charmap codesample emoticons image link lists media searchreplace table visualblocks wordcount checklist mediaembed casechange export formatpainter pageembed linkchecker a11ychecker permanentpen advtable advcode editimage  tableofcontents footnotes mergetags autocorrect typography inlinecss',
-            toolbar: 'fullscreen | undo redo code | blocks | h1 h2 codesample blockquote link | image bullist numlist checklist  indent outdent|bold italic underline strikethrough |  image media table mergetags |  spellcheckdialog a11ycheck typography | align lineheight |  emoticons charmap | removeformat',
+
+            plugins: 'fullscreen anchor resize autolink charmap codesample emoticons image link lists media searchreplace table visualblocks wordcount checklist mediaembed casechange export formatpainter pageembed   permanentpen advtable advcode  tableofcontents footnotes  autocorrect',
+            toolbar: 'fullscreen | blocks h1 h2 codesample blockquote link | image code bullist numlist checklist  indent outdent|bold italic underline strikethrough |  image media table mergetags |  spellcheckdialog a11ycheck typography | align lineheight |  emoticons charmap | removeformat',
+
             skin: (window.matchMedia("(prefers-color-scheme: dark)").matches ? "oxide-dark" : "oxide"),
             content_css: (window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "")
         });
