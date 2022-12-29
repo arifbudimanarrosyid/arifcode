@@ -15,25 +15,32 @@ composer install
 ```
 npm install
 ```
-```
+
 make `.env` file & configure
-```
+
 ```
 php artisan key:generate
 ```
 ```
 npm run dev
 ```
+open new terminal
+```
+php artisan serve
+```
 ```
 php artisan migrate:fresh --seed
 ```
 
-go to https://github.com/settings/developers and make OAuth Apps with Auth callback url http://localhost:8000/auth/callback/github
+go to https://github.com/settings/developers and https://console.cloud.google.com/apis/credentials/oauthclient/, 
+make OAuth Apps with Auth callback url http://localhost:8000/auth/callback/github and http://localhost:8000/auth/callback/google
 
 add to '.env'
 ```
 GITHUB_CLIENT_ID = 
 GITHUB_CLIENT_SECRET = 
+GOOGLE_CLIENT_ID = 
+GOOGLE_CLIENT_SECRET = 
 ```
 
 change 'services.php'
@@ -41,12 +48,20 @@ change 'services.php'
 'github' => [
         'client_id' => env('GITHUB_CLIENT_ID'),
         'client_secret' => env('GITHUB_CLIENT_SECRET'),
-        'redirect' => 'http://localhost:8000/auth/callback/github',
+        'redirect' => '/auth/callback/github',
+    ],
+'google' => [
+        'client_id' => env('GOOGLE_CLIENT_ID'),
+        'client_secret' => env('GOOGLE_CLIENT_SECRET'),
+        'redirect' => '/auth/callback/google',
     ],
 ```
 
 ## Login & Register
-Register form default account type is_admin false
+Register form default account type is_admin false. You can sign in with Github or Google only with localhost url.
+
+Check `DatabaseSeeder.php` for more seeded account.
+
 ### Admin
 >email: admin@admin.com
 
@@ -74,7 +89,11 @@ Register form default account type is_admin false
 - [x] Light Mode & Dark Mode (Auto)
 - [x] Home - Featured Posts
 - [x] Posts - All Posts
-- [x] Single Post - Recomendation Posts
+- [x] Show Single Post
+- [x] Show Recomendation Posts on Single Post
+- [x] Comment on Post
+  - [x] Edit
+  - [x] Delete 
 - [x] Portofolio
 - [x] Guestbook
   - [x] Create 
@@ -106,12 +125,12 @@ Register form default account type is_admin false
   - [x] Update
   - [x] Delete & Update Thumbnail
   - [x] Delete
-  - [ ] Delete All Draft Posts (disable if draft posts = 0)
+  - [x] Delete All Draft Posts (hidden if draft posts = 0)
 - [x] Dashboard - Category
   - [x] Create
   - [x] Read
   - [x] Update
-  - [ ] Delete (disable)
+  - [x] Delete (hidden and disable by route)
 - [x] Dashboard - Users
   - [x] Change role to Admin
   - [x] Change role to User
