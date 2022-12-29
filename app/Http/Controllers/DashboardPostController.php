@@ -215,6 +215,27 @@ class DashboardPostController extends Controller
                 unlink(public_path('storage/thumbnails/' . $post->thumbnail));
             }
         }
+
+        // if content has images then delete them
+        if (preg_match_all('/<img[^>]+>/i', $post->content, $result)) {
+            foreach ($result[0] as $img) {
+                preg_match('/src="([^"]+)/i', $img, $imgUrl);
+                $url = str_replace('src="', '', $imgUrl[0]);
+                if (Storage::exists('public/posts/' . basename($url))) {
+                    unlink(public_path('storage/posts/' . basename($url)));
+                }
+            }
+        }
+        // if (preg_match_all('/<img[^>]+>/i', $post->content, $result)) {
+        //     foreach ($result[0] as $img) {
+        //         preg_match('/src="([^"]+)/i', $img, $imgUrl);
+        //         $url = str_replace('src="', '', $imgUrl[0]);
+        //         if (Storage::exists('public/posts/' . basename($url))) {
+        //             unlink(public_path('storage/posts/' . basename($url)));
+        //         }
+        //     }
+        // }
+
         Post::destroy($post->id);
         return redirect()->route('posts.index')->with('success', 'Post deleted successfully');
     }
@@ -233,12 +254,13 @@ class DashboardPostController extends Controller
         return back()->with('danger', 'Thumbnail deleted successfully');
     }
 
-    public function deleteDraftPosts(){
+    public function deleteDraftPosts()
+    {
         if (Post::where('is_published', 0)->count() == 0) {
             return redirect()->route('posts.index')->with('danger', 'No draft posts found');
         }
         $posts = Post::where('is_published', 0)->get();
-        foreach($posts as $post){
+        foreach ($posts as $post) {
             if ($post->thumbnail) {
                 if (Storage::exists('public/thumbnails/' . $post->thumbnail)) {
                     unlink(public_path('storage/thumbnails/' . $post->thumbnail));
@@ -247,5 +269,22 @@ class DashboardPostController extends Controller
             Post::destroy($post->id);
         }
         return redirect()->route('posts.index')->with('success', 'All draft posts deleted successfully');
+    }
+
+    public function imageUpload(Request $request)
+    {
+        $request->validate([
+            'file' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+        ]);
+        $imageName = time() . '.' . $request->file->extension();
+        $request->file->move(public_path('storage/uploads'), $imageName);
+        return response()->json(['location' => asset('storage/uploads/' . $imageName)]);
+
+        // $fileName=$request->file('file')->getClientOriginalName();
+        // $path=$request->file('file')->storeAs('uploads', $fileName, 'public');
+        // return response()->json(['location'=>"/storage/$path"]);
+
+        /*$imgpath = request()->file('file')->store('uploads', 'public');
+        return response()->json(['location' => "/storage/$imgpath"]);*/
     }
 }

@@ -41,25 +41,75 @@
     <link rel="stylesheet" href="https://fonts.bunny.net/css2?family=Inter:wght@400;600;700&display=swap">
 
     {{-- TinyMCE --}}
-    <script src="https://cdn.tiny.cloud/1/cz2l9l1778krrir26up7x7r8ce1hvtyicthty3l0a0zu1t70/tinymce/6/tinymce.min.js" referrerpolicy="origin"></script>
-    {{-- <script src="https://cdn.tiny.cloud/1/no-api-key/tinymce/6/tinymce.min.js" referrerpolicy="origin"></script> --}}
+    <script src="https://cdn.tiny.cloud/1/cz2l9l1778krrir26up7x7r8ce1hvtyicthty3l0a0zu1t70/tinymce/5/tinymce.min.js"
+        referrerpolicy="origin"></script>
+    {{-- <script src="https://cdn.tiny.cloud/1/no-api-key/tinymce/6/tinymce.min.js" referrerpolicy="origin"></script>
+    --}}
 
     {{-- TinyMCE plugins --}}
     <script>
         tinymce.init({
-            mobile:{
-                theme: 'mobile',
-            },
             menubar: false,
             statusbar: false,
             selector:'#tinymce',
+            height: 500,
 
-            plugins: 'fullscreen anchor resize autolink charmap codesample emoticons image link lists media searchreplace table visualblocks wordcount checklist mediaembed casechange export formatpainter pageembed   permanentpen advtable advcode  tableofcontents footnotes  autocorrect',
+            plugins: 'fullscreen anchor resize autolink charmap codesample emoticons image link lists media searchreplace table visualblocks wordcount',
             toolbar: 'fullscreen | blocks h1 h2 codesample blockquote link | image code bullist numlist checklist  indent outdent|bold italic underline strikethrough |  image media table mergetags |  spellcheckdialog a11ycheck typography | align lineheight |  emoticons charmap | removeformat',
 
             skin: (window.matchMedia("(prefers-color-scheme: dark)").matches ? "oxide-dark" : "oxide"),
-            content_css: (window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "")
+            content_css: (window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : ""),
+
+            // image_title: true,
+            automatic_uploads: true,
+            images_upload_url: '/uploads',
+            file_picker_types: 'image',
+            images_upload_handler: function (blobInfo, success, failure) {
+                var xhr, formData;
+                xhr = new XMLHttpRequest();
+                xhr.withCredentials = false;
+                xhr.open('POST', '{{ route('uploads') }}');
+                var token = '{{ csrf_token() }}';
+                xhr.setRequestHeader("X-CSRF-TOKEN", token);
+                xhr.onload = function() {
+                    var json;
+                    if (xhr.status != 200) {
+                        failure('HTTP Error: ' + xhr.status);
+                        return;
+                    }
+                    json = JSON.parse(xhr.responseText);
+                    if (!json || typeof json.location != 'string') {
+                        failure('Invalid JSON: ' + xhr.responseText);
+                        return;
+                    }
+                    success(json.location);
+                };
+                formData = new FormData();
+                formData.append('file', blobInfo.blob(), blobInfo.filename());
+                xhr.send(formData);
+            },
+            // file_picker_callback: function(cb, value, meta) {
+            //     var input = document.createElement('input');
+            //     input.setAttribute('type', 'file');
+            //     input.setAttribute('accept', 'image/*');
+            //     input.onchange = function() {
+            //         var file = this.files[0];
+
+            //         var reader = new FileReader();
+            //         reader.readAsDataURL(file);
+            //         reader.onload = function () {
+            //             var id = 'blobid' + (new Date()).getTime();
+            //             var blobCache =  tinymce.activeEditor.editorUpload.blobCache;
+            //             var base64 = reader.result.split(',')[1];
+            //             var blobInfo = blobCache.create(id, file, base64);
+            //             blobCache.add(blobInfo);
+            //             cb(blobInfo.blobUri(), { title: file.name });
+            //         };
+            //     };
+            //     input.click();
+            // }
         });
+
     </script>
 
     <!-- Scripts -->

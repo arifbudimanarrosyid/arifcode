@@ -82,6 +82,8 @@ Route::prefix('dashboard')
         Route::patch('/posts/{post}/delete-thumbnail', [DashboardPostController::class, 'deleteThumbnail'])->name('posts.delete-thumbnail');
         Route::patch('/posts', [DashboardPostController::class, 'deleteDraftPosts'])->name('posts.deletedraftposts');
 
+        Route::post('/img-upload', [DashboardPostController::class, 'imageUpload'])->name('uploads');
+
         //Categories
         Route::resource('/category', DashboardCategoryController::class)
             ->except(['destroy']);

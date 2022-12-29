@@ -7,7 +7,7 @@
 
     <div class="py-12">
         <div class="px-4 mx-auto max-w-7xl sm:px-6 lg:px-8 ">
-            <div class="mb-4 overflow-hidden">
+            <div class="mb-4">
                 <div class="flex justify-between mb-2">
                     <a href="{{ route('posts.index') }}"
                         class="inline-flex items-center px-4 py-2 mb-5 mr-2 text-sm font-medium leading-4 text-gray-100 transition duration-150 ease-in-out bg-indigo-700 rounded-md dark:text-gray-300 dark:bg-indigo-800 hover:bg-indigo-800 dark:hover:bg-indigo-600 focus:outline-none">
@@ -47,7 +47,7 @@
 
                 @if ($posts->thumbnail)
                 <img src="{{ asset('/storage/thumbnails/'.$posts->thumbnail) }}" alt="image"
-                    class="object-cover w-full mt-5 rounded-lg">
+                    class="object-cover w-full mt-5 rounded-lg border-2 border-gray-200 dark:border-gray-700">
                 @endif
                 {{-- <img src="{{ asset('/storage/thumbnails/'.$posts->thumbnail) }}" alt="image"
                     class="object-cover w-full mt-5 h-96"> --}}
@@ -55,7 +55,7 @@
                 {{-- <p class="mt-5 font-normal text-gray-700 dark:text-gray-300">{{ $posts->excerpt }}</p> --}}
 
                 <div
-                    class="mt-6 overflow-auto prose max-w-none dark:prose-invert
+                    class="mt-6 prose max-w-none dark:prose-invert prose-img:rounded-lg prose-img:border-2 dark:prose-img:border-gray-700 prose-img:border-gray-200
                     @if ($posts->is_featured)
                             prose-orange prose-code:text-orange-400 prose-blockquote:text-orange-400
                             @else

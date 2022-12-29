@@ -28,18 +28,18 @@
                     </span>
                     @if ($post->thumbnail)
                     <img src="{{ asset('/storage/thumbnails/'.$post->thumbnail) }}" alt="image"
-                        class="object-cover w-full mt-5 rounded-lg">
+                        class="object-cover w-full mt-5 rounded-lg border-2 border-gray-200 dark:border-gray-700">
                     @endif
                     {{-- <img src="{{ asset('/storage/thumbnails/'.$post->thumbnail) }}" alt="image"
                         class="object-cover w-full mt-5 h-96"> --}}
 
                     {{-- <p class="mt-5 font-normal text-gray-700 dark:text-gray-300">{{ $post->excerpt }}</p> --}}
 
-                    <div class="mt-6 overflow-auto prose max-w-none  @if ($post->is_featured)
+                    <div class="mt-6 prose max-w-none  @if ($post->is_featured)
                             prose-orange prose-code:text-orange-400 prose-blockquote:text-orange-400
                             @else
                             prose-indigo prose-code:text-indigo-400 prose-blockquote:text-indigo-400
-                        @endif dark:prose-invert
+                        @endif dark:prose-invert prose-img:rounded-lg prose-img:border-2 dark:prose-img:border-gray-700 prose-img:border-gray-200
                         ">
                         {{-- class="mt-6 overflow-auto prose max-w-none prose-gray dark:prose-invert
                         prose-a:text-indigo-400 prose-h2:text-indigo-400 prose-h3:text-indigo-400
