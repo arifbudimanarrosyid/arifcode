@@ -28,7 +28,7 @@
                     </span>
                     @if ($post->thumbnail)
                     <img src="{{ asset('/storage/thumbnails/'.$post->thumbnail) }}" alt="image"
-                        class="object-cover w-full mt-5 rounded-lg border-2 border-gray-200 dark:border-gray-700">
+                        class="object-cover w-full mt-5 border-2 border-gray-200 rounded-lg dark:border-gray-700">
                     @endif
                     {{-- <img src="{{ asset('/storage/thumbnails/'.$post->thumbnail) }}" alt="image"
                         class="object-cover w-full mt-5 h-96"> --}}
@@ -41,12 +41,7 @@
                             prose-indigo prose-code:text-indigo-400 prose-blockquote:text-indigo-400
                         @endif dark:prose-invert prose-img:rounded-lg prose-img:border-2 dark:prose-img:border-gray-700 prose-img:border-gray-200
                         ">
-                        {{-- class="mt-6 overflow-auto prose max-w-none prose-gray dark:prose-invert
-                        prose-a:text-indigo-400 prose-h2:text-indigo-400 prose-h3:text-indigo-400
-                        prose-h4:text-indigo-400 prose-h5:text-indigo-400 prose-h6:text-indigo-400
-                        prose-blockquote:text-indigo-700 prose-h1:text-indigo-400 prose-code:text-indigo-300
-                        prose-pre:text-indigo-400 prose-blockquote:bg-indigo-50 prose-blockquote:border-indigo-400
-                        hover:prose-a:text-indigo-500"> --}}
+                        {{-- class="mt-6 overflow-auto prose max-w-none prose-gray dark:prose-invert prose-a:text-indigo-400 prose-h2:text-indigo-400 prose-h3:text-indigo-400 prose-h4:text-indigo-400 prose-h5:text-indigo-400 prose-h6:text-indigo-400 prose-blockquote:text-indigo-700 prose-h1:text-indigo-400 prose-code:text-indigo-300 prose-pre:text-indigo-400 prose-blockquote:bg-indigo-50 prose-blockquote:border-indigo-400 hover:prose-a:text-indigo-500"> --}}
                         {!! $post->content !!}
 
                     </div>
@@ -63,12 +58,12 @@
                             @else
                             hover:border-indigo-500 dark:hover:border-indigo-500
                             @endif dark:bg-gray-800 dark:border-gray-700 ">
-                            <div class="flex flex-col sm:flex-row justify-between">
-                                <h5 class="font-bold tracking-tight text-gray-400 dark:text-gray-400">{{
+                            <div class="flex flex-col justify-between sm:flex-row">
+                                <h5 class="mt-2 font-bold tracking-tight text-gray-400 sm:mt-0 dark:text-gray-400">{{
                                     $recomendation->category->title }}
                                 </h5>
                                 <div
-                                    class="flex order-first sm:order-none justify-between sm:justify-end w-full sm:w-auto">
+                                    class="flex justify-between order-first w-full sm:order-none sm:justify-end sm:w-auto">
                                     <span
                                         class="inline-flex items-center text-xs font-medium text-gray-400 dark:text-gray-400">
                                         {{-- <svg aria-hidden="true" class="w-3 h-3 mr-1" fill="currentColor"

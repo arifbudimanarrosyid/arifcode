@@ -36,12 +36,12 @@
                     <a href="{{ route('post', $post->slug) }}"
                         class="w-full p-4 bg-white border-2 border-gray-200 rounded-lg hover:border-orange-500 dark:hover:border-orange-500 dark:bg-gray-800 dark:border-gray-700 ">
 
-                        <div class="flex flex-col sm:flex-row justify-between ">
+                        <div class="flex flex-col justify-between sm:flex-row ">
 
-                            <h5 class="font-bold tracking-tight text-gray-400 dark:text-gray-400">{{
+                            <h5 class="mt-2 font-bold tracking-tight text-gray-400 sm:mt-0 dark:text-gray-400">{{
                                 $post->category->title }}
                             </h5>
-                            <div class="flex order-first sm:order-none justify-between sm:justify-end w-full sm:w-auto">
+                            <div class="flex justify-between order-first w-full sm:order-none sm:justify-end sm:w-auto">
                                 <span
                                     class="inline-flex items-center text-xs font-medium text-gray-400 dark:text-gray-400">
                                     {{-- <svg aria-hidden="true" class="w-3 h-3 mr-1" fill="currentColor" viewBox="0 0 20 20"
