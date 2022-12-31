@@ -47,7 +47,7 @@
 
                 @if ($posts->thumbnail)
                 <img src="{{ asset('/storage/thumbnails/'.$posts->thumbnail) }}" alt="image"
-                    class="object-cover w-full mt-5 rounded-lg border-2 border-gray-200 dark:border-gray-700">
+                    class="object-cover w-full mt-5 border-2 border-gray-200 rounded-lg dark:border-gray-700">
                 @endif
                 {{-- <img src="{{ asset('/storage/thumbnails/'.$posts->thumbnail) }}" alt="image"
                     class="object-cover w-full mt-5 h-96"> --}}
@@ -55,12 +55,12 @@
                 {{-- <p class="mt-5 font-normal text-gray-700 dark:text-gray-300">{{ $posts->excerpt }}</p> --}}
 
                 <div
-                    class="mt-6 prose max-w-none dark:prose-invert prose-img:rounded-lg prose-img:border-2 dark:prose-img:border-gray-700 prose-img:border-gray-200
-                    @if ($posts->is_featured)
-                            prose-orange prose-code:text-orange-400 prose-blockquote:text-orange-400
-                            @else
-                            prose-indigo prose-code:text-indigo-400 prose-blockquote:text-indigo-400
-                        @endif">
+                    class="mt-6 prose max-w-none  @if ($posts->is_featured)
+                    prose-orange prose-code:text-orange-400 prose-blockquote:text-orange-400
+                    @else
+                    prose-indigo prose-code:text-indigo-400 prose-blockquote:text-indigo-400
+                @endif dark:prose-invert prose-img:rounded-lg prose-img:border-2 dark:prose-img:border-gray-700 prose-img:border-gray-200
+                prose-table:rounded-lg  prose-table:bg-white dark:prose-table:bg-gray-800 dark:prose-table:border-gray-700 prose-table:border-gray-200">
 
                     {{-- class="mt-6 overflow-auto prose max-w-none prose-gray dark:prose-invert prose-a:text-indigo-400 prose-h2:text-indigo-400 prose-blockquote:text-indigo-700 prose-code:text-indigo-300 prose-pre:text-indigo-400 prose-blockquote:bg-indigo-50 prose-blockquote:border-indigo-400 hover:prose-a:text-indigo-500"> --}}
                     {!! $posts->content !!}
