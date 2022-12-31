@@ -75,7 +75,7 @@ class CommentController extends Controller
             $comment->save();
             return back()->with('success', 'Thanks for reporting this comment, Admin will check it soon.');
         }
-        return back()->with('danger', 'You need to login to report this comment.');
+        return redirect()->route('login');
     }
 
     public function undoReport(Comment $comment)

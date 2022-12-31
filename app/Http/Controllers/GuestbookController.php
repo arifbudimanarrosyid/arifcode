@@ -19,7 +19,7 @@ class GuestbookController extends Controller
         // get guestbook with id = 1
         $pinned_guestbooks = Guestbook::where('is_pinned', 1)
             // ->with('user')
-            ->orderBy('updated_at', 'asc')
+            ->orderBy('updated_at', 'desc')
             ->get();
 
         // get all guestbook
