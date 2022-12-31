@@ -19,6 +19,7 @@ return new class extends Migration
             $table->foreignId('user_id')->constrained()->cascadeOnDelete();
             $table->text('body');
             $table->boolean('is_spam')->default(false);
+            $table->integer('spam_count')->default(0);
             $table->timestamps();
         });
     }

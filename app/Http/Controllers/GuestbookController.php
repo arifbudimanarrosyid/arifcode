@@ -18,7 +18,7 @@ class GuestbookController extends Controller
     {
         // get guestbook with id = 1
         $pinned_guestbooks = Guestbook::where('is_pinned', 1)
-        // ->with('user')
+            // ->with('user')
             ->orderBy('updated_at', 'asc')
             ->get();
 
@@ -27,7 +27,7 @@ class GuestbookController extends Controller
 
         // get all guestbook except id = 1
         $guestbooks = Guestbook::where('is_pinned',  0)
-        // ->with('user')
+            // ->with('user')
             ->orderBy('created_at', 'desc')
             ->get();
 
@@ -59,7 +59,7 @@ class GuestbookController extends Controller
 
             $request->user()->guestbook()->create($validated);
 
-            return redirect(route('guestbook.index'));
+            return redirect(route('guestbook.index'))->with('success', 'Guestbook created successfully.');
         } else {
             return redirect(route('login'));
         }
@@ -88,10 +88,10 @@ class GuestbookController extends Controller
             if (Auth::user()->id == $guestbook->user_id || Auth::user()->is_admin == true) {
                 return view('guestbook.edit', compact('guestbook'));
             } else {
-                return redirect()->route('guestbook.index');
+                return redirect()->route('guestbook.index')->with('danger', 'You are not authorized to edit this guestbook.');
             }
         } else {
-            return redirect()->route('guestbook.index');
+            return redirect()->route('guestbook.index')->with('danger', 'You are not authorized to edit this guestbook.');
         }
     }
 
@@ -104,20 +104,26 @@ class GuestbookController extends Controller
      */
     public function update(Request $request, Guestbook $guestbook)
     {
-        if (Auth::check()) {
-            if (Auth::user()->id == $guestbook->user_id || Auth::user()->is_admin == true) {
-                $validated = $request->validate([
-                    'message' => 'required|string|max:255',
-                ]);
+        if (Auth::user()->id != $guestbook->user_id) {
+            $request->validate([
+                'message' => 'required|string|max:255',
+            ]);
 
-                $guestbook->update($validated);
+            $guestbook->timestamps = false;
+            $guestbook->message = $request->message;
+            $guestbook->save();
 
-                return redirect(route('guestbook.index'));
-            } else {
-                return redirect()->route('guestbook.index');
-            }
-        } else {
-            return redirect()->route('guestbook.index');
+            return redirect(route('guestbook.index'))->with('success', 'Guestbook updated successfully as Admin.');
+        }
+        if (Auth::user()->id == $guestbook->user_id) {
+            $request->validate([
+                'message' => 'required|string|max:255',
+            ]);
+
+            $guestbook->message = $request->message;
+            $guestbook->save();
+
+            return redirect(route('guestbook.index'))->with('success', 'Guestbook updated successfully.');
         }
     }
 
@@ -132,12 +138,12 @@ class GuestbookController extends Controller
         if (Auth::check()) {
             if (Auth::user()->id == $guestbook->user_id || Auth::user()->is_admin == true) {
                 $guestbook->delete();
-                return redirect()->route('guestbook.index');
+                return redirect()->route('guestbook.index')->with('success', 'Guestbook deleted successfully.');
             } else {
-                return redirect()->route('guestbook.index');
+                return redirect()->route('guestbook.index')->with('danger', 'You are not authorized to delete this guestbook.');
             }
         } else {
-            return redirect()->route('guestbook.index');
+            return redirect()->route('guestbook.index')->with('danger', 'You are not authorized to delete this guestbook.');
         }
     }
 
@@ -145,16 +151,16 @@ class GuestbookController extends Controller
     {
         if (Auth::check()) {
             if (Auth::user()->is_admin == true) {
-                $guestbook->is_pinned = true;
                 $guestbook->timestamps = false;
+                $guestbook->is_pinned = true;
                 $guestbook->save();
                 // dd($guestbook);
-                return redirect()->route('guestbook.index');
+                return redirect()->route('guestbook.index')->with('success', 'Guestbook pinned successfully.');
             } else {
-                return redirect()->route('guestbook.index');
+                return redirect()->route('guestbook.index')->with('danger', 'You are not authorized to pin this guestbook.');
             }
         } else {
-            return redirect()->route('guestbook.index');
+            return redirect()->route('guestbook.index')->with('danger', 'You are not authorized to pin this guestbook.');
         }
     }
 
@@ -162,16 +168,16 @@ class GuestbookController extends Controller
     {
         if (Auth::check()) {
             if (Auth::user()->is_admin == true) {
-                $guestbook->is_pinned = false;
                 $guestbook->timestamps = false;
+                $guestbook->is_pinned = false;
                 $guestbook->save();
                 // dd($guestbook);
-                return redirect()->route('guestbook.index');
+                return redirect()->route('guestbook.index')->with('success', 'Guestbook unpinned successfully.');
             } else {
-                return redirect()->route('guestbook.index');
+                return redirect()->route('guestbook.index')->with('danger', 'You are not authorized to unpin this guestbook.');
             }
         } else {
-            return redirect()->route('guestbook.index');
+            return redirect()->route('guestbook.index')->with('danger', 'You are not authorized to unpin this guestbook.');
         }
     }
 }

@@ -92,9 +92,10 @@ Check `DatabaseSeeder.php` for more seeded account.
 - [x] Show Single Post
 - [x] Show Recomendation Posts on Single Post
 - [x] Comment on Post
-  - [x] Edit
-  - [x] Delete 
-  - [x] Report
+  - [x] Edit - Auth or Admin
+  - [x] Delete - Auth or Admin
+  - [x] Report - Auth or Admin
+  - [x] Remove Report - Auth and Admin
   - [ ] Reply (Pending Feature)
 - [x] Portofolio
 - [x] Guestbook

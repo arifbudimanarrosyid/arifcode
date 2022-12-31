@@ -160,7 +160,6 @@
                             Send
                         </button>
                     </form>
-
                     @endauth
                     @if (session('success'))
                     <div class="flex p-4 my-4 text-sm text-green-700 bg-green-100 rounded-lg dark:bg-green-200 dark:text-green-800"
@@ -223,13 +222,15 @@
                                             @endunless
                                             @can('admin')
                                             @if ($comment->is_spam)
-                                            <small class="text-sm text-gray-400 dark:text-gray-400"> &middot; <span class="text-sm text-red-400 dark:text-red-400">reported</span></small>
+                                            <small class="text-sm text-gray-400 dark:text-gray-400"> &middot; <span
+                                                    class="text-sm text-red-400 dark:text-red-400">reported</span></small>
+                                            <small class="text-sm text-gray-400 dark:text-gray-400"> &middot; <span
+                                                    class="text-sm text-red-400 dark:text-red-400">{{
+                                                    $comment->spam_count }}x</span></small>
                                             @endif
                                             @endcan
                                         </div>
                                     </div>
-
-
                                     <x-dropdown>
                                         <x-slot name="trigger">
                                             <button>
@@ -241,19 +242,8 @@
                                             </button>
                                         </x-slot>
                                         <x-slot name="content">
-                                            {{-- @if (Auth::user()->is_admin)
-                                            <form method="POST" action="{{ route('guestbook.unpin', $guestbook) }}">
-                                                @csrf
-                                                @method('patch')
-                                                <x-dropdown-link :href="route('guestbook.unpin', $guestbook)"
-                                                    onclick="event.preventDefault(); this.closest('form').submit();">
-                                                    {{ __('Unpin') }}
-                                                </x-dropdown-link>
-                                            </form>
-                                            @endif --}}
-
                                             @auth
-                                            <x-dropdown-link :href="route('comment.edit', $comment)">
+                                            <x-dropdown-link>
                                                 {{ __('Reply (Pending Feature)') }}
                                             </x-dropdown-link>
                                             @if ($comment->user_id == Auth::id() || Auth::user()->is_admin == true)
@@ -271,14 +261,30 @@
                                             </form>
                                             @endif
                                             @endauth
-                                            <form method="POST" action="{{ route('comments.spam', $comment) }}">
+
+                                            @if ($comment->user_id != Auth::id() )
+                                            <form method="POST" action="{{ route('comments.report', $comment) }}">
                                                 @csrf
                                                 @method('patch')
-                                                <x-dropdown-link :href="route('comments.spam', $comment)"
+                                                <x-dropdown-link :href="route('comments.report', $comment)"
                                                     onclick="event.preventDefault(); this.closest('form').submit();">
-                                                    {{ __('Report') }}
+                                                    {{ __('Report Spam') }}
                                                 </x-dropdown-link>
                                             </form>
+                                            @endif
+                                            @can('admin')
+                                            @if ($comment->is_spam)
+                                            <form method="POST"
+                                                action="{{ route('comments.remove.report', $comment) }}">
+                                                @csrf
+                                                @method('patch')
+                                                <x-dropdown-link :href="route('comments.remove.report', $comment)"
+                                                    onclick="event.preventDefault(); this.closest('form').submit();">
+                                                    {{ __('Remove Report') }}
+                                                </x-dropdown-link>
+                                            </form>
+                                            @endif
+                                            @endcan
                                         </x-slot>
                                     </x-dropdown>
 
