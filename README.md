@@ -94,6 +94,8 @@ Check `DatabaseSeeder.php` for more seeded account.
 - [x] Comment on Post
   - [x] Edit
   - [x] Delete 
+  - [x] Report
+  - [ ] Reply (Pending Feature)
 - [x] Portofolio
 - [x] Guestbook
   - [x] Create 

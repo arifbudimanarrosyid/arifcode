@@ -71,7 +71,6 @@
                     <span class="font-bold">{{ session('success') }}</span>
                 </div>
             </div>
-
             @endif
             @if (session('danger'))
             <div class="flex p-4 mb-4 text-sm text-red-700 bg-red-100 rounded-lg dark:bg-red-200 dark:text-red-800"

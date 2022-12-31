@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Post;
 use App\Models\Comment;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class CommentController extends Controller
 {
@@ -28,7 +29,7 @@ class CommentController extends Controller
     {
         $comment->delete();
 
-        return back();
+        return back()->with('success', 'Comment deleted successfully');
     }
 
     public function edit(Comment $comment, Post $post)
@@ -37,7 +38,7 @@ class CommentController extends Controller
         if (auth()->user()->id == $comment->user_id || auth()->user()->is_admin == true) {
             return view('comment.edit', compact('comment', 'post'));
         }
-        return back();
+        return back()->with('danger', 'You are not authorized to edit this comment');
     }
 
     public function update(Request $request, Comment $comment)
@@ -51,12 +52,23 @@ class CommentController extends Controller
                 'body' => $request->body,
             ]);
 
-            return redirect()->route('post', $comment->post->slug);
+            return redirect()->route('post', $comment->post->slug)->with('success', 'Comment updated successfully');
         } else {
 
             return back();
         }
 
         // return back();
+    }
+
+    public function report(Comment $comment)
+    {
+        //update comment is_spam to true
+        if (auth()->user()) {
+            $comment->is_spam = true;
+            $comment->save();
+            return back()->with('success', 'Thanks for reporting this comment, Admin will check it soon.');
+        }
+        return back()->with('danger', 'You need to login to report this comment');
     }
 }

@@ -53,6 +53,7 @@ Route::post('/comments', [CommentController::class, 'store'])->name('comment.sto
 Route::delete('/comments/{comment}', [CommentController::class, 'destroy'])->name('comment.destroy');
 Route::get('/comments/{comment}/edit', [CommentController::class, 'edit'])->name('comment.edit');
 Route::patch('/comments/{comment}', [CommentController::class, 'update'])->name('comment.update');
+Route::patch('/comments/{comment}/spam', [CommentController::class, 'report'])->name('comments.spam');
 
 // Guestbook
 Route::resource('/guestbook', GuestbookController::class)
