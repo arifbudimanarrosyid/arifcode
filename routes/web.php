@@ -14,6 +14,7 @@ use App\Http\Controllers\SocialiteController;
 use App\Http\Controllers\DashboardPostController;
 use App\Http\Controllers\DashboardUserController;
 use App\Http\Controllers\DashboardCategoryController;
+use App\Http\Controllers\DashboardPortofolioController;
 
 /*
 |--------------------------------------------------------------------------
@@ -94,6 +95,10 @@ Route::prefix('dashboard')
         Route::resource('/user', DashboardUserController::class)->only(['index']);
         Route::patch('/user/{user}/make-admin', [DashboardUserController::class, 'makeRoleAdmin'])->name('user.make-admin');
         Route::patch('/user/{user}/make-user', [DashboardUserController::class, 'makeRoleUser'])->name('user.make-user');
+
+        //Portofolio
+        Route::resource('/portofolio', DashboardPortofolioController::class);
+
 
         // Route::get('/portofolio', function () {
         //     return view('dashboard.portofolio.index');

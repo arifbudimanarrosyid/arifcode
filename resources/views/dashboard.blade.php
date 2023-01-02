@@ -62,6 +62,10 @@
                     <p class="text-2xl font-bold text-cyan-700 dark:text-cyan-400">{{ $users }}</p>
                 </div>
                 @endcan
+                <div class="block w-full p-4 mb-4 bg-white rounded-lg dark:bg-gray-800 ">
+                    <h5 class="mb-2 text-xl tracking-tight text-gray-900 dark:text-white">Portofolios</h5>
+                    <p class="text-2xl font-bold text-indigo-700 dark:text-indigo-400">{{ $portofolios }}</p>
+                </div>
             </div>
 
         </div>

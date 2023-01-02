@@ -6,6 +6,7 @@ use App\Models\Post;
 use App\Models\User;
 use App\Models\Category;
 use App\Models\Guestbook;
+use App\Models\Portofolio;
 use Illuminate\Support\Facades\Auth;
 
 class DashboardController extends Controller
@@ -19,6 +20,7 @@ class DashboardController extends Controller
         $featuredPosts = Post::where('is_featured', 1)->count();
         $featuredAndPublishedPosts = Post::where('is_featured', 1)->where('is_published', 1)->count();
         $guestbooks = Guestbook::count();
+        $portofolios = Portofolio::count();
         if (Auth::user()->is_admin === 1) {
             $users = User::count();
             return view('dashboard', compact(
@@ -29,6 +31,7 @@ class DashboardController extends Controller
                 'featuredAndPublishedPosts',
                 'categories',
                 'guestbooks',
+                'portofolios',
                 'users',
             ));
         } else {
@@ -40,6 +43,7 @@ class DashboardController extends Controller
                 'featuredAndPublishedPosts',
                 'categories',
                 'guestbooks',
+                'portofolios',
             ));
         }
     }

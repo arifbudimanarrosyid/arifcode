@@ -10,6 +10,7 @@ use App\Models\Posts;
 use App\Models\Category;
 use App\Models\Comment;
 use App\Models\Guestbook;
+use App\Models\Portofolio;
 use Illuminate\Support\Str;
 use Illuminate\Database\Seeder;
 
@@ -116,6 +117,14 @@ class DatabaseSeeder extends Seeder
             'message' => 'Hello there, hope you all doing well.',
             'created_at' => now()->addMinutes(-7),
             'updated_at' => now(),
+        ]);
+        Portofolio::create([
+            'title' => 'ArifCode',
+            'slug' => 'arifcode',
+            'description' => 'ArifCode is a blog about web development, laravel, tailwind css, alpine js, and more.',
+            'technology' => 'Laravel, Tailwind CSS, Alpine JS, PHP, MySQL, HTML, CSS, JavaScript',
+            'github_link' => 'https://github.com/arifbudimanarrosyid/arifcode',
+            'demo_link' => 'https://github.com/arifbudimanarrosyid/arifcode',
         ]);
     }
 }
