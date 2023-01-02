@@ -140,7 +140,7 @@ class DashboardPostController extends Controller
      * @param  \App\Models\Posts  $posts
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $posts)
+    public function update(Request $request, Post $post)
     {
         $request->validate(
             [
@@ -163,42 +163,41 @@ class DashboardPostController extends Controller
         }
 
         if ($request->hasFile('thumbnail')) {
-            $posts = Post::findOrFail($posts);
+            // $posts = Post::findOrFail($posts);
             $thumbnail = $request->file('thumbnail');
             $thumbnailName = time() . '.' . $thumbnail->extension();
             $thumbnail->move(public_path('storage/thumbnails'), $thumbnailName);
-            $posts->thumbnail = $thumbnailName;
-            $posts->title = $request->title;
-            $posts->slug = $slug;
-            $posts->category_id = $request->category_id;
-            $posts->excerpt = $request->excerpt;
-            $posts->content = $request->content;
-            $posts->is_published = $request->is_published;
-            $posts->is_featured = $request->is_featured;
-            $posts->published_at = $request->published_at;
-            $posts->save();
-            // return redirect()->route('posts.index')
-            //     ->with('success', 'Post saved successfully');
-            return back()->with('success', 'Post saved successfully');
+
+            $post->update(
+                [
+                    'title' => $request->title,
+                    'slug' => $slug,
+                    'category_id' => $request->category_id,
+                    'excerpt' => $request->excerpt,
+                    'content' => $request->content,
+                    'thumbnail' => $thumbnailName,
+                    'is_published' => $request->is_published,
+                    'is_featured' => $request->is_featured,
+                    'published_at' => $request->published_at,
+                ]
+            );
+
+            return back()->with('success', 'Post saved successfully with thumbnail');
         }
 
-        $posts = Post::findOrFail($posts);
-        $posts->title = $request->title;
-        $posts->slug = $slug;
-        $posts->category_id = $request->category_id;
-        $posts->excerpt = $request->excerpt;
-        $posts->content = $request->content;
-        $posts->is_published = $request->is_published;
-        $posts->is_featured = $request->is_featured;
-        $posts->published_at = $request->published_at;
-        $posts->save();
+        $post->update(
+            [
+                'title' => $request->title,
+                'slug' => $slug,
+                'category_id' => $request->category_id,
+                'excerpt' => $request->excerpt,
+                'content' => $request->content,
+                'is_published' => $request->is_published,
+                'is_featured' => $request->is_featured,
+                'published_at' => $request->published_at,
+            ]
 
-        // dd($validatedPosts);
-        // dd($posts);
-
-
-        // return redirect()->route('posts.index')
-        //     ->with('success', 'Post updated successfully');
+        );
         return back()->with('success', 'Post saved successfully');
     }
 
@@ -216,7 +215,6 @@ class DashboardPostController extends Controller
             }
         }
 
-        // if content has images then delete them
         if (preg_match_all('/<img[^>]+>/i', $post->content, $result)) {
             foreach ($result[0] as $img) {
                 preg_match('/src="([^"]+)/i', $img, $imgUrl);

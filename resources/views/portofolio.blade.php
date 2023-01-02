@@ -27,7 +27,7 @@
                             class="w-full p-4 bg-white border-2 border-gray-200 rounded-lg dark:bg-gray-800 dark:border-gray-700">
                             @if ($portofolio->thumbnail)
                             <img src="{{ asset('/storage/portofolio/'.$portofolio->thumbnail) }}" alt="image"
-                                class="object-cover mb-5 border-2 border-gray-200 rounded-lg aspect-video dark:border-gray-700">
+                                class="object-cover w-full mb-5 border-2 border-gray-200 rounded-lg aspect-video dark:border-gray-700">
                             @endif
                             <div class="w-full mb-4">
                                 <h5 class="mb-2 text-xl font-bold tracking-tight text-gray-500 dark:text-gray-300 ">

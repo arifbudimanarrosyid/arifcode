@@ -7,6 +7,12 @@
 
     <div class="py-12">
         <div class="px-4 mx-auto max-w-7xl sm:px-6 lg:px-8 ">
+            <div class="flex justify-between mb-2">
+                <a href="{{ route('portofolio.index') }}"
+                    class="inline-flex items-center px-4 py-2 mb-5 mr-2 text-sm font-medium leading-4 text-gray-100 transition duration-150 ease-in-out bg-indigo-700 rounded-md dark:text-gray-300 dark:bg-indigo-800 hover:bg-indigo-800 dark:hover:bg-indigo-600 focus:outline-none">
+                    Back
+                </a>
+            </div>
 
             <form action="{{ route('portofolio.store') }}" method="POST" enctype="multipart/form-data" class="mb-5">
 
@@ -68,8 +74,8 @@
                     @enderror
                 </div>
                 <div class="mb-6">
-                    <label for="default-input"
-                        class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Demo Link</label>
+                    <label for="default-input" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Demo
+                        Link</label>
                     <input name="demo_link" type="text" id="default-input"
                         class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                         value="{{ old('demo_link') }}">
@@ -106,15 +112,6 @@
                     @error('youtube_link')
                     <p class="mt-1 text-sm text-red-500 dark:text-red-300">{{ $message }}</p>
                     @enderror
-                </div>
-                <div class="mt-6">
-                    <label for="countries"
-                        class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Deployed</label>
-                    <select id="countries" name="is_deployed"
-                        class="mb-6 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
-                        <option value="1">Deployed</option>
-                        <option value="0">Not Deploy</option>
-                    </select>
                 </div>
 
                 <button type="submit"

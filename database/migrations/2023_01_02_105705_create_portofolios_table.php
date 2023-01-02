@@ -23,7 +23,6 @@ return new class extends Migration
             $table->string('github_link')->nullable();
             $table->string('website_link')->nullable();
             $table->string('youtube_link')->nullable();
-            $table->boolean('is_deployed')->default(false);
             $table->timestamps();
         });
     }

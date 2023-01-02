@@ -35,7 +35,7 @@ class DashboardPortofolioController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request, Portofolio $portofolio)
     {
         $request->validate([
             'title' => 'required',
@@ -46,15 +46,14 @@ class DashboardPortofolioController extends Controller
             'github_link' => 'url|nullable',
             'website_link' => 'url|nullable',
             'youtube_link' => 'url|nullable',
-            'is_published' => 'boolean'
         ]);
 
 
         if ($request->hasFile('thumbnail')) {
             $thumbnail = $request->file('thumbnail');
-            $thumbnailName = time() . '.' . $thumbnail->getClientOriginalExtension();
-            $thumbnail->storeAs('public/portofolio', $thumbnailName);
-            $portofolio = Portofolio::create(
+            $thumbnailName = time() . '.' . $thumbnail->extension();
+            $thumbnail->move(public_path('storage/portofolio'), $thumbnailName);
+            $portofolio->create(
                 [
                     'title' => $request->title,
                     'thumbnail' => $thumbnailName,
@@ -64,14 +63,13 @@ class DashboardPortofolioController extends Controller
                     'github_link' => $request->github_link,
                     'website_link' => $request->website_link,
                     'youtube_link' => $request->youtube_link,
-                    'is_published' => $request->is_published
                 ]
             );
             // dd($portofolio);
-            return redirect()->route('portofolio.index')->with('success', 'Portofolio created successfully with thumbnail');
+            return redirect()->route('portofolio.index')->with('success', 'Portofolio created successfully with thumbnail.');
         }
 
-        $portofolio = Portofolio::create(
+        $portofolio->create(
             [
                 'title' => $request->title,
                 'description' => $request->description,
@@ -80,12 +78,11 @@ class DashboardPortofolioController extends Controller
                 'github_link' => $request->github_link,
                 'website_link' => $request->website_link,
                 'youtube_link' => $request->youtube_link,
-                'is_published' => $request->is_published
             ]
         );
         // dd($portofolio);
 
-        return redirect()->route('portofolio.index')->with('success', 'Portofolio created successfully');
+        return redirect()->route('portofolio.index')->with('success', 'Portofolio created successfully.');
     }
 
     /**
@@ -119,7 +116,50 @@ class DashboardPortofolioController extends Controller
      */
     public function update(Request $request, Portofolio $portofolio)
     {
-        //
+        $request->validate([
+            'title' => 'required',
+            'description' => 'required|max:255',
+            'thumbnail' => 'image|mimes:jpeg,png,jpg|max:2048',
+            'technology' => 'required',
+            'demo_link' => 'url',
+            'github_link' => 'url',
+            'website_link' => 'url',
+            'youtube_link' => 'url',
+        ]);
+
+        if ($request->hasFile('thumbnail')) {
+            $thumbnail = $request->file('thumbnail');
+            $thumbnailName = time() . '.' . $thumbnail->extension();
+            $thumbnail->move(public_path('storage/portofolio'), $thumbnailName);
+
+            $portofolio->update(
+                [
+                    'thumbnail' => $thumbnailName,
+                    'title' => $request->title,
+                    'description' => $request->description,
+                    'technology' => $request->technology,
+                    'demo_link' => $request->demo_link,
+                    'github_link' => $request->github_link,
+                    'website_link' => $request->website_link,
+                    'youtube_link' => $request->youtube_link,
+                ]
+            );
+            // dd($portofolio);
+            return back()->with('success', 'Portofolio saved successfully with thumbnail');
+        }
+        $portofolio->update(
+            [
+                'title' => $request->title,
+                'description' => $request->description,
+                'technology' => $request->technology,
+                'demo_link' => $request->demo_link,
+                'github_link' => $request->github_link,
+                'website_link' => $request->website_link,
+                'youtube_link' => $request->youtube_link,
+            ]
+        );
+        // dd($portofolio);
+        return back()->with('success', 'Portofolio saved successfully');
     }
 
     /**
@@ -131,13 +171,26 @@ class DashboardPortofolioController extends Controller
     public function destroy(Portofolio $portofolio)
     {
         if ($portofolio->thumbnail) {
-            if (Storage::exists('public/thumbnails/' . $portofolio->thumbnail)) {
-                unlink(public_path('storage/thumbnails/' . $portofolio->thumbnail));
+            if (Storage::exists('public/portofolio/' . $portofolio->thumbnail)) {
+                unlink(public_path('storage/portofolio/' . $portofolio->thumbnail));
             }
             $portofolio->delete();
             return redirect()->route('portofolio.index')->with('success', 'Portofolio deleted successfully, thumbnail deleted too');
         }
         $portofolio->delete();
         return redirect()->route('portofolio.index')->with('success', 'Portofolio deleted successfully');
+    }
+
+    public function deleteThumbnail(Portofolio $portofolio)
+    {
+        if ($portofolio->thumbnail) {
+            if (Storage::exists('public/portofolio/' . $portofolio->thumbnail)) {
+                unlink(public_path('storage/portofolio/' . $portofolio->thumbnail));
+            }
+            $portofolio->thumbnail = null;
+            $portofolio->save();
+            return back()->with('success', 'Portofolio thumbnail deleted successfully');
+        }
+        return back()->with('error', 'Portofolio thumbnail not found');
     }
 }

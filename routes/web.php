@@ -1,11 +1,7 @@
 <?php
 
-use App\Models\User;
-use Illuminate\Support\Str;
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PostController;
-use Laravel\Socialite\Facades\Socialite;
 use App\Http\Controllers\CommentController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\DashboardController;
@@ -28,17 +24,29 @@ use App\Http\Controllers\DashboardPortofolioController;
 |
 */
 
-// Site
+// Home
 Route::get('/', [PostController::class, 'home'])->name('home');
+
+// Post
 Route::get('/posts', [PostController::class, 'index'])->name('posts');
 Route::get('/post/{slug}', [PostController::class, 'show'])->name('post');
 
-// Route::get('/portofolio', function () {
-//     return view('portofolio');
-// })->name('portofolio');
+// Comment
+Route::post('/comments', [CommentController::class, 'store'])->name('comment.store');
+Route::delete('/comments/{comment}', [CommentController::class, 'destroy'])->name('comment.destroy');
+Route::get('/comments/{comment}/edit', [CommentController::class, 'edit'])->name('comment.edit');
+Route::patch('/comments/{comment}', [CommentController::class, 'update'])->name('comment.update');
+Route::patch('/comments/{comment}/report', [CommentController::class, 'report'])->name('comments.report');
+Route::patch('/comments/{comment}/remove-report', [CommentController::class, 'undoReport'])->name('comments.remove.report');
 
-//Portofolio
+// Portofolio
 Route::get('/portofolio', [PortofolioController::class, 'index'])->name('portofolio');
+
+// Guestbook
+Route::resource('/guestbook', GuestbookController::class)
+    ->only(['index', 'store', 'edit', 'update', 'destroy']);
+Route::patch('/guestbook/{guestbook}/pin', [GuestbookController::class, 'pin'])->name('guestbook.pin');
+Route::patch('/guestbook/{guestbook}/unpin', [GuestbookController::class, 'unpin'])->name('guestbook.unpin');
 
 Route::get('/gear', function () {
     return view('gear');
@@ -50,24 +58,10 @@ Route::get('/aboutme', function () {
 //Socialite
 Route::get('auth/redirect/github', [SocialiteController::class, 'redirectGithub'])->name('auth.redirect.github');
 Route::get('auth/callback/github', [SocialiteController::class, 'callbackGithub'])->name('auth.callback.github');
-
 Route::get('auth/redirect/google', [SocialiteController::class, 'redirectGoogle'])->name('auth.redirect.google');
 Route::get('auth/callback/google', [SocialiteController::class, 'callbackGoogle'])->name('auth.callback.google');
 
-// Comment
-Route::post('/comments', [CommentController::class, 'store'])->name('comment.store');
-Route::delete('/comments/{comment}', [CommentController::class, 'destroy'])->name('comment.destroy');
-Route::get('/comments/{comment}/edit', [CommentController::class, 'edit'])->name('comment.edit');
-Route::patch('/comments/{comment}', [CommentController::class, 'update'])->name('comment.update');
-Route::patch('/comments/{comment}/report', [CommentController::class, 'report'])->name('comments.report');
-Route::patch('/comments/{comment}/remove-report', [CommentController::class, 'undoReport'])->name('comments.remove.report');
-
-// Guestbook
-Route::resource('/guestbook', GuestbookController::class)
-    ->only(['index', 'store', 'edit', 'update', 'destroy']);
-Route::patch('/guestbook/{guestbook}/pin', [GuestbookController::class, 'pin'])->name('guestbook.pin');
-Route::patch('/guestbook/{guestbook}/unpin', [GuestbookController::class, 'unpin'])->name('guestbook.unpin');
-
+// Auth
 Route::middleware('auth')->group(function () {
     // Profile
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
@@ -80,7 +74,7 @@ Route::middleware('auth')->group(function () {
 });
 
 
-
+// Dashboard
 Route::prefix('dashboard')
     ->middleware(['auth', 'isAdmin'])
     ->group(function () {
@@ -96,18 +90,16 @@ Route::prefix('dashboard')
         Route::resource('/category', DashboardCategoryController::class)
             ->except(['destroy']);
 
+
+        //Portofolio
+        Route::resource('/portofolio', DashboardPortofolioController::class)
+            ->except(['show']);
+        Route::patch('/portofolio/{portofolio}/delete-thumbnail', [DashboardPortofolioController::class, 'deleteThumbnail'])->name('portofolio.delete-thumbnail');
+
         //Users
         Route::resource('/user', DashboardUserController::class)->only(['index']);
         Route::patch('/user/{user}/make-admin', [DashboardUserController::class, 'makeRoleAdmin'])->name('user.make-admin');
         Route::patch('/user/{user}/make-user', [DashboardUserController::class, 'makeRoleUser'])->name('user.make-user');
-
-        //Portofolio
-        Route::resource('/portofolio', DashboardPortofolioController::class);
-
-
-        // Route::get('/portofolio', function () {
-        //     return view('dashboard.portofolio.index');
-        // })->name('dashboard.portofolio.index');
     });
 
 require __DIR__ . '/auth.php';

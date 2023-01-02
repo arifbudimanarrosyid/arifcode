@@ -63,10 +63,10 @@
                     </div>
 
                     <div class="flex-col sm:flex">
-                        <a href="{{ route('portofolio.show', $portofolio->id) }}"
+                        {{-- <a href="{{ route('portofolio.show', $portofolio->id) }}"
                             class="inline-flex items-center px-4 py-2 mb-2 text-sm font-medium leading-4 text-gray-600 transition duration-150 ease-in-out bg-green-200 rounded-md dark:text-gray-300 dark:bg-green-800 hover:bg-green-400 dark:hover:bg-green-600 focus:outline-none">
                             View
-                        </a>
+                        </a> --}}
                         <a href="{{ route('portofolio.edit', $portofolio->id) }}"
                             class="inline-flex items-center px-4 py-2 mb-2 text-sm font-medium leading-4 text-gray-600 transition duration-150 ease-in-out rounded-md dark:text-gray-300 bg-sky-200 dark:bg-sky-800 hover:bg-sky-400 dark:hover:bg-sky-600 focus:outline-none">
                             Edit
