@@ -57,7 +57,8 @@
                                 <h5 class="mt-2 font-bold tracking-tight text-gray-400 sm:mt-0 dark:text-gray-400">{{
                                     $post->category->title }}
                                 </h5>
-                                <div class="flex justify-between order-first w-full sm:order-none sm:justify-end sm:w-auto">
+                                <div
+                                    class="flex justify-between order-first w-full sm:order-none sm:justify-end sm:w-auto">
                                     <span
                                         class="inline-flex items-center text-xs font-medium text-gray-400 dark:text-gray-400">
                                         {{-- <svg aria-hidden="true" class="w-3 h-3 mr-1" fill="currentColor"
@@ -83,6 +84,11 @@
                             <p class="font-normal text-gray-600 dark:text-gray-400">
                                 {{ $post->excerpt }}
                             </p>
+                            @if ($post->comments->count())
+                            <p class="mt-2 font-normal text-gray-600 dark:text-gray-400">
+                                {{ $post->comments->count() }} comments
+                            </p>
+                            @endif
                         </a>
                         @endforeach
                     </div>

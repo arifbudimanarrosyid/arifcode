@@ -21,7 +21,6 @@ class PostController extends Controller
                         ->orWhere('excerpt', 'like', '%' . $search . '%')
                         ->orWhere('content', 'like', '%' . $search . '%');
                 })
-                ->with(['category'])
                 ->orderBy('published_at', 'desc')
                 ->paginate(10)
                 ->withQueryString();
@@ -38,19 +37,20 @@ class PostController extends Controller
     {
         $featured = Post::where('is_published', true)
             ->where('is_featured', true)
-            // ->with(['category'])
             ->orderBy('views', 'desc')
             ->limit(5)
             ->get();
-        // dd($posts);
         return view('home', compact('featured'));
     }
     public function show($slug)
     {
         $post = Post::where('is_published', true)
             ->where('slug', $slug)
-            // ->with(['category', 'comments'])
             ->firstOrFail();
+
+        $comments = Comment::where('post_id', $post->id)
+            ->orderBy('created_at', 'asc')
+            ->get();
 
         if (!Cookie::has('post_' . $post->slug)) {
             $post->incrementViewCount();
@@ -62,11 +62,14 @@ class PostController extends Controller
         // dd($post->comments->toArray());
         $recomendations = Post::where('is_published', true)
             ->where('slug', '!=', $slug)
-            // ->with(['category'])
             ->inRandomOrder()
             ->limit(2)
             ->get();
-        // dd($recomendation);
-        return view('post', compact('post', 'recomendations'));
+        // dd($recomendations->toArray(), $comments->toArray(), $post->toArray());
+        return view('post', compact(
+            'post',
+            'recomendations',
+            'comments'
+        ));
     }
 }

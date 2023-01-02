@@ -87,6 +87,11 @@
                             <p class="font-normal text-gray-600 dark:text-gray-400">
                                 {{ $recomendation->excerpt }}
                             </p>
+                            @if ($recomendation->comments->count())
+                            <p class="mt-2 font-normal text-gray-600 dark:text-gray-400">
+                                {{ $recomendation->comments->count() }} comments
+                            </p>
+                            @endif
                         </a>
                         @empty
                         <div
@@ -116,26 +121,26 @@
                         </h1>
                         <p class="mt-4 text-gray-600 dark:text-gray-400">
                             @auth
-                            You login as
-                            <span class="text-sky-400">
-                                {{ Auth::user()->name}}
-                            </span>
-                            with role
-                            @if (Auth::user()->is_admin)
-                            <span class="text-sky-400">
-                                Admin
-                            </span>
-                            @else
-                            <span class="text-sky-400">User
-                            </span>.
-                            @endif
+                                You login as
+                                <span class="text-sky-400">
+                                    {{ Auth::user()->name}}
+                                </span>
+                                with role
+                                    @if (Auth::user()->is_admin)
+                                    <span class="text-sky-400">
+                                        Admin
+                                    </span>
+                                    @else
+                                    <span class="text-sky-400">User
+                                    </span>.
+                                    @endif
 
-                            @else
-                            You need to <a href="{{ route('login') }}" class="text-sky-400">login</a>
-                            @if (Route::has('register'))
-                            or <a href="{{ route('register') }}" class="text-sky-400">register</a>
-                            @endif
-                            to show comment form.
+                                @else
+                                    You need to <a href="{{ route('login') }}" class="text-sky-400">login</a>
+                                    @if (Route::has('register'))
+                                    or <a href="{{ route('register') }}" class="text-sky-400">register</a>
+                                    @endif
+                                    to show comment form.
                             @endauth
                         </p>
 
@@ -194,7 +199,8 @@
 
                     <div
                         class="mt-4 bg-white border-2 border-gray-200 divide-y-2 divide-gray-100 rounded-lg dark:border-gray-700 dark:divide-gray-700 dark:bg-gray-800">
-                        @forelse ($post->comments()->orderBy('created_at', 'asc')->get() as $comment)
+                        {{-- @forelse ($post->comments()->orderby('created_at', 'desc')->get() as $comment) --}}
+                        @forelse ($comments as $comment)
                         <div class="flex p-4 ">
                             <div class="flex-1">
                                 <div class="flex items-center justify-between">
