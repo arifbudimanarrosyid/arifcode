@@ -11,6 +11,7 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\GuestbookController;
 use App\Http\Controllers\SocialiteController;
+use App\Http\Controllers\PortofolioController;
 use App\Http\Controllers\DashboardPostController;
 use App\Http\Controllers\DashboardUserController;
 use App\Http\Controllers\DashboardCategoryController;
@@ -32,9 +33,13 @@ Route::get('/', [PostController::class, 'home'])->name('home');
 Route::get('/posts', [PostController::class, 'index'])->name('posts');
 Route::get('/post/{slug}', [PostController::class, 'show'])->name('post');
 
-Route::get('/portofolio', function () {
-    return view('portofolio');
-})->name('portofolio');
+// Route::get('/portofolio', function () {
+//     return view('portofolio');
+// })->name('portofolio');
+
+//Portofolio
+Route::get('/portofolio', [PortofolioController::class, 'index'])->name('portofolio');
+
 Route::get('/gear', function () {
     return view('gear');
 })->name('gear');

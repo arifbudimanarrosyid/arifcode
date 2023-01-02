@@ -120,7 +120,6 @@ class DatabaseSeeder extends Seeder
         ]);
         Portofolio::create([
             'title' => 'ArifCode',
-            'slug' => 'arifcode',
             'description' => 'ArifCode is a blog about web development, laravel, tailwind css, alpine js, and more.',
             'technology' => 'Laravel, Tailwind CSS, Alpine JS, PHP, MySQL, HTML, CSS, JavaScript',
             'github_link' => 'https://github.com/arifbudimanarrosyid/arifcode',

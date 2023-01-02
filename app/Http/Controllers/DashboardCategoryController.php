@@ -103,9 +103,8 @@ class DashboardCategoryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Category $category)
     {
-        $category = Category::find($id);
         $category->delete();
 
         return redirect()->route('category.index')->with('danger', 'Category deleted successfully');
