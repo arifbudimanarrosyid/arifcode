@@ -2,12 +2,13 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Posts;
-use App\Models\Category;
-use Illuminate\Auth\Events\Validated;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Storage;
 use App\Models\Post;
+use App\Models\Posts;
+use App\Models\Comment;
+use App\Models\Category;
+use Illuminate\Http\Request;
+use Illuminate\Auth\Events\Validated;
+use Illuminate\Support\Facades\Storage;
 
 class DashboardPostController extends Controller
 {
@@ -35,12 +36,22 @@ class DashboardPostController extends Controller
                 ->with(['category'])
                 ->paginate(10);
         }
+        $reportedComments = Comment::where('is_spam', 1)->count();
         $totalPosts = Post::count();
         $publishedPosts = Post::where('is_published', 1)->count();
         $draftPosts = Post::where('is_published', 0)->count();
         $featuredPosts = Post::where('is_featured', 1)->count();
         $featuredAndPublishedPosts = Post::where('is_featured', 1)->where('is_published', 1)->count();
-        return view('dashboard.posts.index', compact('posts', 'totalPosts', 'publishedPosts', 'draftPosts', 'featuredPosts', 'featuredAndPublishedPosts'));
+        // dd($posts->toArray());
+        return view('dashboard.posts.index', compact(
+            'posts',
+            'totalPosts',
+            'publishedPosts',
+            'draftPosts',
+            'featuredPosts',
+            'featuredAndPublishedPosts',
+            'reportedComments'
+        ));
     }
 
     /**
@@ -252,7 +263,7 @@ class DashboardPostController extends Controller
         return back()->with('danger', 'Thumbnail deleted successfully');
     }
 
-    public function deleteDraftPosts()
+    public function deleteAllDraftPosts()
     {
         if (Post::where('is_published', 0)->count() == 0) {
             return redirect()->route('posts.index')->with('danger', 'No draft posts found');
@@ -267,6 +278,18 @@ class DashboardPostController extends Controller
             Post::destroy($post->id);
         }
         return redirect()->route('posts.index')->with('success', 'All draft posts deleted successfully');
+    }
+
+    public function deleteAllReportedComments()
+    {
+        if (Comment::where('is_spam', 1)->count() == 0) {
+            return redirect()->route('posts.index')->with('danger', 'No reported comments found');
+        }
+        $comments = Comment::where('is_spam', 1)->get();
+        foreach ($comments as $comment) {
+            Comment::destroy($comment->id);
+        }
+        return redirect()->route('posts.index')->with('success', 'All reported comments deleted successfully');
     }
 
     public function imageUpload(Request $request)

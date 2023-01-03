@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Post;
 use App\Models\User;
+use App\Models\Comment;
 use App\Models\Category;
 use App\Models\Guestbook;
 use App\Models\Portofolio;
@@ -21,6 +22,7 @@ class DashboardController extends Controller
         $featuredAndPublishedPosts = Post::where('is_featured', 1)->where('is_published', 1)->count();
         $guestbooks = Guestbook::count();
         $portofolios = Portofolio::count();
+        $reportedComments = Comment::where('is_spam', 1)->count();
         if (Auth::user()->is_admin === 1) {
             $users = User::count();
             return view('dashboard', compact(
@@ -33,6 +35,7 @@ class DashboardController extends Controller
                 'guestbooks',
                 'portofolios',
                 'users',
+                'reportedComments',
             ));
         } else {
             return view('dashboard', compact(
@@ -44,6 +47,7 @@ class DashboardController extends Controller
                 'categories',
                 'guestbooks',
                 'portofolios',
+                'reportedComments',
             ));
         }
     }

@@ -23,18 +23,42 @@
                     <div class="block w-full p-4 mb-4 bg-white rounded-lg dark:bg-gray-800 ">
                         <h5 class="mb-2 text-xl tracking-tight text-gray-900 dark:text-white">Draft</h5>
                         <p class="text-2xl font-bold text-indigo-700 dark:text-indigo-400">{{ $draftPosts }}</p>
+                        @if (Route::has('posts.deletedraftposts') && $draftPosts != 0)
+                        <form action="{{ route('posts.deletedraftposts') }}" method="POST"
+                            class="flex sm:inline-flex">
+                            @csrf
+                            @method('patch')
+                            <button type="submit" class="text-red-700 dark:text-red-400">
+                                Delete
+                            </button>
+                        </form>
+                        @endif
                     </div>
                 </div>
                 <div class="gap-5 mb-1 sm:flex">
-
                     <div class="block w-full p-4 mb-4 bg-white rounded-lg dark:bg-gray-800 ">
                         <h5 class="mb-2 text-xl tracking-tight text-gray-900 dark:text-white">Featured</h5>
-                        <p class="text-2xl font-bold text-red-700 dark:text-red-400">{{ $featuredPosts }}</p>
+                        <p class="text-2xl font-bold text-green-700 dark:text-green-400">{{ $featuredPosts }}</p>
                     </div>
                     <div class="block w-full p-4 mb-4 bg-white rounded-lg dark:bg-gray-800 ">
                         <h5 class="mb-2 text-xl tracking-tight text-gray-900 dark:text-white">Featured & Published</h5>
-                        <p class="text-2xl font-bold text-red-700 dark:text-red-400">{{ $featuredAndPublishedPosts
+                        <p class="text-2xl font-bold text-green-700 dark:text-green-400">{{ $featuredAndPublishedPosts
                             }}
+                        </p>
+                    </div>
+                    <div class="block w-full p-4 mb-4 bg-white rounded-lg dark:bg-gray-800 ">
+                        <h5 class="mb-2 text-xl tracking-tight text-gray-900 dark:text-white">Reported Comment</h5>
+                        <p class="text-2xl font-bold text-red-700 dark:text-red-400">{{ $reportedComments }}
+                        @if ($reportedComments != 0)
+                        <form action="{{ route('posts.deletereportedcomments') }}" method="POST"
+                            class="flex sm:inline-flex">
+                            @csrf
+                            @method('patch')
+                            <button type="submit" class="text-red-700  dark:text-red-400">
+                                Delete
+                            </button>
+                        </form>
+                        @endif
                         </p>
                     </div>
                 </div>
@@ -91,23 +115,34 @@
 
             {{-- Create --}}
             <div class="flex justify-between w-full">
-
                 <a href="{{ route('posts.create') }}"
                     class="inline-flex items-center px-4 py-3 mb-5 mr-2 text-sm font-medium leading-4 text-gray-100 transition duration-150 ease-in-out bg-indigo-700 rounded-md dark:text-gray-300 dark:bg-indigo-800 hover:bg-indigo-800 dark:hover:bg-indigo-600 focus:outline-none">
                     Create
                 </a>
-
-                {{-- if draft post =0 --}}
-                @if (Route::has('posts.deletedraftposts') && $draftPosts != 0)
-                <form action="{{ route('posts.deletedraftposts') }}" method="POST" class="inline-block sm:inline-flex">
-                    @csrf
-                    @method('patch')
-                    <button type="submit"
-                        class="inline-flex items-center px-4 py-3 mb-5 text-sm font-medium leading-4 text-gray-100 transition duration-150 ease-in-out bg-red-700 rounded-md dark:text-gray-300 dark:bg-red-800 hover:bg-red-800 dark:hover:bg-red-600 focus:outline-none">
-                        Delete All Draft Posts
-                    </button>
-                </form>
-                @endif
+                <div>
+                    {{-- @if (Route::has('posts.deletedraftposts') && $draftPosts != 0)
+                    <form action="{{ route('posts.deletedraftposts') }}" method="POST"
+                        class="inline-block sm:inline-flex">
+                        @csrf
+                        @method('patch')
+                        <button type="submit"
+                            class="inline-flex items-center px-4 py-3 mb-5 text-sm font-medium leading-4 text-gray-100 transition duration-150 ease-in-out bg-red-700 rounded-md dark:text-gray-300 dark:bg-red-800 hover:bg-red-800 dark:hover:bg-red-600 focus:outline-none">
+                            Delete Draft Posts
+                        </button>
+                    </form>
+                    @endif
+                    @if ($reportedComments != 0)
+                    <form action="{{ route('posts.deletereportedcomments') }}" method="POST"
+                        class="inline-block sm:inline-flex">
+                        @csrf
+                        @method('patch')
+                        <button type="submit"
+                            class="inline-flex items-center px-4 py-3 mb-5 text-sm font-medium leading-4 text-gray-100 transition duration-150 ease-in-out bg-red-700 rounded-md dark:text-gray-300 dark:bg-red-800 hover:bg-red-800 dark:hover:bg-red-600 focus:outline-none">
+                            Delete Reported Comments
+                        </button>
+                    </form>
+                    @endif --}}
+                </div>
 
             </div>
 
@@ -150,6 +185,18 @@
                         <h5 class="mb-2 font-bold tracking-tight text-indigo-600 dark:text-indigo-400">
                             {{ $post->category->title }}</h5>
                         <p class="font-normal text-gray-700 dark:text-gray-400">{{ $post->excerpt }}</p>
+                        <div class="flex justify-between">
+                            @if ($post->comments->count() > 0)
+                            <p class="mt-2 font-normal text-gray-700 dark:text-gray-400">
+                                {{ $post->comments->count() }} Comment
+                            </p>
+                            @endif
+                            @if ($post->comments->where('is_spam', 1)->count() > 0)
+                            <p class="mt-2 ml-2 font-normal text-indigo-700 dark:text-indigo-400">
+                                {{ $post->comments->where('is_spam', 1)->count() }} Spam
+                            </p>
+                            @endif
+                        </div>
                     </div>
                     <div class="flex-row sm:flex-col sm:flex">
                         <a href="{{ route('posts.show', $post->id) }}"

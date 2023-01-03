@@ -82,7 +82,8 @@ Route::prefix('dashboard')
         //Posts
         Route::resource('/posts', DashboardPostController::class);
         Route::patch('/posts/{post}/delete-thumbnail', [DashboardPostController::class, 'deleteThumbnail'])->name('posts.delete-thumbnail');
-        Route::patch('/posts', [DashboardPostController::class, 'deleteDraftPosts'])->name('posts.deletedraftposts');
+        Route::patch('/deletealldraftposts', [DashboardPostController::class, 'deleteAllDraftPosts'])->name('posts.deletedraftposts');
+        Route::patch('/deleteallreportedcomments', [DashboardPostController::class, 'deleteAllReportedComments'])->name('posts.deletereportedcomments');
 
         Route::post('/img-upload', [DashboardPostController::class, 'imageUpload'])->name('uploads');
 
