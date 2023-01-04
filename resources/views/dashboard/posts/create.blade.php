@@ -26,28 +26,30 @@
                     @enderror
                 </div>
 
-                {{-- Title --}}
-                <div class="mb-6">
-                    <label for="default-input"
-                        class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Title</label>
-                    <input name="title" type="text" id="default-input"
-                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                        value="{{ old('title') }}">
-                    @error('title')
-                    <p class="mt-1 text-sm text-red-500 dark:text-red-300">{{ $message }}</p>
-                    @enderror
-                </div>
+                <div x-data="{ inputTitle: '' }" >
+                    {{-- Title --}}
+                    <div class="mb-6">
+                        <label for="default-input"
+                            class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Title</label>
+                        <input name="title" type="text" id="default-input" x-model="inputTitle"
+                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                            value="{{ old('title') }}">
+                        @error('title')
+                        <p class="mt-1 text-sm text-red-500 dark:text-red-300">{{ $message }}</p>
+                        @enderror
+                    </div>
 
-                {{-- Slug --}}
-                <div class="mb-6">
-                    <label for="default-input"
-                        class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Slug (optional)</label>
-                    <input name="slug" type="text" id="default-input"
-                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                        value="{{ old('slug') }}">
-                    @error('slug')
-                    <p class="mt-1 text-sm text-red-500 dark:text-red-300">{{ $message }}</p>
-                    @enderror
+                    {{-- Slug --}}
+                    <div class="mb-6">
+                        <label for="default-input"
+                            class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Slug (optional)</label>
+                        <input name="slug" type="text" id="default-input" x-slug="inputTitle"
+                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                            value="{{ old('slug') }}">
+                        @error('slug')
+                        <p class="mt-1 text-sm text-red-500 dark:text-red-300">{{ $message }}</p>
+                        @enderror
+                    </div>
                 </div>
 
                 {{-- Category --}}
