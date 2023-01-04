@@ -121,10 +121,10 @@ class DashboardPortofolioController extends Controller
             'description' => 'required|max:255',
             'thumbnail' => 'image|mimes:jpeg,png,jpg|max:2048',
             'technology' => 'required',
-            'demo_link' => 'url',
-            'github_link' => 'url',
-            'website_link' => 'url',
-            'youtube_link' => 'url',
+            'demo_link' => 'url|nullable',
+            'github_link' => 'url|nullable',
+            'website_link' => 'url|nullable',
+            'youtube_link' => 'url|nullable',
         ]);
 
         if ($request->hasFile('thumbnail')) {
