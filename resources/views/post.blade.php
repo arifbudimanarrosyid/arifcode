@@ -219,149 +219,153 @@
                             {{-- @forelse ($post->comments()->orderby('created_at', 'desc')->get() as $comment) --}}
                             @forelse ($comments as $comment)
                             <div class="flex p-4 ">
-                                <div class="flex-1">
-                                    <div class="flex items-center justify-between">
-                                        <div class="flex flex-col sm:flex-row">
-                                            <div>
-                                                @if ($comment->user_id == Auth::id())
-                                                <span class="text-base text-sky-500 dark:text-sky-500">
-                                                    {{$comment->user->name }}
-                                                </span>
-                                                @else
-                                                <span class="text-base text-gray-400 dark:text-gray-400">
-                                                    {{$comment->user->name }}
-                                                </span>
-                                                @endif
+                                <div class="flex-1" x-data="{open:false}">
+                                    {{-- <div x-data="{open:false}"> --}}
+                                        <div class="flex items-center justify-between">
+                                            <div class="flex flex-col sm:flex-row">
+                                                <div>
+                                                    @if ($comment->user_id == Auth::id())
+                                                    <span class="text-base text-sky-500 dark:text-sky-500">
+                                                        {{$comment->user->name }}
+                                                    </span>
+                                                    @else
+                                                    <span class="text-base text-gray-400 dark:text-gray-400">
+                                                        {{$comment->user->name }}
+                                                    </span>
+                                                    @endif
+                                                </div>
+                                                <div>
+                                                    <small class="text-sm text-gray-400 sm:ml-2 dark:text-gray-400">
+                                                        {{ $comment->created_at->diffForHumans() }}
+                                                    </small>
+                                                    {{-- @unless ($guestbook->created_at->eq($guestbook->updated_at))
+                                                    --}}
+                                                    @unless ($comment->created_at == $comment->updated_at)
+                                                    <small class="text-sm text-gray-400 dark:text-gray-400"> &middot; {{
+                                                        __('edited')
+                                                        }}</small>
+                                                    @endunless
+                                                    @can('admin')
+                                                    @if ($comment->is_spam)
+                                                    <small class="text-sm text-gray-400 dark:text-gray-400"> &middot;
+                                                        <span
+                                                            class="text-sm text-red-400 dark:text-red-400">reported</span></small>
+                                                    <small class="text-sm text-gray-400 dark:text-gray-400"> &middot;
+                                                        <span class="text-sm text-red-400 dark:text-red-400">{{
+                                                            $comment->spam_count }}x</span></small>
+                                                    @endif
+                                                    @endcan
+                                                </div>
                                             </div>
-                                            <div>
-                                                <small class="text-sm text-gray-400 sm:ml-2 dark:text-gray-400">
-                                                    {{ $comment->created_at->diffForHumans() }}
-                                                </small>
-                                                {{-- @unless ($guestbook->created_at->eq($guestbook->updated_at)) --}}
-                                                @unless ($comment->created_at == $comment->updated_at)
-                                                <small class="text-sm text-gray-400 dark:text-gray-400"> &middot; {{
-                                                    __('edited')
-                                                    }}</small>
-                                                @endunless
-                                                @can('admin')
-                                                @if ($comment->is_spam)
-                                                <small class="text-sm text-gray-400 dark:text-gray-400"> &middot; <span
-                                                        class="text-sm text-red-400 dark:text-red-400">reported</span></small>
-                                                <small class="text-sm text-gray-400 dark:text-gray-400"> &middot; <span
-                                                        class="text-sm text-red-400 dark:text-red-400">{{
-                                                        $comment->spam_count }}x</span></small>
-                                                @endif
-                                                @endcan
-                                            </div>
+                                            <x-dropdown>
+                                                <x-slot name="trigger">
+                                                    <button>
+                                                        <svg xmlns="http://www.w3.org/2000/svg"
+                                                            class="w-4 h-4 text-gray-400" viewBox="0 0 20 20"
+                                                            fill="currentColor">
+                                                            <path
+                                                                d="M6 10a2 2 0 11-4 0 2 2 0 014 0zM12 10a2 2 0 11-4 0 2 2 0 014 0zM16 12a2 2 0 100-4 2 2 0 000 4z" />
+                                                        </svg>
+                                                    </button>
+                                                </x-slot>
+                                                <x-slot name="content">
+                                                    @auth
+                                                    @if ($comment->user_id == Auth::id() || Auth::user()->is_admin ==
+                                                    true)
+                                                    {{-- <x-dropdown-link :href="route('comment.edit', $comment)">
+                                                        {{ __('Edit') }}
+                                                    </x-dropdown-link> --}}
+
+                                                    <form method="POST"
+                                                        action="{{ route('comment.destroy', $comment) }}">
+                                                        @csrf
+                                                        @method('delete')
+                                                        <x-dropdown-link :href="route('comment.destroy', $comment)"
+                                                            onclick="event.preventDefault(); this.closest('form').submit();">
+                                                            {{ __('Delete') }}
+                                                        </x-dropdown-link>
+                                                    </form>
+                                                    @endif
+                                                    @endauth
+
+                                                    @if ($comment->user_id != Auth::id() )
+                                                    <form method="POST"
+                                                        action="{{ route('comments.report', $comment) }}">
+                                                        @csrf
+                                                        @method('patch')
+                                                        <x-dropdown-link :href="route('comments.report', $comment)"
+                                                            onclick="event.preventDefault(); this.closest('form').submit();">
+                                                            {{ __('Report Spam') }}
+                                                        </x-dropdown-link>
+                                                    </form>
+                                                    @endif
+
+                                                    @can('admin')
+                                                    @if ($comment->is_spam)
+                                                    <form method="POST"
+                                                        action="{{ route('comments.remove.report', $comment) }}">
+                                                        @csrf
+                                                        @method('patch')
+                                                        <x-dropdown-link
+                                                            :href="route('comments.remove.report', $comment)"
+                                                            onclick="event.preventDefault(); this.closest('form').submit();">
+                                                            {{ __('Remove Report') }}
+                                                        </x-dropdown-link>
+                                                    </form>
+                                                    @endif
+                                                    @endcan
+                                                </x-slot>
+                                            </x-dropdown>
+
                                         </div>
-                                        <x-dropdown>
-                                            <x-slot name="trigger">
-                                                <button>
-                                                    <svg xmlns="http://www.w3.org/2000/svg"
-                                                        class="w-4 h-4 text-gray-400" viewBox="0 0 20 20"
-                                                        fill="currentColor">
-                                                        <path
-                                                            d="M6 10a2 2 0 11-4 0 2 2 0 014 0zM12 10a2 2 0 11-4 0 2 2 0 014 0zM16 12a2 2 0 100-4 2 2 0 000 4z" />
-                                                    </svg>
-                                                </button>
-                                            </x-slot>
-                                            <x-slot name="content">
-                                                @auth
-                                                {{-- <x-dropdown-link>
-                                                    {{ __('Reply (Pending Feature)') }}
-                                                </x-dropdown-link> --}}
-                                                @if ($comment->user_id == Auth::id() || Auth::user()->is_admin == true)
-                                                <x-dropdown-link :href="route('comment.edit', $comment)">
-                                                    {{ __('Edit') }}
-                                                </x-dropdown-link>
+                                        <p class="mt-2 text-gray-600 text-normal dark:text-gray-400">
+                                            {{ $comment->body }}
+                                        </p>
 
-                                                <form method="POST" action="{{ route('comment.destroy', $comment) }}">
-                                                    @csrf
-                                                    @method('delete')
-                                                    <x-dropdown-link :href="route('comment.destroy', $comment)"
-                                                        onclick="event.preventDefault(); this.closest('form').submit();">
-                                                        {{ __('Delete') }}
-                                                    </x-dropdown-link>
-                                                </form>
-                                                @endif
-                                                @endauth
-
-                                                @if ($comment->user_id != Auth::id() )
-                                                <form method="POST" action="{{ route('comments.report', $comment) }}">
+                                        @auth
+                                        @if ($comment->user_id == Auth::id() || Auth::user()->is_admin == true)
+                                        <div x-data="{open:false}">
+                                            <button x-on:click="open = !open" x-text="open ? 'Close' : 'Edit'"
+                                                class="my-2 text-gray-600 text-normal dark:text-gray-400">
+                                            </button>
+                                            <div x-show="open" x-cloak>
+                                                <form method="POST" action="{{ route('comment.update', $comment) }}">
                                                     @csrf
                                                     @method('patch')
-                                                    <x-dropdown-link :href="route('comments.report', $comment)"
-                                                        onclick="event.preventDefault(); this.closest('form').submit();">
-                                                        {{ __('Report Spam') }}
-                                                    </x-dropdown-link>
+                                                    <textarea id="message" rows="3" name="body"
+                                                        class="block p-2.5 w-full text-sm text-gray-900 bg-white border-2 border-gray-200 rounded-lg dark:border-gray-700 focus:ring-transparent dark:bg-gray-800 dark:placeholder-gray-400 dark:text-white dark:focus:ring-transparent "
+                                                        maxlength="255"
+                                                        placeholder="Leave a comment...">{{ old('message', $comment->body) }}</textarea>
+                                                    <x-input-error :messages="$errors->get('body')" class="mt-2" />
+                                                    <button type="submit"
+                                                        class="inline-flex items-center px-4 py-2 mt-5 text-sm font-medium text-center text-white rounded-lg bg-sky-700 focus:ring-4 focus:ring-sky-200 dark:focus:ring-sky-900 hover:bg-sky-800">
+                                                        Save
+                                                    </button>
                                                 </form>
-                                                @endif
-                                                @can('admin')
-                                                @if ($comment->is_spam)
-                                                <form method="POST"
-                                                    action="{{ route('comments.remove.report', $comment) }}">
-                                                    @csrf
-                                                    @method('patch')
-                                                    <x-dropdown-link :href="route('comments.remove.report', $comment)"
-                                                        onclick="event.preventDefault(); this.closest('form').submit();">
-                                                        {{ __('Remove Report') }}
-                                                    </x-dropdown-link>
-                                                </form>
-                                                @endif
-                                                @endcan
-                                            </x-slot>
-                                        </x-dropdown>
+                                            </div>
+                                        </div>
+                                        @endif
+                                        @endauth
 
                                     </div>
-                                    <p class="mt-2 text-gray-600 text-normal dark:text-gray-400">
-                                        {{ $comment->body }}
-                                    </p>
-
-                                    {{-- <div x-data="{open:false}">
-                                        <button x-on:click="open = !open"
-                                            class="mt-2 text-gray-600 text-normal dark:text-gray-400">
-                                            Reply
-                                        </button>
-
-                                        <div x-show="open" x-cloak>
-                                            <form method="POST" action="{{ route('comment.store') }}" class="mt-4">
-                                                @csrf
-                                                <input type="hidden" name="post_id" value="{{ $post->id }}">
-                                                <textarea id="message" rows="3" name="body"
-                                                    class="block p-2.5 w-full text-sm text-gray-900 bg-white border-2 border-gray-200 rounded-lg dark:border-gray-700 focus:ring-transparent dark:bg-gray-800 dark:placeholder-gray-400 dark:text-white dark:focus:ring-transparent "
-                                                    maxlength="255" placeholder="Leave a comment..."
-                                                    required>{{ old('body') }}</textarea>
-                                                <x-input-error :messages="$errors->get('body')" class="mt-2" />
-                                                <button type="submit"
-                                                    class="inline-flex items-center px-4 py-2 mt-5 text-sm font-medium text-center text-white rounded-lg bg-sky-700 focus:ring-4 focus:ring-sky-200 dark:focus:ring-sky-900 hover:bg-sky-800">
-                                                    Send
-                                                </button>
-                                                <button x-on:click="open = !open"
-                                                    class="inline-flex items-center px-4 py-2 mt-5 text-sm font-medium text-center text-white bg-red-600 rounded-lg focus:ring-4 focus:ring-red-200 dark:focus:ring-red-900 hover:bg-red-700">
-                                                    Cancel
-                                                </button>
-                                            </form>
-                                        </div>
-                                    </div> --}}
                                 </div>
-                            </div>
-                            @empty
-                            <div class="flex p-4 ">
-                                <div class="flex-1">
-                                    <div class="flex items-center justify-between">
-                                        <div class="flex flex-col sm:flex-row">
-                                            <p class="text-base font-normal text-gray-400 dark:text-gray-400">
-                                                No comment yet.
-                                            </p>
+                                @empty
+                                <div class="flex p-4 ">
+                                    <div class="flex-1">
+                                        <div class="flex items-center justify-between">
+                                            <div class="flex flex-col sm:flex-row">
+                                                <p class="text-base font-normal text-gray-400 dark:text-gray-400">
+                                                    No comment yet.
+                                                </p>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
+                                @endforelse
                             </div>
-                            @endforelse
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
 </x-guest-layout>

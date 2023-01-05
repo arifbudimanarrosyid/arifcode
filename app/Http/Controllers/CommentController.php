@@ -39,33 +39,28 @@ class CommentController extends Controller
         return back()->with('danger', 'You are not authorized to delete this comment.');
     }
 
-    public function edit(Comment $comment, Post $post)
-    {
-        if (Auth::check() && auth()->user()->id == $comment->user_id || Auth::check() && auth()->user()->is_admin == true) {
-            $post = Post::find($comment->post_id);
-            return view('comment.edit', compact('comment', 'post'));
-        }
-        return back()->with('danger', 'You are not authorized to edit this comment.');
-    }
 
     public function update(Request $request, Comment $comment)
     {
-        if (auth()->user()->id != $comment->user_id) {
-            $request->validate([
-                'body' => 'required|string|max:255'
-            ]);
-            $comment->timestamps = false;
-            $comment->body = $request->body;
-            $comment->save();
-            return redirect()->route('post', $comment->post->slug)->with('success', 'Comment updated successfully as Admin');
-        }
-        if (auth()->user()->id == $comment->user_id) {
-            $request->validate([
-                'body' => 'required|string|max:255'
-            ]);
-            $comment->body = $request->body;
-            $comment->save();
-            return redirect()->route('post', $comment->post->slug)->with('success', 'Comment updated successfully.');
+        if (Auth::check()) {
+            if (auth()->user()->id == $comment->user_id) {
+                $request->validate([
+                    'body' => 'required|string|max:255'
+                ]);
+                $comment->body = $request->body;
+                $comment->save();
+                return redirect()->route('post', $comment->post->slug)->with('success', 'Comment updated successfully.');
+            } elseif (auth()->user()->is_admin == true) {
+                $request->validate([
+                    'body' => 'required|string|max:255'
+                ]);
+                $comment->timestamps = false;
+                $comment->body = $request->body;
+                $comment->save();
+                return redirect()->route('post', $comment->post->slug)->with('success', 'Comment updated successfully as Admin');
+            }
+        } else {
+            return back()->with('danger', 'You are not authorized to update this comment.');
         }
     }
 
