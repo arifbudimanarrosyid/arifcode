@@ -30,7 +30,6 @@
 
     <!-- Fonts -->
     <link rel="stylesheet" href="https://fonts.bunny.net/css2?family=Inter:wght@400;600;700&display=swap">
-    <script defer src="https://unpkg.com/alpinejs-scroll-amount@latest/dist/scroll-amount.min.js"></script>
     <style>
         [x-cloak] {
             display: none !important;
