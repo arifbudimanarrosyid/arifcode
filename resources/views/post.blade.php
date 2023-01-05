@@ -1,7 +1,8 @@
 <x-guest-layout>
-    <div x-data="{ scrollPos: {} }" x-init="scrollPos = $scrollAmount"
+    <div x-cloak x-data="{ scrollPos: {} }" x-init="scrollPos = $scrollAmount"
         x-on:scroll.window="scrollPos = $scrollAmount">
-        <div class="fixed inset-x-0 top-0 h-1 z-50 @if ($post->is_featured)
+        <div x-cloak class="fixed inset-x-0 top-0 h-1 z-50
+            @if ($post->is_featured)
             bg-orange-500
             @else
             bg-indigo-500

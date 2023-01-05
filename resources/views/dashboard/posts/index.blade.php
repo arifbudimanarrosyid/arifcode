@@ -23,15 +23,6 @@
                     <div class="block w-full p-4 mb-4 bg-white rounded-lg dark:bg-gray-800 ">
                         <h5 class="mb-2 text-xl tracking-tight text-gray-900 dark:text-white">Draft</h5>
                         <p class="text-2xl font-bold text-indigo-700 dark:text-indigo-400">{{ $draftPosts }}</p>
-                        @if (Route::has('posts.deletedraftposts') && $draftPosts != 0)
-                        <form action="{{ route('posts.deletedraftposts') }}" method="POST" class="flex sm:inline-flex">
-                            @csrf
-                            @method('patch')
-                            <button type="submit" class="text-red-700 dark:text-red-400">
-                                Delete
-                            </button>
-                        </form>
-                        @endif
                     </div>
                 </div>
                 <div class="gap-5 mb-1 sm:flex">
@@ -41,23 +32,12 @@
                     </div>
                     <div class="block w-full p-4 mb-4 bg-white rounded-lg dark:bg-gray-800 ">
                         <h5 class="mb-2 text-xl tracking-tight text-gray-900 dark:text-white">Featured & Published</h5>
-                        <p class="text-2xl font-bold text-green-700 dark:text-green-400">{{ $featuredAndPublishedPosts
-                            }}
+                        <p class="text-2xl font-bold text-green-700 dark:text-green-400">{{ $featuredAndPublishedPosts}}
                         </p>
                     </div>
                     <div class="block w-full p-4 mb-4 bg-white rounded-lg dark:bg-gray-800 ">
                         <h5 class="mb-2 text-xl tracking-tight text-gray-900 dark:text-white">Reported Comment</h5>
                         <p class="text-2xl font-bold text-red-700 dark:text-red-400">{{ $reportedComments }}
-                            @if ($reportedComments != 0)
-                        <form action="{{ route('posts.deletereportedcomments') }}" method="POST"
-                            class="flex sm:inline-flex">
-                            @csrf
-                            @method('patch')
-                            <button type="submit" class="text-red-700 dark:text-red-400">
-                                Delete
-                            </button>
-                        </form>
-                        @endif
                         </p>
                     </div>
                 </div>
@@ -120,35 +100,42 @@
 
             {{-- Create --}}
             <div class="flex justify-between w-full">
-                <a href="{{ route('posts.create') }}"
+                <div x-cloak x-data="{ showDropdown: false }" >
+                <a href=" {{ route('posts.create') }}"
                     class="inline-flex items-center px-4 py-3 mb-5 mr-2 text-sm font-medium leading-4 text-gray-100 transition duration-150 ease-in-out bg-indigo-700 rounded-md dark:text-gray-300 dark:bg-indigo-800 hover:bg-indigo-800 dark:hover:bg-indigo-600 focus:outline-none">
                     Create
-                </a>
-                <div>
-                    {{-- @if (Route::has('posts.deletedraftposts') && $draftPosts != 0)
-                    <form action="{{ route('posts.deletedraftposts') }}" method="POST"
-                        class="inline-block sm:inline-flex">
-                        @csrf
-                        @method('patch')
-                        <button type="submit"
-                            class="inline-flex items-center px-4 py-3 mb-5 text-sm font-medium leading-4 text-gray-100 transition duration-150 ease-in-out bg-red-700 rounded-md dark:text-gray-300 dark:bg-red-800 hover:bg-red-800 dark:hover:bg-red-600 focus:outline-none">
-                            Delete Draft Posts
-                        </button>
-                    </form>
+                    </a>
+                    @if (Route::has('posts.deletedraftposts') && $draftPosts != 0 || $reportedComments != 0)
+                    <button x-on:click=" showDropdown=!showDropdown"
+                        class="items-center px-4 py-3 mb-2 text-sm font-medium leading-4 text-gray-600 transition duration-150 ease-in-out bg-gray-200 rounded-md dark:text-gray-300 dark:bg-gray-800 hover:bg-gray-300 dark:hover:bg-gray-600 focus:outline-none">
+                        Option
+                    </button>
                     @endif
-                    @if ($reportedComments != 0)
-                    <form action="{{ route('posts.deletereportedcomments') }}" method="POST"
-                        class="inline-block sm:inline-flex">
-                        @csrf
-                        @method('patch')
-                        <button type="submit"
-                            class="inline-flex items-center px-4 py-3 mb-5 text-sm font-medium leading-4 text-gray-100 transition duration-150 ease-in-out bg-red-700 rounded-md dark:text-gray-300 dark:bg-red-800 hover:bg-red-800 dark:hover:bg-red-600 focus:outline-none">
-                            Delete Reported Comments
-                        </button>
-                    </form>
-                    @endif --}}
+                    <div x-cloak x-show="showDropdown" class="flex gap-3">
+                        @if (Route::has('posts.deletedraftposts') && $draftPosts != 0)
+                        <form action="{{ route('posts.deletedraftposts') }}" method="POST"
+                            class="inline-block sm:inline-flex">
+                            @csrf
+                            @method('patch')
+                            <button type="submit"
+                                class="inline-flex items-center px-4 py-3 mb-5 text-sm font-medium leading-4 text-gray-100 transition duration-150 ease-in-out bg-red-700 rounded-md dark:text-gray-300 dark:bg-red-800 hover:bg-red-800 dark:hover:bg-red-600 focus:outline-none">
+                                Delete Draft Posts
+                            </button>
+                        </form>
+                        @endif
+                        @if ($reportedComments != 0)
+                        <form action="{{ route('posts.deletereportedcomments') }}" method="POST"
+                            class="inline-block sm:inline-flex">
+                            @csrf
+                            @method('patch')
+                            <button type="submit"
+                                class="inline-flex items-center px-4 py-3 mb-5 text-sm font-medium leading-4 text-gray-100 transition duration-150 ease-in-out bg-red-700 rounded-md dark:text-gray-300 dark:bg-red-800 hover:bg-red-800 dark:hover:bg-red-600 focus:outline-none">
+                                Delete Reported Comments
+                            </button>
+                        </form>
+                        @endif
+                    </div>
                 </div>
-
             </div>
 
 
@@ -203,7 +190,8 @@
                             @endif
                         </div>
                     </div>
-                    <div class="flex-row sm:flex-col sm:flex">
+                    <div x-cloak class="flex-row sm:flex-col sm:flex" x-data="{ showModal: false }"
+                        x-on:keydown.window.escape="showModal = false">
                         <a href="{{ route('posts.show', $post->id) }}"
                             class="inline-flex items-center px-4 py-2 mb-2 text-sm font-medium leading-4 text-gray-600 transition duration-150 ease-in-out bg-green-200 rounded-md dark:text-gray-300 dark:bg-green-800 hover:bg-green-400 dark:hover:bg-green-600 focus:outline-none">
                             View
@@ -212,14 +200,42 @@
                             class="inline-flex items-center px-4 py-2 mb-2 text-sm font-medium leading-4 text-gray-600 transition duration-150 ease-in-out rounded-md dark:text-gray-300 bg-sky-200 dark:bg-sky-800 hover:bg-sky-400 dark:hover:bg-sky-600 focus:outline-none">
                             Edit
                         </a>
-                        <form action="{{ route('posts.destroy', $post->id) }}" method="POST" class="inline-flex">
-                            @csrf
-                            @method('DELETE')
-                            <button type="submit"
-                                class="inline-flex items-center px-4 py-2 mb-2 text-sm font-medium leading-4 text-gray-600 transition duration-150 ease-in-out bg-red-200 rounded-md dark:text-gray-300 dark:bg-red-800 hover:bg-red-400 dark:hover:bg-red-600 focus:outline-none">
-                                Delete
-                            </button>
-                        </form>
+                        <button x-on:click="showModal = !showModal" x-cloak
+                            class="inline-flex items-center px-4 py-2 mb-2 text-sm font-medium leading-4 text-gray-600 transition duration-150 ease-in-out bg-red-200 rounded-md dark:text-gray-300 dark:bg-red-800 hover:bg-red-400 dark:hover:bg-red-600 focus:outline-none">
+                            Delete
+                        </button>
+                        <div>
+
+                            <div x-cloak x-show="showModal" x-transition.opacity class="fixed inset-0 backdrop-blur">
+                            </div>
+                            <div x-cloak x-show="showModal" x-transition
+                                class="fixed inset-0 z-50 flex items-center justify-center p-5">
+                                <div x-on:click.away="showModal = false"
+                                    class="w-screen max-w-xl mx-auto bg-white rounded-lg min-h-max dark:bg-gray-700">
+                                    <div class="p-5">
+                                        <p class="text-base tracking-tight text-gray-900 dark:text-white">Are
+                                            you sure want to delete? </p>
+                                        <p class="mb-5 text-xl font-bold tracking-tight text-gray-900 dark:text-white">
+                                            {{ $post->title }} </p>
+                                        <form action="{{ route('posts.destroy', $post->id) }}" method="POST"
+                                            class="inline-flex">
+                                            @csrf
+                                            @method('DELETE')
+                                            <button type="submit"
+                                                class="inline-flex items-center px-4 py-2 mb-2 text-sm font-medium leading-4 text-gray-600 transition duration-150 ease-in-out bg-red-200 rounded-md dark:text-gray-300 dark:bg-red-800 hover:bg-red-400 dark:hover:bg-red-600 focus:outline-none">
+                                                Yes
+                                            </button>
+
+                                        </form>
+                                        <button x-on:click="showModal = false"
+                                            class="inline-flex items-center px-4 py-2 mb-2 text-sm font-medium leading-4 text-gray-600 transition duration-150 ease-in-out bg-gray-200 rounded-md dark:text-gray-300 dark:bg-gray-800 hover:bg-gray-300 dark:hover:bg-gray-600 focus:outline-none">
+                                            Cancel
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
                     </div>
                 </div>
                 @empty

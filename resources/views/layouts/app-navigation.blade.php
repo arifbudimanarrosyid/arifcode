@@ -1,4 +1,4 @@
-<nav x-data="{ open: false }" class="">
+<nav x-cloak x-data="{ open: false }" class="">
     <!-- Primary Navigation Menu -->
     <div class="max-w-3xl px-4 mx-auto sm:px-6 lg:px-8">
         <div class="flex justify-between h-16">
