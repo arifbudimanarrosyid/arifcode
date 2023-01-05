@@ -26,7 +26,7 @@
                     @enderror
                 </div>
 
-                <div x-data="{ inputTitle: '' }" >
+                <div x-data="{ inputTitle: '' }">
                     {{-- Title --}}
                     <div class="mb-6">
                         <label for="default-input"

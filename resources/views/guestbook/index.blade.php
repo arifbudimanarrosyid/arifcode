@@ -104,11 +104,11 @@
                                         <div class="flex flex-col sm:flex-row">
                                             <div>
                                                 @if ($guestbook->user_id == Auth::id())
-                                                <span class="text-base text-yellow-500 dark:text-yellow-500">
+                                                <span class="text-base text-sky-500 dark:text-sky-500">
                                                     {{$guestbook->user->name }}
                                                 </span>
                                                 @else
-                                                <span class="text-base text-sky-500 dark:text-sky-500">
+                                                <span class="text-base text-gray-400 dark:text-gray-400">
                                                     {{$guestbook->user->name }}
                                                 </span>
                                                 @endif
@@ -201,11 +201,11 @@
                                         <div class="flex flex-col sm:flex-row">
                                             <div>
                                                 @if ($guestbook->user_id == Auth::id())
-                                                <span class="text-base text-yellow-500 dark:text-yellow-500">
+                                                <span class="text-base text-sky-500 dark:text-sky-500">
                                                     {{$guestbook->user->name }}
                                                 </span>
                                                 @else
-                                                <span class="text-base text-sky-500 dark:text-sky-500">
+                                                <span class="text-base text-gray-400 dark:text-gray-400">
                                                     {{$guestbook->user->name }}
                                                 </span>
                                                 @endif

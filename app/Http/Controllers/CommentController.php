@@ -20,16 +20,19 @@ class CommentController extends Controller
                 'user_id' => auth()->user()->id,
                 'body' => $request->body,
             ]);
-            return back()->with('success', 'Thanks for your comment.');
+            return back()->with('success', 'Comment created successfully.');
         }
         return redirect()->route('login');
     }
     public function destroy(Comment $comment)
     {
         if (Auth::check()) {
-            if (auth()->user()->is_admin == true || auth()->user()->id == $comment->user_id) {
+            if (auth()->user()->id == $comment->user_id) {
                 $comment->delete();
                 return back()->with('success', 'Comment deleted successfully.');
+            } elseif (auth()->user()->is_admin == true) {
+                $comment->delete();
+                return back()->with('success', 'Comment deleted successfully as Admin.');
             }
             return back()->with('danger', 'You are not authorized to delete this comment.');
         }
