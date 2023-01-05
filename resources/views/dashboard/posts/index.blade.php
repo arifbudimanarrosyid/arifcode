@@ -100,10 +100,10 @@
 
             {{-- Create --}}
             <div class="flex justify-between w-full">
-                <div x-cloak x-data="{ showDropdown: false }" >
-                <a href=" {{ route('posts.create') }}"
-                    class="inline-flex items-center px-4 py-3 mb-5 mr-2 text-sm font-medium leading-4 text-gray-100 transition duration-150 ease-in-out bg-indigo-700 rounded-md dark:text-gray-300 dark:bg-indigo-800 hover:bg-indigo-800 dark:hover:bg-indigo-600 focus:outline-none">
-                    Create
+                <div x-cloak x-data="{ showDropdown: false }">
+                    <a href=" {{ route('posts.create') }}"
+                        class="inline-flex items-center px-4 py-3 mb-5 mr-2 text-sm font-medium leading-4 text-gray-100 transition duration-150 ease-in-out bg-indigo-700 rounded-md dark:text-gray-300 dark:bg-indigo-800 hover:bg-indigo-800 dark:hover:bg-indigo-600 focus:outline-none">
+                        Create
                     </a>
                     @if (Route::has('posts.deletedraftposts') && $draftPosts != 0 || $reportedComments != 0)
                     <button x-on:click=" showDropdown=!showDropdown"
@@ -204,34 +204,30 @@
                             class="inline-flex items-center px-4 py-2 mb-2 text-sm font-medium leading-4 text-gray-600 transition duration-150 ease-in-out bg-red-200 rounded-md dark:text-gray-300 dark:bg-red-800 hover:bg-red-400 dark:hover:bg-red-600 focus:outline-none">
                             Delete
                         </button>
-                        <div>
-
-                            <div x-cloak x-show="showModal" x-transition.opacity class="fixed inset-0 backdrop-blur">
-                            </div>
-                            <div x-cloak x-show="showModal" x-transition
-                                class="fixed inset-0 z-50 flex items-center justify-center p-5">
-                                <div x-on:click.away="showModal = false"
-                                    class="w-screen max-w-xl mx-auto bg-white rounded-lg min-h-max dark:bg-gray-700">
-                                    <div class="p-5">
-                                        <p class="text-base tracking-tight text-gray-900 dark:text-white">Are
-                                            you sure want to delete? </p>
-                                        <p class="mb-5 text-xl font-bold tracking-tight text-gray-900 dark:text-white">
-                                            {{ $post->title }} </p>
-                                        <form action="{{ route('posts.destroy', $post->id) }}" method="POST"
-                                            class="inline-flex">
-                                            @csrf
-                                            @method('DELETE')
-                                            <button type="submit"
-                                                class="inline-flex items-center px-4 py-2 mb-2 text-sm font-medium leading-4 text-gray-600 transition duration-150 ease-in-out bg-red-200 rounded-md dark:text-gray-300 dark:bg-red-800 hover:bg-red-400 dark:hover:bg-red-600 focus:outline-none">
-                                                Yes
-                                            </button>
-
-                                        </form>
-                                        <button x-on:click="showModal = false"
-                                            class="inline-flex items-center px-4 py-2 mb-2 text-sm font-medium leading-4 text-gray-600 transition duration-150 ease-in-out bg-gray-200 rounded-md dark:text-gray-300 dark:bg-gray-800 hover:bg-gray-300 dark:hover:bg-gray-600 focus:outline-none">
-                                            Cancel
+                        <div x-cloak x-show="showModal" x-transition.opacity class="fixed inset-0 backdrop-blur">
+                        </div>
+                        <div x-cloak x-show="showModal" x-transition
+                            class="fixed inset-0 z-50 flex items-center justify-center p-5">
+                            <div x-on:click.away="showModal = false"
+                                class="w-screen max-w-xl mx-auto bg-white rounded-lg min-h-max dark:bg-gray-700">
+                                <div class="p-5">
+                                    <p class="text-base tracking-tight text-gray-900 dark:text-white">Are
+                                        you sure want to delete? </p>
+                                    <p class="mb-5 text-xl font-bold tracking-tight text-gray-900 dark:text-white">
+                                        {{ $post->title }} </p>
+                                    <form action="{{ route('posts.destroy', $post->id) }}" method="POST"
+                                        class="inline-flex">
+                                        @csrf
+                                        @method('DELETE')
+                                        <button type="submit"
+                                            class="inline-flex items-center px-4 py-2 mb-2 text-sm font-medium leading-4 text-gray-600 transition duration-150 ease-in-out bg-red-200 rounded-md dark:text-gray-300 dark:bg-red-800 hover:bg-red-400 dark:hover:bg-red-600 focus:outline-none">
+                                            Yes
                                         </button>
-                                    </div>
+                                    </form>
+                                    <button x-on:click="showModal = false"
+                                        class="inline-flex items-center px-4 py-2 mb-2 text-sm font-medium leading-4 text-gray-600 transition duration-150 ease-in-out bg-gray-200 rounded-md dark:text-gray-300 dark:bg-gray-800 hover:bg-gray-300 dark:hover:bg-gray-600 focus:outline-none">
+                                        Cancel
+                                    </button>
                                 </div>
                             </div>
                         </div>
