@@ -19,7 +19,7 @@ class GuestbookController extends Controller
         // get guestbook with id = 1
         $pinned_guestbooks = Guestbook::where('is_pinned', 1)
             // ->with('user')
-            ->orderBy('updated_at', 'desc')
+            ->orderBy('updated_at', 'asc')
             ->get();
 
         // get all guestbook
@@ -82,18 +82,18 @@ class GuestbookController extends Controller
      * @param  \App\Models\Guestbook  $guestbook
      * @return \Illuminate\Http\Response
      */
-    public function edit(Guestbook $guestbook)
-    {
-        if (Auth::check()) {
-            if (Auth::user()->id == $guestbook->user_id || Auth::user()->is_admin == true) {
-                return view('guestbook.edit', compact('guestbook'));
-            } else {
-                return redirect()->route('guestbook.index')->with('danger', 'You are not authorized to edit this guestbook.');
-            }
-        } else {
-            return redirect()->route('guestbook.index')->with('danger', 'You are not authorized to edit this guestbook.');
-        }
-    }
+    // public function edit(Guestbook $guestbook)
+    // {
+    //     if (Auth::check()) {
+    //         if (Auth::user()->id == $guestbook->user_id || Auth::user()->is_admin == true) {
+    //             return view('guestbook.edit', compact('guestbook'));
+    //         } else {
+    //             return redirect()->route('guestbook.index')->with('danger', 'You are not authorized to edit this guestbook.');
+    //         }
+    //     } else {
+    //         return redirect()->route('guestbook.index')->with('danger', 'You are not authorized to edit this guestbook.');
+    //     }
+    // }
 
     /**
      * Update the specified resource in storage.
@@ -104,26 +104,31 @@ class GuestbookController extends Controller
      */
     public function update(Request $request, Guestbook $guestbook)
     {
-        if (Auth::user()->id != $guestbook->user_id) {
-            $request->validate([
-                'message' => 'required|string|max:255',
-            ]);
+        if (Auth::check()) {
+            if (Auth::user()->id == $guestbook->user_id) {
+                $request->validate([
+                    'message' => 'required|string|max:255',
+                ]);
 
-            $guestbook->timestamps = false;
-            $guestbook->message = $request->message;
-            $guestbook->save();
+                $guestbook->message = $request->message;
+                $guestbook->save();
 
-            return redirect(route('guestbook.index'))->with('success', 'Guestbook updated successfully as Admin.');
-        }
-        if (Auth::user()->id == $guestbook->user_id) {
-            $request->validate([
-                'message' => 'required|string|max:255',
-            ]);
+                return redirect(route('guestbook.index'))->with('success', 'Guestbook updated successfully.');
+            } elseif (auth()->user()->is_admin == true) {
+                $request->validate([
+                    'message' => 'required|string|max:255',
+                ]);
 
-            $guestbook->message = $request->message;
-            $guestbook->save();
+                $guestbook->timestamps = false;
+                $guestbook->message = $request->message;
+                $guestbook->save();
 
-            return redirect(route('guestbook.index'))->with('success', 'Guestbook updated successfully.');
+                return redirect(route('guestbook.index'))->with('success', 'Guestbook updated successfully as Admin.');
+            } else {
+                return back()->with('danger', 'You are not authorized to edit this guestbook.');
+            }
+        } else {
+            return back()->with('danger', 'You are not authorized to edit this guestbook.');
         }
     }
 

@@ -59,6 +59,7 @@ class CommentController extends Controller
                 $comment->save();
                 return redirect()->route('post', $comment->post->slug)->with('success', 'Comment updated successfully as Admin');
             }
+            return back()->with('danger', 'You are not authorized to update this comment.');
         } else {
             return back()->with('danger', 'You are not authorized to update this comment.');
         }

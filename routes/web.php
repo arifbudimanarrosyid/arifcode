@@ -35,7 +35,7 @@ Route::get('/post/{slug}', [PostController::class, 'show'])->name('post');
 Route::post('/comments', [CommentController::class, 'store'])->name('comment.store');
 Route::delete('/comments/{comment}', [CommentController::class, 'destroy'])->name('comment.destroy');
 // Route::get('/comments/{comment}/edit', [CommentController::class, 'edit'])->name('comment.edit');
-Route::patch('/comments/{comment}', [CommentController::class, 'update'])->name('comment.update');
+Route::patch('/comments/{comment}/', [CommentController::class, 'update'])->name('comment.update');
 Route::patch('/comments/{comment}/report', [CommentController::class, 'report'])->name('comments.report');
 Route::patch('/comments/{comment}/remove-report', [CommentController::class, 'undoReport'])->name('comments.remove.report');
 
@@ -44,7 +44,12 @@ Route::get('/portofolio', [PortofolioController::class, 'index'])->name('portofo
 
 // Guestbook
 Route::resource('/guestbook', GuestbookController::class)
-    ->only(['index', 'store', 'edit', 'update', 'destroy']);
+    ->only([
+        'index',
+        'store',
+        'update',
+        'destroy'
+    ]);
 Route::patch('/guestbook/{guestbook}/pin', [GuestbookController::class, 'pin'])->name('guestbook.pin');
 Route::patch('/guestbook/{guestbook}/unpin', [GuestbookController::class, 'unpin'])->name('guestbook.unpin');
 

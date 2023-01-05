@@ -156,9 +156,6 @@
                                                     </x-dropdown-link>
                                                 </form>
                                                 @endcan
-                                                <x-dropdown-link :href="route('guestbook.edit', $guestbook)">
-                                                    {{ __('Edit') }}
-                                                </x-dropdown-link>
                                                 <form method="POST"
                                                     action="{{ route('guestbook.destroy', $guestbook) }}">
                                                     @csrf
@@ -176,6 +173,30 @@
                                     <p class="mt-2 text-gray-600 text-notmal dark:text-gray-400">{{
                                         $guestbook->message }}
                                     </p>
+                                    @auth
+                                    @if ($guestbook->user_id == Auth::id() || Auth::user()->is_admin == true)
+                                    <div x-data="{open:false}">
+                                        <button x-on:click="open = !open" x-text="open ? 'Close' : 'Edit'"
+                                            class="mt-2 text-gray-600 text-normal dark:text-gray-400">
+                                        </button>
+                                        <div x-show="open" x-cloak class="mt-2">
+                                            <form method="POST" action="{{ route('guestbook.update', $guestbook) }}">
+                                                @csrf
+                                                @method('patch')
+                                                <textarea id="message" rows="3" name="message"
+                                                    class="block p-2.5 w-full text-sm text-gray-900 bg-white border-2 border-gray-200 rounded-lg dark:border-gray-700 focus:ring-transparent dark:bg-gray-800 dark:placeholder-gray-400 dark:text-white dark:focus:ring-transparent "
+                                                    maxlength="255"
+                                                    placeholder="Leave a message...">{{ old('message', $guestbook->message) }}</textarea>
+                                                <x-input-error :messages="$errors->get('body')" class="mt-2" />
+                                                <button type="submit"
+                                                    class="inline-flex items-center px-4 py-2 mt-5 text-sm font-medium text-center text-white rounded-lg bg-sky-700 focus:ring-4 focus:ring-sky-200 dark:focus:ring-sky-900 hover:bg-sky-800">
+                                                    Save
+                                                </button>
+                                            </form>
+                                        </div>
+                                    </div>
+                                    @endif
+                                    @endauth
                                 </div>
                             </div>
                             @empty
@@ -247,9 +268,6 @@
                                                     </x-dropdown-link>
                                                 </form>
                                                 @endcan
-                                                <x-dropdown-link :href="route('guestbook.edit', $guestbook)">
-                                                    {{ __('Edit') }}
-                                                </x-dropdown-link>
                                                 <form method="POST"
                                                     action="{{ route('guestbook.destroy', $guestbook) }}">
                                                     @csrf
@@ -267,6 +285,30 @@
                                     <p class="mt-2 text-gray-600 text-notmal dark:text-gray-400">{{
                                         $guestbook->message }}
                                     </p>
+                                    @auth
+                                    @if ($guestbook->user_id == Auth::id() || Auth::user()->is_admin == true)
+                                    <div x-data="{open:false}">
+                                        <button x-on:click="open = !open" x-text="open ? 'Close' : 'Edit'"
+                                            class="mt-2 text-gray-600 text-normal dark:text-gray-400">
+                                        </button>
+                                        <div x-show="open" x-cloak class="mt-2">
+                                            <form method="POST" action="{{ route('guestbook.update', $guestbook) }}">
+                                                @csrf
+                                                @method('patch')
+                                                <textarea id="message" rows="3" name="message"
+                                                    class="block p-2.5 w-full text-sm text-gray-900 bg-white border-2 border-gray-200 rounded-lg dark:border-gray-700 focus:ring-transparent dark:bg-gray-800 dark:placeholder-gray-400 dark:text-white dark:focus:ring-transparent "
+                                                    maxlength="255"
+                                                    placeholder="Leave a message...">{{ old('message', $guestbook->message) }}</textarea>
+                                                <x-input-error :messages="$errors->get('body')" class="mt-2" />
+                                                <button type="submit"
+                                                    class="inline-flex items-center px-4 py-2 mt-5 text-sm font-medium text-center text-white rounded-lg bg-sky-700 focus:ring-4 focus:ring-sky-200 dark:focus:ring-sky-900 hover:bg-sky-800">
+                                                    Save
+                                                </button>
+                                            </form>
+                                        </div>
+                                    </div>
+                                    @endif
+                                    @endauth
                                 </div>
                             </div>
                             @empty
