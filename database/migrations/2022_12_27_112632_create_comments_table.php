@@ -17,7 +17,7 @@ return new class extends Migration
             $table->id();
             $table->foreignId('post_id')->constrained()->cascadeOnDelete();
             $table->foreignId('user_id')->constrained()->cascadeOnDelete();
-            $table->text('body');
+            $table->text('text');
             $table->boolean('is_spam')->default(false);
             $table->integer('spam_count')->default(0);
             $table->timestamps();

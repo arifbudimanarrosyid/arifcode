@@ -13,12 +13,12 @@ class CommentController extends Controller
     {
         if (Auth::check()) {
             $request->validate([
-                'body' => 'required|string|max:255',
+                'text' => 'required|string|max:255',
             ]);
             Comment::create([
                 'post_id' => $request->post_id,
                 'user_id' => auth()->user()->id,
-                'body' => $request->body,
+                'text' => $request->text,
             ]);
             return back()->with('success', 'Comment created successfully.');
         }
@@ -45,17 +45,17 @@ class CommentController extends Controller
         if (Auth::check()) {
             if (auth()->user()->id == $comment->user_id) {
                 $request->validate([
-                    'body' => 'required|string|max:255'
+                    'text' => 'required|string|max:255'
                 ]);
-                $comment->body = $request->body;
+                $comment->text = $request->text;
                 $comment->save();
                 return redirect()->route('post', $comment->post->slug)->with('success', 'Comment updated successfully.');
             } elseif (auth()->user()->is_admin == true) {
                 $request->validate([
-                    'body' => 'required|string|max:255'
+                    'text' => 'required|string|max:255'
                 ]);
                 $comment->timestamps = false;
-                $comment->body = $request->body;
+                $comment->text = $request->text;
                 $comment->save();
                 return redirect()->route('post', $comment->post->slug)->with('success', 'Comment updated successfully as Admin');
             }
