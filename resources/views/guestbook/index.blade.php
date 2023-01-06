@@ -47,8 +47,8 @@
                         @auth
                         <form method="POST" action="{{ route('guestbook.store') }}">
                             @csrf
-                            <textarea id="message" rows="3" name="message"
-                                class="block p-2.5 w-full text-sm text-gray-900 bg-white border-2 border-gray-200 rounded-lg dark:border-gray-700 focus:ring-transparent dark:bg-gray-800 dark:placeholder-gray-400 dark:text-white dark:focus:ring-transparent "
+                            <textarea id="message" rows="4" name="message"
+                                class="block p-2.5 w-full text-gray-900 bg-white border-2 border-gray-200 rounded-lg dark:border-gray-700 focus:ring-transparent dark:bg-gray-800 dark:placeholder-gray-400 dark:text-white dark:focus:ring-transparent "
                                 maxlength="255" placeholder="Leave a message..."
                                 required>{{ old('message') }}</textarea>
                             <x-input-error :messages="$errors->get('message')" class="mt-2" />
@@ -170,7 +170,7 @@
                                         @endif
                                         @endauth
                                     </div>
-                                    <p class="mt-2 text-gray-600 text-notmal dark:text-gray-400">{{
+                                    <p class="mt-2 text-gray-800 text-normal dark:text-gray-300">{{
                                         $guestbook->message }}
                                     </p>
                                     @auth
@@ -183,8 +183,8 @@
                                             <form method="POST" action="{{ route('guestbook.update', $guestbook) }}">
                                                 @csrf
                                                 @method('patch')
-                                                <textarea id="message" rows="3" name="message"
-                                                    class="block p-2.5 w-full text-sm text-gray-900 bg-white border-2 border-gray-200 rounded-lg dark:border-gray-700 focus:ring-transparent dark:bg-gray-800 dark:placeholder-gray-400 dark:text-white dark:focus:ring-transparent "
+                                                <textarea id="message" rows="4" name="message"
+                                                    class="block p-2.5 w-full text-gray-900 bg-white border-2 border-gray-200 rounded-lg dark:border-gray-700 focus:ring-transparent dark:bg-gray-800 dark:placeholder-gray-400 dark:text-white dark:focus:ring-transparent "
                                                     maxlength="255"
                                                     placeholder="Leave a message...">{{ old('message', $guestbook->message) }}</textarea>
                                                 <x-input-error :messages="$errors->get('body')" class="mt-2" />
@@ -282,7 +282,7 @@
                                         @endif
                                         @endauth
                                     </div>
-                                    <p class="mt-2 text-gray-600 text-notmal dark:text-gray-400">{{
+                                    <p class="mt-2 text-gray-800 text-normal dark:text-gray-300">{{
                                         $guestbook->message }}
                                     </p>
                                     @auth
@@ -295,8 +295,8 @@
                                             <form method="POST" action="{{ route('guestbook.update', $guestbook) }}">
                                                 @csrf
                                                 @method('patch')
-                                                <textarea id="message" rows="3" name="message"
-                                                    class="block p-2.5 w-full text-sm text-gray-900 bg-white border-2 border-gray-200 rounded-lg dark:border-gray-700 focus:ring-transparent dark:bg-gray-800 dark:placeholder-gray-400 dark:text-white dark:focus:ring-transparent "
+                                                <textarea id="message" rows="4" name="message"
+                                                    class="block p-2.5 w-full text-gray-900 bg-white border-2 border-gray-200 rounded-lg dark:border-gray-700 focus:ring-transparent dark:bg-gray-800 dark:placeholder-gray-400 dark:text-white dark:focus:ring-transparent "
                                                     maxlength="255"
                                                     placeholder="Leave a message...">{{ old('message', $guestbook->message) }}</textarea>
                                                 <x-input-error :messages="$errors->get('body')" class="mt-2" />
