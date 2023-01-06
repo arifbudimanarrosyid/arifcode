@@ -167,8 +167,8 @@
                         <form method="POST" action="{{ route('comment.store') }}" class="mt-4">
                             @csrf
                             <input type="hidden" name="post_id" value="{{ $post->id }}">
-                            <textarea id="message" rows="3" name="text"
-                                class="block p-2.5 w-full text-sm text-gray-900 bg-white border-2 border-gray-200 rounded-lg dark:border-gray-700 focus:ring-transparent dark:bg-gray-800 dark:placeholder-gray-400 dark:text-white dark:focus:ring-transparent "
+                            <textarea id="message" rows="4" name="text"
+                                class="block p-2.5 w-full text-gray-900 bg-white border-2 border-gray-200 rounded-lg dark:border-gray-700 focus:ring-transparent dark:bg-gray-800 dark:placeholder-gray-400 dark:text-white dark:focus:ring-transparent "
                                 maxlength="255" placeholder="Leave a comment..." required>{{ old('text') }}</textarea>
                             <x-input-error :messages="$errors->get('text')" class="mt-2" />
                             <button type="submit"
@@ -332,8 +332,8 @@
                                                 <form method="POST" action="{{ route('comment.update', $comment) }}">
                                                     @csrf
                                                     @method('patch')
-                                                    <textarea id="message" rows="3" name="text"
-                                                        class="block p-2.5 w-full text-sm text-gray-900 bg-white border-2 border-gray-200 rounded-lg dark:border-gray-700 focus:ring-transparent dark:bg-gray-800 dark:placeholder-gray-400 dark:text-white dark:focus:ring-transparent "
+                                                    <textarea id="message" rows="4" name="text"
+                                                        class="block p-2.5 w-full text-gray-900 bg-white border-2 border-gray-200 rounded-lg dark:border-gray-700 focus:ring-transparent dark:bg-gray-800 dark:placeholder-gray-400 dark:text-white dark:focus:ring-transparent "
                                                         maxlength="255"
                                                         placeholder="Leave a comment...">{{ old('text', $comment->text) }}</textarea>
                                                     <x-input-error :messages="$errors->get('text')" class="mt-2" />
