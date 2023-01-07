@@ -34,7 +34,6 @@ Route::get('/post/{slug}', [PostController::class, 'show'])->name('post');
 // Comment
 Route::post('/comments', [CommentController::class, 'store'])->name('comment.store');
 Route::delete('/comments/{comment}', [CommentController::class, 'destroy'])->name('comment.destroy');
-// Route::get('/comments/{comment}/edit', [CommentController::class, 'edit'])->name('comment.edit');
 Route::patch('/comments/{comment}/', [CommentController::class, 'update'])->name('comment.update');
 Route::patch('/comments/{comment}/report', [CommentController::class, 'report'])->name('comments.report');
 Route::patch('/comments/{comment}/remove-report', [CommentController::class, 'undoReport'])->name('comments.remove.report');
@@ -68,16 +67,18 @@ Route::get('auth/callback/google', [SocialiteController::class, 'callbackGoogle'
 
 // Auth
 Route::middleware('auth')->group(function () {
+
     // Profile
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
     Route::delete('/profilesocialite', [ProfileController::class, 'deleteAccountWithNoPassword'])->name('profile.deleteAccountWithNoPassword');
+
     // Dashboard
     Route::get('/dashboard', DashboardController::class, 'index')
         ->name('dashboard');
-});
 
+});
 
 // Dashboard
 Route::prefix('dashboard')
@@ -89,13 +90,11 @@ Route::prefix('dashboard')
         Route::patch('/posts/{post}/delete-thumbnail', [DashboardPostController::class, 'deleteThumbnail'])->name('posts.delete-thumbnail');
         Route::patch('/deletealldraftposts', [DashboardPostController::class, 'deleteAllDraftPosts'])->name('posts.deletedraftposts');
         Route::patch('/deleteallreportedcomments', [DashboardPostController::class, 'deleteAllReportedComments'])->name('posts.deletereportedcomments');
-
         Route::post('/img-upload', [DashboardPostController::class, 'imageUpload'])->name('uploads');
 
         //Categories
         Route::resource('/category', DashboardCategoryController::class)
             ->except(['destroy']);
-
 
         //Portofolio
         Route::resource('/portofolio', DashboardPortofolioController::class)
@@ -106,6 +105,7 @@ Route::prefix('dashboard')
         Route::resource('/user', DashboardUserController::class)->only(['index']);
         Route::patch('/user/{user}/make-admin', [DashboardUserController::class, 'makeRoleAdmin'])->name('user.make-admin');
         Route::patch('/user/{user}/make-user', [DashboardUserController::class, 'makeRoleUser'])->name('user.make-user');
+
     });
 
 require __DIR__ . '/auth.php';
