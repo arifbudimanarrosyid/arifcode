@@ -42,25 +42,7 @@
             </div>
 
             <div class="flex">
-                @guest
-                <div class="hidden sm:flex sm:items-center sm:ml-6 gap-x-4">
 
-                    @if (Route::has('login'))
-                    <a href="{{ route('login') }}"
-                        class="inline-flex items-center px-3 py-2 text-sm font-medium leading-4 text-gray-400 transition duration-150 ease-in-out bg-white border border-transparent rounded-md dark:bg-gray-800 hover:text-gray-700 dark:hover:text-gray-300 focus:outline-none">
-                        Login
-                    </a>
-                    @endif
-                    @if (Route::has('register'))
-                    <a href="{{ route('register') }}"
-                        class="items-center hidden px-3 py-2 text-sm font-medium leading-4 text-gray-400 transition duration-150 ease-in-out bg-white border border-transparent rounded-md md:block dark:bg-gray-800 hover:text-gray-700 dark:hover:text-gray-300 focus:outline-none">
-                        Register
-                    </a>
-                    @endif
-
-
-                </div>
-                @endguest
                 {{-- Dark Mode Dropdown --}}
                 <div class="hidden sm:flex sm:items-center sm:ml-2">
                     <x-dropdown align="right" width="48">
@@ -105,11 +87,28 @@
                                         d="M2.25 5.25a3 3 0 013-3h13.5a3 3 0 013 3V15a3 3 0 01-3 3h-3v.257c0 .597.237 1.17.659 1.591l.621.622a.75.75 0 01-.53 1.28h-9a.75.75 0 01-.53-1.28l.621-.622a2.25 2.25 0 00.659-1.59V18h-3a3 3 0 01-3-3V5.25zm1.5 0v7.5a1.5 1.5 0 001.5 1.5h13.5a1.5 1.5 0 001.5-1.5v-7.5a1.5 1.5 0 00-1.5-1.5H5.25a1.5 1.5 0 00-1.5 1.5z"
                                         clip-rule="evenodd" />
                                 </svg>
-                                <span class="ml-2">System</span>
+                                <span class="ml-2">System (Auto)</span>
                             </button>
                         </x-slot>
                     </x-dropdown>
                 </div>
+                @guest
+                <div class="hidden sm:flex sm:items-center sm:ml-2 gap-x-4">
+
+                    @if (Route::has('login'))
+                    <a href="{{ route('login') }}"
+                        class="inline-flex items-center px-3 py-2 text-sm font-medium leading-4 text-gray-400 transition duration-150 ease-in-out bg-white border border-transparent rounded-md dark:bg-gray-800 hover:text-gray-700 dark:hover:text-gray-300 focus:outline-none">
+                        Login
+                    </a>
+                    @endif
+                    @if (Route::has('register'))
+                    <a href="{{ route('register') }}"
+                        class="items-center hidden px-3 py-2 text-sm font-medium leading-4 text-gray-400 transition duration-150 ease-in-out bg-white border border-transparent rounded-md md:block dark:bg-gray-800 hover:text-gray-700 dark:hover:text-gray-300 focus:outline-none">
+                        Register
+                    </a>
+                    @endif
+                </div>
+                @endguest
                 @auth
                 <!-- User Dropdown -->
                 <div class="hidden sm:flex sm:items-center sm:ml-2">
@@ -192,21 +191,6 @@
                 </x-responsive-nav-link>
 
             </div>
-            @guest
-            <div class="pt-4 pb-4 border-t border-gray-200 dark:border-gray-600">
-
-                <x-responsive-nav-link :href="route('login')" :active="request()->routeIs('login')">
-                    {{ __('Login') }}
-                </x-responsive-nav-link>
-                @if (Route::has('register'))
-                <x-responsive-nav-link :href="route('register')" :active="request()->routeIs('register')">
-                    {{ __('Register') }}
-                </x-responsive-nav-link>
-                @endif
-
-            </div>
-            @endguest
-
             <div class="pt-4 pb-4 border-t border-gray-200 dark:border-gray-600">
                 <button x-on:click="darkMode = 'dark', showDropdown = false"
                     class="flex w-full py-2 pl-3 pr-4 text-base font-medium text-left text-gray-600 transition duration-150 ease-in-out border-l-4 border-transparent dark:text-gray-400 hover:text-gray-800 dark:hover:text-gray-200 hover:bg-gray-50 dark:hover:bg-gray-700 hover:border-gray-300 dark:hover:border-gray-600 focus:outline-none focus:text-gray-800 dark:focus:text-gray-200 focus:bg-gray-50 dark:focus:bg-gray-700 focus:border-gray-300 dark:focus:border-gray-600">
@@ -233,10 +217,25 @@
                             d="M2.25 5.25a3 3 0 013-3h13.5a3 3 0 013 3V15a3 3 0 01-3 3h-3v.257c0 .597.237 1.17.659 1.591l.621.622a.75.75 0 01-.53 1.28h-9a.75.75 0 01-.53-1.28l.621-.622a2.25 2.25 0 00.659-1.59V18h-3a3 3 0 01-3-3V5.25zm1.5 0v7.5a1.5 1.5 0 001.5 1.5h13.5a1.5 1.5 0 001.5-1.5v-7.5a1.5 1.5 0 00-1.5-1.5H5.25a1.5 1.5 0 00-1.5 1.5z"
                             clip-rule="evenodd" />
                     </svg>
-                    <span class="ml-2">System</span>
+                    <span class="ml-2">System (Auto)</span>
                 </button>
+            </div>
+            @guest
+            <div class="pt-4 pb-4 border-t border-gray-200 dark:border-gray-600">
+
+                <x-responsive-nav-link :href="route('login')" :active="request()->routeIs('login')">
+                    {{ __('Login') }}
+                </x-responsive-nav-link>
+                @if (Route::has('register'))
+                <x-responsive-nav-link :href="route('register')" :active="request()->routeIs('register')">
+                    {{ __('Register') }}
+                </x-responsive-nav-link>
+                @endif
 
             </div>
+            @endguest
+
+
             @auth
             <!-- Responsive Settings Options -->
             <div class="pt-4 pb-1 border-t border-gray-200 dark:border-gray-600">
