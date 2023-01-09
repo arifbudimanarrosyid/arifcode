@@ -13,10 +13,9 @@
                 </div>
 
                 <!-- Navigation Links -->
-                <div class="hidden space-x-4 sm:-my-px sm:flex">
-
-                    <x-nav-link :href="route('home')" :active="request()->routeIs('home')"
-                        class="font-bold dark:text-gray-200">
+                <div class="hidden gap-2 sm:-my-px sm:flex">
+                    <x-nav-link :href="route('home')"
+                        class="hidden font-bold dark:text-gray-200 md:flex">
                         Arif<span class="text-indigo-500">Code</span>
                     </x-nav-link>
                     <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
