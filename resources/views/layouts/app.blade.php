@@ -48,7 +48,7 @@
             min_height: 1000,
 
             plugins: 'paste code fullscreen anchor resize autolink charmap codesample emoticons image link lists media searchreplace table visualblocks wordcount',
-            toolbar: 'fullscreen code | blocks h1 h2 codesample blockquote link  align | image bullist numlist checklist  indent outdent|bold italic underline strikethrough |  image media table mergetags |  spellcheckdialog a11ycheck typography |  lineheight |  emoticons charmap | removeformat',
+            toolbar: 'fullscreen code | blocks h1 h2 h3 codesample blockquote link  align | image bullist numlist checklist  indent outdent|bold italic underline strikethrough |  image media table mergetags |  spellcheckdialog a11ycheck typography |  lineheight |  emoticons charmap | removeformat',
             skin: (window.matchMedia("(prefers-color-scheme: dark)").matches ? "oxide-dark" : "oxide"),
             content_css: (window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : ""),
 
