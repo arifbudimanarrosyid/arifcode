@@ -85,6 +85,105 @@
                         </a>
                     </div>
                 </div>
+                <h1
+                    class="mb-6 text-4xl font-bold text-gray-800 underline capitalize decoration-orange-500 dark:text-white">
+                    FAQ
+                </h1>
+                <div
+                    class="bg-white border-2 border-gray-200 divide-y-2 divide-gray-200 dark:divide-gray-700 dark:bg-gray-800 dark:border-gray-700 rounded-xl">
+                    <details class="group p-6 [&_summary::-webkit-details-marker]:hidden" open>
+                        <summary
+                            class="flex items-center justify-between text-gray-600 cursor-pointer dark:text-gray-400">
+                            <h2 class="text-lg font-medium ">
+                                What is this website?
+                            </h2>
+
+                            <span class="relative ml-1.5 h-5 w-5 flex-shrink-0">
+                                <svg xmlns="http://www.w3.org/2000/svg"
+                                    class="absolute inset-0 w-5 h-5 opacity-100 group-open:opacity-0" fill="none"
+                                    viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                    <path stroke-linecap="round" stroke-linejoin="round"
+                                        d="M12 9v3m0 0v3m0-3h3m-3 0H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                </svg>
+
+                                <svg xmlns="http://www.w3.org/2000/svg"
+                                    class="absolute inset-0 w-5 h-5 opacity-0 group-open:opacity-100" fill="none"
+                                    viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                    <path stroke-linecap="round" stroke-linejoin="round"
+                                        d="M15 12H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                </svg>
+                            </span>
+                        </summary>
+
+                        <p class="mt-4 leading-relaxed text-gray-600 dark:text-gray-400">
+                            My personal website is a place where I can share my thoughts,
+                            experiences, and interests with readers. I write about a range of topics, including Laravel,
+                            TailwindCSS, and AlpineJS, in order to provide information, inspiration, and entertainment
+                            to my readers.
+                        </p>
+                    </details>
+                    <details class="group p-6 [&_summary::-webkit-details-marker]:hidden">
+                        <summary
+                            class="flex items-center justify-between text-gray-600 cursor-pointer dark:text-gray-400">
+                            <h2 class="text-lg font-medium ">
+                                What types of data do you collect from users?
+                            </h2>
+
+                            <span class="relative ml-1.5 h-5 w-5 flex-shrink-0">
+                                <svg xmlns="http://www.w3.org/2000/svg"
+                                    class="absolute inset-0 w-5 h-5 opacity-100 group-open:opacity-0" fill="none"
+                                    viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                    <path stroke-linecap="round" stroke-linejoin="round"
+                                        d="M12 9v3m0 0v3m0-3h3m-3 0H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                </svg>
+
+                                <svg xmlns="http://www.w3.org/2000/svg"
+                                    class="absolute inset-0 w-5 h-5 opacity-0 group-open:opacity-100" fill="none"
+                                    viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                    <path stroke-linecap="round" stroke-linejoin="round"
+                                        d="M15 12H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                </svg>
+                            </span>
+                        </summary>
+
+                        <p class="mt-4 leading-relaxed text-gray-600 dark:text-gray-400">
+                            I collect some personal information from users, such as names and email addresses, which I
+                            use to display your name when you post a comment or sign our guestbook.
+                        </p>
+                    </details>
+                    <details class="group p-6 [&_summary::-webkit-details-marker]:hidden">
+                        <summary
+                            class="flex items-center justify-between text-gray-600 cursor-pointer dark:text-gray-400">
+                            <h2 class="text-lg font-medium ">
+                                What platform or technology was used to build this website?
+                            </h2>
+
+                            <span class="relative ml-1.5 h-5 w-5 flex-shrink-0">
+                                <svg xmlns="http://www.w3.org/2000/svg"
+                                    class="absolute inset-0 w-5 h-5 opacity-100 group-open:opacity-0" fill="none"
+                                    viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                    <path stroke-linecap="round" stroke-linejoin="round"
+                                        d="M12 9v3m0 0v3m0-3h3m-3 0H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                </svg>
+
+                                <svg xmlns="http://www.w3.org/2000/svg"
+                                    class="absolute inset-0 w-5 h-5 opacity-0 group-open:opacity-100" fill="none"
+                                    viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                    <path stroke-linecap="round" stroke-linejoin="round"
+                                        d="M15 12H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                </svg>
+                            </span>
+                        </summary>
+
+                        <p class="mt-4 leading-relaxed text-gray-600 dark:text-gray-400">
+                            This website was built using Laravel 9, TailwindCSS, AlpineJS, HyperJS, and the UI from
+                            Flowbite, HyperUI. These technologies were chosen for their functionality, flexibility, and
+                            user-friendliness, and have been instrumental in creating the website's features and
+                            capabilities.
+                        </p>
+                    </details>
+                </div>
+
 
             </div>
             {{-- Other --}}
