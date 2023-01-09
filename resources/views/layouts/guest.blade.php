@@ -27,6 +27,39 @@
         [x-cloak] {
             display: none !important;
         }
+
+        @media (prefers-color-scheme: dark) {
+            ::-webkit-scrollbar {
+                width: 5px;
+                background-color: #111827;
+            }
+
+            ::-webkit-scrollbar-thumb {
+                background-color: #4f46e5;
+                border-radius: 10px;
+            }
+
+            ::-webkit-scrollbar-thumb:hover {
+                background-color: #6366d0;
+            }
+        }
+
+        @media (prefers-color-scheme: light) {
+            ::-webkit-scrollbar {
+                width: 10px;
+                height: 10px;
+                background-color: #f5f5f5;
+            }
+
+            ::-webkit-scrollbar-thumb {
+                background-color: #4f46e5;
+                border-radius: 10px;
+            }
+
+            ::-webkit-scrollbar-thumb:hover {
+                background-color: #6366d0;
+            }
+        }
     </style>
 
     <!-- Scripts -->

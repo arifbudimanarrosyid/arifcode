@@ -10,7 +10,7 @@
 
         <div class="px-4 mx-auto max-w-7xl sm:px-6 lg:px-8 ">
             {{-- Info --}}
-            <div class="hidden sm:block">
+            <div class="hidden md:block">
                 <div class="gap-5 mb-1 sm:flex">
                     <div class="block w-full p-4 mb-4 bg-white rounded-lg dark:bg-gray-800 ">
                         <h5 class="mb-2 text-xl tracking-tight text-gray-900 dark:text-white">Posts</h5>
