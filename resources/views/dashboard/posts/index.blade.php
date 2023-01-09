@@ -13,7 +13,7 @@
             <div class="hidden sm:block">
                 <div class="gap-5 mb-1 sm:flex">
                     <div class="block w-full p-4 mb-4 bg-white rounded-lg dark:bg-gray-800 ">
-                        <h5 class="mb-2 text-xl tracking-tight text-gray-900 dark:text-white">Total Posts</h5>
+                        <h5 class="mb-2 text-xl tracking-tight text-gray-900 dark:text-white">Posts</h5>
                         <p class="text-2xl font-bold text-indigo-700 dark:text-indigo-400">{{ $totalPosts }}</p>
                     </div>
                     <div class="block w-full p-4 mb-4 bg-white rounded-lg dark:bg-gray-800 ">
@@ -237,8 +237,8 @@
                 @empty
                 <h1 class="mt-4 text-gray-600 dark:text-gray-400">No Post Found</h1>
                 @endforelse
-                {{ $posts->links() }}
             </div>
+            {{ $posts->links() }}
         </div>
     </div>
 </x-app-layout>

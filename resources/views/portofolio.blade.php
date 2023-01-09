@@ -5,17 +5,13 @@
             <div class="flex mb-5 overflow-hidden ">
                 <div class="px-4 sm:px-0">
                     <h1
-                        class="text-4xl font-bold text-gray-800 underline capitalize decoration-indigo-500 dark:text-white">
+                        class="text-4xl font-bold text-gray-800 underline capitalize decoration-green-500 dark:text-white">
                         Portofolios
                     </h1>
                     {{-- <h1 class="mt-4 text-gray-600 dark:text-gray-400">This is my portofolio.
                     </h1> --}}
                 </div>
-
             </div>
-
-
-
 
             {{-- All Posts --}}
             <div class="flex min-h-screen my-5">
