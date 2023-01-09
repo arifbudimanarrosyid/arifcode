@@ -115,7 +115,7 @@
 </head>
 
 <body class="font-sans antialiased bg-gray-100 dark:bg-gray-900">
-    <div class="min-h-screen mx-auto max-w-7xl">
+    <div class="max-w-3xl min-h-screen mx-auto">
         @include('layouts.app-navigation')
 
         <!-- Page Heading -->

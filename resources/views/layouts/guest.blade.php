@@ -35,6 +35,7 @@
 </head>
 
 <body class="font-sans antialiased bg-gray-100 dark:bg-gray-900">
+    @if (Route::currentRouteName() == 'home')
     <div class="hidden text-gray-500 bg-gray-50 dark:bg-gray-800 dark:text-gray-300 md:block">
         <div class="flex flex-col items-center justify-center max-w-3xl p-3 mx-auto text-sm" role="alert">
             <p class="text-center">If you're a first-time visitor to my website, I invite you to leave your mark by
@@ -46,6 +47,7 @@
             </p>
         </div>
     </div>
+    @endif
     <div class="max-w-3xl min-h-screen mx-auto">
         @include('layouts.guest-navigation')
         <div class="font-sans antialiased text-gray-900">
