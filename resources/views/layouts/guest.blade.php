@@ -40,12 +40,16 @@
         <div class="flex flex-col items-center justify-center max-w-3xl p-3 mx-auto text-sm" role="alert">
             <p class="text-center">If you're a first-time visitor to my website, I invite you to leave your mark by
                 signing my <a href="{{ route("guestbook.index") }}"
-                    class="text-orange-400 dark:text-orange-500">guestbook</a>. <p>I appreciate your feedback and thoughts,
-                        and hope that you enjoy your visit to my
-                        website.</p></p>
+                    class="text-orange-400 dark:text-orange-500">guestbook</a>.
+            <p>I appreciate your feedback and thoughts,
+                and hope that you enjoy your visit to my
+                website.</p>
+            </p>
             {{-- <p class="text-center">I am grateful to <span class="text-orange-400 dark:text-orange-500">Mr. Sandika
-                    Galih</span> for teaching me Laravel through his YouTube videos. <p>His guidance has been invaluable in
-                        my learning journey.</p></p> --}}
+                    Galih</span> for teaching me Laravel through his YouTube videos.
+            <p>His guidance has been invaluable in
+                my learning journey.</p>
+            </p> --}}
 
         </div>
     </div>
