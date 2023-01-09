@@ -140,7 +140,7 @@
 
 
             {{-- All Posts --}}
-            <div class="grid w-full gap-5 lg:grid-cols-2">
+            <div class="w-full">
                 {{-- Post --}}
                 @forelse ($posts as $post)
                 <div class="mb-4 sm:flex">
